@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      .NET AES DES 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    May 15, 2024
+  </h3>
+  <h1>
+    .NET AES DES
+  </h1>
+  <div class="content markdown-body">
+    <p>.NET AES DES 对称加密</p>
+<h1 id="ASE-加密解密"><a href="#ASE-加密解密" class="headerlink" title="ASE 加密解密"></a>ASE 加密解密</h1><p>加密方法 (Encrypt):</p>
+<p>创建一个 Aes 实例。<br>设置密钥 (Key) 和初始化向量 (IV)。<br>使用 CreateEncryptor 创建加密器。<br>通过 CryptoStream 和 StreamWriter 将明文写入内存流，然后转换为 Base64 字符串。</p>
+<p>解密方法 (Decrypt):</p>
+<p>同样创建一个 Aes 实例。<br>设置相同的密钥和初始化向量。<br>使用 CreateDecryptor 创建解密器。<br>通过 CryptoStream 和 StreamReader 从内存流读取密文并解密为明文。</p>
+<p>注意事项<br>密钥长度：AES 支持 128, 192, 和 256 位密钥。本例使用 256 位（32 字节）。<br>初始化向量 (IV)：应确保加密和解密时使用相同的 IV。本例中使用了全零的 IV，在实际应用中建议使用随机 IV，并将其与密文一起存储。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">SymmetricEncryption</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 加密方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Encrypt</span>(<span class="params"><span class="built_in">string</span> plainText, <span class="built_in">string</span> key</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (Aes aesAlg = Aes.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            aesAlg.Key = Encoding.UTF8.GetBytes(key);</span><br><span class="line">            aesAlg.IV = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">16</span>]; <span class="comment">// 初始化向量 (IV) 可以设为全零，也可以使用随机值</span></span><br><span class="line">            </span><br><span class="line">            ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">using</span> (MemoryStream msEncrypt = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">using</span> (CryptoStream csEncrypt = <span class="keyword">new</span> CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))</span><br><span class="line">                <span class="keyword">using</span> (StreamWriter swEncrypt = <span class="keyword">new</span> StreamWriter(csEncrypt))</span><br><span class="line">                &#123;</span><br><span class="line">                    swEncrypt.Write(plainText);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> Convert.ToBase64String(msEncrypt.ToArray());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解密方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Decrypt</span>(<span class="params"><span class="built_in">string</span> cipherText, <span class="built_in">string</span> key</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (Aes aesAlg = Aes.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            aesAlg.Key = Encoding.UTF8.GetBytes(key);</span><br><span class="line">            aesAlg.IV = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">16</span>]; <span class="comment">// 与加密时使用相同的 IV</span></span><br><span class="line">            </span><br><span class="line">            ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">using</span> (MemoryStream msDecrypt = <span class="keyword">new</span> MemoryStream(Convert.FromBase64String(cipherText)))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">using</span> (CryptoStream csDecrypt = <span class="keyword">new</span> CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))</span><br><span class="line">                <span class="keyword">using</span> (StreamReader srDecrypt = <span class="keyword">new</span> StreamReader(csDecrypt))</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> srDecrypt.ReadToEnd();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 示例主方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> original = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">        <span class="built_in">string</span> key = <span class="string">&quot;thisisaverysecretkey1234&quot;</span>; <span class="comment">// 32 字节的密钥</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 加密</span></span><br><span class="line">        <span class="built_in">string</span> encrypted = Encrypt(original, key);</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Encrypted: <span class="subst">&#123;encrypted&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解密</span></span><br><span class="line">        <span class="built_in">string</span> decrypted = Decrypt(encrypted, key);</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Decrypted: <span class="subst">&#123;decrypted&#125;</span>&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<!-- 
+调用
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//test 加密 </span></span><br><span class="line">  <span class="built_in">string</span> original = <span class="string">&quot;115&quot;</span>;</span><br><span class="line">  <span class="built_in">string</span> key = <span class="string">&quot;thisisaverysecretkey1234&quot;</span>; <span class="comment">// 32 字节的密钥</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 加密</span></span><br><span class="line">  <span class="built_in">string</span> encrypted =Asev1.Encrypt(original, key);</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Encrypted: <span class="subst">&#123;encrypted&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 解密</span></span><br><span class="line">  <span class="built_in">string</span> decrypted = Asev1.Decrypt(encrypted, key);</span><br><span class="line">  Console.WriteLine(<span class="string">$&quot;Decrypted: <span class="subst">&#123;decrypted&#125;</span>&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  ``` --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Encrypted: NEVECFUqMdlFuAPGXm30FQ==</span><br><span class="line">Decrypted: <span class="number">115</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="meta"># DES 加密解密</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> ``` c<span class="meta">#</span></span><br><span class="line"> <span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">SymmetricEncryption</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 加密方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Encrypt</span>(<span class="params"><span class="built_in">string</span> plainText, <span class="built_in">string</span> key</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (DES desAlg = DES.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            desAlg.Key = Encoding.UTF8.GetBytes(key);</span><br><span class="line">            desAlg.IV = Encoding.UTF8.GetBytes(key); <span class="comment">// 使用相同的 key 作为 IV，这仅用于示例，实际应用中应使用随机 IV</span></span><br><span class="line">            </span><br><span class="line">            ICryptoTransform encryptor = desAlg.CreateEncryptor(desAlg.Key, desAlg.IV);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">using</span> (MemoryStream msEncrypt = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">using</span> (CryptoStream csEncrypt = <span class="keyword">new</span> CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))</span><br><span class="line">                <span class="keyword">using</span> (StreamWriter swEncrypt = <span class="keyword">new</span> StreamWriter(csEncrypt))</span><br><span class="line">                &#123;</span><br><span class="line">                    swEncrypt.Write(plainText);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> Convert.ToBase64String(msEncrypt.ToArray());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解密方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Decrypt</span>(<span class="params"><span class="built_in">string</span> cipherText, <span class="built_in">string</span> key</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (DES desAlg = DES.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            desAlg.Key = Encoding.UTF8.GetBytes(key);</span><br><span class="line">            desAlg.IV = Encoding.UTF8.GetBytes(key); <span class="comment">// 使用相同的 key 作为 IV</span></span><br><span class="line">            </span><br><span class="line">            ICryptoTransform decryptor = desAlg.CreateDecryptor(desAlg.Key, desAlg.IV);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">using</span> (MemoryStream msDecrypt = <span class="keyword">new</span> MemoryStream(Convert.FromBase64String(cipherText)))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">using</span> (CryptoStream csDecrypt = <span class="keyword">new</span> CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))</span><br><span class="line">                <span class="keyword">using</span> (StreamReader srDecrypt = <span class="keyword">new</span> StreamReader(csDecrypt))</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> srDecrypt.ReadToEnd();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 示例主方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> original = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">        <span class="built_in">string</span> key = <span class="string">&quot;abcdefgh&quot;</span>; <span class="comment">// 8 字节的密钥</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 加密</span></span><br><span class="line">        <span class="built_in">string</span> encrypted = Encrypt(original, key);</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Encrypted: <span class="subst">&#123;encrypted&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解密</span></span><br><span class="line">        <span class="built_in">string</span> decrypted = Decrypt(encrypted, key);</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Decrypted: <span class="subst">&#123;decrypted&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>加密方法 (Encrypt):</p>
+<p>创建一个 DES 实例。<br>设置密钥 (Key) 和初始化向量 (IV)。这里为了简化使用相同的 key 作为 IV，但实际应用中应使用不同且随机的 IV。<br>使用 CreateEncryptor 创建加密器。<br>通过 CryptoStream 和 StreamWriter 将明文写入内存流，然后转换为 Base64 字符串。<br>解密方法 (Decrypt):</p>
+<p>同样创建一个 DES 实例。<br>设置相同的密钥和初始化向量。<br>使用 CreateDecryptor 创建解密器。<br>通过 CryptoStream 和 StreamReader 从内存流读取密文并解密为明文。</p>
+<p>主方法 (Main):<br>定义一个示例明文和密钥。</p>
+<p>调用加密和解密方法，输出结果。<br>注意事项<br>密钥长度：DES 使用 56 位密钥（即 8 字节）。本例使用了 8 字节的字符串密钥。<br>初始化向量 (IV)：应确保加密和解密时使用相同的 IV。本例中为了简化示例，使用了与密钥相同的 IV，实际应用中应使用随机 IV，并将其与密文一起存储。<br>DES 安全性：DES 已被认为不再安全，建议使用更安全的加密算法如 AES。在实际应用中尽量避免使用 DES。</p>
+<p>扩展 NodeJS版本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加密函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">encrypt</span>(<span class="params">plainText, key</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> iv = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">16</span>, <span class="number">0</span>); <span class="comment">// 初始化向量 (IV) 可以设为全零，也可以使用随机值</span></span><br><span class="line">    <span class="keyword">const</span> cipher = crypto.<span class="title function_">createCipheriv</span>(<span class="string">&#x27;aes-256-cbc&#x27;</span>, key, iv);</span><br><span class="line">    <span class="keyword">let</span> encrypted = cipher.<span class="title function_">update</span>(plainText, <span class="string">&#x27;utf8&#x27;</span>, <span class="string">&#x27;base64&#x27;</span>);</span><br><span class="line">    encrypted += cipher.<span class="title function_">final</span>(<span class="string">&#x27;base64&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> encrypted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解密函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decrypt</span>(<span class="params">cipherText, key</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> iv = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">16</span>, <span class="number">0</span>); <span class="comment">// 与加密时使用相同的 IV</span></span><br><span class="line">    <span class="keyword">const</span> decipher = crypto.<span class="title function_">createDecipheriv</span>(<span class="string">&#x27;aes-256-cbc&#x27;</span>, key, iv);</span><br><span class="line">    <span class="keyword">let</span> decrypted = decipher.<span class="title function_">update</span>(cipherText, <span class="string">&#x27;base64&#x27;</span>, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    decrypted += decipher.<span class="title function_">final</span>(<span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> decrypted;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 要加密的明文</span></span><br><span class="line"><span class="keyword">const</span> plainText = <span class="string">&quot;115&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用密钥加密消息</span></span><br><span class="line"><span class="keyword">const</span> key = crypto.<span class="title function_">createHash</span>(<span class="string">&#x27;sha256&#x27;</span>).<span class="title function_">update</span>(<span class="string">&quot;thisisaverysecretkey1234&quot;</span>).<span class="title function_">digest</span>();</span><br><span class="line"><span class="keyword">const</span> encryptedText = <span class="title function_">encrypt</span>(plainText, key);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Encrypted Text:&#x27;</span>, encryptedText);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用密钥解密消息</span></span><br><span class="line"><span class="keyword">const</span> decryptedText = <span class="title function_">decrypt</span>(encryptedText, key);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Decrypted Text:&#x27;</span>, decryptedText);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/05/14/IOS-POD/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/05/16/HarmonyOS-Photos/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

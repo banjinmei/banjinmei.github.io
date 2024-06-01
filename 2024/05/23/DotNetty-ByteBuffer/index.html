@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      DotNetty ByteBuffer 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    May 23, 2024
+  </h3>
+  <h1>
+    DotNetty ByteBuffer
+  </h1>
+  <div class="content markdown-body">
+    <p><strong>DotNetty</strong>是一个高性能的.NET网络通信框架，基于Netty，支持TCP、UDP、HTTP、WebSocket等协议。适用于高并发、低延迟场景，如实时通信、游戏服务器、IoT应用及大型分布式系统，通过异步I&#x2F;O、零拷贝等技术提升性能，具备易用性、可扩展性。<br>架构上，围绕Channel、EventLoop、ChannelPipeline、ChannelHandlerContext设计，包含Transport、Codec、Handler等模块，简化网络编程，加速数据传输处理。</p>
+<p><strong>ByteBuffer</strong> 用于高效处理字节数据，固定容量，通过allocate或wrap创建。涉及position和limit追踪读写位置，提供get&#x2F;put等读写方法，flip切换读写模式，clear清空缓冲区，compact移动数据并准备下一轮读写，适用于高性能IO与网络通信。.</p>
+<p><strong>优点</strong><br>零拷贝通过复合缓冲区实现。<br>动态容量增长。<br>无需flip切换读写模式。<br>分离读写索引。<br>内置引用计数。<br>支持缓冲区池化。<br>优化网络通信中的字节处理。</p>
+<p><strong>结构</strong><br>readerIndex 读取，随读增。<br>writerIndex 写入，随写增。<br>capacity容量。</p>
+<p><strong>ByteBuffer属性</strong><br>readIndex：下一个读位<br>writeIndex：下一个写位置<br>capacity：容量<br>0：缓冲区开始位置</p>
+<p>已经读取的区域：[0,readerindex)<br>可读取的区域：[readerindex,writerIndex)<br>可写的区域: [writerIndex,capacity)<br>读写独立索引，操作命名区分（read&#x2F;write自动进，get&#x2F;set不影响索引）。<br>支持设定最大容量，超限写操作将抛异常，默认上限Integer.MAX_VALUE。<br>readerIndex writerIndex 本质为灵活高效字节容器</p>
+<p><strong>堆缓冲区</strong><br>最常用的 ByteBuffer 模式是将数据存储在堆空间中。这种模式被称为支撑数组（backing array），它能在没有使用池化的情况下提供快速的分配和释放。可以由 hasArray() 来判断检查 ByteBuffer是否由数组支撑。如果不是，则这是一个直接缓冲区。</p>
+<p><strong>直接缓冲区</strong><br>直接缓冲区是另外一种 ByteBuffer 模式。<br>直接缓冲区的主要缺点是，相对于基于堆的缓冲区，它们的分配和释放都较为昂贵。</p>
+<p><strong>复合缓冲区</strong><br>复合缓冲区 CompositeByteBuf，它为多个 ByteBuffer提供一个聚合视图。比如 HTTP 协议， 分为消息头和消息体，这两部分可能由应用程序的不同模块产生，各有各的 ByteBuffer，将会在消息被发送的时候组装为一个 ByteBuffer，此时可以将这两个 ByteBuffer聚合为一个 CompositeByteBuf，然后使用统一和通用的 ByteBuffer API 来操作。</p>
+<p>如何在的程序中获得 ByteBuf 的实例，并使用它呢？Netty 提供了两种方式</p>
+<p><strong>ByteBufAllocator 接口</strong><br>ByteBufAllocator 分配任意类型的 ByteBuffer 实例。</p>
+<p>buffer(): 基于堆&#x2F;直接内存ByteBuffer。<br>heapBuffer(): 仅堆内存。<br>directBuffer(): 仅直接内存。<br>compositeBuffer(): 可组合多个缓冲区，支持堆&#x2F;直接内存。<br>ioBuffer(): 适配I&#x2F;O操作，优先直接内存(需Unsafe支持)。<br>ByteBufAllocator：<br>Channel ChannelHandlerContext</p>
+<p><strong>Unpooled 缓冲区</strong></p>
+<p>Unpooled工具类助创ByteBuffer<br> buffer()：堆内存ByteBuffer<br> directBuffer()：直接内存ByteBuffer<br> wrappedBuffer()：包装数据的ByteBuffer<br> copiedBuffer()：复制数据的ByteBuffer 适用范围广泛，不仅限于Netty网络项目。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IByteBuffer byteBuf = Unpooled.CopiedBuffer(<span class="string">&quot;hello,world!&quot;</span>, Encoding.UTF8); </span><br></pre></td></tr></table></figure>
+
+<p><strong>ByteBuf访问&#x2F;读写</strong><br>索引从0开始至capacity()-1。<br>随机访问（get&#x2F;set）不改索引，需显式调用readerIndex()&#x2F;writerIndex()移动。<br>顺序访问分两类：<br>get&#x2F;set：固定索引，读写数据不移位。<br>read&#x2F;write：自动调整readerIndex&#x2F;writerIndex。</p>
+<p>isReadable() 如果至少有一个字节可供读取，则返回 true<br>isWritable() 如果至少有一个字节可被写入，则返回 true<br>readableBytes() 返回可被读取的字节数<br>writableBytes() 返回可被写入的字节数<br>capacity() 返回 ByteBuffer 可容纳的字节数。在此之后，它会尝试再次扩展直到达到<br>maxCapacity()<br>maxCapacity() 返回 ByteBuffer 可以容纳的最大字节数<br>hasArray() 如果 ByteBuffer 由一个字节数组支撑，则返回 true<br>array() 如果 ByteBuffer 由一个字节数组支撑则返回该数组</p>
+<p><strong>可丢弃字节</strong><br>读操作后，字节积累在”可丢弃”段，始于readerIndex。<br>discardReadBytes()释放已读字节，回收空间，可能导致之前数据移动。<br>此操作可能涉及内存复制，谨慎使用。</p>
+<p><strong>可读字节</strong>：存储实际数据，新缓冲区默认从readerIndex&#x3D;0开始。<br><strong>可写字节</strong>：空白区域待写入，新缓冲区writerIndex初设0，写操作后自动递增。</p>
+<p><strong>资源释放</strong><br>处理Netty入站ByteBuffer ，可选自动释放：用SimpleChannelInboundHandler，或在channelRead()末手动调用ReferenceCountUtil.release(msg)确保资源管理。</p>
+<!--
+对于**入站请求**，Netty中处理Channel读操作时自动分配的ByteBuffer ，确实需要正确管理其生命周期以避免内存泄漏。主要有两种推荐做法来确保ByteBuf的释放：
+使用SimpleChannelInboundHandler：这个Handler类在处理完消息后会自动释放ByteBuffer 。它通过重写了channelReadComplete()方法来调用release()释放消息，因此你不需要在channelRead()方法里手动释放。
+手动释放：如果你不使用SimpleChannelInboundHandler，而是在其他类型的ChannelInboundHandler中处理消息，就需要在channelRead()方法结束前手动调用ReferenceCountUtil.release(msg)来释放ByteBuffer 。
+简而言之，确保ByteBuffer 释放的两种方式可总结为：“利用SimpleChannelInboundHandler自动管理”或“在channelRead()末手动释放”。
+-->
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DotNetty.Buffers;</span><br><span class="line"><span class="keyword">using</span> DotNetty.Transport.Channels;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">CommanChannelInboundHandler</span> : <span class="title">SimpleChannelInboundHandler</span>&lt;<span class="title">object</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">ChannelRead</span>(<span class="params">IChannelHandlerContext context, <span class="built_in">object</span> message</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">bool</span> shouldRelease = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (IsMessageAcceptable(message))</span><br><span class="line">            &#123;</span><br><span class="line">                ChannelRead0(context, message);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                shouldRelease = <span class="literal">false</span>;</span><br><span class="line">                context.FireChannelRead(message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (AutoRelease &amp;&amp; shouldRelease)</span><br><span class="line">            &#123;</span><br><span class="line">                ResourceUtil.Release(message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="built_in">bool</span> <span class="title">IsMessageAcceptable</span>(<span class="params"><span class="built_in">object</span> msg</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">return</span> msg <span class="keyword">is</span> IByteBuffer; <span class="comment">// 假设只处理IByteBuffer类型的消息</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">ChannelRead0</span>(<span class="params">IChannelHandlerContext context, <span class="built_in">object</span> message</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//IByteBuffer ...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">bool</span> AutoRelease &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于<strong>出站请求</strong>，不管 ByteBuffer 是否由我们的业务创建的，当调用了 write 或者 writeAndFlush 方法后，Netty 会自动替我们释放，不需要我们业务代码自行释放。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建ByteBuf对象，初始容量为1，内部动态扩容以容纳更多数据</span></span><br><span class="line">IByteBuffer byteBuf = Unpooled.Buffer(<span class="number">1</span>);</span><br><span class="line">Console.WriteLine(<span class="string">&quot;byteBuf=&quot;</span> + byteBuf);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    byteBuf.WriteByte(i);</span><br><span class="line">&#125;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;byteBuf=&quot;</span> + byteBuf);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(byteBuf.GetByte(i));</span><br><span class="line">&#125;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;byteBuf=&quot;</span> + byteBuf);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(byteBuf.ReadByte());</span><br><span class="line">&#125;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;byteBuf=&quot;</span> + byteBuf);</span><br><span class="line"></span><br><span class="line"><span class="comment">//byteBuf2</span></span><br><span class="line"><span class="comment">// 使用Unpooled工具类创建ByteBuf，内容为&quot;hello,world!&quot;</span></span><br><span class="line">IByteBuffer byteBuf2 = Unpooled.CopiedBuffer(<span class="string">&quot;hello,world!&quot;</span>, Encoding.UTF8); <span class="comment">// Unpooled.CopiedBuffer(&quot;hello,world!&quot;, Encoding.UTF8);</span></span><br><span class="line"><span class="comment">// 使用相关的方法</span></span><br><span class="line"><span class="keyword">if</span> (byteBuf2.HasArray) <span class="comment">// if (byteBuf2.HasArray)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">byte</span>[] content = byteBuf2.Array;</span><br><span class="line">    <span class="comment">// 将content转成字符串</span></span><br><span class="line">    Console.WriteLine(Encoding.UTF8.GetString(content));</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;byteBuf2=&quot;</span> + byteBuf2);</span><br><span class="line"></span><br><span class="line">    Console.WriteLine(byteBuf2.GetByte(<span class="number">0</span>)); <span class="comment">// 获取数组0这个位置的字符&#x27;h&#x27;的ASCII码，h=104</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> len = byteBuf2.ReadableBytes; <span class="comment">// 可读的字节数 12</span></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;len=&quot;</span> + len);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for取出各个字节并转换为对应的字符打印</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine((<span class="built_in">char</span>)byteBuf2.GetByte(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 范围读取</span></span><br><span class="line">    Console.WriteLine(byteBuf2.GetCharSequence(<span class="number">0</span>, <span class="number">6</span>, Encoding.UTF8));</span><br><span class="line">    Console.WriteLine(byteBuf2.GetCharSequence(<span class="number">6</span>, <span class="number">6</span>, Encoding.UTF8));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//byteBuf3 WrappedBuffer</span></span><br><span class="line"><span class="keyword">var</span> str1 = Encoding.UTF8.GetBytes(<span class="string">&quot;hello,world!&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> byteBuf3 = Unpooled.WrappedBuffer(str1);</span><br><span class="line"><span class="keyword">if</span> (byteBuf3.HasArray) <span class="comment">// if (byteBuf2.HasArray)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">byte</span>[] content = byteBuf3.Array;</span><br><span class="line">    <span class="comment">// 将content转成字符串</span></span><br><span class="line">    Console.WriteLine(Encoding.UTF8.GetString(content));</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;byteBuf3=&quot;</span> + byteBuf3);</span><br><span class="line"></span><br><span class="line">    Console.WriteLine(byteBuf3.GetByte(<span class="number">0</span>)); <span class="comment">// 获取数组0这个位置的字符&#x27;h&#x27;的ASCII码，h=104</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> len = byteBuf3.ReadableBytes; <span class="comment">// 可读的字节数 12</span></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;len=&quot;</span> + len);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for取出各个字节并转换为对应的字符打印</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine((<span class="built_in">char</span>)byteBuf3.GetByte(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 范围读取</span></span><br><span class="line">    Console.WriteLine(byteBuf3.GetCharSequence(<span class="number">0</span>, <span class="number">6</span>, Encoding.UTF8));</span><br><span class="line">    Console.WriteLine(byteBuf3.GetCharSequence(<span class="number">6</span>, <span class="number">6</span>, Encoding.UTF8));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>结果得出 get操作 readerIndex 不变，read操作使其移动。</p>
+<p>End</p>
+
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/05/20/NET-Fileupload/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/05/23/HarmonyOS-Router/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

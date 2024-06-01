@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Socket to WebSocket 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Apr 20, 2024
+  </h3>
+  <h1>
+    Socket to WebSocket
+  </h1>
+  <div class="content markdown-body">
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>针对IOS App Proxy Server无法直连WebSocket，建立 Socket中转端。</p>
+<p>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240420311.jpg"></p>
+<p>WebSocket 端：</p>
+<p>WebSocket 端用于实现实时通信功能。</p>
+<p>WebSocket 端通过 WebSocket 协议与中转端通信，中转端可以通过 WebSocket 或其他传输协议与 WebSocket 端建立连接，收发消息。</p>
+<p>定义 SendMessageToChatRoomIP 和 JoinChatRoom，用于处理来自客户端的消息和连接事件。</p>
+<p>中转端 C1 （Socket Server）：</p>
+<p>中转端 C1 是一个独立的应用程序，用于连接WebSocket端，建立Socket服务。</p>
+<p>中转端 C1 的主要功能是接收来自客户端 C2 的消息，并将其转发给 WebSocket 端，或者接收来自 WebSocket 端的消息，并转发给客户端 C2。</p>
+<p>客户端 C2 x  N ：</p>
+<p>客户端 C2 ，主要与中转端连接 发送数据，接收数据。</p>
+<p>在客户端 C2 中，连接到中转端 C1、发送消息给中转端 C1、接收来自中转端 C1 的消息。</p>
+<p>调用关系为：</p>
+<p>客户端 C2 通过与中转端 C1 的通信，向 WebSocket 端发送消息或接收来自 WebSocket 端的消息。</p>
+<p>中转端 C1 接收来自客户端 C2 的消息，并将其转发给 WebSocket 端，或者接收来自 WebSocket 端的消息，并转发给客户端 C2。</p>
+<p>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240420312.jpg"></p>
+<h1 id="中转端实现"><a href="#中转端实现" class="headerlink" title="中转端实现"></a>中转端实现</h1><h2 id="1-连接WebSocket"><a href="#1-连接WebSocket" class="headerlink" title="1.连接WebSocket"></a>1.连接WebSocket</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">ConnectToServer</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        connection = <span class="keyword">new</span> HubConnectionBuilder()</span><br><span class="line">            .WithUrl(<span class="string">&quot;xxx/chathub&quot;</span>)<span class="comment">//</span></span><br><span class="line">            .Build();</span><br><span class="line"> </span><br><span class="line">        connection.On&lt;<span class="built_in">string</span>, <span class="built_in">string</span>, <span class="built_in">string</span>, <span class="built_in">string</span>&gt;(<span class="string">&quot;ReceiveMessage&quot;</span>, <span class="keyword">async</span> (user, message, clientIP, chatRoomId) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Received message from wsserver_sr : <span class="subst">&#123;user&#125;</span>: <span class="subst">&#123;message&#125;</span> |socketserver <span class="subst">&#123;clientIP&#125;</span>|<span class="subst">&#123;chatRoomId&#125;</span>&quot;</span>);</span><br><span class="line"> </span><br><span class="line">            <span class="comment">// 收到来自服务器的消息时，向客户端 C2 发送消息</span></span><br><span class="line">            <span class="keyword">await</span> SendMessageToClientC2(user, message, clientIP, chatRoomId);</span><br><span class="line">        &#125;);</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">await</span> connection.StartAsync();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Error connecting to SignalR server: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 收到消息时发送给对应客户端</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">SendMessageToClientC2</span>(<span class="params"><span class="built_in">string</span> user, <span class="built_in">string</span> message, <span class="built_in">string</span> clientIP, <span class="built_in">string</span> chatRoomId</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 根据 chatRoomId 找到对应的客户端 C2，并发送消息</span></span><br><span class="line">    <span class="keyword">if</span> (chatRooms.ContainsKey(chatRoomId))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">byte</span>[] data = Encoding.ASCII.GetBytes(<span class="string">$&quot;<span class="subst">&#123;user&#125;</span>  <span class="subst">&#123;message&#125;</span>  |<span class="subst">&#123;clientIP&#125;</span>|<span class="subst">&#123;chatRoomId&#125;</span> &quot;</span>);</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> client <span class="keyword">in</span> chatRooms[chatRoomId])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">await</span> client.GetStream().WriteAsync(data, <span class="number">0</span>, data.Length);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Chat room <span class="subst">&#123;chatRoomId&#125;</span> does not exist&quot;</span> + Environment.NewLine);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-建立中转端Socket端口"><a href="#2-建立中转端Socket端口" class="headerlink" title="2.建立中转端Socket端口"></a>2.建立中转端Socket端口</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">StartListening</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (!listening)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">int</span> port = <span class="number">10086</span>; <span class="comment">// 监听端口</span></span><br><span class="line">            server = <span class="keyword">new</span> TcpListener(IPAddress.Any, port);</span><br><span class="line">            server.Start();</span><br><span class="line">            listening = <span class="literal">true</span>;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Server listening on port <span class="subst">&#123;port&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line"> </span><br><span class="line">            Task.Run(() =&gt; AcceptClients());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Error starting server: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-向客户端发消息"><a href="#3-向客户端发消息" class="headerlink" title="3.向客户端发消息"></a>3.向客户端发消息</h2> <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">AcceptClients</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (listening)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            TcpClient client = <span class="keyword">await</span> server.AcceptTcpClientAsync();</span><br><span class="line">            Task.Run(() =&gt; HandleClient(client));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Error accepting client: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-监听客户端连接"><a href="#4-监听客户端连接" class="headerlink" title="4.监听客户端连接"></a>4.监听客户端连接</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">AcceptClients</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (listening)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            TcpClient client = <span class="keyword">await</span> server.AcceptTcpClientAsync();</span><br><span class="line">            Task.Run(() =&gt; HandleClient(client));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Error accepting client: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-处理客户端连接"><a href="#5-处理客户端连接" class="headerlink" title="5.处理客户端连接"></a>5.处理客户端连接</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">HandleClient</span>(<span class="params">TcpClient client</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    NetworkStream stream = client.GetStream();</span><br><span class="line">    <span class="built_in">byte</span>[] buffer = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">1024</span>];</span><br><span class="line">    <span class="built_in">int</span> bytesRead;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">while</span> (client.Connected)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            bytesRead = <span class="keyword">await</span> stream.ReadAsync(buffer, <span class="number">0</span>, buffer.Length);</span><br><span class="line">            <span class="built_in">string</span> message = Encoding.ASCII.GetString(buffer, <span class="number">0</span>, bytesRead);</span><br><span class="line">            ProcessMessage(message, client);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Error receiving message: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 客户端断开连接时，从聊天室中移除</span></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> chatRoomId <span class="keyword">in</span> chatRooms.Keys)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (chatRooms[chatRoomId].Contains(client))</span><br><span class="line">        &#123;</span><br><span class="line">            chatRooms[chatRoomId].Remove(client);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Client disconnected from chat room <span class="subst">&#123;chatRoomId&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-处理连接"><a href="#6-处理连接" class="headerlink" title="6.处理连接"></a>6.处理连接</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">ProcessMessage</span>(<span class="params"><span class="built_in">string</span> message, TcpClient client</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span>[] parts = message.Split(<span class="string">&#x27;|&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (parts.Length &gt;= <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> command = parts[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">string</span> chatRoomId = parts[<span class="number">1</span>];</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">switch</span> (command)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;JoinChatRoom&quot;</span>:</span><br><span class="line">                <span class="keyword">await</span> JoinChatRoom(chatRoomId, client);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;SendMessageToChatRoomIP2&quot;</span>:</span><br><span class="line">                <span class="keyword">if</span> (parts.Length &gt;= <span class="number">4</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">string</span> user = parts[<span class="number">2</span>];</span><br><span class="line">                    <span class="built_in">string</span> msg = parts[<span class="number">3</span>];</span><br><span class="line">                    <span class="comment">//  await SendMessageToChatRoom(chatRoomId, user, msg);</span></span><br><span class="line">                    <span class="keyword">await</span> SendMessageToChatRoomAddress(chatRoomId, user, msg, client);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="literal">default</span>:</span><br><span class="line">                Console.WriteLine(<span class="string">$&quot;Invalid command: <span class="subst">&#123;command&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JoinChatRoom 异步调用服务端的JoinChatRoom </p>
+<p>SendMessageToChatRoomIP2 异步调用SendMessage  </p>
+<h2 id="7-运行"><a href="#7-运行" class="headerlink" title="7.运行"></a>7.运行</h2><p>本地运行<br>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240420313.jpg"></p>
+<p>发布到linux<br>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240420314.jpg"></p>
+<p>run  Server listening on port 10860</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tln查看端口 （tuln） </span><br></pre></td></tr></table></figure>
+<p>也可以优化封装成WinForm程序，收发消息可视化。</p>
+<p>点击启动socket端口调用 1.连接websocket 2.监听socket   </p>
+<p>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240420315.jpg"></p>
+<p>也可以封装成系统服务，与进程一样藏在后台运行。</p>
+<h1 id="客户端实现"><a href="#客户端实现" class="headerlink" title="客户端实现"></a>客户端实现</h1><h2 id="1-连接Socket端"><a href="#1-连接Socket端" class="headerlink" title="1.连接Socket端"></a>1.连接Socket端</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">MainForm_Load</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        client = <span class="keyword">new</span> TcpClient();</span><br><span class="line">        <span class="keyword">await</span> client.ConnectAsync(<span class="string">&quot;192.168.80.123&quot;</span>, <span class="number">10086</span>); </span><br><span class="line">        stream = client.GetStream();</span><br><span class="line">        connected = <span class="literal">true</span>;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 连接成功后，调用 JoinChatRoom 方法加入聊天室</span></span><br><span class="line">        <span class="keyword">await</span> JoinChatRoom(<span class="string">&quot;room001&quot;</span>);</span><br><span class="line"> </span><br><span class="line">        Task.Run(ReceiveMessages);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">        textBoxReceivedMessages.AppendText(<span class="string">$&quot;Error connecting to server: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2-加入ChatRoom"><a href="#2-加入ChatRoom" class="headerlink" title="2.加入ChatRoom"></a>2.加入ChatRoom</h1><p>JoinChatRoom中转到Server端再加入聊天室</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> Task <span class="title">JoinChatRoom</span>(<span class="params"><span class="built_in">string</span> chatRoomId</span>)</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="comment">// 发送消息给中转端 C1，请求加入聊天室</span></span><br><span class="line">         <span class="built_in">byte</span>[] data = Encoding.ASCII.GetBytes(<span class="string">$&quot;JoinChatRoom|<span class="subst">&#123;chatRoomId&#125;</span>|J&quot;</span>);</span><br><span class="line">         <span class="keyword">await</span> stream.WriteAsync(data, <span class="number">0</span>, data.Length);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-发送消息"><a href="#3-发送消息" class="headerlink" title="3.发送消息"></a>3.发送消息</h1><p>发送到Socket中转端</p>
+<pre><code> <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> Task <span class="title">SendMessageToChatRoom</span>(<span class="params"><span class="built_in">string</span> chatRoomId, <span class="built_in">string</span> message</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 发送消息给中转端 C1，请求向指定聊天室发送消息</span></span><br><span class="line">    <span class="built_in">byte</span>[] data = Encoding.ASCII.GetBytes(<span class="string">$&quot;SendMessageToChatRoomIP2|<span class="subst">&#123;chatRoomId&#125;</span>|client2m|<span class="subst">&#123;message&#125;</span>&quot;</span>);</span><br><span class="line">    <span class="keyword">await</span> stream.WriteAsync(data, <span class="number">0</span>, data.Length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+<h1 id="4-接收消息"><a href="#4-接收消息" class="headerlink" title="4.接收消息"></a>4.接收消息</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> Task <span class="title">ReceiveMessages</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">byte</span>[] buffer = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="built_in">int</span> bytesRead;</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">while</span> (connected)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">try</span></span><br><span class="line">                &#123;</span><br><span class="line">                    bytesRead = <span class="keyword">await</span> stream.ReadAsync(buffer, <span class="number">0</span>, buffer.Length);</span><br><span class="line">                    <span class="built_in">string</span> message = Encoding.ASCII.GetString(buffer, <span class="number">0</span>, bytesRead);</span><br><span class="line">                    DisplayMessage(message);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">                &#123;</span><br><span class="line">                    textBoxReceivedMessages.AppendText(<span class="string">$&quot;Error receiving message: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span> + Environment.NewLine);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">DisplayMessage</span>(<span class="params"><span class="built_in">string</span> message</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (InvokeRequired)</span><br><span class="line">            &#123;</span><br><span class="line">                Invoke(<span class="keyword">new</span> Action&lt;<span class="built_in">string</span>&gt;(DisplayMessage), message);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            textBoxReceivedMessages.AppendText(message + Environment.NewLine);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-点击事件"><a href="#5-点击事件" class="headerlink" title="5.点击事件"></a>5.点击事件</h1><p>Send</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">buttonSend_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="keyword">if</span> (!connected)</span><br><span class="line">         &#123;</span><br><span class="line">             textBoxReceivedMessages.AppendText(<span class="string">&quot;Not connected to server.&quot;</span> + Environment.NewLine);</span><br><span class="line">             <span class="keyword">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line"> </span><br><span class="line">         <span class="built_in">string</span> message = textBoxSendMessage.Text;</span><br><span class="line"> </span><br><span class="line">         <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(message))</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="comment">// 发送消息给中转端 C1，请求向聊天室发送消息</span></span><br><span class="line">             <span class="keyword">await</span> SendMessageToChatRoom(<span class="string">&quot;room001&quot;</span>, message);</span><br><span class="line">             textBoxSendMessage.Clear();</span><br><span class="line">             textBoxReceivedMessages.AppendText(<span class="string">&quot;Sent message to chat room: room001&quot;</span>  + Environment.NewLine);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">         &#123;</span><br><span class="line">             textBoxReceivedMessages.AppendText(<span class="string">&quot;Please enter a message.&quot;</span> + Environment.NewLine);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="6-运行"><a href="#6-运行" class="headerlink" title="6.运行"></a>6.运行</h1><p>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240420316.jpg"></p>
+<p>服务端启动</p>
+<p>Server listening on port 10086</p>
+<p>服务端发收发消息到中转端</p>
+<p>Sent message to chat room: room001<br>client2m  hihihi|socketclient 192.168.80.123  |::ffff:183.7.113.105|room001 </p>
+<p>中转端拿到客户端信息-&gt;WebSocket端-&gt;中转端接收-&gt;客户端接收</p>
+<p>Client joined chat room room001<br>Received message from WSSserver_sr : client2m: hihihi|socketclient 192.168.80.123 |socketserver:::ffff:183.7.113.105|room001</p>
+<p>客户端也可以用IOS SOCKET5发送消息</p>
+<pre><code class="c#">//...         
+ dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;
+                    NSData * sendData = [@&quot;JoinChatRoom|room001&quot; dataUsingEncoding:NSUTF8StringEncoding];
+                    [self.socket writeData:sendData withTimeout:-1 tag:1];
+                    
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;
+                        NSData * sendData = [@&quot;SendMessageToChatRoomIP2|room001|userid001|hello&quot; dataUsingEncoding:NSUTF8StringEncoding];
+                        [self.socket writeData:sendData withTimeout:-1 tag:2];
+                        [self.socket readDataWithTimeout:-1 tag:1];
+                    &#125;);
+                &#125;);
+ 
+//...
+</code></pre>
+<p>Run</p>
+<p>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240420317.jpg"></p>
+
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/04/19/NET-JWT/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/04/20/NET-Smtp/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

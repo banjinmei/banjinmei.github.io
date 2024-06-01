@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      .NET RabbitMQ NOTE 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    May 18, 2024
+  </h3>
+  <h1>
+    .NET RabbitMQ NOTE
+  </h1>
+  <div class="content markdown-body">
+    <h1 id="setup-rabbitmq"><a href="#setup-rabbitmq" class="headerlink" title="setup rabbitmq"></a>setup rabbitmq</h1><p>docker run  –name&#x3D;rabbit  -p 15672:15672 -p 5672:5672  -e RABBITMQ_DEFAULT_USER&#x3D;admin -e RABBITMQ_DEFAULT_PASS&#x3D;xxx  -d  rabbitmq:management </p>
+<p>ip:15672</p>
+<p>nuget RabbitMQ.Client</p>
+<p><strong>Send</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.1.实例化连接工厂</span></span><br><span class="line"><span class="keyword">var</span> factory = <span class="keyword">new</span> ConnectionFactory() &#123; HostName = <span class="string">&quot;localhost&quot;</span> &#125;;</span><br><span class="line"><span class="comment">//2. 建立连接</span></span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> connection = factory.CreateConnection())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//3. 创建信道</span></span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> channel = connection.CreateModel())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//4. 申明队列</span></span><br><span class="line">        channel.QueueDeclare(queue: <span class="string">&quot;hello&quot;</span>, durable: <span class="literal">false</span>, exclusive: <span class="literal">false</span>, autoDelete: <span class="literal">false</span>, arguments: <span class="literal">null</span>);</span><br><span class="line">        <span class="comment">//5. 构建byte消息数据包</span></span><br><span class="line">        <span class="built_in">string</span> message = args.Length &gt; <span class="number">0</span> ? args[<span class="number">0</span>] : <span class="string">&quot;Hello RabbitMQ!&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> body = Encoding.UTF8.GetBytes(message);</span><br><span class="line">        <span class="comment">//6. 发送数据包</span></span><br><span class="line">        channel.BasicPublish(exchange: <span class="string">&quot;&quot;</span>, routingKey: <span class="string">&quot;hello&quot;</span>, basicProperties: <span class="literal">null</span>, body: body);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot; [x] Sent &#123;0&#125;&quot;</span>, message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Received</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.实例化连接工厂</span></span><br><span class="line"><span class="keyword">var</span> factory = <span class="keyword">new</span> ConnectionFactory() &#123; HostName = <span class="string">&quot;localhost&quot;</span> &#125;;</span><br><span class="line"><span class="comment">//2. 建立连接</span></span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> connection = factory.CreateConnection())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//3. 创建信道</span></span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> channel = connection.CreateModel())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//4. 申明队列</span></span><br><span class="line">        channel.QueueDeclare(queue: <span class="string">&quot;hello&quot;</span>, durable: <span class="literal">false</span>, exclusive: <span class="literal">false</span>, autoDelete: <span class="literal">false</span>, arguments: <span class="literal">null</span>);</span><br><span class="line">        <span class="comment">//5. 构造消费者实例</span></span><br><span class="line">        <span class="keyword">var</span> consumer = <span class="keyword">new</span> EventingBasicConsumer(channel);</span><br><span class="line">        <span class="comment">//6. 绑定消息接收后的事件委托</span></span><br><span class="line">        consumer.Received += (model, ea) =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> message = Encoding.UTF8.GetString(ea.Body.ToArray());</span><br><span class="line">            Console.WriteLine(<span class="string">&quot; [x] Received &#123;0&#125;&quot;</span>, message);</span><br><span class="line">            Thread.Sleep(<span class="number">6000</span>);<span class="comment">//模拟耗时</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot; [x] Done&quot;</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">//7. 启动消费者</span></span><br><span class="line">        channel.BasicConsume(queue: <span class="string">&quot;hello&quot;</span>, autoAck: <span class="literal">true</span>, consumer: consumer);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot; Press [enter] to exit.&quot;</span>);</span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>Err<br>RabbitMQ.Client.Exceptions.BrokerUnreachableException:“None of the specified endpoints were reachable”<br>IP host</p>
+<p>Err<br>AuthenticationFailureException: ACCESS_REFUSED - Login was refused using authentication mechanism </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> ConnectionFactory() &#123; HostName = <span class="string">&quot;localhost&quot;</span> ,UserName=<span class="string">&quot;admin&quot;</span>,Password=<span class="string">&quot;xxx&quot;</span>&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>消息持久化</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line">    <span class="comment">//4. 申明队列(指定durable:true,告知rabbitmq对消息进行持久化)</span></span><br><span class="line">    channel.QueueDeclare(queue: <span class="string">&quot;hellooo&quot;</span>, durable: <span class="literal">true</span>, exclusive: <span class="literal">false</span>, autoDelete: <span class="literal">false</span>, arguments: <span class="literal">null</span>);</span><br><span class="line">    <span class="comment">//将消息标记为持久性 - 将IBasicProperties.SetPersistent设置为true</span></span><br><span class="line">    <span class="keyword">var</span> properties = channel.CreateBasicProperties();</span><br><span class="line">    properties.Persistent = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//5. 构建byte消息数据包</span></span><br><span class="line">    <span class="built_in">string</span> message = args.Length &gt; <span class="number">0</span> ? args[<span class="number">0</span>] : <span class="string">&quot;Hello RabbitMQ!&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> body = Encoding.UTF8.GetBytes(message);</span><br><span class="line">    <span class="comment">//6. 发送数据包(指定basicProperties)</span></span><br><span class="line">    channel.BasicPublish(exchange: <span class="string">&quot;&quot;</span>, routingKey: <span class="string">&quot;hello&quot;</span>, basicProperties: properties, body: body);</span><br><span class="line">    <span class="comment">//6. 发送数据包</span></span><br><span class="line">    channel.BasicPublish(exchange: <span class="string">&quot;&quot;</span>, routingKey: <span class="string">&quot;hello&quot;</span>, basicProperties: <span class="literal">null</span>, body: body);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot; [x] Sent &#123;0&#125;&quot;</span>, message);</span><br></pre></td></tr></table></figure>
+<p>durable: true </p>
+<!--
+
+RPC
+
+
+ //申明唯一guid用来标识此次发送的远程调用请求
+ var correlationId = Guid.NewGuid().ToString();
+ //申明需要监听的回调队列
+ var replyQueue = channel.QueueDeclare().QueueName;
+ var properties = channel.CreateBasicProperties();
+ properties.ReplyTo = replyQueue;//指定回调队列
+ properties.CorrelationId = correlationId;//指定消息唯一标识
+ string number = args.Length > 0 ? args[0] : "30";
+ var body = Encoding.UTF8.GetBytes(number);
+ //发布消息
+ channel.BasicPublish(exchange: "", routingKey: "rpc_queue", basicProperties: properties, body: body);
+ Console.WriteLine($"[*] Request fib({number})");
+ // //创建消费者用于处理消息回调（远程调用返回结果）
+ var callbackConsumer = new EventingBasicConsumer(channel);
+ channel.BasicConsume(queue: replyQueue, autoAck: true, consumer: callbackConsumer);
+ callbackConsumer.Received += (model, ea) =>
+ {
+      //仅当消息回调的ID与发送的ID一致时，说明远程调用结果正确返回。
+     if (ea.BasicProperties.CorrelationId == correlationId)
+     {
+         var responseMsg = $"Get Response: {Encoding.UTF8.GetString(ea.Body)}";
+         Console.WriteLine($"[x]: {responseMsg}");
+     }
+ };
+
+
+//申明队列接收远程调用请求
+channel.QueueDeclare(queue: "rpc_queue", durable: false,
+    exclusive: false, autoDelete: false, arguments: null);
+var consumer = new EventingBasicConsumer(channel);
+Console.WriteLine("[*] Waiting for message.");
+//请求处理逻辑
+consumer.Received += (model, ea) =>
+{
+    var message = Encoding.UTF8.GetString(ea.Body);
+    int n = int.Parse(message);
+    Console.WriteLine($"Receive request of Fib({n})");
+    int result = Fib(n);
+    //从请求的参数中获取请求的唯一标识，在消息回传时同样绑定
+    var properties = ea.BasicProperties;
+    var replyProerties = channel.CreateBasicProperties();
+    replyProerties.CorrelationId = properties.CorrelationId;
+    //将远程调用结果发送到客户端监听的队列上
+    channel.BasicPublish(exchange: "", routingKey: properties.ReplyTo,
+        basicProperties: replyProerties, body: Encoding.UTF8.GetBytes(result.ToString()));
+    //手动发回消息确认
+    channel.BasicAck(ea.DeliveryTag, false);
+    Console.WriteLine($"Return result: Fib({n})= {result}");
+};
+channel.BasicConsume(queue: "rpc_queue", autoAck: false, consumer: consumer);
+
+
+https://github.com/sheng-jie/RabbitMQ
+https://github.com/EasyNetQ/EasyNetQ
+-->
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/05/17/Nodejs-Base2/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/05/18/NET-Blazor/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

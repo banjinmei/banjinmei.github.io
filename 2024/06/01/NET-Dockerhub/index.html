@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      .NET Dockerhub 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jun 01, 2024
+  </h3>
+  <h1>
+    .NET Dockerhub
+  </h1>
+  <div class="content markdown-body">
+    <h1 id="📚Dockerfile"><a href="#📚Dockerfile" class="headerlink" title="📚Dockerfile"></a>📚Dockerfile</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build</span><br><span class="line">WORKDIR /src</span><br><span class="line">COPY [<span class="string">&quot;MyMvcApp.csproj&quot;</span>, <span class="string">&quot;./&quot;</span>]</span><br><span class="line">RUN dotnet restore <span class="string">&quot;MyMvcApp.csproj&quot;</span></span><br><span class="line">COPY . .</span><br><span class="line">WORKDIR <span class="string">&quot;/src/&quot;</span></span><br><span class="line">RUN dotnet build <span class="string">&quot;MyMvcApp.csproj&quot;</span> -c Release -o /app/build</span><br><span class="line"></span><br><span class="line">FROM build AS publish</span><br><span class="line">RUN dotnet publish <span class="string">&quot;MyMvcApp.csproj&quot;</span> -c Release -o /app/publish</span><br><span class="line"></span><br><span class="line">FROM base AS final</span><br><span class="line">WORKDIR /app</span><br><span class="line">COPY --from=publish /app/publish .</span><br><span class="line">ENTRYPOINT [<span class="string">&quot;dotnet&quot;</span>, <span class="string">&quot;MyMvcApp.dll&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="✏️-Docker-镜像"><a href="#✏️-Docker-镜像" class="headerlink" title="✏️ Docker 镜像"></a>✏️ Docker 镜像</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t mymvcapp:latest .</span><br></pre></td></tr></table></figure>
+
+<h1 id="📝在-Docker-Hub-上创建仓库"><a href="#📝在-Docker-Hub-上创建仓库" class="headerlink" title="📝在 Docker Hub 上创建仓库"></a>📝在 Docker Hub 上创建仓库</h1><p>登录 Docker Hub (<a target="_blank" rel="noopener" href="https://hub.docker.com)./">https://hub.docker.com)。</a><br>点击 “Create Repository”。<br>输入仓库名称，例如 mymvcapp，然后点击 “Create”。</p>
+<h1 id="💻将-Docker-镜像推送到-Docker-Hub"><a href="#💻将-Docker-镜像推送到-Docker-Hub" class="headerlink" title="💻将 Docker 镜像推送到 Docker Hub"></a>💻将 Docker 镜像推送到 Docker Hub</h1><p>首先，登录 Docker Hub：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br></pre></td></tr></table></figure>
+
+<h1 id="📅标记镜像"><a href="#📅标记镜像" class="headerlink" title="📅标记镜像"></a>📅标记镜像</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag mymvcapp:latest &lt;your-dockerhub-username&gt;/mymvcapp:latest</span><br></pre></td></tr></table></figure>
+<h1 id="📊推送镜像到-Docker-Hub"><a href="#📊推送镜像到-Docker-Hub" class="headerlink" title="📊推送镜像到 Docker Hub"></a>📊推送镜像到 Docker Hub</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push &lt;your-dockerhub-username&gt;/mymvcapp:latest</span><br></pre></td></tr></table></figure>
+<p><your-dockerhub-username> &#x3D; Docker Hub 用户名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 80:80 &lt;your-dockerhub-username&gt;/mymvcapp:latest</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="🎓完整流程回顾"><a href="#🎓完整流程回顾" class="headerlink" title="🎓完整流程回顾"></a>🎓完整流程回顾</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建 .NET 8 MVC 应用程序。</span></span><br><span class="line"><span class="comment">#在项目根目录下创建 Dockerfile。</span></span><br><span class="line"><span class="comment">#构建 Docker 镜像：</span></span><br><span class="line">docker build -t mymvcapp:latest .</span><br><span class="line"><span class="comment">#在 Docker Hub 上创建仓库。</span></span><br><span class="line"><span class="comment">#登录 Docker Hub：</span></span><br><span class="line">docker login</span><br><span class="line"><span class="comment">#标记并推送 Docker 镜像到 Docker Hub：</span></span><br><span class="line">docker tag mymvcapp:latest &lt;your-dockerhub-username&gt;/mymvcapp:latest</span><br><span class="line">docker push &lt;your-dockerhub-username&gt;/mymvcapp:latest</span><br><span class="line"><span class="comment">#在本地或服务器上运行 Docker 镜像：</span></span><br><span class="line">docker run -d -p 80:80 &lt;your-dockerhub-username&gt;/mymvcapp:latest</span><br><span class="line"><span class="comment">#通过这些步骤，将 .NET 8 MVC 部署到 Docker Hub 并运行它~~</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p>err denied requested access to the resource is denied</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">logout</span></span><br><span class="line">docker login</span><br></pre></td></tr></table></figure>
+<p>err error response from deamon:get “<a target="_blank" rel="noopener" href="https://registry-1.docket.io/v2/%22:unauthorized:incorrect">https://registry-1.docket.io/v2/&quot;:unauthorized:incorrect</a> username or password<br>用户密码错误</p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/go/access-tokens">https://docs.docker.com/go/access-tokens</a><br><a target="_blank" rel="noopener" href="https://docs.docker.com/security/for-developers/access-tokens/#create-an-access-token">https://docs.docker.com/security/for-developers/access-tokens/#create-an-access-token</a><br><img src="https://img-blog.csdnimg.cn/direct/9ee84c8843894424af827633ed2a8953.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/direct/2b399b16ddbb4afdaa67b2d573198eab.png" alt="在这里插入图片描述"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker login  -u qxxx</span><br><span class="line">dckr_pat_o0ZpPxxx</span><br><span class="line"></span><br><span class="line">docker tag mymvcapp:latest xx/mymvcapp:dev</span><br><span class="line">docker push  &lt;your-dockerhub-username&gt;/mymvcapp:dev</span><br></pre></td></tr></table></figure>
+
+<p>推送成功后可以在hub仓库查看<br><img src="https://img-blog.csdnimg.cn/direct/2e23460851ab4b42b0764aeb4323610d.png" alt="在这里插入图片描述"></p>
+<p>运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 18081:8080 -p 18082:8081 --name mywebmvcapp mymvcapp:latest</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/direct/a39001e4cc5549c2956da3c6bf36deae.png" alt="在这里插入图片描述"></p>
+<h1 id="💼通过VS打包发布"><a href="#💼通过VS打包发布" class="headerlink" title="💼通过VS打包发布"></a>💼通过VS打包发布</h1><p>项目右键-发布<br><img src="https://img-blog.csdnimg.cn/direct/d6b689185dc94d75a16c030eb762c728.png" alt="在这里插入图片描述"><br>用户名密码<br><img src="https://img-blog.csdnimg.cn/direct/ffe0866f4c434e59b279f358ceec1442.png" alt="在这里插入图片描述"><br>执行发布<br><img src="https://img-blog.csdnimg.cn/direct/51d88c6fcb5a44a2bf04000095353d5a.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/direct/3cb6d5b4e07044b58f32f526edbab441.png" alt="在这里插入图片描述"><br>推送成功后可 <strong>docker run username&#x2F;mymvcapp:latest</strong> 运行</p>
+<p>END</p>
+<!--
+
+docker desktop push
+![在这里插入图片描述](https://img-blog.csdnimg.cn/direct/1dc65cc259ee4815b1fb8d0e1ce472bb.png)
+
+
+
+
+docker
+ curl -fsSL https://get.docker.com -o get-docker.sh
+ sudo sh get-docker.sh
+
+mysql
+docker run -d --name mysql-container -e TZ=UTC -p 30306:3306 -e MYSQL_ROOT_PASSWORD=123123 mysql:8.0.36-debian
+
+119.23.182.163 8080
+
+docker run --name myadmin -d --link mysql-container:db -p 18083:80 phpmyadmin/phpmyadmin
+sudo apt update
+
+ 获取 Microsoft 密钥和源
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+
+#更新包索引并安装 .NET SDK
+sudo apt-get update
+sudo apt-get install -y dotnet-sdk-8.0
+
+copy 
+dotnet run xxx
+
+
+
+
+
+docker push
+https://docs.docker.com/go/access-tokens 
+https://docs.docker.com/security/for-developers/access-tokens/#create-an-access-token
+docker login  -u qxxx
+dckr_pat_o0ZpPxxx
+
+docker tag mymvcapp:latest xx/mymvcapp:latest
+docker push  <your-dockerhub-username>/mymvcapp:latest
+
+
+docker run -d -p 18081:8080 -p 18082:8081 --name webapp q422073304/webmvc:dev
+not ok  docker rm -f webapp xxx 
+docker images
+
+
+docker login  -u q422073304
+
+docker run -d -p 18081:8080 -p 18082:8081 --name webapp1 q422073304/webmvc
+
+dckr_pat_FBv68qAtAPbH3gRqZgCuzoGxIiM
+
+ docker rmi q422073304/webmvc:dev
+
+docker run -d -p 123:8080 -p 124:8081 -e DOTNET_USE_POLLING_FILE_WATCHER=1  -e ASPNETCORE_HTTP_PORTS=8080 -e DOTNET_RUNNING_IN_CONTAINER=true -e DOTNET_VERSION=8.0.5 -e ASPNET_VERSION=8.0.5  --name webaa q422073304/webmvc
+
+docker run -d --name WebMvc_2 -e NUGET_PACKAGES=/.nuget/fallbackpackages2 -e NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2  -e ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true ASPNETCORE_ENVIRONMENT=Development -e DOTNET_USE_POLLING_FILE_WATCHER=1 -e APP_UID=1654 -e ASPNETCORE_HTTP_PORTS=8080 -e DOTNET_RUNNING_IN_CONTAINER=true -e DOTNET_VERSION=8.0.5 -e ASPNET_VERSION=8.0.5 -p 18081:8080  -p 18082:8081  q422073304/webmvc:latest
+
+
+https://www.cnblogs.com/hudean/p/18020909
+-->
+
+
+
+
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/05/31/NET-Redis-RateLimiter/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/06/01/NET-AddWatermark/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

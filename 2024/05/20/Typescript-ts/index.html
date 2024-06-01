@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Typescript 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    May 20, 2024
+  </h3>
+  <h1>
+    Typescript
+  </h1>
+  <div class="content markdown-body">
+    <p> typescript   ≈  javascript plus   </p>
+<h1 id="🔗setup"><a href="#🔗setup" class="headerlink" title="🔗setup"></a>🔗setup</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install typescript -g</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc -version</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ts-node -g</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="🖌️hello-world"><a href="#🖌️hello-world" class="headerlink" title="🖌️hello world"></a>🖌️hello world</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hi&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts-node t.ts</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="🖋️datatype"><a href="#🖋️datatype" class="headerlink" title="🖋️datatype"></a>🖋️datatype</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a1 :<span class="built_in">string</span> =<span class="string">&#x27;abc&#x27;</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">a2</span>:<span class="built_in">number</span> = <span class="number">2</span></span><br><span class="line"><span class="keyword">let</span> a3 :<span class="built_in">boolean</span> =<span class="literal">true</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">nu</span>:<span class="literal">null</span> =<span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">un</span>:<span class="literal">undefined</span> = <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">a4</span>:<span class="built_in">string</span>|<span class="literal">null</span>  = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">a5</span>:<span class="number">1</span>|<span class="number">2</span>|<span class="number">3</span> = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="any"><a href="#any" class="headerlink" title="any"></a>any</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">a</span>:<span class="built_in">any</span></span><br><span class="line">a= <span class="number">1</span></span><br><span class="line">a=<span class="string">&quot;1&quot;</span></span><br><span class="line">a=<span class="literal">true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>strong type </p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">a</span>:<span class="built_in">string</span>  = <span class="string">&quot;123&quot;</span></span><br><span class="line"></span><br><span class="line">a=<span class="number">1</span> </span><br></pre></td></tr></table></figure>
+<p>Err</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">a</span>:<span class="built_in">unknown</span></span><br><span class="line">a= <span class="number">1</span></span><br><span class="line">a=<span class="string">&quot;1&quot;</span></span><br><span class="line">a=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> b :<span class="title class_">String</span> </span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> a ==<span class="string">&quot;string&quot;</span>)</span><br><span class="line">&#123;</span><br><span class="line">    b=a </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="enum-枚举"><a href="#enum-枚举" class="headerlink" title="enum 枚举"></a>enum 枚举</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; <span class="variable constant_">RED</span>,<span class="variable constant_">BLUE</span>,<span class="variable constant_">BLACK</span>&#125;</span><br><span class="line"><span class="keyword">let</span> color = <span class="title class_">Color</span>.<span class="property">BLACK</span>; <span class="comment">//Color[2]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(color);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts-node t.ts</span><br></pre></td></tr></table></figure>
+
+
+
+<p>or to js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc t.ts </span><br></pre></td></tr></table></figure>
+<p>to see t.js </p>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr :<span class="built_in">number</span>[] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> arr2 :<span class="title class_">Array</span>&lt;<span class="built_in">string</span>&gt; = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">arr</span>:[<span class="title class_">String</span>,<span class="built_in">number</span>,<span class="built_in">boolean</span>] =[<span class="string">&quot;123&quot;</span>,<span class="number">1</span>,<span class="literal">true</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a1 :[<span class="built_in">number</span>,<span class="built_in">string</span>,<span class="built_in">number</span>?] = [<span class="number">1</span>,<span class="string">&quot;11&quot;</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="🖊️function"><a href="#🖊️function" class="headerlink" title="🖊️function"></a>🖊️function</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">myFn</span>(<span class="params">a:<span class="built_in">number</span>,b:<span class="built_in">string</span>,c?:<span class="built_in">boolean</span>,...rest:<span class="built_in">number</span>[]</span>) :<span class="built_in">number</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>  <span class="number">100</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> f = <span class="title function_">myFn</span>(<span class="number">10</span>,<span class="string">&#x27;123&#x27;</span>,<span class="literal">true</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="✒️interface"><a href="#✒️interface" class="headerlink" title="✒️interface"></a>✒️interface</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Obj</span>&#123;</span><br><span class="line"></span><br><span class="line">    name :<span class="built_in">string</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="built_in">number</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj</span>:<span class="title class_">Obj</span>=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">15</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="📏type"><a href="#📏type" class="headerlink" title="📏type"></a>📏type</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">a</span>: <span class="title class_">String</span> |<span class="built_in">number</span> = <span class="number">10</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> myname = <span class="built_in">string</span> |<span class="built_in">number</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">b</span>:myname = <span class="number">10</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">b2</span>:myname = <span class="string">&quot;10&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="📐T-泛型"><a href="#📐T-泛型" class="headerlink" title="📐T 泛型"></a>📐T 泛型</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> myFn&lt;T&gt;(<span class="attr">a</span>:T,<span class="attr">b</span>:T):T[]&#123;</span><br><span class="line">    <span class="keyword">return</span> [a,b]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myFn&lt;<span class="built_in">number</span>&gt;(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">myFn</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="📎extends"><a href="#📎extends" class="headerlink" title="📎extends"></a>📎extends</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span>  <span class="title class_">Parent</span>&#123;</span><br><span class="line">    p1 :<span class="built_in">string</span> </span><br><span class="line">    <span class="attr">p2</span>:<span class="built_in">number</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Child</span> <span class="keyword">extends</span>  <span class="title class_">Parent</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">p3</span>:<span class="built_in">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> v1 :<span class="title class_">Child</span>=</span><br><span class="line">&#123;</span><br><span class="line">    p1 :<span class="string">&quot;123&quot;</span>,</span><br><span class="line">    <span class="attr">p2</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">p3</span>:<span class="string">&quot;12&quot;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="🔧class"><a href="#🔧class" class="headerlink" title="🔧class"></a>🔧class</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Article</span></span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="attr">title</span>:<span class="built_in">string</span></span><br><span class="line">    <span class="attr">con</span>:<span class="built_in">string</span></span><br><span class="line">    temp1?:<span class="built_in">string</span></span><br><span class="line">    tempnum= <span class="number">100</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> temp2 ?:<span class="built_in">string</span> </span><br><span class="line">    <span class="keyword">protected</span> temp3?:<span class="built_in">string</span> </span><br><span class="line">    <span class="keyword">static</span> a1 :<span class="built_in">string</span> </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">readonly</span> a2 :<span class="built_in">string</span> =<span class="string">&#x27;a2st&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span> (<span class="attr">title</span>:<span class="built_in">string</span>,<span class="attr">con</span>:<span class="built_in">string</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">title</span>=title</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">con</span>=con</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a1 =<span class="keyword">new</span>  <span class="title class_">Article</span>(<span class="string">&#x27;t1&#x27;</span>,<span class="string">&#x27;con1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Article</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="title function_">constructor</span> (<span class="attr">title</span>:<span class="built_in">string</span> ,<span class="attr">con</span>:<span class="built_in">string</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="variable language_">super</span>(title,con)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">temp3</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> _password :<span class="built_in">string</span> =<span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">password</span>():<span class="built_in">string</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;****&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    set password (<span class="attr">newPass</span>:<span class="built_in">string</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_password</span> = newPass</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> u1  = <span class="keyword">new</span>   <span class="title class_">User</span>()</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(u1.<span class="property">password</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="🪛abstract"><a href="#🪛abstract" class="headerlink" title="🪛abstract"></a>🪛abstract</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">abstract</span> <span class="attr">name</span>:<span class="built_in">string</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="title function_">makeSound</span>():<span class="built_in">void</span></span><br><span class="line">    <span class="title function_">move</span>():<span class="built_in">void</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;mmm&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="attr">name</span>:<span class="built_in">string</span>=<span class="string">&#x27;miao&#x27;</span></span><br><span class="line">    <span class="title function_">makeSound</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;miaomiao&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="attr">name</span>:<span class="built_in">string</span>=<span class="string">&#x27;wang&#x27;</span></span><br><span class="line">    <span class="title function_">makeSound</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;wangwang&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="🧲implements"><a href="#🧲implements" class="headerlink" title="🧲implements"></a>🧲implements</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="built_in">string</span></span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">sound</span>():<span class="built_in">string</span></span><br><span class="line">    <span class="title function_">makesound</span>():<span class="built_in">void</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">AgeI</span>&#123;</span><br><span class="line">    <span class="attr">age</span>:<span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">implements</span> <span class="title class_">Animal</span>,<span class="title class_">AgeI</span>&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&#x27;wang&#x27;</span></span><br><span class="line">    <span class="attr">age</span>:<span class="built_in">number</span> = <span class="number">2</span></span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">sound</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">makesound</span>(): <span class="built_in">void</span> &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/05/18/NET-Blazor/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/05/20/nodejs-run-c/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

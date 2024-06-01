@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      .NET AddWatermark 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jun 01, 2024
+  </h3>
+  <h1>
+    .NET AddWatermark
+  </h1>
+  <div class="content markdown-body">
+    <h1 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;IActionResult&gt; <span class="title">AddWatermark</span>(<span class="params">IFormFile file, <span class="built_in">string</span> watermarkText, <span class="built_in">string</span> color, <span class="built_in">int</span> transparency</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span> (file != <span class="literal">null</span> &amp;&amp; file.Length &gt; <span class="number">0</span>)</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="comment">// 将上传的文件保存到服务器</span></span><br><span class="line">              <span class="keyword">var</span> uploads = Path.Combine(_environment.WebRootPath, <span class="string">&quot;uploads&quot;</span>);</span><br><span class="line">              <span class="keyword">if</span> (!Directory.Exists(uploads))</span><br><span class="line">              &#123;</span><br><span class="line">                  Directory.CreateDirectory(uploads);</span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">              <span class="keyword">var</span> filePath = Path.Combine(uploads, file.FileName);</span><br><span class="line">              <span class="keyword">using</span> (<span class="keyword">var</span> fileStream = <span class="keyword">new</span> FileStream(filePath, FileMode.Create))</span><br><span class="line">              &#123;</span><br><span class="line">                  <span class="keyword">await</span> file.CopyToAsync(fileStream);</span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">              <span class="comment">// 添加水印</span></span><br><span class="line">              <span class="keyword">using</span> (Image image = Image.FromFile(filePath))</span><br><span class="line">              <span class="keyword">using</span> (Graphics g = Graphics.FromImage(image))</span><br><span class="line">              &#123;</span><br><span class="line">                  <span class="comment">// 设置水印文本的字体和颜色</span></span><br><span class="line">                  Font font = <span class="keyword">new</span> Font(<span class="string">&quot;Arial&quot;</span>, <span class="number">20</span>);</span><br><span class="line">                  Color colorValue = ColorTranslator.FromHtml(color);</span><br><span class="line">                  SolidBrush brush = <span class="keyword">new</span> SolidBrush(Color.FromArgb(transparency, colorValue.R, colorValue.G, colorValue.B));</span><br><span class="line"></span><br><span class="line">                  <span class="comment">// 计算水印位置</span></span><br><span class="line">                  <span class="built_in">int</span> x = <span class="number">10</span>;</span><br><span class="line">                  <span class="built_in">int</span> y = image.Height - <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line">                  <span class="comment">// 绘制水印</span></span><br><span class="line">                  g.DrawString(watermarkText, font, brush, <span class="keyword">new</span> PointF(x, y));</span><br><span class="line">                  </span><br><span class="line">                  <span class="comment">// 保存带水印的图片</span></span><br><span class="line">                  <span class="keyword">var</span> newFileName = <span class="string">&quot;watermarked_&quot;</span> + file.FileName;</span><br><span class="line">                  <span class="keyword">var</span> newFilePath = Path.Combine(uploads, newFileName);</span><br><span class="line">                  image.Save(newFilePath, ImageFormat.Jpeg);</span><br><span class="line"></span><br><span class="line">                  <span class="comment">// 返回带水印的图片路径</span></span><br><span class="line">                  ViewBag.ImagePath = <span class="string">&quot;/uploads/&quot;</span> + newFileName;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">return</span> View(<span class="string">&quot;Index&quot;</span>);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="views"><a href="#views" class="headerlink" title="views"></a>views</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@&#123;</span><br><span class="line">    ViewBag.Title = &quot;Home Page&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>图片加水印<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/Home/AddWatermark&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;file&quot;</span>&gt;</span>选择图片：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;file&quot;</span> <span class="attr">id</span>=<span class="string">&quot;file&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;watermarkText&quot;</span>&gt;</span>水印文字：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;watermarkText&quot;</span> <span class="attr">id</span>=<span class="string">&quot;watermarkText&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;color&quot;</span>&gt;</span>水印颜色：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;color&quot;</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">id</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;#000000&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;transparency&quot;</span>&gt;</span>透明度：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;range&quot;</span> <span class="attr">name</span>=<span class="string">&quot;transparency&quot;</span> <span class="attr">id</span>=<span class="string">&quot;transparency&quot;</span> <span class="attr">min</span>=<span class="string">&quot;0&quot;</span> <span class="attr">max</span>=<span class="string">&quot;255&quot;</span> <span class="attr">value</span>=<span class="string">&quot;128&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>上传并添加水印<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@if (ViewBag.ImagePath != null)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>带水印的图片：<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;@ViewBag.ImagePath&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Watermarked Image&quot;</span> /&gt;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="Uploads-folder"><a href="#Uploads-folder" class="headerlink" title="Uploads folder"></a>Uploads folder</h1><p>Uploads</p>
+<h1 id="Position-TranslateTransform"><a href="#Position-TranslateTransform" class="headerlink" title="Position TranslateTransform"></a>Position TranslateTransform</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;IActionResult&gt; <span class="title">AddWatermark</span>(<span class="params">IFormFile file, <span class="built_in">string</span> watermarkText, <span class="built_in">string</span> color, <span class="built_in">int</span> transparency, <span class="built_in">string</span> position, <span class="built_in">int</span> angle</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (file != <span class="literal">null</span> &amp;&amp; file.Length &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 将上传的文件保存到服务器</span></span><br><span class="line">            <span class="keyword">var</span> uploads = Path.Combine(_environment.WebRootPath, <span class="string">&quot;uploads&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (!Directory.Exists(uploads))</span><br><span class="line">            &#123;</span><br><span class="line">                Directory.CreateDirectory(uploads);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> filePath = Path.Combine(uploads, file.FileName);</span><br><span class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> fileStream = <span class="keyword">new</span> FileStream(filePath, FileMode.Create))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">await</span> file.CopyToAsync(fileStream);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 添加水印</span></span><br><span class="line">            <span class="keyword">using</span> (Image image = Image.FromFile(filePath))</span><br><span class="line">            <span class="keyword">using</span> (Graphics g = Graphics.FromImage(image))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 设置水印文本的字体和颜色</span></span><br><span class="line">                Font font = <span class="keyword">new</span> Font(<span class="string">&quot;Arial&quot;</span>, <span class="number">20</span>);</span><br><span class="line">                Color colorValue = ColorTranslator.FromHtml(color);</span><br><span class="line">                SolidBrush brush = <span class="keyword">new</span> SolidBrush(Color.FromArgb(transparency, colorValue.R, colorValue.G, colorValue.B));</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 计算水印位置</span></span><br><span class="line">                PointF point = CalculateWatermarkPosition(position, image, g, watermarkText, font);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 旋转水印</span></span><br><span class="line">                g.TranslateTransform(point.X, point.Y);</span><br><span class="line">                g.RotateTransform(angle);</span><br><span class="line">                g.DrawString(watermarkText, font, brush, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">                g.ResetTransform();</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 保存带水印的图片</span></span><br><span class="line">                <span class="keyword">var</span> newFileName = <span class="string">&quot;watermarked_&quot;</span> + file.FileName;</span><br><span class="line">                <span class="keyword">var</span> newFilePath = Path.Combine(uploads, newFileName);</span><br><span class="line">                image.Save(newFilePath, ImageFormat.Jpeg);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 返回带水印的图片路径</span></span><br><span class="line">                ViewBag.ImagePath = <span class="string">&quot;/uploads/&quot;</span> + newFileName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> View(<span class="string">&quot;Index&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> PointF <span class="title">CalculateWatermarkPosition</span>(<span class="params"><span class="built_in">string</span> position, Image image, Graphics g, <span class="built_in">string</span> text, Font font</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        SizeF textSize = g.MeasureString(text, font);</span><br><span class="line">        <span class="built_in">float</span> x = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">float</span> y = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (position.ToLower())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;topleft&quot;</span>:</span><br><span class="line">                x = <span class="number">10</span>;</span><br><span class="line">                y = <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;topright&quot;</span>:</span><br><span class="line">                x = image.Width - textSize.Width - <span class="number">10</span>;</span><br><span class="line">                y = <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;center&quot;</span>:</span><br><span class="line">                x = (image.Width - textSize.Width) / <span class="number">2</span>;</span><br><span class="line">                y = (image.Height - textSize.Height) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;bottomleft&quot;</span>:</span><br><span class="line">                x = <span class="number">10</span>;</span><br><span class="line">                y = image.Height - textSize.Height - <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&quot;bottomright&quot;</span>:</span><br><span class="line">                x = image.Width - textSize.Width - <span class="number">10</span>;</span><br><span class="line">                y = image.Height - textSize.Height - <span class="number">10</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PointF(x, y);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="change-view"><a href="#change-view" class="headerlink" title="change view"></a>change view</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;position&quot;</span>&gt;</span>水印位置：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;position&quot;</span> <span class="attr">id</span>=<span class="string">&quot;position&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;topleft&quot;</span>&gt;</span>左上<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;topright&quot;</span>&gt;</span>右上<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;center&quot;</span>&gt;</span>居中<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;bottomleft&quot;</span>&gt;</span>左下<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;bottomright&quot;</span>&gt;</span>右下<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;angle&quot;</span>&gt;</span>倾斜角度：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">name</span>=<span class="string">&quot;angle&quot;</span> <span class="attr">id</span>=<span class="string">&quot;angle&quot;</span> <span class="attr">value</span>=<span class="string">&quot;0&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="multiple"><a href="#multiple" class="headerlink" title="multiple"></a>multiple</h1><!--multiple 多个-->
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;IActionResult&gt; <span class="title">AddWatermarkMore</span>(<span class="params">List&lt;IFormFile&gt; files, <span class="built_in">string</span> watermarkText, <span class="built_in">string</span> color, <span class="built_in">int</span> transparency, <span class="built_in">string</span> position, <span class="built_in">int</span> angle</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> watermarkedPaths = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> file <span class="keyword">in</span> files)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (file != <span class="literal">null</span> &amp;&amp; file.Length &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 将上传的文件保存到服务器</span></span><br><span class="line">            <span class="keyword">var</span> uploads = Path.Combine(_environment.WebRootPath, <span class="string">&quot;uploads&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (!Directory.Exists(uploads))</span><br><span class="line">            &#123;</span><br><span class="line">                Directory.CreateDirectory(uploads);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 生成基于时间戳和随机数的文件名</span></span><br><span class="line">            <span class="keyword">var</span> fileName = <span class="string">$&quot;<span class="subst">&#123;DateTime.Now:yyyyMMddHHmmss&#125;</span>_<span class="subst">&#123;Guid.NewGuid().ToString().Substring(<span class="number">0</span>, <span class="number">8</span>)&#125;</span><span class="subst">&#123;Path.GetExtension(file.FileName)&#125;</span>&quot;</span>;</span><br><span class="line">            <span class="keyword">var</span> filePath = Path.Combine(uploads, fileName);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> fileStream = <span class="keyword">new</span> FileStream(filePath, FileMode.Create))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">await</span> file.CopyToAsync(fileStream);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 添加水印</span></span><br><span class="line">            <span class="keyword">using</span> (Image image = Image.FromFile(filePath))</span><br><span class="line">            <span class="keyword">using</span> (Graphics g = Graphics.FromImage(image))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 设置水印文本的字体和颜色</span></span><br><span class="line">                Font font = <span class="keyword">new</span> Font(<span class="string">&quot;Arial&quot;</span>, <span class="number">20</span>);</span><br><span class="line">                Color colorValue = ColorTranslator.FromHtml(color);</span><br><span class="line">                SolidBrush brush = <span class="keyword">new</span> SolidBrush(Color.FromArgb(transparency, colorValue.R, colorValue.G, colorValue.B));</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 计算水印位置</span></span><br><span class="line">                PointF point = CalculateWatermarkPosition(position, image, g, watermarkText, font);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 旋转水印</span></span><br><span class="line">                g.TranslateTransform(point.X, point.Y);</span><br><span class="line">                g.RotateTransform(angle);</span><br><span class="line">                g.DrawString(watermarkText, font, brush, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">                g.ResetTransform();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 保存带水印的图片</span></span><br><span class="line">                <span class="keyword">var</span> newFileName = <span class="string">$&quot;watermarked_<span class="subst">&#123;fileName&#125;</span>&quot;</span>;</span><br><span class="line">                <span class="keyword">var</span> newFilePath = Path.Combine(uploads, newFileName);</span><br><span class="line">                image.Save(newFilePath, ImageFormat.Jpeg);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 添加水印路径到列表</span></span><br><span class="line">                watermarkedPaths.Add(<span class="string">&quot;/uploads/&quot;</span> + newFileName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ViewBag.ImagePaths = watermarkedPaths;</span><br><span class="line">    <span class="keyword">return</span> View(<span class="string">&quot;Index&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="change-view-1"><a href="#change-view-1" class="headerlink" title="change view"></a>change view</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>图片加水印<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/Home/AddWatermark&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;files&quot;</span>&gt;</span>选择图片：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;files&quot;</span> <span class="attr">id</span>=<span class="string">&quot;files&quot;</span> <span class="attr">multiple</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;watermarkText&quot;</span>&gt;</span>水印文字：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;watermarkText&quot;</span> <span class="attr">id</span>=<span class="string">&quot;watermarkText&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;color&quot;</span>&gt;</span>水印颜色：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;color&quot;</span> <span class="attr">name</span>=<span class="string">&quot;color&quot;</span> <span class="attr">id</span>=<span class="string">&quot;color&quot;</span> <span class="attr">value</span>=<span class="string">&quot;#000000&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;transparency&quot;</span>&gt;</span>透明度：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;range&quot;</span> <span class="attr">name</span>=<span class="string">&quot;transparency&quot;</span> <span class="attr">id</span>=<span class="string">&quot;transparency&quot;</span> <span class="attr">min</span>=<span class="string">&quot;0&quot;</span> <span class="attr">max</span>=<span class="string">&quot;255&quot;</span> <span class="attr">value</span>=<span class="string">&quot;128&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;position&quot;</span>&gt;</span>水印位置：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;position&quot;</span> <span class="attr">id</span>=<span class="string">&quot;position&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;topleft&quot;</span>&gt;</span>左上<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;topright&quot;</span>&gt;</span>右上<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;center&quot;</span>&gt;</span>居中<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;bottomleft&quot;</span>&gt;</span>左下<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;bottomright&quot;</span>&gt;</span>右下<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;angle&quot;</span>&gt;</span>倾斜角度：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">name</span>=<span class="string">&quot;angle&quot;</span> <span class="attr">id</span>=<span class="string">&quot;angle&quot;</span> <span class="attr">value</span>=<span class="string">&quot;0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>上传并添加水印<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@if (ViewBag.ImagePaths != null)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>带水印的图片：<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    @foreach (var imagePath in ViewBag.ImagePaths)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;@imagePath&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Watermarked Image&quot;</span> <span class="attr">style</span>=<span class="string">&quot;max-width: 100%; height: auto;&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/06/01/NET-Dockerhub/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/06/01/Azure-AI/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

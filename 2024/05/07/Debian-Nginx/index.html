@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Debian nginx https 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    May 07, 2024
+  </h3>
+  <h1>
+    Debian nginx https
+  </h1>
+  <div class="content markdown-body">
+    <p>debian安装 nginx<br>在Debian系统上安装Nginx，你可以按照以下步骤操作：</p>
+<p>sudo: command not found</p>
+<p>apt-get install sudo</p>
+<p>首先，更新你的包索引：   </p>
+<p>sudo apt update<br>接下来，安装Nginx：</p>
+<p>sudo apt install nginx</p>
+<p>安装完成后，启动Nginx服务：</p>
+<p>sudo systemctl start nginx<br>（可选）设置Nginx开机自启动：</p>
+<p>sudo systemctl enable nginx<br>你可以通过运行以下命令来检查Nginx的状态：</p>
+<p>sudo systemctl status nginx<br>现在，你可以在Web浏览器中输入你服务器的IP地址或域名来访问默认的Nginx欢迎页面。如果你是在本地安装的Nginx，你可以通过访问 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a> 来查看这个页面。</p>
+<p>如果你需要配置Nginx，你可以编辑 &#x2F;etc&#x2F;nginx&#x2F;nginx.conf 文件或者在 &#x2F;etc&#x2F;nginx&#x2F;sites-available&#x2F; 目录下创建或编辑配置文件，并使用 sudo ln -s &#x2F;etc&#x2F;nginx&#x2F;sites-available&#x2F;your-config &#x2F;etc&#x2F;nginx&#x2F;sites-enabled&#x2F; 命令来启用它。</p>
+<p>sudo whereis nginx<br>Nginx 默认安装位置<br>配置文件所在目录 &#x2F;etc&#x2F;</p>
+<p>nginx配置<br> 检测Nginx配置文件是否正确<br> nginx -t</p>
+<p>重载Nginx配置<br>nginx -s reload</p>
+<p> 自定义Nginx站点配置文件存放目录<br>&#x2F;etc&#x2F;nginx&#x2F;conf.d&#x2F;</p>
+<p>nginx网站目录<br>&#x2F;var&#x2F;www&#x2F;</p>
+<p>域名证书</p>
+<p>阿里云证书<br>免费证书<br><a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ssl-certificate/user-guide/overview-of-free-certificates-overview-of-free-certificates">https://help.aliyun.com/zh/ssl-certificate/user-guide/overview-of-free-certificates-overview-of-free-certificates</a><br><a target="_blank" rel="noopener" href="https://yundun.console.aliyun.com/?p=cas#/certExtend/free/cn-hangzhou">https://yundun.console.aliyun.com/?p=cas#/certExtend/free/cn-hangzhou</a></p>
+<p>服务器类型<br>Nginx<br>Tomcat<br>Apache<br>ls<br>JKS<br>其他</p>
+<p>根证书下载<br>证书格式<br>pem&#x2F;key<br>pfx<br>crt&#x2F;key<br>pfx<br>jks<br>pem&#x2F;key<br>crt&#x2F;cer</p>
+<p>Nginx部署<br><a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ssl-certificate/user-guide/install-ssl-certificates-on-nginx-servers-or-tengine-servers">https://help.aliyun.com/zh/ssl-certificate/user-guide/install-ssl-certificates-on-nginx-servers-or-tengine-servers</a>?</p>
+<p> ls &#x2F;root&#x2F;cerf&#x2F;<a target="_blank" rel="noopener" href="http://www.dtso.net.pem/">www.dtso.net.pem</a></p>
+<p>nginx -s reload  #重新载入配置文件。<br>说明<br>报错the “ssl” parameter requires ngx_http_ssl_module：您需要重新编译Nginx并在编译安装的时候加上–with-http_ssl_module配置。</p>
+<p>报错”&#x2F;cert&#x2F;3970497_demo.aliyundoc.com.pem”:BIO_new_file() failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen(‘&#x2F;cert&#x2F;3970497_demo.aliyundoc.com.pem’,’r’) error:2006D080:BIO routines:BIO_new_file:no such file)：您需要去掉证书相对路径最前面的&#x2F;。例如，您需要去掉&#x2F;cert&#x2F;cert-file-name.pem最前面的&#x2F;，使用正确的相对路径cert&#x2F;cert-file-name.pem。</p>
+<p>nginx -s reload</p>
+<p>域名443安全组 防火墙开启~ 443 443 443</p>
+<p>.conf 示例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;  </span><br><span class="line">       listen       443 ssl http2;  </span><br><span class="line">       listen       [::]:443 ssl http2;  </span><br><span class="line">       server_name  www.x.com;  </span><br><span class="line"> </span><br><span class="line">       ssl_certificate      /root/cerf/www.x.com.pem;  </span><br><span class="line">       ssl_certificate_key  /root/cerf/www.x.com.key;  </span><br><span class="line"> </span><br><span class="line">       ssl_protocols TLSv1.2 TLSv1.3;  </span><br><span class="line">       ssl_ciphers HIGH:!aNULL:!MD5;  </span><br><span class="line"> </span><br><span class="line">       ssl_prefer_server_ciphers on;  </span><br><span class="line"> </span><br><span class="line">       <span class="comment"># HSTS (optional)  </span></span><br><span class="line">       add_header Strict-Transport-Security <span class="string">&quot;max-age=31536000; includeSubDomains; preload&quot;</span>;  </span><br><span class="line"> </span><br><span class="line">       <span class="comment"># SSL session cache (optional)  </span></span><br><span class="line">       ssl_session_cache    shared:SSL:10m;  </span><br><span class="line">       ssl_session_timeout  10m;  </span><br><span class="line"> </span><br><span class="line">       <span class="comment"># SSL stapling (optional, if you use OCSP)  </span></span><br><span class="line">       <span class="comment"># ssl_stapling on;  </span></span><br><span class="line">       <span class="comment"># ssl_stapling_verify on;  </span></span><br><span class="line"> </span><br><span class="line">       <span class="comment"># DH param is dependent on certificate size  </span></span><br><span class="line">       <span class="comment">#ssl_dhparam /path/to/dhparam.pem;  </span></span><br><span class="line"> </span><br><span class="line">       location / &#123;  </span><br><span class="line">           root   /usr/share/nginx/html;  </span><br><span class="line">           index  index.html index.htm;  </span><br><span class="line">       &#125;  </span><br><span class="line"> </span><br><span class="line">       <span class="comment"># other locations...  </span></span><br><span class="line"> </span><br><span class="line">       <span class="comment"># Redirect non-https to https  </span></span><br><span class="line">       <span class="comment"># server &#123;  </span></span><br><span class="line">       <span class="comment">#     listen 80;  </span></span><br><span class="line">       <span class="comment">#     server_name your.domain.com;  </span></span><br><span class="line">       <span class="comment">#     return 301 https://$host$request_uri;  </span></span><br><span class="line">       <span class="comment"># &#125;  </span></span><br><span class="line"> </span><br><span class="line">       <span class="comment"># Error handling  </span></span><br><span class="line">       error_page   500 502 503 504  /50x.html;  </span><br><span class="line">       location = /50x.html &#123;  </span><br><span class="line">           root   /usr/share/nginx/html;  </span><br><span class="line">       &#125;  </span><br><span class="line">   &#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+<!--
+
+
+
+159-
+TCP: 443
+TCP: 80
+TCP:1234
+TCP:123
+TCP:8090
+TCP:50501
+TCP:6379
+TCP:8080
+TCP:8880
+TCP: 30306
+TCP: 27145
+TCP:3389
+TCP: 22
+TCP:4000
+
+117-
+1123
+12345
+1234
+123
+6002
+6001
+11111
+8888
+22
+80
+443
+
+-->
+
+<p>网络测试</p>
+<p><a target="_blank" rel="noopener" href="https://boce.aliyun.com/detect/dns">https://boce.aliyun.com/detect/dns</a></p>
+<ul>
+<li></li>
+</ul>
+<h1 id="debian-卸载-nginx"><a href="#debian-卸载-nginx" class="headerlink" title="debian 卸载 nginx"></a>debian 卸载 nginx</h1><p>在Debian系统中，要卸载nginx，你可以使用apt-get命令。以下是具体步骤：</p>
+<p>首先，你需要知道nginx是否是通过apt安装的。你可以使用以下命令查看已安装的nginx包：</p>
+<p>dpkg -l | grep nginx<br>如果nginx是通过apt安装的，你可以使用apt-get命令来卸载它：</p>
+<p>sudo apt-get remove nginx nginx-common<br>这将会卸载nginx及其配置文件。</p>
+<p>为了清除所有nginx的配置文件和依赖，你可以执行：</p>
+<p>sudo apt-get purge nginx nginx-common<br>最后，你可以运行以下命令来清除无用的包和依赖：</p>
+<p>sudo apt-get autoremove<br>确保在执行这些步骤之前，你已经停止了nginx服务：</p>
+<p>sudo systemctl stop nginx<br>如果nginx是通过其他方式安装的，比如编译安装，那么你需要手动删除nginx或者按照其安装方式来卸载。</p>
+
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/05/06/NET-Memory/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/05/08/NET-AOT-native/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

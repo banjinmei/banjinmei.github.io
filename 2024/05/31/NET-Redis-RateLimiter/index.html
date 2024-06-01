@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      .NET Redis 10s Rate Limiter Sliding Window Algorithm 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    May 31, 2024
+  </h3>
+  <h1>
+    .NET Redis 10s Rate Limiter Sliding Window Algorithm
+  </h1>
+  <div class="content markdown-body">
+    <p>在.NET中使用Redis来限制接口请求频率（每10秒只允许请求一次）</p>
+<p><strong>NuGet setup</strong><br>StackExchange.Redis </p>
+<p><strong>实现速率限制逻辑</strong>：<br>在你的控制器或服务层中，你需要编写一个方法来检查并更新Redis中的速率限制计数器。<br><strong>设置Redis键</strong>：<br>为每个用户或每个IP地址（取决于你的需求）设置一个唯一的键。这个键将用于存储最后一次请求的时间戳和&#x2F;或请求计数。<br><strong>检查时间戳</strong>：<br>当请求到达时，从Redis中获取该键的值（时间戳）。如果键不存在或时间戳超过10秒，则允许请求并更新键的值（设置为当前时间戳）。<br><strong>处理超过速率的请求</strong>：<br>如果时间戳在10秒内，则拒绝或限制该请求（返回限制状态码）。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> Lazy&lt;ConnectionMultiplexer&gt; LazyConnection = <span class="keyword">new</span> Lazy&lt;ConnectionMultiplexer&gt;(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 配置Redis连接字符串 &quot;localhost,abortConnect=false&quot;  </span></span><br><span class="line">    <span class="keyword">return</span> ConnectionMultiplexer.Connect(<span class="string">&quot;localhost:6379&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> ConnectionMultiplexer Connection =&gt; LazyConnection.Value;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> IDatabase Db =&gt; Connection.GetDatabase();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;ActionResult&gt; <span class="title">MyAction</span>()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    IPAddress clientIpAddress = HttpContext.Connection.RemoteIpAddress;</span><br><span class="line">    <span class="built_in">string</span> ipAddress = clientIpAddress.ToString();</span><br><span class="line">    <span class="built_in">string</span> redisKey = <span class="string">$&quot;rate-limit:<span class="subst">&#123;ipAddress&#125;</span>&quot;</span>; <span class="comment">// 构建Redis键名  </span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 获取当前时间戳（可以是Unix时间戳或任何你选择的格式）  </span></span><br><span class="line">    <span class="built_in">long</span> currentTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 尝试从Redis获取时间戳  </span></span><br><span class="line">    <span class="keyword">var</span> redisValue = <span class="keyword">await</span> Db.StringGetAsync(redisKey);</span><br><span class="line">    <span class="built_in">long</span> lastTimestamp = redisValue.HasValue ? (<span class="built_in">long</span>)redisValue : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查是否超过10秒  </span></span><br><span class="line">    <span class="keyword">if</span> (currentTimestamp - lastTimestamp &gt;= <span class="number">10</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 如果超过10秒，则允许请求并更新Redis键  </span></span><br><span class="line">        <span class="keyword">await</span> Db.StringSetAsync(redisKey, currentTimestamp, TimeSpan.FromSeconds(<span class="number">10</span>)); <span class="comment">// 设置键的过期时间为10秒  </span></span><br><span class="line">                                                                                     </span><br><span class="line">        <span class="keyword">return</span> Content(<span class="string">&quot;Request allowed.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 如果未超过10秒，则拒绝请求  </span></span><br><span class="line">        HttpResponseMessage response = <span class="keyword">new</span> HttpResponseMessage(HttpStatusCode.TooManyRequests)</span><br><span class="line">        &#123;</span><br><span class="line">            ReasonPhrase = <span class="string">&quot;Too Many Requests&quot;</span>,</span><br><span class="line">            Content = <span class="keyword">new</span> StringContent(<span class="string">&quot;Rate limit exceeded. Please try again later.&quot;</span>)</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">// 处理请求</span></span><br><span class="line">        <span class="keyword">return</span> Content(<span class="string">&quot;Please try again later. &quot;</span>);<span class="comment">// throw new HttpResponseException(response); // 或者返回自定义的ActionResult  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>扩展为参数</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MyAction(<span class="built_in">string</span> p)</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="built_in">string</span> redisKey = <span class="string">$&quot;rate-limit:<span class="subst">&#123;p&#125;</span>&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>请求<br>&#x2F;MyAction?p&#x3D;2<br>&#x2F;MyAction?p&#x3D;3</p>
+<h1 id="滑动窗口算法"><a href="#滑动窗口算法" class="headerlink" title="滑动窗口算法"></a>滑动窗口算法</h1><p>滑动窗口算法（Sliding Window Algorithm）是一种用于解决字符串&#x2F;数组 问题的算法，它通过维护一个窗口（即一个连续的子串或子数组），并在字符串或数组上滑动这个窗口来寻找满足特定条件的子串或子数组。以下是滑动窗口算法的主要内容和特点：</p>
+<p><strong>维护窗口</strong>：通过两个指针（左指针和右指针）来定义窗口的边界。<br><strong>移动窗口</strong>：通过移动右指针来扩展窗口，同时根据问题的要求调整左指针来缩小窗口。<br><strong>更新信息</strong>：在窗口滑动的过程中，根据需要更新一些数据结构（如哈希表）来保存所需的信息。</p>
+<p><strong>实现方法</strong><br>步骤1.初始化：定义左指针和右指针，并初始化它们的位置。<br>步骤2.扩展窗口：向右移动右指针，扩展窗口，同时更新所需的信息（如字符频率的哈希表）。<br>步骤3.检查条件：当窗口满足特定条件时，开始收缩窗口。<br>步骤4.收缩窗口：向右移动左指针，缩小窗口，同时更新所需的信息。<br>步骤5.更新最优解：在收缩窗口的过程中，不断更新最优解（如最长子串、最短子串等）。<br>重复步骤：重复步骤2到步骤5，直到右指针到达字符串或数组的末尾。</p>
+<p>在Redis中维护一个窗口内的请求时间戳列表，而不是仅仅存储最后一次请求的时间戳。</p>
+<p>我们从Redis中获取存储的时间戳列表。<br>移除超过窗口大小的时间戳。<br>检查剩余的时间戳数是否超过了最大请求数 MaxRequests。<br>如果超过，则返回超过的响应；否则，记录当前时间戳并允许请求。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">int</span> MaxRequests = <span class="number">5</span>; <span class="comment">// 最大请求数</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">const</span> <span class="built_in">int</span> WindowSizeInSeconds = <span class="number">10</span>; <span class="comment">// 窗口大小（秒）</span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">// 获取Redis中存储的时间戳列表</span></span><br><span class="line">         <span class="keyword">var</span> redisValue = <span class="keyword">await</span> Db.ListRangeAsync(redisKey);</span><br><span class="line">         <span class="keyword">var</span> timestamps = redisValue.Select(<span class="keyword">value</span> =&gt; (<span class="built_in">long</span>)<span class="keyword">value</span>).ToList();</span><br><span class="line"></span><br><span class="line">         <span class="comment">// 移除窗口之外的时间戳</span></span><br><span class="line">         timestamps = timestamps.Where(timestamp =&gt; currentTimestamp - timestamp &lt;= WindowSizeInSeconds).ToList();</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span> (timestamps.Count &gt;= MaxRequests)</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="comment">// 如果请求数超过限制，则拒绝请求</span></span><br><span class="line">             HttpResponseMessage response = <span class="keyword">new</span> HttpResponseMessage(HttpStatusCode.TooManyRequests)</span><br><span class="line">             &#123;</span><br><span class="line">                 ReasonPhrase = <span class="string">&quot;Too Many Requests&quot;</span>,</span><br><span class="line">                 Content = <span class="keyword">new</span> StringContent(<span class="string">&quot;Rate limit exceeded. Please try again later.&quot;</span>)</span><br><span class="line">             &#125;;</span><br><span class="line">             <span class="keyword">return</span> Content(<span class="string">&quot;Please try again later.&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">         &#123;</span><br><span class="line">             <span class="comment">// 如果请求数未超过限制，则允许请求并记录当前时间戳</span></span><br><span class="line">             timestamps.Add(currentTimestamp);</span><br><span class="line">             <span class="keyword">await</span> Db.ListRightPushAsync(redisKey, timestamps.Select(timestamp =&gt; (RedisValue)timestamp).ToArray());</span><br><span class="line">             <span class="keyword">await</span> Db.KeyExpireAsync(redisKey, TimeSpan.FromSeconds(WindowSizeInSeconds)); <span class="comment">// 设置键的过期时间为窗口大小</span></span><br><span class="line"></span><br><span class="line">             <span class="keyword">return</span> Content(<span class="string">&quot;Request allowed.&quot;</span>);</span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<!--
+计数器 固定窗口算法
+令牌桶算法（Token Bucket Algorithm）
+漏桶算法（Leaky Bucket Algorithm）
+-->
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/05/29/NET-RocketMQ/">OLDER&nbsp;&gt;</a>
+      
+        
+          <a id="newer" class="blog-nav" href="/2024/06/01/NET-Dockerhub/">&lt;&nbsp;NEWER</a>
+          
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
