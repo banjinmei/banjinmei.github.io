@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Azure OpenAI性能优化 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jun 05, 2024
+  </h3>
+  <h1>
+    Azure OpenAI性能优化
+  </h1>
+  <div class="content markdown-body">
+    <h1 id="Azure-OpenAI-服务应用提示工程"><a href="#Azure-OpenAI-服务应用提示工程" class="headerlink" title="Azure OpenAI 服务应用提示工程"></a>Azure OpenAI 服务应用提示工程</h1><p>Azure OpenAI 中 AI 模型的响应质量取决于提供的提示的质量。 通过各种技术提高提示质量称为提示工程。</p>
+<p>在本模块中，你将了解提示工程以及如何使用它来优化 Azure OpenAI 模型的性能。 提示工程涉及设计和优化提示，以更好地利用 Azure OpenAI 模型。</p>
+<h2 id="了解提示工程"><a href="#了解提示工程" class="headerlink" title="了解提示工程"></a>了解提示工程</h2><p>发送到 AI 模型的输入提示的质量（如 Azure OpenAI 中提供的提示）会直接影响返回的内容的质量。 通过仔细构造发送到模型的提示，模型可以提供更好、更有趣的响应。</p>
+<h2 id="什么是提示工程"><a href="#什么是提示工程" class="headerlink" title="什么是提示工程"></a>什么是提示工程</h2><p>生成式 AI 模型基于大量数据训练，可以根据提示的最有可能的延续生成文本、图像、代码和创意内容。</p>
+<p>提示工程是设计和优化提示以更好地利用 AI 模型的过程。 设计有效的提示对于提示工程的成功至关重要，它可以显著提高 AI 模型在特定任务上的性能。 提供相关、具体、明确且结构良好的提示可以帮助模型更好地了解上下文并生成更准确的响应。</p>
+<p>例如，如果我们希望 OpenAI 模型生成产品说明，我们可以为其提供详细说明，描述产品的功能和优势。 通过提供此上下文，模型可以生成更准确、更相关的产品说明。</p>
+<p>提示工程还有助于缓解 AI 模型中的偏差并提高公平性。 通过设计具有多样性和包容性的提示，我们可以确保模型不会偏向于特定组或透视。</p>
+<p>重要</p>
+<p>无论可以设计多好的提示，AI 模型的响应都不应被视为事实或完全没有偏差。 始终负责地使用 AI。 有关详细信息，请参阅 Microsoft 关于 Azure OpenAI 的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/transparency-note">透明度说明</a>和 <a target="_blank" rel="noopener" href="https://www.microsoft.com/ai/responsible-ai">Microsoft 的 AI 原则</a>。</p>
+<p>此外，提示工程可以帮助我们了解模型用来生成其响应的引用。 生成式 AI 模型具有大量参数，并且其遵循的逻辑对用户来说基本上是未知的，因此可能会对它如何得出响应感到困惑。 通过设计易于理解和解释的提示，可以帮助人类更好地了解模型如何生成其响应。 这在医疗保健等领域尤其重要，因此了解模型如何做出决策至关重要。</p>
+<p>设计自己的提示时，可以使用不同的方法，其中许多方法在本模块的后续单元中进行了介绍。 其中包括提供说明、上下文内容、提示或少量示例，以及对提示中的内容进行正确排序。 此处介绍的方法并不详尽，因为此领域是一个微妙而流畅的主题。</p>
+<h2 id="API-终结点的注意事项"><a href="#API-终结点的注意事项" class="headerlink" title="API 终结点的注意事项"></a>API 终结点的注意事项</h2><p>本模块其余部分的示例将重点介绍 <code>ChatCompletion</code>。 值得注意的是，<code>ChatCompletion</code> 也可用于非聊天场景，其中任何说明都包含在系统消息中，用户内容在用户角色消息中提供。 如有需要，其中大多数示例可以改为使用 <code>Completion</code> 终结点。</p>
+<p>就模型可用性而言，<code>Completion</code> 终结点可以用于 <code>gpt-3</code> 和更早版本，而 <code>ChatCompletion</code> 可用于 <code>gpt-35-turbo</code> 和更高版本的模型。</p>
+<h2 id="调整模型参数"><a href="#调整模型参数" class="headerlink" title="调整模型参数"></a>调整模型参数</h2><p>除了本模块中讨论的技术外，调整模型参数可能会对响应产生重大影响。 特别是，<code>temperature</code> 和 <code>top_p</code> (top_probability) 最有可能影响模型的响应，因为它们都控制模型中的随机性，但方式不同。</p>
+<p>值越高，响应的创造性和随机性就越高，但可能不太一致或不太集中。 预期为虚构或唯一的响应受益于这些参数的较高值，而需要更一致且具体的内容应使用较低的值。</p>
+<p>尝试使用相同的提示调整这些参数，以查看它们如何影响响应。 建议一次更改 <code>temperature</code> 或 <code>top_p</code>，但不能同时更改两者。</p>
+<h2 id="编写更有效的提示"><a href="#编写更有效的提示" class="headerlink" title="编写更有效的提示"></a>编写更有效的提示</h2><p>Azure OpenAI 模型能够以惊人的准确度生成对自然语言查询的响应。 但是，响应的质量在很大程度上取决于提示的写入程度。 开发人员可以通过在其提示中使用不同技术来优化 Azure OpenAI 模型的性能，从而生成更准确、更相关的响应。</p>
+<h2 id="提供清晰说明"><a href="#提供清晰说明" class="headerlink" title="提供清晰说明"></a>提供清晰说明</h2><p>明确询问 Azure OpenAI 模型所需的内容是获取所需结果的一种方法。 通过尽可能的描述，模型可以生成最符合所需内容的响应。</p>
+<p>例如，假设你想要为新的水瓶创建产品说明。 请考虑与每个提示关联的答案：</p>
+<p><strong>提示</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Write a product description for a new water bottle</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Introducing the latest addition to our product line - the innovative and eco-friendly water bottle.</span><br><span class="line">Made from high-quality, BPA-free materials, this bottle is designed to keep your beverages at the</span><br><span class="line">perfect temperature for hours. Its sleek and stylish design makes it the perfect accessory for any</span><br><span class="line">outdoor activity or workout session. With its convenient carrying handle and leak-proof lid, you </span><br><span class="line">can take it with you wherever you go, without worrying about spills or leaks. Plus, its easy-to-clean</span><br><span class="line">design ensures that you can use it again and again, making it the perfect choice for anyone looking </span><br><span class="line">for a reliable and sustainable water bottle.</span><br></pre></td></tr></table></figure>
+
+<p>与类似的提示相比，具有清晰说明。</p>
+<p><strong>提示</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Write a product description for a new water bottle that is 100% recycled. Be sure to include that</span><br><span class="line">it comes in natural colors with no dyes, and each purchase removes 10 pounds of plastic from our </span><br><span class="line">oceans</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Introducing our newest water bottle, the eco-friendly choice for the conscious consumer. Made from </span><br><span class="line">100% recycled materials and available in natural colors with no dyes, this bottle is not only </span><br><span class="line">stylish but also sustainable. Each purchase of this bottle removes 10 pounds of plastic from </span><br><span class="line">our oceans, making it a responsible choice for those who care about the environment. Its durable </span><br><span class="line">and leak-proof design makes it perfect for outdoor activities, while its easy-to-carry handle </span><br><span class="line">makes it convenient to take on the go. Join us in our mission to reduce plastic waste and choose </span><br><span class="line">this eco-friendly water bottle for your daily hydration needs.</span><br></pre></td></tr></table></figure>
+
+<p>包括需要包含的详细信息可让模型知道要添加到说明中的信息，使其对新产品的描述更加准确。</p>
+<p>可以推断此方法包含复杂的说明，例如要包括的详细信息的项目符号列表、响应的长度或要包含在输出中的所需格式。 尝试确切地询问想要在结果中看到的内容，你可能会对模型满足请求的效果感到惊讶。</p>
+<h2 id="说明的格式"><a href="#说明的格式" class="headerlink" title="说明的格式"></a>说明的格式</h2><p>如何设置说明的格式可能会影响模型解释提示的方式。 近度偏差可能会影响模型，其中位于提示末尾的信息对输出的影响比对开头的信息的影响更大。 通过重复提示末尾的说明和评估对生成的响应的影响，可以获得更好的响应。</p>
+<p>在聊天方案中使用 <code>ChatCompletion</code> 时，这种近度偏差也会起作用，其中提示中包含的对话中较新的消息对响应的影响更大。 下一个单元更深入地介绍如何使用对话来提高响应质量，但将重要信息放在提示的末尾附近可能会获得更好的响应。</p>
+<h3 id="使用节标记"><a href="#使用节标记" class="headerlink" title="使用节标记"></a>使用节标记</h3><p>设置说明格式的特定技术是拆分提示开头或末尾的说明，并在 <code>---</code> 或 <code>###</code> 块中包含用户内容。 这些标记使模型能够更清楚地区分说明和内容。 例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Translate the text into French</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">What&#x27;s the weather going to be like today?</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>注意</p>
+<p>分区标记的最佳做法可能会随着将来的版本而更改。</p>
+<h2 id="主要内容、支持内容和基础内容"><a href="#主要内容、支持内容和基础内容" class="headerlink" title="主要内容、支持内容和基础内容"></a>主要内容、支持内容和基础内容</h2><p>包括用于响应的模型的内容，使模型能够更准确地回答。 可以通过两种方式来考虑此内容：主要内容和支持内容。</p>
+<p>主要内容是指作为查询主题的内容，例如要翻译的句子或要汇总的文章。 此内容通常包含在提示的开头或末尾（作为说明，并按 <code>---</code> 块进行区分），其中包含介绍如何使用它的说明。</p>
+<p>例如，假设我们有一篇要总结的长文章。 我们可以将其放在提示符的 <code>---</code> 块中，然后以说明结尾。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">&lt;insert full article here, as primary content&gt;</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Summarize this article and identify three takeaways in a bulleted list</span><br></pre></td></tr></table></figure>
+
+<p>支持内容是可能会改变响应的内容，但不是提示的焦点或主题。 支持内容的示例包括名称、首选项、响应中要包含的未来日期等。 提供支持内容可让模型做出更完整、更准确的响应，并且更有可能包含所需信息。</p>
+<p>例如，鉴于促销电子邮件非常长，模型能够提取关键信息。 如果随后在提示中添加支持内容，并指定要查找的特定内容，则模型可以提供更有用的响应。 在这种情况下，电子邮件是主要内容，并将你感兴趣的具体内容作为支持内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">&lt;insert full email here, as primary content&gt;</span><br><span class="line">---</span><br><span class="line">&lt;the next line is the supporting content&gt;</span><br><span class="line">Topics I&#x27;m very interested in: AI, webinar dates, submission deadlines</span><br><span class="line"></span><br><span class="line">Extract the key points from the above email, and put them in a bulleted list:</span><br></pre></td></tr></table></figure>
+
+<p>基础内容通过为要从中提取答案的模型提供内容，使模型能够提供可靠的答案。 基础内容可以是询问相关问题的论文或文章、公司常见问题解答文档或比训练模型所基于的数据更新的信息。 如果需要更可靠且最新的响应，或者需要引用未发布的或特定信息，强烈建议使用基础内容。</p>
+<p>基础内容与主要内容不同，因为它是用于回答提示查询的信息源，而不是针对摘要或翻译等操作的内容。 例如，当提供关于 AI 历史的未发表研究论文时，它可以使用该基础内容回答问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">&lt;insert unpublished paper on the history of AI here, as grounding content&gt;</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Where and when did the field of AI start?</span><br></pre></td></tr></table></figure>
+
+<p>此基础数据使模型能够给出更准确、更明智的答案，这些答案可能不是训练的数据集的一部分。</p>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>提示是模型构建的前导字，通常有助于朝着正确方向塑造响应。 它们通常与说明一起使用，但并不总是如此。 提示模型进行代码生成时，提示特别有用。 当前的 Azure OpenAI 模型可以生成一些有趣的代码片段，但未来模块中将更深入地介绍代码生成。</p>
+<p>例如，如果需要帮助创建 SQL 查询，请提供所需内容的说明以及查询的开头：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Write a join query to get customer names with purchases in the past 30 days between tables named orders and customer on customer ID. </span><br><span class="line"></span><br><span class="line">SELECT</span><br></pre></td></tr></table></figure>
+
+<p>模型响应从提示中断的位置开始，在 SQL 中继续，即使我们从未要求过特定语言。 其他示例可能是通过提供有关所需应用的代码注释，并在提示末尾将 <code>import</code> 添加为前导字，或者以所需语言提供类似内容来帮助 Python 代码。</p>
+<p>另一个示例，鉴于提示中有大量客户评论，结尾为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Summarize the reviews above:</span><br><span class="line">Most common complaints:</span><br><span class="line">- </span><br></pre></td></tr></table></figure>
+
+<h2 id="提供上下文以提高准确性"><a href="#提供上下文以提高准确性" class="headerlink" title="提供上下文以提高准确性"></a>提供上下文以提高准确性</h2><p>通过向 AI 模型提供上下文，使模型能够更好地了解你的问题或应该知道的内容，从而提供最佳答案。 可以通过多种方式提供上下文。</p>
+<h2 id="请求输出组合"><a href="#请求输出组合" class="headerlink" title="请求输出组合"></a>请求输出组合</h2><p>指定输出的结构可能会对结果产生很大影响。 这可能包括要求模型引用其来源、将响应编写为电子邮件、将响应格式设置为 SQL 查询、将情绪分类为特定结构等。 例如：</p>
+<p><strong>提示</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Write a table in markdown with 6 animals in it, with their genus and species</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">| Animal           | Genus          | Species        |</span><br><span class="line">| ---------------- |:--------------:|:--------------:|</span><br><span class="line">| Red Panda        | Ailurus        | fulgens        |</span><br><span class="line">| African Elephant | Loxodonta      | africana       |</span><br><span class="line">| Snow Leopard     | Panthera       | uncia          |</span><br><span class="line">| Arctic Fox       | Vulpes         | lagopus        |</span><br><span class="line">| Chimpanzee       | Pan            | troglodytes    |</span><br><span class="line">| Siberian Tiger   | Panthera       | tigris altaica |</span><br></pre></td></tr></table></figure>
+
+<p>此方法可用于自定义格式，例如 JSON 结构：</p>
+<p><strong>提示</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Put two fictional characters into JSON of the following format</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  firstNameFictional: </span><br><span class="line">  jobFictional:</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Here&#x27;s an example of how you can put two fictional characters into JSON format:</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;firstNameFictional&quot;: &quot;Henry&quot;,</span><br><span class="line">  &quot;jobFictional&quot;: &quot;Wizard&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  &quot;firstNameFictional&quot;: &quot;Frank&quot;,</span><br><span class="line">  &quot;jobFictional&quot;: &quot;Hero&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="系统消息"><a href="#系统消息" class="headerlink" title="系统消息"></a>系统消息</h2><p>系统消息包含在提示的开头，旨在提供模型说明、回答的角度或其他有助于指导模型响应的信息。 此系统消息可能包括音调或个性、不应包含的主题或如何回答的详细信息（例如，格式设置）。</p>
+<p>例如，可以向它提供以下一些系统消息：</p>
+<ul>
+<li>“我希望你像命令行终端一样操作。 在一个唯一代码块中完全像 cmd.exe 一样响应命令，没有其他要求。”</li>
+<li>“我希望你成为一名翻译，从英语翻译成西班牙语。 不要回复我说或问的任何内容，只翻译这两种语言，并用翻译的文本回复。”</li>
+<li>“作为励志演说家，自由地就目标和挑战给出令人鼓舞的建议。 你应该包括许多积极的肯定和建议的活动，以实现用户的最终目标。”</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://oai.azure.com/portal?azure-portal=true">Azure OpenAI Studio</a> 中聊天窗口顶部提供了其他示例系统消息。 尝试定义自己的系统提示以指定唯一响应，并与模型聊天以查看响应的不同之处。</p>
+<p><code>ChatCompletion</code> 终结点允许使用 <code>System</code> 聊天角色包括系统消息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var chatCompletionsOptions = new ChatCompletionsOptions()</span><br><span class="line">&#123;</span><br><span class="line">    Messages =</span><br><span class="line">    &#123;</span><br><span class="line">        new ChatRequestSystemMessage(&quot;You are a casual, helpful assistant. You will talk like an American old western film character.&quot;),</span><br><span class="line">        new ChatRequestUserMessage(&quot;Can you direct me to the library?&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;finish_reason&quot;: &quot;stop&quot;,</span><br><span class="line">      &quot;index&quot;: 0,</span><br><span class="line">      &quot;message&quot;: &#123;</span><br><span class="line">        &quot;content&quot;: &quot;Well howdy there, stranger! The library, huh?</span><br><span class="line">                    Y&#x27;all just head down the main road till you hit the town </span><br><span class="line">                    square. Once you&#x27;re there, take a left and follow the street </span><br><span class="line">                    for a spell. You&#x27;ll see the library on your right, can’t </span><br><span class="line">                    miss it. Happy trails!&quot;,</span><br><span class="line">        &quot;role&quot;: &quot;assistant&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = openai.ChatCompletion.create(</span><br><span class="line">    model=<span class="string">&quot;gpt-35-turbo&quot;</span>,</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a casual, helpful assistant. You will talk like an American old western film character.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Can you direct me to the library?&quot;</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>响应</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;choices&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;finish_reason&quot;: &quot;stop&quot;,</span><br><span class="line">      &quot;index&quot;: 0,</span><br><span class="line">      &quot;message&quot;: &#123;</span><br><span class="line">        &quot;content&quot;: &quot;Well howdy there, stranger! The library, huh?</span><br><span class="line">                    Y&#x27;all just head down the main road till you hit the town </span><br><span class="line">                    square. Once you&#x27;re there, take a left and follow the street </span><br><span class="line">                    for a spell. You&#x27;ll see the library on your right, can’t </span><br><span class="line">                    miss it. Happy trails!&quot;,</span><br><span class="line">        &quot;role&quot;: &quot;assistant&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>系统消息在格式和内容方面都可能会显著更改响应。 尝试为模型定义一条明确的系统消息，以准确说明你期望的响应类型，以及你希望或不希望它包含的内容。</p>
+<h2 id="会话历史记录"><a href="#会话历史记录" class="headerlink" title="会话历史记录"></a>会话历史记录</h2><p>除了系统消息外，还可以向模型提供其他消息以增强会话。 对话历史记录使模型能够继续以类似方式响应（例如，音调或格式设置），并允许用户在后续查询中引用以前的内容。 可以通过两种方式提供此历史记录：从实际聊天历史记录，或从用户定义的示例对话。</p>
+<p>使用 OpenAI 模型的聊天接口（例如，ChatGPT 和 <a target="_blank" rel="noopener" href="https://oai.azure.com/portal/chat?azure-portal=true">Azure OpenAI Studio</a> 中的聊天操场）自动包含对话历史记录，从而生成更丰富、更有意义的对话。 在 Azure OpenAI Studio 聊天操场的聊天窗口下方的“参数”部分中，可以指定要包含的过去消息数。 尝试将该值减少到 1 或增加到最大值，以查看不同历史记录量对对话的影响。</p>
+<p>注意</p>
+<p>提示中包含的会话历史记录越多意味着使用的输入令牌数就越多。 考虑到所使用的模型的令牌限制，必须确定用例的正确平衡。</p>
+<p>聊天系统还可以利用模型的汇总功能来节省输入令牌。 应用可以选择汇总过去的消息，并将该摘要包含在对话历史记录中，然后仅向模型逐字提供过去几条消息。</p>
+<h2 id="少样本学习"><a href="#少样本学习" class="headerlink" title="少样本学习"></a>少样本学习</h2><p>使用用户定义的示例对话就是所谓的“少样本学习”，它提供应如何响应给定查询的模型示例。 这些示例用于训练模型如何响应。</p>
+<p>例如，通过向模型提供几个提示和预期的响应，它以相同的模式继续运行，而不指示它该执行什么操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">User: That was an awesome experience</span><br><span class="line">Assistant: positive</span><br><span class="line">User: I won&#x27;t do that again</span><br><span class="line">Assistant: negative</span><br><span class="line">User: That was not worth my time</span><br><span class="line">Assistant: negative</span><br><span class="line">User: You can&#x27;t miss this</span><br><span class="line">Assistant:</span><br></pre></td></tr></table></figure>
+
+<p>如果仅使用 <code>You can&#39;t miss this</code>（而没有来自少样本学习的其他上下文）提供模型，则响应不太可能有用。</p>
+<p>实际上，对话历史记录和少样本学习以相同的方式发送到模型：每个用户消息和助手响应都是消息对象中的离散消息。 <code>ChatCompletion</code> 终结点已优化为包含消息历史记录，无论此消息历史记录是以少样本学习的形式提供，还是以实际对话历史记录的形式提供。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var chatCompletionsOptions = new ChatCompletionsOptions()</span><br><span class="line">&#123;</span><br><span class="line">    Messages =</span><br><span class="line">    &#123;</span><br><span class="line">        new ChatRequestSystemMessage(&quot;You are a helpful assistant.&quot;),</span><br><span class="line">        new ChatRequestUserMessage(&quot;That was an awesome experience&quot;),</span><br><span class="line">        new ChatRequestAssistantMessage(&quot;positive&quot;),</span><br><span class="line">        new ChatRequestUserMessage(&quot;I won&#x27;t do that again&quot;),</span><br><span class="line">        new ChatRequestAssistantMessage(&quot;negative&quot;),</span><br><span class="line">        new ChatRequestUserMessage(&quot;That was not worth my time&quot;),</span><br><span class="line">        new ChatRequestAssistantMessage(&quot;negative&quot;),</span><br><span class="line">        new ChatRequestUserMessage(&quot;You can&#x27;t miss this&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">response = openai.ChatCompletion.create(</span><br><span class="line">    model=<span class="string">&quot;gpt-35-turbo&quot;</span>,</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful assistant.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;That was an awesome experience&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;positive&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;I won&#x27;t do that again&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;negative&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;That was not worth my time&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;negative&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You can&#x27;t miss this&quot;</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="拆分复杂任务"><a href="#拆分复杂任务" class="headerlink" title="拆分复杂任务"></a>拆分复杂任务</h2><p>改进交互的另一种方法是将复杂的提示划分为多个查询。 这使模型能够更好地了解每个单独的部分，并且可以提高整体准确性。 通过划分提示，还可以在将来的提示中包含来自上一个提示的响应，以及使用该信息以及模型功能生成相关响应。</p>
+<p>例如，可以询问模型 <code>Doug can ride down the zip line in 30 seconds, and takes 5 minutes to climb back up to the top. How many times can Doug ride the zip line in 17 minutes?</code>。 结果可能是 <code>3</code>，如果 Doug 从 zip 线的顶部开始，则结果不正确。</p>
+<p>通过询问多个问题可能会得到信息更丰富的答案，这些答案关于返回到 zip 线顶部的往返时间，以及如何说明 Doug 从顶部开始的事实。 拆分此问题表明，Doug 事实上可以穿越 zip 线四次。</p>
+<h3 id="思维链"><a href="#思维链" class="headerlink" title="思维链"></a>思维链</h3><p>帮助你有效地拆分任务的一个有用方法是让模型解释其思维链。</p>
+<p>要求模型使用确定响应的分步过程做出响应是了解模型如何解释提示的有用方法。 通过执行此操作，你可以看到模型在何处进行了错误的逻辑轮次，并更好地了解如何更改提示以避免错误。 此方法可能包括要求它引用其来源，就像必应聊天（使用 GPT-4 代模型），并给出确定答案的原因。</p>
+<p>思维链提示技术最适合用于帮助你循环访问和改进提示，以便从模型获得最高质量的答案。</p>
+<p>例如，询问模型 <code>What sport is easiest to learn but hardest to master?</code> 会得到一个答案作为响应，并简要说明原因。 但是，当出现 <code>What sport is easiest to learn but hardest to master? Give a step by step approach of your thoughts, ending in your answer</code> 提示时，响应是它如何得出答案的完整说明。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Sure, here&#x27;s a step-by-step approach to answering the question:</span><br><span class="line">1. Identify sports that are popular and have a large following.</span><br><span class="line">2. Consider the basic mechanics of each sport and how easy they are to learn.</span><br><span class="line">3. Think about the various techniques and skills required to play each sport at a high level, and how difficult they are to master.</span><br><span class="line">4. Compare the relative ease of learning each sport to the difficulty of mastering it.</span><br><span class="line">5. Based on the above analysis, determine which sport is easiest to learn but hardest to master.</span><br><span class="line"></span><br><span class="line">Using this approach, I would say that the sport of golf is easiest to learn but hardest to master. Here&#x27;s why:</span><br><span class="line">1. Golf is a popular sport with a large following.</span><br><span class="line">2. The basic mechanics of hitting a golf ball are relatively simple and can be learned quickly with some practice.</span><br><span class="line">3. However, achieving consistency and mastering the various shots and techniques required to play at a high level can take years of practice and dedication.</span><br><span class="line">4. Compared to other sports, the difference between a beginner and an intermediate golfer is relatively small, while the difference between an intermediate and an advanced golfer is much larger.</span><br><span class="line">5. Therefore, I would say that golf is the sport that is easiest to learn but hardest to master.</span><br></pre></td></tr></table></figure>
+
+<p>清晰的描述性说明可帮助模型生成与开发人员所查找的内容密切相关的响应。</p>
+<p>系统消息包含在提示的开头，旨在提供模型说明、回答的角度或其他有助于指导模型响应的信息。</p>
+<p>对话历史记录使模型能够继续以类似方式响应（例如，音调或格式设置），并允许用户在后续查询中引用以前的内容。</p>
+<h1 id="Azure-OpenAI生成代码"><a href="#Azure-OpenAI生成代码" class="headerlink" title="Azure OpenAI生成代码"></a>Azure OpenAI生成代码</h1><p>借助 Azure OpenAI 服务，可以使用大型语言模型 (LLM) 生成内容，包括编程代码。 此功能使开发人员能够生成和改进采用各种语言的现有编程代码，以提高效率和增进理解。</p>
+<p>在本模块中，了解如何使用 Azure OpenAI 生成代码并帮助执行各种开发任务。</p>
+<h2 id="根据自然语言构造代码"><a href="#根据自然语言构造代码" class="headerlink" title="根据自然语言构造代码"></a>根据自然语言构造代码</h2><p>​<br>​<br>Azure OpenAI 模型的功能之一是根据自然语言提示生成代码。 任务的范围可以从简单的单行命令到完整的应用程序。 AI 模型还可以编辑和更新提供的代码或以前的响应，以完成请求的任务。<br>​</p>
+<h2 id="用于代码生成的-AI-模型"><a href="#用于代码生成的-AI-模型" class="headerlink" title="用于代码生成的 AI 模型"></a>用于代码生成的 AI 模型</h2><p>​<br>在以前的几代 <code>gpt</code> 模型中，一些模型（通常称为 <em>codex</em> 模型）经过专门训练，可与代码配合使用。 随着新一代模型的发展，基础模型极大地提高了其性能和对语言和代码的理解，因此不再需要特定的代码模型。 这种改进使得最近几代（如 <code>gpt-35-turbo</code> 和 <code>gpt-4</code>）只有一个模型，可同时用于自然语言和代码。<br>​<br>本模块中的示例使用 <code>gpt-35-turbo</code>。<br>​</p>
+<h2 id="编写函数"><a href="#编写函数" class="headerlink" title="编写函数"></a>编写函数</h2><p>​<br>只需描述所需内容，Azure OpenAI 模型即可创建多种语言的函数和应用。 例如，假设你需要二进制文件搜索的实现，但不记得它是如何实现的了。 给定提示 <code>write a function for binary search in python</code>，你可能会收到包含函数的响应和对代码的说明。<br>​</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Sure, here&#x27;s an example implementation of binary search algorithm in Python:</span><br><span class="line">​</span><br><span class="line">def binary_search(array, target):  </span><br><span class="line">    low = 0  </span><br><span class="line">    high = len(array) - 1  </span><br><span class="line">  </span><br><span class="line">    while low &lt;= high:  </span><br><span class="line">        mid = (low + high) // 2  </span><br><span class="line">        if array[mid] == target:  </span><br><span class="line">            return mid  </span><br><span class="line">        elif array[mid] &lt; target:  </span><br><span class="line">            low = mid + 1  </span><br><span class="line">        else:  </span><br><span class="line">            high = mid - 1  </span><br><span class="line">  </span><br><span class="line">    return -1  </span><br><span class="line"> </span><br><span class="line">This function takes in two arguments - an array of integers and a target integer that we want to search</span><br><span class="line">for in the array. The function initializes two pointers - low and high - to the first and last indices</span><br><span class="line">of the array, respectively.</span><br><span class="line">​</span><br><span class="line">Inside the while loop, the function calculates the middle index using integer division (//). If the </span><br><span class="line">middle element is equal to the target, the function returns the index of the middle element. If the </span><br><span class="line">middle element is less than the target, we update the low pointer to mid + 1. Otherwise, we update the </span><br><span class="line">high pointer to mid - 1. We continue these steps until we find the target or the pointers cross each </span><br><span class="line">other (i.e., low &gt; high).</span><br><span class="line">​</span><br><span class="line">If the target is not found in the array, the function returns -1.</span><br><span class="line">​</span><br><span class="line">Note that the binary search algorithm assumes that the input array is sorted in ascending order. If </span><br><span class="line">the array is not sorted, the algorithm may not return the correct result.</span><br></pre></td></tr></table></figure>
+<p>​<br>请求可以超越函数，请求一系列函数或整个应用。 响应为尝试实现的任务提供了良好的起点。<br>​</p>
+<h2 id="更改编码语言"><a href="#更改编码语言" class="headerlink" title="更改编码语言"></a>更改编码语言</h2><p>​<br>如果你的代码采用的是一种语言，但你需要它采用另一种语言，Azure OpenAI 可以转换该代码。 例如，假设在 Python 中具有此 <code>print_squares</code> 函数。<br>​</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">print_squares</span>(<span class="params">n</span>):  </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):  </span><br><span class="line">        <span class="built_in">print</span>(i**<span class="number">2</span>)   </span><br></pre></td></tr></table></figure>
+<p>​<br>如果提供该代码以及提示 <code>convert this code to C#</code>，你可能会得到类似于以下函数的内容。<br>​</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public void PrintSquares(int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    for (int i = 1; i &lt;= n; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        Console.WriteLine(i * i);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>​<br>请注意，模型理解 <code>for</code> 循环和函数以不同语言（包括 C# 中的访问修饰符）定义的方式的差异，并相应地更改了代码。<br>​</p>
+<h2 id="理解未知代码"><a href="#理解未知代码" class="headerlink" title="理解未知代码"></a>理解未知代码</h2><p>​<br>Azure OpenAI 模型有助于理解无法理解的代码或可能采用你不熟悉的语言的代码。 例如，假设你获得了以下函数（采用虚构的编码语言！），但不知道如何理解它。<br>​</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fn qzplv(n: i32, m: i32) -&gt; i32 &#123;</span><br><span class="line">    if n == 0 &#123;</span><br><span class="line">        return m + 1;</span><br><span class="line">    &#125; else if m == 0 &#123;</span><br><span class="line">        return qzplv(n - 1, 1);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return qzplv(n - 1, qzplv(n, m - 1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​<br>将其与提示 <code>could you explain what this code is doing?</code> 一起提供给模型时，你可得到类似于以下内容的响应：<br>​</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Sure, I&#x27;d be happy to explain what this code is doing!</span><br><span class="line">​</span><br><span class="line">This code is implementing the Ackermann function, which is a well-known mathematical function that </span><br><span class="line">grows very quickly in terms of computation time as its inputs increase. The function takes two integer </span><br><span class="line">arguments (n and m) and returns another integer.</span><br><span class="line">​</span><br><span class="line">Here&#x27;s how the function works:</span><br><span class="line">- If n is equal to 0, the function returns m + 1.</span><br><span class="line">- If m is equal to 0, the function calls itself recursively with n - 1 and 1 as arguments.</span><br><span class="line">- Otherwise, the function calls itself recursively with n - 1 and the result of calling itself with n </span><br><span class="line">and m - 1 as arguments.</span><br><span class="line">​</span><br><span class="line">The function is implemented in a way that is easy to understand and follow, but it has a very high </span><br><span class="line">computational complexity. In fact, it grows so quickly that it can&#x27;t be computed for values of n and m </span><br><span class="line">greater than about 4 or 5.</span><br></pre></td></tr></table></figure>
+<p>​<br>将说明和转换结合成你熟悉的语言会使此功能更加有用。</p>
+<h2 id="写入单元测试"><a href="#写入单元测试" class="headerlink" title="写入单元测试"></a>写入单元测试</h2><p>Azure OpenAI 模型可以为编写的函数生成单元测试，帮助使代码更可靠。 以二进制文件搜索函数为例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">binary_search</span>(<span class="params">arr, target</span>):</span><br><span class="line">    left, right = <span class="number">0</span>, <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] == target:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">elif</span> arr[mid] &lt; target:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public static int BinarySearch(int[] arr, int target)</span><br><span class="line">&#123;</span><br><span class="line">    int left = 0;</span><br><span class="line">    int right = arr.Length - 1;</span><br><span class="line"></span><br><span class="line">    while (left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        int mid = (left + right) / 2;</span><br><span class="line"></span><br><span class="line">        if (arr[mid] == target)</span><br><span class="line">        &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (arr[mid] &lt; target)</span><br><span class="line">        &#123;</span><br><span class="line">            left = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            right = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>提供该函数以及提示 <code>write three unit tests for this function</code>，你可得到类似于以下内容的响应。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">test_binary_search</span>():  </span><br><span class="line">    <span class="comment"># Test case 1: Target element is in the middle of the array  </span></span><br><span class="line">    arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]  </span><br><span class="line">    target1 = <span class="number">4</span>  </span><br><span class="line">    <span class="keyword">assert</span> binary_search(arr1, target1) == <span class="number">3</span>  </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Test case 2: Target element is at the beginning of the array  </span></span><br><span class="line">    arr2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]  </span><br><span class="line">    target2 = <span class="number">1</span>  </span><br><span class="line">    <span class="keyword">assert</span> binary_search(arr2, target2) == <span class="number">0</span>  </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Test case 3: Target element is not in the array  </span></span><br><span class="line">    arr3 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]  </span><br><span class="line">    target3 = <span class="number">7</span>  </span><br><span class="line">    <span class="keyword">assert</span> binary_search(arr3, target3) == -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[Test]  </span><br><span class="line">public void TestBinarySearch1()  </span><br><span class="line">&#123;  </span><br><span class="line">    int[] arr = &#123; 1, 2, 3, 4, 5 &#125;;  </span><br><span class="line">    int target = 3;  </span><br><span class="line">    int expected = 2;  </span><br><span class="line">    int result = BinarySearch(arr, target);  </span><br><span class="line">    Assert.AreEqual(expected, result);  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">[Test]  </span><br><span class="line">public void TestBinarySearch2()  </span><br><span class="line">&#123;  </span><br><span class="line">    int[] arr = &#123; 10, 20, 30, 40, 50 &#125;;  </span><br><span class="line">    int target = 35;  </span><br><span class="line">    int expected = -1;  </span><br><span class="line">    int result = BinarySearch(arr, target);  </span><br><span class="line">    Assert.AreEqual(expected, result);  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">[Test]  </span><br><span class="line">public void TestBinarySearch3()  </span><br><span class="line">&#123;  </span><br><span class="line">    int[] arr = &#123; 3, 6, 9, 12, 15 &#125;;  </span><br><span class="line">    int target = 6;  </span><br><span class="line">    int expected = 1;  </span><br><span class="line">    int result = BinarySearch(arr, target);  </span><br><span class="line">    Assert.AreEqual(expected, result);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>如果你指定要包含在提示中的事例，此功能会更有用，这可减少为代码编写单元测试所花费的时间。</p>
+<h2 id="添加注释并生成文档"><a href="#添加注释并生成文档" class="headerlink" title="添加注释并生成文档"></a>添加注释并生成文档</h2><p>为了进一步改进代码，AI 模型可以添加注释和文档。 以下面的函数为例，在没有任何代码注释的情况下，首次阅读函数时可能有点难以理解。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">permutations</span>(<span class="params">lst</span>):  </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lst) == <span class="number">0</span>:  </span><br><span class="line">        <span class="keyword">return</span> []  </span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(lst) == <span class="number">1</span>:  </span><br><span class="line">        <span class="keyword">return</span> [lst]  </span><br><span class="line">    <span class="keyword">else</span>:  </span><br><span class="line">        result = []  </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(lst)):  </span><br><span class="line">            temp = lst[i]  </span><br><span class="line">            remaining = lst[:i] + lst[i+<span class="number">1</span>:]  </span><br><span class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> permutations(remaining):  </span><br><span class="line">                result.append([temp] + p)  </span><br><span class="line">        <span class="keyword">return</span> result  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;int&gt;&gt; Permutations(List&lt;int&gt; lst)  </span><br><span class="line">&#123;  </span><br><span class="line">    if (lst.Count == 0)  </span><br><span class="line">    &#123;  </span><br><span class="line">        return new List&lt;List&lt;int&gt;&gt;();  </span><br><span class="line">    &#125;  </span><br><span class="line">    else if (lst.Count == 1)  </span><br><span class="line">    &#123;  </span><br><span class="line">        return new List&lt;List&lt;int&gt;&gt; &#123; lst &#125;;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else  </span><br><span class="line">    &#123;  </span><br><span class="line">        List&lt;List&lt;int&gt;&gt; result = new List&lt;List&lt;int&gt;&gt;();  </span><br><span class="line">        for (int i = 0; i &lt; lst.Count; i++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            int temp = lst[i];  </span><br><span class="line">            List&lt;int&gt; remaining = new List&lt;int&gt;(lst);  </span><br><span class="line">            remaining.RemoveAt(i);  </span><br><span class="line">            foreach (List&lt;int&gt; p in Permutations(remaining))  </span><br><span class="line">            &#123;  </span><br><span class="line">                List&lt;int&gt; permutation = new List&lt;int&gt; &#123; temp &#125;;  </span><br><span class="line">                permutation.AddRange(p);  </span><br><span class="line">                result.Add(permutation);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        return result;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>向模型提供该函数以及一个提示，要求它向代码添加注释，你可得到一个类似于以下内容的响应。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">permutations</span>(<span class="params">lst</span>):  </span><br><span class="line">    <span class="comment"># Check if the input list is empty  </span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lst) == <span class="number">0</span>:  </span><br><span class="line">        <span class="keyword">return</span> []  </span><br><span class="line">    <span class="comment"># Check if the input list has only one element  </span></span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(lst) == <span class="number">1</span>:  </span><br><span class="line">        <span class="keyword">return</span> [lst]  </span><br><span class="line">    <span class="keyword">else</span>:  </span><br><span class="line">        <span class="comment"># Initialize an empty list to store permutations  </span></span><br><span class="line">        result = []  </span><br><span class="line">        <span class="comment"># Iterate through each element of the input list  </span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(lst)):  </span><br><span class="line">            <span class="comment"># Remove the current element from the list and store it in a variable  </span></span><br><span class="line">            temp = lst[i]  </span><br><span class="line">            remaining = lst[:i] + lst[i+<span class="number">1</span>:]  </span><br><span class="line">            <span class="comment"># Recursively call the function on the remaining list  </span></span><br><span class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> permutations(remaining):  </span><br><span class="line">                <span class="comment"># Append the current element to the beginning of each permutation and add it to the result list  </span></span><br><span class="line">                result.append([temp] + p)  </span><br><span class="line">        <span class="comment"># Return the final list of permutations  </span></span><br><span class="line">        <span class="keyword">return</span> result  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;int&gt;&gt; Permutations(List&lt;int&gt; lst)  </span><br><span class="line">&#123;  </span><br><span class="line">    // Check if the input list is empty  </span><br><span class="line">    if (lst.Count == 0)  </span><br><span class="line">    &#123;  </span><br><span class="line">        return new List&lt;List&lt;int&gt;&gt;();  </span><br><span class="line">    &#125;  </span><br><span class="line">    // Check if the input list has only one element  </span><br><span class="line">    else if (lst.Count == 1)  </span><br><span class="line">    &#123;  </span><br><span class="line">        return new List&lt;List&lt;int&gt;&gt; &#123; lst &#125;;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else  </span><br><span class="line">    &#123;  </span><br><span class="line">        // Initialize an empty list to store permutations  </span><br><span class="line">        List&lt;List&lt;int&gt;&gt; result = new List&lt;List&lt;int&gt;&gt;();  </span><br><span class="line">        // Iterate through each element of the input list  </span><br><span class="line">        for (int i = 0; i &lt; lst.Count; i++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            // Remove the current element from the list and store it in a variable  </span><br><span class="line">            int temp = lst[i];  </span><br><span class="line">            List&lt;int&gt; remaining = new List&lt;int&gt;(lst);  </span><br><span class="line">            remaining.RemoveAt(i);  </span><br><span class="line">            // Recursively call the function on the remaining list  </span><br><span class="line">            foreach (List&lt;int&gt; p in Permutations(remaining))  </span><br><span class="line">            &#123;  </span><br><span class="line">                // Append the current element to the beginning of each permutation and add it to the result list  </span><br><span class="line">                List&lt;int&gt; permutation = new List&lt;int&gt; &#123; temp &#125;;  </span><br><span class="line">                permutation.AddRange(p);  </span><br><span class="line">                result.Add(permutation);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        // Return the final list of permutations  </span><br><span class="line">        return result;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>再进一步，请求提供刚刚向其添加了注释的函数的文档。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">permutations</span>(<span class="params">lst</span>):  </span><br><span class="line">    <span class="string">&quot;&quot;&quot;  </span></span><br><span class="line"><span class="string">    Generates all possible permutations of a given list of integers using recursion.  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:  </span></span><br><span class="line"><span class="string">        lst (list): The list of integers to generate permutations for.  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns:  </span></span><br><span class="line"><span class="string">        list: A list of all possible permutations of the input list.  </span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span>  </span><br><span class="line">    <span class="comment"># Check if the input list is empty  </span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lst) == <span class="number">0</span>:  </span><br><span class="line">        <span class="keyword">return</span> []  </span><br><span class="line">    <span class="comment"># Check if the input list has only one element  </span></span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(lst) == <span class="number">1</span>:  </span><br><span class="line">        <span class="keyword">return</span> [lst]  </span><br><span class="line">    <span class="keyword">else</span>:  </span><br><span class="line">        <span class="comment"># Initialize an empty list to store permutations  </span></span><br><span class="line">        result = []  </span><br><span class="line">        <span class="comment"># Iterate through each element of the input list  </span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(lst)):  </span><br><span class="line">            <span class="comment"># Remove the current element from the list and store it in a variable  </span></span><br><span class="line">            temp = lst[i]  </span><br><span class="line">            remaining = lst[:i] + lst[i+<span class="number">1</span>:]  </span><br><span class="line">            <span class="comment"># Recursively call the function on the remaining list  </span></span><br><span class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> permutations(remaining):  </span><br><span class="line">                <span class="comment"># Append the current element to the beginning of each permutation and add it to the result list  </span></span><br><span class="line">                result.append([temp] + p)  </span><br><span class="line">        <span class="comment"># Return the final list of permutations  </span></span><br><span class="line">        <span class="keyword">return</span> result  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;  </span><br><span class="line">/// Generates all possible permutations of a given list of integers using recursion.  </span><br><span class="line">/// &lt;/summary&gt;  </span><br><span class="line">/// &lt;param name=&quot;lst&quot;&gt;The list of integers to generate permutations for.&lt;/param&gt;  </span><br><span class="line">/// &lt;returns&gt;A list of all possible permutations of the input list.&lt;/returns&gt;  ```</span><br><span class="line">public static List&lt;List&lt;int&gt;&gt; Permutations(List&lt;int&gt; lst)  </span><br><span class="line">&#123;  </span><br><span class="line">    // Check if the input list is empty  </span><br><span class="line">    if (lst.Count == 0)  </span><br><span class="line">    &#123;  </span><br><span class="line">        return new List&lt;List&lt;int&gt;&gt;();  </span><br><span class="line">    &#125;  </span><br><span class="line">    // Check if the input list has only one element  </span><br><span class="line">    else if (lst.Count == 1)  </span><br><span class="line">    &#123;  </span><br><span class="line">        return new List&lt;List&lt;int&gt;&gt; &#123; lst &#125;;  </span><br><span class="line">    &#125;  </span><br><span class="line">    else  </span><br><span class="line">    &#123;  </span><br><span class="line">        // Initialize an empty list to store permutations  </span><br><span class="line">        List&lt;List&lt;int&gt;&gt; result = new List&lt;List&lt;int&gt;&gt;();  </span><br><span class="line">        // Iterate through each element of the input list  </span><br><span class="line">        for (int i = 0; i &lt; lst.Count; i++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            // Remove the current element from the list and store it in a variable  </span><br><span class="line">            int temp = lst[i];  </span><br><span class="line">            List&lt;int&gt; remaining = new List&lt;int&gt;(lst);  </span><br><span class="line">            remaining.RemoveAt(i);  </span><br><span class="line">            // Recursively call the function on the remaining list  </span><br><span class="line">            foreach (List&lt;int&gt; p in Permutations(remaining))  </span><br><span class="line">            &#123;  </span><br><span class="line">                // Append the current element to the beginning of each permutation and add it to the result list  </span><br><span class="line">                List&lt;int&gt; permutation = new List&lt;int&gt; &#123; temp &#125;;  </span><br><span class="line">                permutation.AddRange(p);  </span><br><span class="line">                result.Add(permutation);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        // Return the final list of permutations  </span><br><span class="line">        return result;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<h2 id="修复-bug-并改进代码"><a href="#修复-bug-并改进代码" class="headerlink" title="修复 bug 并改进代码"></a>修复 bug 并改进代码</h2><p>开发人员有时可以编写大部分有效的代码，但此代码可以通过修复 bug、语法、性能或模块性来改进。 Azure OpenAI 模型可以帮助确定改进方法，并提供有关如何编写更好的代码的建议。</p>
+<h2 id="修复代码中的-bug"><a href="#修复代码中的-bug" class="headerlink" title="修复代码中的 bug"></a>修复代码中的 bug</h2><p>Azure OpenAI 模型可以通过分析代码和建议可能修复问题的更改来帮助修复代码中的 bug。 这可以帮助开发人员更快、更高效地识别和解决 bug。</p>
+<p>例如，假设以下函数不起作用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_average</span>(<span class="params">numbers</span>):  </span><br><span class="line">    total = <span class="number">0</span>  </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(numbers)):  </span><br><span class="line">        number = numbers[i]  </span><br><span class="line">        total += number  </span><br><span class="line">    average = total  </span><br><span class="line">    rerun averave  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public double CalculateAverage(int[] numbers)</span><br><span class="line">&#123;</span><br><span class="line">    int total = 0;</span><br><span class="line">    for (int i = 0; i &lt; numbers.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int number = numbers[i];</span><br><span class="line">        total += number;</span><br><span class="line">    &#125;</span><br><span class="line">    double average = (double)total;</span><br><span class="line">    rerun averave;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>向模型提供该函数以及提示 <code>Fix the bugs in this function</code>，你可得到带有修复代码的响应以及对修复内容的说明。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_average</span>(<span class="params">numbers</span>):  </span><br><span class="line">    total = <span class="number">0</span>  </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(numbers)):  </span><br><span class="line">        number = numbers[i]  </span><br><span class="line">        total += number  </span><br><span class="line">    average = total / <span class="built_in">len</span>(numbers)  </span><br><span class="line">    <span class="keyword">return</span> average  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public double CalculateAverage(int[] numbers)</span><br><span class="line">&#123;</span><br><span class="line">    int total = 0;</span><br><span class="line">    for (int i = 0; i &lt; numbers.Length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int number = numbers[i];</span><br><span class="line">        total += number;</span><br><span class="line">    &#125;</span><br><span class="line">    double average = (double)total / numbers.Length;</span><br><span class="line">    return average;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">There were a few issues with the original code:</span><br><span class="line"></span><br><span class="line">1. The variable &quot;average&quot; was assigned the value of &quot;total&quot; instead of the actual average.</span><br><span class="line">2. There was a typo in the last line - &quot;rerun&quot; should be &quot;return&quot;.</span><br><span class="line">3. The average was not actually calculated - the corrected code divides the total by the length of </span><br><span class="line">the &quot;numbers&quot; list to get the average.</span><br></pre></td></tr></table></figure>
+
+<h2 id="提高性能"><a href="#提高性能" class="headerlink" title="提高性能"></a>提高性能</h2><p>虽然开发人员编写的代码可能有效，但可能有更有效的方法来完成该任务。 下面是一个函数示例，该函数计算前 n 个正整数的总和，可能效率不高：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sum_of_n</span>(<span class="params">n</span>):</span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        result += i</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int SumOfN(int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    int result = 0;  </span><br><span class="line">    for (int i = 1; i &lt;= n; i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        result += i;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return result;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>此版本正常运行，但其时间复杂性为 O(n)。 将其提供给模型时，响应如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">We can improve this function it by using a mathematical formula instead.</span><br><span class="line"></span><br><span class="line">Here&#x27;s the more efficient version:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sum_of_n</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">return</span> n * (n + <span class="number">1</span>) // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public int SumOfN(int n)  </span><br><span class="line">&#123;  </span><br><span class="line">    return n * (n + 1) / 2;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>此版本仍返回正确的结果，但其时间复杂性现在为 O (1)，这使得它的效率提高了很多。</p>
+<h2 id="重构低效代码"><a href="#重构低效代码" class="headerlink" title="重构低效代码"></a>重构低效代码</h2><p>更好的代码不容易出现 bug 且更易于维护，Azure OpenAI 模型可以帮助指导开发人员如何重构其代码。</p>
+<p>请考虑以下函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculateTotalPrice</span>(<span class="params">item, quantity</span>):</span><br><span class="line">    <span class="keyword">if</span> item == <span class="string">&#x27;apple&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> quantity * <span class="number">0.5</span></span><br><span class="line">    <span class="keyword">elif</span> item == <span class="string">&#x27;banana&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> quantity * <span class="number">0.75</span></span><br><span class="line">    <span class="keyword">elif</span> item == <span class="string">&#x27;orange&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> quantity * <span class="number">0.6</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public double CalculateTotalPrice(string item, int quantity)</span><br><span class="line">&#123;</span><br><span class="line">    if (item == &quot;apple&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        return quantity * 0.5;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (item == &quot;banana&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        return quantity * 0.75;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (item == &quot;orange&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">        return quantity * 0.6;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此代码根据特定项的名称和数量计算其总价。 但是，代码不是模块化的，可能难以维护。 将其与重构请求一起提供给模型时，响应如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">item_prices = &#123;  </span><br><span class="line">    <span class="string">&#x27;apple&#x27;</span>: <span class="number">0.5</span>,  </span><br><span class="line">    <span class="string">&#x27;banana&#x27;</span>: <span class="number">0.75</span>,  </span><br><span class="line">    <span class="string">&#x27;orange&#x27;</span>: <span class="number">0.6</span>  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_total_price</span>(<span class="params">item, quantity</span>):  </span><br><span class="line">    price = item_prices.get(item, <span class="number">0</span>)  </span><br><span class="line">    <span class="keyword">return</span> quantity * price  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">static Dictionary&lt;string, double&gt; itemPrices = new Dictionary&lt;string, double&gt;()  </span><br><span class="line">&#123;  </span><br><span class="line">    &#123;&quot;apple&quot;, 0.5&#125;,  </span><br><span class="line">    &#123;&quot;banana&quot;, 0.75&#125;,  </span><br><span class="line">    &#123;&quot;orange&quot;, 0.6&#125;  </span><br><span class="line">&#125;;  </span><br><span class="line"></span><br><span class="line">static double CalculateTotalPrice(string item, int quantity)  </span><br><span class="line">&#123;  </span><br><span class="line">    double price;  </span><br><span class="line">    if (!itemPrices.TryGetValue(item, out price))  </span><br><span class="line">    &#123;  </span><br><span class="line">        price = 0;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return quantity * price;  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>除了代码，模型还提供了重构的说明。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In this refactored code, we&#x27;ve created an object called itemPrices that maps item names to their </span><br><span class="line">prices. We&#x27;ve also simplified the calculateTotalPrice function by using the itemPrices object to look </span><br><span class="line">up the price of the item, rather than using a series of if/else statements. This makes the code more </span><br><span class="line">modular and easier to maintain, and also reduces the risk of introducing bugs in the future.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Azure OpenAI 模型可以将代码从一种语言转换为另一种语言，而不考虑原始语言。</strong></p>
+<p> <strong>提供给模型的上下文越多，响应可能就越准确。</strong></p>
+<p> <strong>Azure OpenAI 可以通过为你生成代码来提高你的效率和生产力。</strong></p>
+<h1 id="Azure-OpenAI生成图像"><a href="#Azure-OpenAI生成图像" class="headerlink" title="Azure OpenAI生成图像"></a>Azure OpenAI生成图像</h1><p>借助 Azure OpenAI 服务，可以使用大型语言模型 (LLM) 基于自然语言提示生成内容。 其中一个模型是 DALL-E 图像生成模型，它能够基于所需图像的自然语言说明创建原始图形内容。</p>
+<p>使用 AI 生成图形的能力有很多应用；包括为文章或营销材料创建插图或逼真的图像，生成独特的产品或公司徽标，或任何可描述所需图像的场景。</p>
+<p>本模块介绍如何在 Azure OpenAI 服务的实例中使用 DALL-E 模型，并检索它生成的图像。</p>
+<h2 id="什么是-DALL-E？"><a href="#什么是-DALL-E？" class="headerlink" title="什么是 DALL-E？"></a>什么是 DALL-E？</h2><p>DALL-E 是一个基于神经网络的模型，可以从自然语言输入生成图形数据。 更简单地说，你可以向 DALL-E 提供描述，它可以生成相应的图像。</p>
+<p>例如，可以将以下自然语言提示提交到 DALL-E：</p>
+<p>摩托车上的松鼠</p>
+<p>此提示可能会生成图形输出，如下图所示：</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/squirrel-on-a-motorcycle.png" alt="A picture of a squirrel on a motorcycle."></p>
+<p>DALL-E 生成的图像是原创的；不是从特选图像目录中检索的。 换句话说，DALL-E 不是用于查找合适图像的搜索系统 - 它是一种人工智能 (AI) 模型，可根据训练数据生成新图像。</p>
+<h2 id="探索-Azure-OpenAI-Studio-中的-DALL-E"><a href="#探索-Azure-OpenAI-Studio-中的-DALL-E" class="headerlink" title="探索 Azure OpenAI Studio 中的 DALL-E"></a>探索 Azure OpenAI Studio 中的 DALL-E</h2><p>已完成</p>
+<p>若要试用 DALL-E，可以在已批准访问该服务的 Azure 订阅中预配 Azure OpenAI 服务资源，并使用 DALL-E 操场提交提示并查看生成的图像。</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/dall-e-playground.png" alt="Azure OpenAI Studio 中的 DALL-E 操场的屏幕截图。"></p>
+<p>使用操场时，可以调整设置以指定：</p>
+<ul>
+<li>生成的图像分辨率（大小）。 可用大小为 <code>256x256</code>、<code>512x512</code>、<code>1024x1024</code>（即默认值）或 <code>1024x1792</code>。</li>
+<li>要生成的图像样式（如 <code>vivid</code> 或 <code>natural</code>）。</li>
+<li>图像质量（从 <code>standard</code> 或 <code>hd</code> 中选择）。</li>
+</ul>
+<h2 id="通过-Azure-OpenAI-REST-API-使用-DALL-E-模型"><a href="#通过-Azure-OpenAI-REST-API-使用-DALL-E-模型" class="headerlink" title="通过 Azure OpenAI REST API 使用 DALL-E 模型"></a>通过 Azure OpenAI REST API 使用 DALL-E 模型</h2><p>可以通过 Azure OpenAI 服务 REST API 从应用程序中使用 DALL-E 模型。</p>
+<p>若要对服务进行 REST 调用，需要 Azure 中预配的 Azure OpenAI 服务资源的终结点和授权密钥。 通过将 POST 请求提交到标头中的授权密钥的服务终结点来启动图像生成过程。 请求必须在 JSON 正文中包含以下参数：</p>
+<ul>
+<li><strong>prompt</strong>：对要生成的图像的说明。</li>
+<li><strong>n</strong>：要生成的图像数。</li>
+<li><strong>size</strong>：要生成的图像的分辨率（256x256、512x512 或 1024x1024）。</li>
+</ul>
+<p>例如，下面的 JSON 可以用来生成一个 512 x 512 的獾穿着燕尾服的图像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;prompt&quot;: &quot;A badger wearing a tuxedo&quot;,</span><br><span class="line">    &quot;n&quot;: 1,</span><br><span class="line">    &quot;size&quot;: &quot;512x512&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始请求的结果不会立即返回映像生成过程的结果。 相反，响应包含一个操作位置标头，其中包含回调服务的 URL，应用程序代码可以轮询该 URL，直到图像生成的结果准备就绪。</p>
+<p>操作成功后，将返回类似于以下 JSON 的响应：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;created&quot;: 1686780744,</span><br><span class="line">    &quot;expires&quot;: 1686867152,</span><br><span class="line">    &quot;id&quot;: &quot;6d765598-eeee-4f49-885d-03ee1c8f9b02&quot;,</span><br><span class="line">    &quot;result&quot;: &#123;</span><br><span class="line">        &quot;created&quot;: 1686780744,</span><br><span class="line">        &quot;data&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;url&quot;: &quot;https://dalleproduse.....png&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;status&quot;: &quot;succeeded&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果元素包括 url 元素的集合，每个元素都引用从提示生成的 PNG 图像文件。 在此示例中，文件可能如下图所示：</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/badger-in-a-tuxedo.png" alt="A picture of a badger wearing a tuxedo."></p>
+<p><strong>DALL-E 模型用于基于自然语言提示生成图像。</strong><br><strong>DALL-E 操场用于探索图像生成模型。</strong><br><strong>生成的图像数在 n 参数中指定。</strong></p>
+<h1 id="检索增强生成-RAG"><a href="#检索增强生成-RAG" class="headerlink" title="检索增强生成 (RAG)"></a>检索增强生成 (RAG)</h1><p>借助 Azure OpenAI，开发人员可以通过将支持的 AI 聊天模型连接到自己的数据来实现检索增强生成 (RAG)。 这些模型可以引用特定数据源来提供有根据的响应，从而增强 AI 模型在创建响应时的功能。</p>
+<p>在本模块中，你将了解如何使用 Azure OpenAI 添加自己的数据来实现 RAG，并基于这两个数据生成响应。</p>
+<h2 id="使用-Azure-OpenAI-服务了解检索增强生成-RAG"><a href="#使用-Azure-OpenAI-服务了解检索增强生成-RAG" class="headerlink" title="使用 Azure OpenAI 服务了解检索增强生成 (RAG)"></a>使用 Azure OpenAI 服务了解检索增强生成 (RAG)</h2><p>使用 Azure OpenAI 的 RAG 支持开发人员使用受支持的 AI 聊天模型来引用特定信息源以使响应落地。 通过添加此信息，模型可以引用提供的特定数据及其预先训练的知识，从而提供更有效的响应。</p>
+<p>Azure OpenAI 通过将预先训练的模型连接到自己的数据源来启用 RAG。 基于自己数据的 Azure OpenAI 可利用 Azure AI 搜索的搜索功能将相关数据块添加到提示。 在将数据放入 AI 搜索索引后，基于数据的 Azure OpenAI 会执行以下步骤：</p>
+<ol>
+<li>接收用户提示。</li>
+<li>确定提示的相关内容和意图。</li>
+<li>使用该内容和意向查询搜索索引。</li>
+<li>将搜索结果数据块与系统消息和用户提示一起插入到 Azure OpenAI 提示中。</li>
+<li>将完整的提示发送到 Azure OpenAI。</li>
+<li>将响应和数据引用（如果有）返回给用户。</li>
+</ol>
+<p>默认情况下，基于数据的 Azure OpenAI 鼓励（但不要求）模型仅使用你的数据做出响应。 连接数据时，可以取消选择此设置，这可能会导致模型选择使用其预先训练的知识，而不是你的数据。</p>
+<h2 id="微调-vs-RAG"><a href="#微调-vs-RAG" class="headerlink" title="微调 vs.RAG"></a>微调 vs.RAG</h2><p>微调是一种用于通过使用其他训练数据的数据集训练现有基础模型（例如 <code>gpt-35-turbo</code>）来创建自定义模型的技术。 与单独的提示工程相比，微调可产生更高质量的请求，根据比提示中更大的示例自定义模型，并让用户能在提供更少示例的情况下获得相同的高质量响应。 但微调的处理过程既昂贵又耗时，应仅在必要时采用。</p>
+<p>基于你的数据的、使用 Azure OpenAI 的 RAG 还是使用无状态 API 连接到模型，这样就无需使用数据训练自定义模型，并简化了与 AI 模型的交互。 AI 搜索首先查找有用的信息来回答提示，并将此作为接地数据添加到提示，Azure OpenAI 则根据该信息产生响应。</p>
+<h2 id="添加自己的数据源"><a href="#添加自己的数据源" class="headerlink" title="添加自己的数据源"></a>添加自己的数据源</h2><p>在聊天操场中通过 Azure OpenAI Studio 添加自己的数据。 然后使用添加的数据源来增强发送到模型的提示。 添加数据时，可以选择上传数据文件、使用 Blob 存储帐户中的数据或连接到现有的 AI 搜索索引。</p>
+<p>如果要上传或使用存储帐户中已有的文件，则 Azure OpenAI 支持的数据格式包括 <code>.md</code>、<code>.txt</code>、<code>.html</code>、<code>.pdf</code> 以及 Microsoft Word 和 PowerPoint 文件。 如果其中任何文件包含图形或图像，则响应质量取决于对视觉内容提取文本的效果。</p>
+<p>上传数据或连接到存储帐户中的文件时，建议使用 Azure OpenAI Studio 创建搜索资源和索引。 通过此方式添加数据，可以在插入索引时进行适当的分块，从而产生更好的响应。 如果使用大型文本文件或表单，则应使用可用的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/use-your-data#ingesting-your-data-into-azure-cognitive-search?azure-portal=true">数据准备脚本</a>来提高 AI 模型的准确性。</p>
+<p>为 AI 搜索服务启用<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/search/semantic-search-overview?azure-portal=true">语义搜索</a>可以优化搜索数据索引的结果，并且可能会收到更高质量的响应和引文。 但启用语义搜索可能会增加搜索服务的成本。</p>
+<h2 id="连接数据"><a href="#连接数据" class="headerlink" title="连接数据"></a>连接数据</h2><p>要连接数据，请导航到 Azure OpenAI Studio 中的聊天操场，然后在“助手设置”窗格中选择“添加数据”选项卡。 选择“添加数据源”按钮以连接数据。 系统提示将引导你设置与每个数据源之间的连接，并将该数据放入搜索索引。</p>
+<p>如果使用的是自己的索引（不是通过 Azure OpenAI Studio 创建的索引），则能通过其中一个页面指定列映射。 请务必提供准确的字段（尤其是内容数据），让模型能够提供更好的响应。</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/use-own-data-azure-openai/media/index-data-mapping.png" alt="Screenshot of Azure OpenAI Studio index field mapping."></p>
+<h2 id="使用自己的数据与模型聊天"><a href="#使用自己的数据与模型聊天" class="headerlink" title="使用自己的数据与模型聊天"></a>使用自己的数据与模型聊天</h2><p>可以在 Azure AI Studio 中通过聊天操场或 API 对自己的数据使用带 Azure OpenAI 的 RAG。</p>
+<h2 id="令牌注意事项和建议的设置"><a href="#令牌注意事项和建议的设置" class="headerlink" title="令牌注意事项和建议的设置"></a>令牌注意事项和建议的设置</h2><p>由于基于自有数据的带 Azure OpenAI 的 RAG 在提示符中包含索引的搜索结果，因此请务必了解这会如何影响令牌分配。 每次调用模型都包括系统消息、用户提示、对话历史记录、检索的搜索文档、内部提示和模型响应的令牌。</p>
+<p>例如，系统消息是模型指令的有用参考，并且包含在每次调用中。 虽然系统消息没有令牌限制，但使用自己的数据时，如果超过 200 个令牌，系统消息将被截断。 使用自己的数据为 1500 个令牌时，模型的响应也会受到限制。</p>
+<p>由于这些令牌限制，建议在调用中限制问题长度和对话历史记录长度。 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/advanced-prompt-engineering?azure-portal=true">提示工程技术</a>（例如分解任务和思维提示链）可以帮助模型更有效地响应。</p>
+<h2 id="使用-API"><a href="#使用-API" class="headerlink" title="使用 API"></a>使用 API</h2><p>将 API 与你自己的数据配合使用时，需要指定存储数据的数据源。 每次调用时，都需要包含 AI 搜索资源的 <code>endpoint</code>、<code>key</code> 和 <code>indexName</code>。</p>
+<p>请求正文将类似于以下 JSON。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;dataSources&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;type&quot;: &quot;AzureCognitiveSearch&quot;,</span><br><span class="line">            &quot;parameters&quot;: &#123;</span><br><span class="line">                &quot;endpoint&quot;: &quot;&lt;your_search_endpoint&gt;&quot;,</span><br><span class="line">                &quot;key&quot;: &quot;&lt;your_search_endpoint&gt;&quot;,</span><br><span class="line">                &quot;indexName&quot;: &quot;&lt;your_search_index&gt;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;messages&quot;:[</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;role&quot;: &quot;system&quot;, </span><br><span class="line">            &quot;content&quot;: &quot;You are a helpful assistant assisting users with travel recommendations.&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;role&quot;: &quot;user&quot;, </span><br><span class="line">            &quot;content&quot;: &quot;I want to go to New York. Where should I stay?&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用自己的数据时的调用需要发送到与调用基础模型（包括 <code>extensions</code>）时使用的终结点不同的终结点。 调用会发送到类似于下面的 URL。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;your_azure_openai_resource&gt;/openai/deployments/&lt;deployment_name&gt;/chat/completions?api-version=&lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<p>请求还需要包括 <code>Content-Type</code> 和 <code>api-key</code>。</p>
+<h2 id="练习-使用-Azure-OpenAI-服务为-RAG-添加数据"><a href="#练习-使用-Azure-OpenAI-服务为-RAG-添加数据" class="headerlink" title="练习 - 使用 Azure OpenAI 服务为 RAG 添加数据"></a>练习 - 使用 Azure OpenAI 服务为 RAG 添加数据</h2><p>现在，让我们在 Azure OpenAI Studio 中对数据使用 Azure OpenAI。 在本练习中，你将部署 Azure OpenAI 模型、连接示例数据，并根据示例数据生成响应。</p>
+<p>注意</p>
+<p>为了完成本练习，你将需要一个 <a target="_blank" rel="noopener" href="https://azure.microsoft.com/free?azure-portal=true">Azure 订阅</a>。 你还需要请求（并被授予）<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/limited-access?azure-portal=true">Azure OpenAI 访问权限</a>。</p>
+<p>要完成此模块的练习，请启动 VM 并按照说明进行操作。</p>
+<p>注意</p>
+<p>若要完成此练习，你将需要 Microsoft Azure 订阅。 如果你还没有该订阅，可以<a target="_blank" rel="noopener" href="https://azure.microsoft.com/?azure-portal=true">注册一个</a>。</p>
+<p>如果需要为此练习设置计算机，可以使用此<a target="_blank" rel="noopener" href="https://microsoftlearning.github.io/mslearn-ai-services/Instructions/setup.html?azure-portal=true">设置指南</a>，然后按照下面链接的练习说明进行操作。 请注意，设置指南适用于多个开发练习，其中可能包括该特定练习不需要的软件。 此外，由于可能的操作系统和设置配置的范围太广，如果你选择在自己的计算机上完成此练习，我们将无法提供支持。</p>
+<p>要在自己的计算机上按照这些说明进行操作，可以按照<a target="_blank" rel="noopener" href="https://aka.ms/mslearn-openai-own-data?azure-portal=true">此处的练习说明</a>进行操作。</p>
+<p>提示</p>
+<p>完成练习后，如果你已完成对 Azure AI 服务的学习，请删除在练习期间创建的 Azure 资源。</p>
+<p> <strong>分解任务并使用思维提示链可帮助模型在令牌限制内更有效地做出响应。</strong><br><strong>使用 Azure OpenAI Studio，可以在插入索引时进行适当的分块，从而产生更好的响应。</strong><br> <strong>基于数据的 Azure OpenAI 支持开发人员使用受支持的 AI 聊天模型来引用特定数据源以使响应落地。</strong></p>
+<h1 id="生成式-AI-基础"><a href="#生成式-AI-基础" class="headerlink" title="生成式 AI 基础"></a>生成式 AI 基础</h1><p>生成式 AI 是有史以来最强大的一项技术进步。 它使开发人员能够构建这样的应用程序：使用利用 Internet 上的大量数据进行训练的机器学习模型来生成与人类创建的内容没有差别的新内容。</p>
+<p>生成式 AI 的功能十分强大，但也带来了一些危险，并且要求数据科学家、开发人员和参与创建生成式 AI 解决方案的其他人采用负责任的方法来识别、衡量和缓解风险。</p>
+<p>本模块探讨了一组由 Microsoft 专家定义的负责任生成式 AI 指南。 负责任生成式 AI 指南基于 Microsoft 的负责任 AI 标准，以考虑与生成式 AI 模型相关的特定注意事项。</p>
+<h2 id="生成式-AI-解决方案"><a href="#生成式-AI-解决方案" class="headerlink" title="生成式 AI 解决方案"></a>生成式 AI 解决方案</h2><p>Microsoft 有关负责任生成式 AI 的指南实用且可操作。 它定义了一个四阶段过程，用于在使用生成式模型时为负责任的 AI 制定和实施计划。 该过程的四个阶段分别为：</p>
+<p>识别与计划解决方案相关的潜在危害。<br>衡量解决方案生成的输出中是否存在这些危害。<br>缓解解决方案中多个层级的危害，以最大程度地减少其存在和影响，确保就用户的潜在风险进行透明的沟通。<br>通过定义并遵循部署和运营就绪计划来负责任地运营解决方案。</p>
+<h2 id="识别潜在危害"><a href="#识别潜在危害" class="headerlink" title="识别潜在危害"></a>识别潜在危害</h2><p>负责任生成式 AI 过程的第一个阶段是识别可能影响计划解决方案的潜在危害。 此阶段包含四个步骤，如下所示：</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/identify-harms.png" alt="Diagram showing steps to identify, prioritize, test, and share potential harms."></p>
+<ol>
+<li>识别潜在危害</li>
+<li>确定已识别危害的优先级</li>
+<li>测试并验证优先的危害</li>
+<li>记录并共享已验证的危害</li>
+</ol>
+<h2 id="1：识别潜在危害"><a href="#1：识别潜在危害" class="headerlink" title="1：识别潜在危害"></a>1：识别潜在危害</h2><p>与生成式 AI 解决方案相关的潜在危害取决于多种因素，包括用于生成输出的特定服务和模型，以及用于自定义输出的任何微调或基础数据。 生成式 AI 解决方案中的一些常见潜在危害类型包括：</p>
+<ul>
+<li>生成具有攻击性、贬义性或歧视性的内容。</li>
+<li>生成包含不准确事实的内容。</li>
+<li>生成鼓励或支持非法或不道德行为或做法的内容。</li>
+</ul>
+<p>若要完全了解解决方案中服务和模型的已知限制和行为，请参阅可用文档。 例如，Azure OpenAI 服务包括<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/transparency-note">透明度说明</a>，可用于了解与服务及其包含的模型相关的特定注意事项。 此外，各模型开发人员可能会提供相应的文档，例如 <a target="_blank" rel="noopener" href="https://cdn.openai.com/papers/gpt-4-system-card.pdf">GPT-4 模型的 OpenAI 系统卡</a>。</p>
+<p>请考虑查看 <a target="_blank" rel="noopener" href="https://aka.ms/RAIImpactAssessmentGuidePDF">Microsoft 负责任 AI 影响评估指南</a>中的指南，并使用关联的<a target="_blank" rel="noopener" href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE5cmFk">负责任 AI 影响评估模板</a>来记录潜在的危害。</p>
+<h2 id="2：确定危害的优先级"><a href="#2：确定危害的优先级" class="headerlink" title="2：确定危害的优先级"></a>2：确定危害的优先级</h2><p>对于已确定的每个潜在危害，请评估其发生的可能性以及由此产生的影响程度（如果存在）。 然后，使用此信息优先处理最可能且影响最大的危害。 此优先级排序将使你能够专注于查找和缓解解决方案中最有害的风险。</p>
+<p>优先级排序必须考虑到解决方案的预期用途以及滥用的可能性，并且可能是主观的。 例如，假设你正在开发一个智能厨房助手，为厨师和业余厨师提供食谱帮助。 潜在的危害可能包括：</p>
+<ul>
+<li>该解决方案提供的烹饪时间不准确，导致食物未煮熟，可能导致生病。</li>
+<li>当提示时，该解决方案提供了一种致命毒药的配方，这种毒药可以用日常成分制成。</li>
+</ul>
+<p>虽然这两种结果都不理想，但你可能会认为，该解决方案支持制造致命毒药的潜力比制造未煮熟食物的潜力具有更大的影响。 但是，鉴于该解决方案的核心使用场景，你可能还会认为该解决方案推荐不准确烹饪时间的频率可能远高于明确要求提供毒药食谱的用户数。 最终优先级确定是开发团队讨论的主题，这可能涉及咨询策略或法律专家，以便充分确定优先级。</p>
+<h2 id="3：测试和验证是否存在危害"><a href="#3：测试和验证是否存在危害" class="headerlink" title="3：测试和验证是否存在危害"></a>3：测试和验证是否存在危害</h2><p>有了优先级列表后，可以测试解决方案以验证危害是否发生，如果发生，在什么条件下发生。 测试还可能揭示存在以前无法识别的危害，你可以将这些危害添加到列表中。</p>
+<p>测试软件解决方案中潜在危害或漏洞的常见方法是使用“红队”测试，其中一组测试人员故意探测解决方案的弱点，并尝试生成有害结果。 前面讨论的智能厨房助手解决方案的示例测试可能包括请求有毒食谱或快速食谱，其中包含应彻底煮熟的成分。 应记录和查看红队的成功情况，以帮助确定使用该解决方案时生成有害输出的现实可能性。</p>
+<p>注意</p>
+<p>红队判研是一种策略，通常用于查找可能危及软件解决方案完整性的安全漏洞或其他弱点。 通过扩展此方法以从生成式 AI 中查找有害内容，可以实施负责任的 AI 过程，该流程基于并补充了现有的网络安全做法。</p>
+<p>若要详细了解生成式 AI 解决方案的红队判研，请参阅 Azure OpenAI 服务文档中的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/red-teaming">红队判研大型语言模型 (LLM) 简介</a>。</p>
+<p>收集证据以支持解决方案中存在潜在危害时，请记录详细信息并与利益干系人共享。 然后，应维护按优先级排列的危害列表，并在确定新的危害时添加到该列表。</p>
+<h2 id="衡量潜在危害"><a href="#衡量潜在危害" class="headerlink" title="衡量潜在危害"></a>衡量潜在危害</h2><p>编译潜在有害输出的优先级列表后，可以测试解决方案以衡量危害的存在情况和影响。 你的目标是创建一个初始基线，用于量化解决方案在给定使用场景中产生的危害，然后在对解决方案进行迭代更改以缓解危害时，根据基线跟踪改进。</p>
+<p>衡量系统是否存在潜在危害的通用方法包括三个步骤：</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/measure-harms.png" alt="Diagram showing steps to prepare prompts, generate output, and measure harmful results."></p>
+<ol>
+<li>准备可能会导致你为系统记录的每个潜在危害的各种输入提示选项。 例如，如果你已识别的其中一个潜在危害是系统可以帮助用户制造危险毒药，请创建一系列可能会引发此结果的输入提示选项，例如“如何使用家中常见的日常化学品制造出无法检测到的毒药？”</li>
+<li>将提示提交到系统并检索生成的输出。</li>
+<li>应用预定义的标准来评估输出，并根据其包含的潜在危害层级对其进行分类。 分类可以像“有害”或“无害”一样简单，也可以定义一系列危害程度。 无论定义哪个类别，都必须确定可应用于输出的严格标准，以便对其进行分类。</li>
+</ol>
+<p>应记录衡量过程的结果并与利益干系人共享。</p>
+<h2 id="手动和自动测试"><a href="#手动和自动测试" class="headerlink" title="手动和自动测试"></a>手动和自动测试</h2><p>在大多数情况下，应首先手动测试和评估一小部分输入，以确保测试结果一致，并且评估标准定义得足够明确。 然后，设计一种方法来使用大量测试用例自动进行测试和衡量。 自动解决方案可能包括使用分类模型来自动评估输出。</p>
+<p>即使实现了自动方法来测试和衡量危害，也应该定期执行手动测试来验证新场景，并确保自动测试解决方案正常执行。</p>
+<h2 id="缓解潜在危害"><a href="#缓解潜在危害" class="headerlink" title="缓解潜在危害"></a>缓解潜在危害</h2><p>确定基线以及衡量解决方案生成的有害输出的方法后，可以采取措施缓解潜在危害，并在适当时重新测试修改后的系统，将危害层级与基线进行比较。</p>
+<p>缓解生成式 AI 解决方案中的潜在危害涉及分层方法，其中缓解技术可在四个层级中的每一层级应用，如下所示：</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/mitigate-harms.png" alt="Diagram showing the model, safety system, application, and positioning layers of a generative AI solution."></p>
+<ol>
+<li><strong>Model</strong></li>
+<li><strong>安全系统</strong></li>
+<li><strong>元提示和接地</strong></li>
+<li><strong>用户体验</strong></li>
+</ol>
+<h2 id="1：模型层级"><a href="#1：模型层级" class="headerlink" title="1：模型层级"></a>1：模型层级</h2><p>模型层级由生成式 AI 模型组成，是解决方案的核心。 例如，解决方案可能围绕 GPT-4 等模型构建。</p>
+<p>可在模型层级应用的缓解措施包括：</p>
+<ul>
+<li>选择适合预期解决方案用途的模型。 例如，虽然 GPT-4 可能是一个功能强大且用途广泛的模型，但在只需对小型特定文本输入进行分类的解决方案中，更简单的模型便可提供所需的功能，同时降低生成有害内容的风险。</li>
+<li>使用自己的训练数据<em>微调</em>基础模型，使其生成的响应更有可能与你的解决方案场景相关并契合它的范围。</li>
+</ul>
+<h2 id="2：安全系统层级"><a href="#2：安全系统层级" class="headerlink" title="2：安全系统层级"></a>2：安全系统层级</h2><p>安全系统层级包括平台级配置和功能，可帮助缓解危害。 例如，Azure OpenAI 服务包括对内容筛选器的支持，这些内容筛选器应用标准，根据将四个潜在危害类别（仇恨、性、暴力和自残）的内容分类为四个严重性级别（安全、低、中和高）来禁止显示提示和响应。</p>
+<p>其他安全系统层级缓解措施可能包括滥用检测算法和警报通知，前者用于确定解决方案是否被系统性滥用（例如通过来自机器人的大量自动请求），后者用于快速响应潜在的系统滥用或有害行为。</p>
+<h2 id="3：元提示和接地层"><a href="#3：元提示和接地层" class="headerlink" title="3：元提示和接地层"></a>3：元提示和接地层</h2><p>元提示和接地层侧重于提交到模型的提示的构造。 可在此层应用的危害缓解技术包括：</p>
+<ul>
+<li>指定为模型定义行为参数的元提示或系统输入。</li>
+<li>应用提示工程将接地数据添加到输入提示，最大限度地提高相关、无害输出的可能性。</li>
+<li>使用检索增强生成 (RAG) 方法从受信任的数据源检索上下文数据并将其包含在提示中。</li>
+</ul>
+<h2 id="4：用户体验层"><a href="#4：用户体验层" class="headerlink" title="4：用户体验层"></a>4：用户体验层</h2><p>用户体验层包括软件应用程序（用户通过软件应用程序与生成式 AI 模型进行交互）以及向用户和利益干系人描述解决方案使用的文档或其他用户资料。</p>
+<p>设计应用程序用户界面以将输入限制为特定主题或类型，或者应用输入和输出验证可以降低潜在有害响应的风险。</p>
+<p>生成式 AI 解决方案的文档和其他说明应适当透明地说明系统的功能和限制、其所基于的模型以及你已实施的缓解措施可能无法始终解决的任何潜在危害。</p>
+<h2 id="运营负责任的生成式-AI-解决方案"><a href="#运营负责任的生成式-AI-解决方案" class="headerlink" title="运营负责任的生成式 AI 解决方案"></a>运营负责任的生成式 AI 解决方案</h2><p>识别潜在危害、开发一种方法来衡量其存在情况并在解决方案中实施缓解措施后，就可以准备好发布解决方案了。 在发布之前，需要考虑一些注意事项，以帮助你确保发布和后续运营成功。</p>
+<h2 id="完成发布前评审"><a href="#完成发布前评审" class="headerlink" title="完成发布前评审"></a>完成发布前评审</h2><p>在发布生成式 AI 解决方案之前，请确定组织和行业的各种合规性要求，并确保相应的团队有机会查看系统及其文档。 常见的合规性评审包括：</p>
+<ul>
+<li>Legal</li>
+<li>隐私</li>
+<li>安全性</li>
+<li>辅助功能</li>
+</ul>
+<h2 id="发布和运营解决方案"><a href="#发布和运营解决方案" class="headerlink" title="发布和运营解决方案"></a>发布和运营解决方案</h2><p>成功的发布需要一些规划和准备。 遵循以下指南：</p>
+<ul>
+<li>设计分阶段交付计划，首先将解决方案发布给一组有限的用户。 通过这种方法，你可以在向更广泛的受众发布之前收集反馈并识别问题。</li>
+<li>创建事件响应计划，其中包括响应意外事件所花费的估计时间。</li>
+<li>创建回滚计划，定义在发生事件时将解决方案还原到先前状态的步骤。</li>
+<li>实现在发现有害系统响应时立即阻止这些响应的功能。</li>
+<li>实现在发生系统滥用时阻止特定用户、应用程序或客户端 IP 地址的功能。</li>
+<li>实现一种让用户提供反馈和报告问题的方法。 特别是，使用户能够将生成的内容报告为“不准确”、“不完整”、“有害”、“攻击性”或其他问题。</li>
+<li>跟踪遥测数据，使你能够确定用户满意度并确定功能差距或可用性挑战。 收集的遥测数据应符合隐私法以及你自己组织的策略和对用户隐私的承诺。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://microsoftlearning.github.io/mslearn-ai-fundamentals/Instructions/Labs/14-azure-openai-content-filters.html#before-you-start">https://microsoftlearning.github.io/mslearn-ai-fundamentals/Instructions/Labs/14-azure-openai-content-filters.html#before-you-start</a></p>
+
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/06/04/Azure-openai/">OLDER&nbsp;&gt;</a>
+      
+        
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
