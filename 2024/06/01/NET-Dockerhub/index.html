@@ -119,17 +119,30 @@
 <p>err denied requested access to the resource is denied</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">logout</span></span><br><span class="line">docker login</span><br></pre></td></tr></table></figure>
 <p>err error response from deamon:get “<a target="_blank" rel="noopener" href="https://registry-1.docket.io/v2/%22:unauthorized:incorrect">https://registry-1.docket.io/v2/&quot;:unauthorized:incorrect</a> username or password<br>用户密码错误</p>
-<p><a target="_blank" rel="noopener" href="https://docs.docker.com/go/access-tokens">https://docs.docker.com/go/access-tokens</a><br><a target="_blank" rel="noopener" href="https://docs.docker.com/security/for-developers/access-tokens/#create-an-access-token">https://docs.docker.com/security/for-developers/access-tokens/#create-an-access-token</a><br><img src="https://img-blog.csdnimg.cn/direct/9ee84c8843894424af827633ed2a8953.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/direct/2b399b16ddbb4afdaa67b2d573198eab.png" alt="在这里插入图片描述"></p>
+<p><a target="_blank" rel="noopener" href="https://docs.docker.com/go/access-tokens">https://docs.docker.com/go/access-tokens</a><br><a target="_blank" rel="noopener" href="https://docs.docker.com/security/for-developers/access-tokens/#create-an-access-token">https://docs.docker.com/security/for-developers/access-tokens/#create-an-access-token</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker login  -u qxxx</span><br><span class="line">dckr_pat_o0ZpPxxx</span><br><span class="line"></span><br><span class="line">docker tag mymvcapp:latest xx/mymvcapp:dev</span><br><span class="line">docker push  &lt;your-dockerhub-username&gt;/mymvcapp:dev</span><br></pre></td></tr></table></figure>
 
-<p>推送成功后可以在hub仓库查看<br><img src="https://img-blog.csdnimg.cn/direct/2e23460851ab4b42b0764aeb4323610d.png" alt="在这里插入图片描述"></p>
+<p>推送成功后可以在hub仓库查看</p>
 <p>运行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 18081:8080 -p 18082:8081 --name mywebmvcapp mymvcapp:latest</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdnimg.cn/direct/a39001e4cc5549c2956da3c6bf36deae.png" alt="在这里插入图片描述"></p>
-<h1 id="💼通过VS打包发布"><a href="#💼通过VS打包发布" class="headerlink" title="💼通过VS打包发布"></a>💼通过VS打包发布</h1><p>项目右键-发布<br><img src="https://img-blog.csdnimg.cn/direct/d6b689185dc94d75a16c030eb762c728.png" alt="在这里插入图片描述"><br>用户名密码<br><img src="https://img-blog.csdnimg.cn/direct/ffe0866f4c434e59b279f358ceec1442.png" alt="在这里插入图片描述"><br>执行发布<br><img src="https://img-blog.csdnimg.cn/direct/51d88c6fcb5a44a2bf04000095353d5a.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/direct/3cb6d5b4e07044b58f32f526edbab441.png" alt="在这里插入图片描述"><br>推送成功后可 <strong>docker run username&#x2F;mymvcapp:latest</strong> 运行</p>
+
+
+
+
 <p>END</p>
 <!--
+
+
+# 💼通过VS打包发布
+项目右键-发布
+
+用户名密码
+
+执行发布
+
+推送成功后可 **docker run username/mymvcapp:latest** 运行
+
 
 docker desktop push
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/direct/1dc65cc259ee4815b1fb8d0e1ce472bb.png)

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Azure openai 使用 Azure OpenAI 服务生成自然语言解决方案 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jun 04, 2024
+  </h3>
+  <h1>
+    Azure openai 使用 Azure OpenAI 服务生成自然语言解决方案
+  </h1>
+  <div class="content markdown-body">
+    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Azure OpenAI 为开发人员提供了一个平台，用于在 Python 和 C# SDK 以及 REST API 的帮助下向其应用程序添加人工智能功能。 该平台提供了各种 AI 模型，每个模型都专用于不同的任务，这些任务可通过 Azure OpenAI 服务进行部署。</p>
+<p>本模块指导你了解如何将 Azure OpenAI 构建到自己的应用程序中，为你提供一个使用生成式 AI 开发解决方案的起点。</p>
+<h2 id="将-Azure-OpenAI-集成到应用中"><a href="#将-Azure-OpenAI-集成到应用中" class="headerlink" title="将 Azure OpenAI 集成到应用中"></a>将 Azure OpenAI 集成到应用中</h2><p>Azure OpenAI 提供 C# 和 Python SDK 以及 REST API，开发人员可以用来向其应用程序添加 AI 功能。 Azure OpenAI 中的生成式 AI 功能通过模型提供。 Azure OpenAI 服务中可用的模型属于不同的系列，每个系列都有自己的重点。 若要使用这些模型之一，需要通过 Azure OpenAI 服务进行部署。</p>
+<p>重要</p>
+<p>Azure OpenAI 已发布，但支持负责任地使用该服务的访问权限有限。 用户需要先<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/overview#how-do-i-get-access-to-azure-openai?azure-portal=true">申请访问权限</a>并获得批准，然后才能创建 Azure OpenAI 资源。</p>
+<h2 id="创建-Azure-OpenAI-资源"><a href="#创建-Azure-OpenAI-资源" class="headerlink" title="创建 Azure OpenAI 资源"></a>创建 Azure OpenAI 资源</h2><p>可以通过 Azure 命令行接口 (CLI) 和 Azure 门户部署 Azure OpenAI 资源。 通过 Azure 门户创建 Azure OpenAI 资源类似于部署单个 Azure AI 服务资源，并且是 Azure AI 服务的一部分。</p>
+<ol>
+<li>导航到 <a target="_blank" rel="noopener" href="https://portal.azure.com/?azure-portal=true">Azure 门户</a></li>
+<li>搜索 Azure OpenAI，将其选中，然后单击“创建”</li>
+<li>为空字段输入适当的值，然后创建资源。</li>
+</ol>
+<p>目前 Azure OpenAI 可能部署的区域有限。 选择距离所在物理位置最近的区域。</p>
+<p>创建资源后，你将获得可在应用中使用的密钥和终结点。</p>
+<h2 id="选择和部署模型"><a href="#选择和部署模型" class="headerlink" title="选择和部署模型"></a>选择和部署模型</h2><p>每个模型系列擅长不同的任务，并且每个系列中模型具有不同的功能。 模型系列分为三个主要系列：</p>
+<ul>
+<li><strong>生成式预训练转换器 (GPT)</strong> - 能够理解和生成自然语言和某些代码的模型。 这些模型最适合常规任务、对话和聊天格式。</li>
+<li><strong>代码</strong>（<code>gpt-3</code> 及更早版本） - 代码模型基于 GPT 模型构建，并通过数百万行代码进行训练。 这些模型可以理解和生成代码，包括解释注释或自然语言以生成代码。 <code>gpt-35-turbo</code> 和更高版本的模型包含此代码功能，而无需单独的代码模型。</li>
+<li>嵌入 - 这些模型可以理解和使用嵌入，这是机器学习模型和算法可以使用的特殊数据格式。</li>
+</ul>
+<p>本模块重点介绍常规 GPT 模型，其他模块将介绍其他模型。</p>
+<p>对于较旧的模型，模型系列和功能会在基础模型的名称中有所体现：如 <code>text-davinci-003</code>，该名称指定它是一个文本模型，具有 <code>davinci</code> 级别的功能，并带有标识符 <code>3</code>。 有关模型、功能级别和命名约定的详细信息，请参阅 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/ai-services/openai/concepts/models?azure-portal=true">Azure OpenAI 模型文档</a>页。</p>
+<p>较新的模型会指定第几代 <code>gpt</code>，以及它们是否为 <code>turbo</code> 版本，例如 <code>gpt-35-turbo</code> 表示 GPT 3.5 Turbo 模型。</p>
+<p>若要部署模型供你使用，请导航到 <a target="_blank" rel="noopener" href="https://oai.azure.com/?azure-portal=true">Azure OpenAI Studio</a> 并转到“部署”页。 本模块后面的实验室详细介绍了如何执行此操作。</p>
+<h2 id="已部署模型的身份验证和规范"><a href="#已部署模型的身份验证和规范" class="headerlink" title="已部署模型的身份验证和规范"></a>已部署模型的身份验证和规范</h2><p>在 Azure OpenAI 中部署模型时，选择一个部署名称来指定它。 配置应用时，需要指定资源终结点、密钥和部署名称，以指定要向其发送请求的部署模型。 这使你能够在同一资源中部署各种模型，并根据任务向相应的模型发出请求。</p>
+<h2 id="提示设计"><a href="#提示设计" class="headerlink" title="提示设计"></a>提示设计</h2><p>输入提示的写入方式在 AI 模型的响应方式中起着很大的作用。 例如，如果出现简单请求（如“什么是 Azure OpenAI”）的提示，通常会获得类似于使用搜索引擎的通用答案。</p>
+<p>但是，如果在你的答复中提供有关所需内容的详细信息，则会获得更具体的答案。 例如，假定出现以下提示：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Classify the following news headline into 1 of the following categories: Business, Tech, Politics, Sport, Entertainment</span><br><span class="line"></span><br><span class="line">Headline 1: Donna Steffensen Is Cooking Up a New Kind of Perfection. The Internet’s most beloved cooking guru has a buzzy new book and a fresh new perspective</span><br><span class="line">Category: Entertainment</span><br><span class="line"></span><br><span class="line">Headline 2: Major Retailer Announces Plans to Close Over 100 Stores</span><br><span class="line">Category:</span><br></pre></td></tr></table></figure>
+
+<p>你可能会在标题下看到“类别:”，其中填写了“业务”。</p>
+<p>可以在 Azure OpenAI Studio Playground 中的“示例”下拉列表中找到与此类似的几个示例。 尽可能详细描述来自模型的响应中所需的内容，你可能会惊讶于它是多么有见地！</p>
+<p>注意</p>
+<p>无法大胆地假设来自 AI 模型的答案是事实或正确。 负责开发和部署 AI 系统的团队或个人应努力识别、衡量和减轻危害。 你有责任验证来自 AI 模型的任何响应，并负责任地使用 AI。 有关如何负责任地使用 Azure OpenAI 模型的进一步指南，请查看 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/transparency-note?azure-portal=true">Microsoft 关于 Azure OpenAI 的透明度说明</a>。</p>
+<p>可在<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/prompt-engineering?azure-portal=true">提示工程</a>文档页中找到更多详细信息。</p>
+<h2 id="可用的终结点"><a href="#可用的终结点" class="headerlink" title="可用的终结点"></a>可用的终结点</h2><p>可以通过 REST API 或当前可用于 Python 和 C# 的 SDK 访问 Azure OpenAI。 可用于与已部署模型交互的终结点的使用方式不同，并且某些终结点只能使用某些模型。 可用的终结点包括：</p>
+<ul>
+<li><strong>完成</strong> - 模型接受一个输入提示，并生成一个或多个预测的完成。 你将在 studio 中看到此操场，但在本模块中不会深入讨论。</li>
+<li><strong>ChatCompletion</strong> - 模型接受聊天对话形式的输入（其中角色使用他们发送的消息指定），然后生成下一个聊天完成。</li>
+<li><strong>嵌入</strong> - 模型接受输入并返回该输入的矢量表示形式。</li>
+</ul>
+<p>例如，<code>ChatCompletion</code> 的输入是每条消息都有明确定义角色的会话：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a helpful assistant, teaching people about AI.&quot;&#125;,</span><br><span class="line">&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Does Azure OpenAI support multiple languages?&quot;&#125;,</span><br><span class="line">&#123;&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Yes, Azure OpenAI supports several languages, and can translate between them.&quot;&#125;,</span><br><span class="line">&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Do other Azure AI Services support translation too?&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当你为 AI 模型提供一个真实的对话时，它可以生成具有更准确的语气、措辞和上下文的更好响应。 <code>ChatCompletion</code> 终结点通过发送与下一个用户消息的聊天历史记录，使 ChatGPT 模型能够进行更真实的对话。</p>
+<p><code>ChatCompletion</code> 还支持非聊天场景，例如摘要或实体提取。 可通过提供简短对话、指定系统信息和所需内容，并让用户输入信息来实现此操作。 例如，如果要生成工作描述，请向 <code>ChatCompletion</code> 提供类似于以下对话输入的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are an assistant designed to write intriguing job descriptions. &quot;&#125;,</span><br><span class="line">&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Write a job description for the following job title: &#x27;Business Intelligence Analyst&#x27;. It should include responsibilities, required qualifications, and highlight benefits like time off and flexible hours.&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意</p>
+<p><code>Completion</code> 适用于所有 <code>gpt-3</code> 生成模型，而 <code>ChatCompletion</code> 是 <code>gpt-4</code> 模型唯一支持的选项，并且是使用 <code>gpt-35-turbo</code> 模型时的首选终结点。 本模块中的实验将 <code>gpt-35-turbo</code> 与 <code>ChatCompletion</code> 终结点结合使用。</p>
+<h2 id="使用-Azure-OpenAI-REST-API"><a href="#使用-Azure-OpenAI-REST-API" class="headerlink" title="使用 Azure OpenAI REST API"></a>使用 Azure OpenAI REST API</h2><p>Azure OpenAI 提供了一个 REST API 用于交互和生成响应，开发人员可以使用它将 AI 功能添加到其应用程序。 本单元介绍 API 的示例用法、输入和输出。</p>
+<p>注意</p>
+<p>在与 API 交互之前，必须在 Azure 门户中创建 Azure OpenAI 资源，在该资源中部署模型，并检索终结点和密钥。 请查看 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/training/modules/get-started-openai/">Azure OpenAI 服务入门</a>，了解如何执行此操作。</p>
+<p>每次调用 REST API 时，都需要 Azure OpenAI 资源的终结点和密钥，以及为部署的模型提供的名称。 在以下示例中，使用以下占位符：</p>
+<table>
+<thead>
+<tr>
+<th>占位符名称</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>YOUR_ENDPOINT_NAME</code></td>
+<td>此基本终结点位于 Azure 门户的“密钥和终结点”部分。 它是资源的基本终结点，例如 <code>https://sample.openai.azure.com/</code>。</td>
+</tr>
+<tr>
+<td><code>YOUR_API_KEY</code></td>
+<td>密钥位于 Azure 门户的“密钥和终结点”部分。 可以在资源中使用任一密钥。</td>
+</tr>
+<tr>
+<td><code>YOUR_DEPLOYMENT_NAME</code></td>
+<td>此部署名称是在 Azure OpenAI Studio 中部署模型时提供的名称。</td>
+</tr>
+</tbody></table>
+<h2 id="聊天完成"><a href="#聊天完成" class="headerlink" title="聊天完成"></a>聊天完成</h2><p>在 Azure OpenAI 资源中部署模型后，可以使用 <code>POST</code> 请求向服务发送提示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl https://YOUR_ENDPOINT_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME/chat/completions?api-version=2023-03-15-preview \</span><br><span class="line">  -H &quot;Content-Type: application/json&quot; \</span><br><span class="line">  -H &quot;api-key: YOUR_API_KEY&quot; \</span><br><span class="line">  -d &#x27;&#123;&quot;messages&quot;:[&#123;&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a helpful assistant, teaching people about AI.&quot;&#125;,</span><br><span class="line">&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Does Azure OpenAI support multiple languages?&quot;&#125;,</span><br><span class="line">&#123;&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Yes, Azure OpenAI supports several languages, and can translate between them.&quot;&#125;,</span><br><span class="line">&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Do other Azure AI Services support translation too?&quot;&#125;]&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>来自 API 的响应将类似于以下 JSON：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;id&quot;: &quot;chatcmpl-6v7mkQj980V1yBec6ETrKPRqFjNw9&quot;,</span><br><span class="line">    &quot;object&quot;: &quot;chat.completion&quot;,</span><br><span class="line">    &quot;created&quot;: 1679001781,</span><br><span class="line">    &quot;model&quot;: &quot;gpt-35-turbo&quot;,</span><br><span class="line">    &quot;usage&quot;: &#123;</span><br><span class="line">        &quot;prompt_tokens&quot;: 95,</span><br><span class="line">        &quot;completion_tokens&quot;: 84,</span><br><span class="line">        &quot;total_tokens&quot;: 179</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;choices&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;message&quot;:</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;role&quot;: &quot;assistant&quot;,</span><br><span class="line">                    &quot;content&quot;: &quot;Yes, other Azure AI Services also support translation. Azure AI Services offer translation between multiple languages for text, documents, or custom translation through Azure AI Services Translator.&quot;</span><br><span class="line">                &#125;,</span><br><span class="line">            &quot;finish_reason&quot;: &quot;stop&quot;,</span><br><span class="line">            &quot;index&quot;: 0</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>REST 终结点允许指定其他可选输入参数，如 <code>temperature</code> 和 <code>max_tokens</code> 等。 如果要在请求中包含任何这些参数，请根据请求将它们添加到输入数据中。</p>
+<h2 id="嵌入"><a href="#嵌入" class="headerlink" title="嵌入"></a>嵌入</h2><p>嵌入对机器学习模型轻松使用的特定格式很有帮助。 若要从输入文本生成嵌入，请向 <code>embeddings</code> 终结点发出 <code>POST</code> 请求。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl https://YOUR_ENDPOINT_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME/embeddings?api-version=2022-12-01 \</span><br><span class="line">  -H &quot;Content-Type: application/json&quot; \</span><br><span class="line">  -H &quot;api-key: YOUR_API_KEY&quot; \</span><br><span class="line">  -d &quot;&#123;\&quot;input\&quot;: \&quot;The food was delicious and the waiter...\&quot;&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>生成嵌入时，请确保在 Azure OpenAI 中使用用于嵌入的模型。 这些模型以 <code>text-embedding</code> 或 <code>text-similarity</code> 开头，具体取决于你要查找的功能。</p>
+<p>来自 API 的响应将类似于以下 JSON：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;object&quot;: &quot;list&quot;,</span><br><span class="line">  &quot;data&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;object&quot;: &quot;embedding&quot;,</span><br><span class="line">      &quot;embedding&quot;: [</span><br><span class="line">        0.0172990688066482523,</span><br><span class="line">        -0.0291879814639389515,</span><br><span class="line">        ....</span><br><span class="line">        0.0134544348834753042,</span><br><span class="line">      ],</span><br><span class="line">      &quot;index&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;model&quot;: &quot;text-embedding-ada:002&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Azure-OpenAI-SDK"><a href="#使用-Azure-OpenAI-SDK" class="headerlink" title="使用 Azure OpenAI SDK"></a>使用 Azure OpenAI SDK</h2><p>除了上一单元中介绍的 REST API 外，用户还可以通过 C# 和 Python SDK 访问 Azure OpenAI 模型。 通过 REST 和这些 SDK 提供相同的功能。</p>
+<p>注意</p>
+<p>在使用任一 SDK 与 API 交互之前，必须在 Azure 门户中创建 Azure OpenAI 资源，在该资源中部署模型，并检索终结点和密钥。 请查看 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/training/modules/get-started-openai/">Azure OpenAI 服务入门</a>，了解如何执行此操作。</p>
+<p>对于本单元中介绍的 SDK，需要 Azure OpenAI 资源的终结点和密钥，以及为部署的模型提供的名称。 在以下代码片段中，使用以下占位符：</p>
+<table>
+<thead>
+<tr>
+<th>占位符名称</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>YOUR_ENDPOINT_NAME</code></td>
+<td>此基本终结点位于 Azure 门户的“密钥和终结点”部分。 它是资源的基本终结点，例如 <code>https://sample.openai.azure.com/</code>。</td>
+</tr>
+<tr>
+<td><code>YOUR_API_KEY</code></td>
+<td>密钥位于 Azure 门户的“密钥和终结点”部分。 可以在资源中使用任一密钥。</td>
+</tr>
+<tr>
+<td><code>YOUR_DEPLOYMENT_NAME</code></td>
+<td>此部署名称是在 Azure OpenAI Studio 中部署模型时提供的名称。</td>
+</tr>
+</tbody></table>
+<h2 id="安装库"><a href="#安装库" class="headerlink" title="安装库"></a>安装库</h2><p>首先，安装首选语言的客户端库。 C# SDK 是 REST API 的 .NET 适应，专为 Azure OpenAI 而构建，但它可用于连接到 Azure OpenAI 资源或非 Azure OpenAI 终结点。 Python SDK 由 OpenAI 生成和维护。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet add package Azure.AI.OpenAI --prerelease</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置应用以访问-Azure-OpenAI-资源"><a href="#配置应用以访问-Azure-OpenAI-资源" class="headerlink" title="配置应用以访问 Azure OpenAI 资源"></a>配置应用以访问 Azure OpenAI 资源</h2><p>每种语言的配置略有不同，但两种语言都需要设置相同的参数。 必需的参数是 <code>endpoint</code>、<code>key</code> 和部署的名称，当向模型发送提示时，部署的名称被称为 <code>engine</code>。</p>
+<p>将库添加到应用，并为客户端设置所需的参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Add OpenAI library</span><br><span class="line">using Azure.AI.OpenAI;</span><br><span class="line"></span><br><span class="line">// Define parameters and initialize the client</span><br><span class="line">string endpoint = &quot;&lt;YOUR_ENDPOINT_NAME&gt;&quot;;</span><br><span class="line">string key = &quot;&lt;YOUR_API_KEY&gt;&quot;;</span><br><span class="line">string deploymentName = &quot;&lt;YOUR_DEPLOYMENT_NAME&gt;&quot;; </span><br><span class="line"></span><br><span class="line">OpenAIClient client = new OpenAIClient(new Uri(endpoint), new AzureKeyCredential(key));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Add OpenAI library</span></span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> AzureOpenAI</span><br><span class="line"></span><br><span class="line">deployment_name = <span class="string">&#x27;&lt;YOUR_DEPLOYMENT_NAME&gt;&#x27;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize the Azure OpenAI client</span></span><br><span class="line">client = AzureOpenAI(</span><br><span class="line">        azure_endpoint = <span class="string">&#x27;&lt;YOUR_ENDPOINT_NAME&gt;&#x27;</span>, </span><br><span class="line">        api_key=<span class="string">&#x27;&lt;YOUR_API_KEY&gt;&#x27;</span>,  </span><br><span class="line">        api_version=<span class="string">&quot;20xx-xx-xx&quot;</span> <span class="comment">#  Target version of the API, such as 2024-02-15-preview</span></span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+
+<h2 id="调用-Azure-OpenAI-资源"><a href="#调用-Azure-OpenAI-资源" class="headerlink" title="调用 Azure OpenAI 资源"></a>调用 Azure OpenAI 资源</h2><p>配置与 Azure OpenAI 的连接后，将提示发送给模型。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// Build completion options object</span><br><span class="line">ChatCompletionsOptions chatCompletionsOptions = new ChatCompletionsOptions()</span><br><span class="line">&#123;</span><br><span class="line">    Messages =</span><br><span class="line">    &#123;</span><br><span class="line">        new ChatRequestSystemMessage(&quot;You are a helpful AI bot.&quot;),</span><br><span class="line">        new ChatRequestUserMessage(&quot;What is Azure OpenAI?&quot;),</span><br><span class="line">    &#125;,</span><br><span class="line">    DeploymentName = deploymentName</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// Send request to Azure OpenAI model</span><br><span class="line">ChatCompletions response = client.GetChatCompletions(chatCompletionsOptions);</span><br><span class="line"></span><br><span class="line">// Print the response</span><br><span class="line">string completion = response.Choices[0].Message.Content;</span><br><span class="line">Console.WriteLine(&quot;Response: &quot; + completion + &quot;\n&quot;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">response = client.chat.completions.create(</span><br><span class="line">    model=deployment_name,</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful assistant.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;What is Azure OpenAI?&quot;</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">)</span><br><span class="line">generated_text = response.choices[<span class="number">0</span>].message.content</span><br><span class="line"></span><br><span class="line"><span class="comment"># Print the response</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + generated_text + <span class="string">&quot;\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>响应对象包含多个值，例如 <code>total_tokens</code> 和 <code>finish_reason</code>。 响应对象的完成类似于以下完成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Azure OpenAI is a cloud-based artificial intelligence (AI) service that offers a range of tools and services for developing and deploying AI applications. Azure OpenAI provides a variety of services for training and deploying machine learning models, including a managed service for training and deploying deep learning models, a managed service for deploying machine learning models, and a managed service for managing and deploying machine learning models.&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在 C# 和 Python 中，调用可以包含可选参数，其中包括 <code>temperature</code> 和 <code>max_tokens</code>。 本模块的实验室中包含了使用这些参数的示例。</p>
+<p>向 Azure OpenAI 资源发出请求需要哪些资源值？ 密钥、终结点和部署名称<br>哪三个终结点可用于与已部署的 Azure OpenAI 模型交互？<br>Completion、ChatCompletion 和 Embeddings<br>哪一个是 Azure OpenAI 中为会话的下一个 Completion 建模的最佳可用终结点？<br>ChatCompletion</p>
+<p>来自</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/collections/e6kjarx0q38?WT.mc_id=cloudskillschallenge_0bc0dea3-e83b-44f1-99a1-f91a1c041817">https://learn.microsoft.com/zh-cn/collections/e6kjarx0q38?WT.mc_id=cloudskillschallenge_0bc0dea3-e83b-44f1-99a1-f91a1c041817</a></p>
+<!-- https://learn.microsoft.com/zh-cn/training/modules/get-started-openai/1-introduction -->
+
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/06/04/golang-base/">OLDER&nbsp;&gt;</a>
+      
+        
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>

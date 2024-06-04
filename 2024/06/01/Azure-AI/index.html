@@ -11,7 +11,7 @@
   
   <title>
     
-      Azure AI 
+      Azure OpenAI 服务开发生成式 AI 解决方案 
       
       
     
@@ -90,28 +90,217 @@
     Jun 01, 2024
   </h3>
   <h1>
-    Azure AI
+    Azure OpenAI 服务开发生成式 AI 解决方案
   </h1>
   <div class="content markdown-body">
-    <p>欢迎同学们加入微软亚洲AI奥德赛技术实战营</p>
-<p>AI 奥德赛技术实战营共设有两个级别的挑战。其中第一级的主要内容是学习 Azure AI 服务针对各种情况创建和部署人工智能的解决方案，例如生成式人工智能、智能文档和自然语言处理。而在第二级中，对第一级学到的人工智能技能进行实战与应用。需要在交互式实验室中完成一系列任务，如果通过线上即时评估赢得第二级的认证。</p>
-<ol>
-<li>活动链接：<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/AIOdyssey/">https://www.microsoft.com/zh-cn/AIOdyssey/</a></li>
-<li>活动时间：即日起至 6 月 25 日</li>
-<li>活动奖励：参考下方实验手册 完成第一级获得 50 元京东卡，完成第一级+第二级任务获取 300 元京东卡，礼品先到先得。期待您的参与~</li>
-<li>礼品发放方法：工作人员会每周五下班之前发放上周完成同学的奖品</li>
-<li>兑换规则：<br> （1）完成阶段活动并凭借截图即可参与兑奖，每完成一阶段活动任务，奖品自动升级。<br> （2）除阶段奖品外，每份入选作品的参赛者(“获奖者”)将额外获得价值 50 美元的电子礼券。<br> （3）同一人仅可参与一次兑奖活动，阶段奖品不可累计。(重复手机号、微信号、IP 地址等均作为衡量手段)</li>
-<li>实验手册（详细指导-搞不定问题发群里或@助教-于明浩）<br>微软奥德赛AI第一级实验手册：第一级挑战较为简单，开始后按手册流程 仅需直接点击下一步 直到浏览完所有学习页面，即可完成挑战（预计需要20min）<br>第一级实验手册链接：<a target="_blank" rel="noopener" href="https://img-operation.csdnimg.cn/csdn/silkroad/img/1716976239594.html">https://img-operation.csdnimg.cn/csdn/silkroad/img/1716976239594.html</a><br>第二级实验手册预计近两天上线</li>
-<li>完成挑战后 按照实验手册末尾中的&lt;完成材料提交方法&gt; 将材料私聊给@完成证明发我</li>
-</ol>
-<p> </p>
-<p>更多学习资料挑战请参考群公告</p>
-<p>更多活动详情了解：<br><a target="_blank" rel="noopener" href="https://marketing.csdn.net/p/2d2c9cdae1e94adbafc50f19ba182027">https://marketing.csdn.net/p/2d2c9cdae1e94adbafc50f19ba182027</a></p>
-<p>使用 Azure OpenAI 服务开发生成式 AI 解决方案<br>展示你使用 Azure OpenAI 服务开发生成式 AI 解决方案的能力。 在 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/credentials/applied-skills/develop-generative-ai-solutions-with-azure-openai-service/#applied-skill-take-the-assessment">https://learn.microsoft.com/en-us/credentials/applied-skills/develop-generative-ai-solutions-with-azure-openai-service/#applied-skill-take-the-assessment</a> 上进行应用技能评估</p>
-<p>太棒了！ 你已注册参加 使用 Azure OpenAI 服务开发生成式 AI 解决方案。</p>
-<p>–</p>
-<p><a target="_blank" rel="noopener" href="https://dotnet.microsoft.com/zh-cn/apps/machinelearning-ai">https://dotnet.microsoft.com/zh-cn/apps/machinelearning-ai</a>  xx</p>
-<p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/AIOdyssey/">https://www.microsoft.com/zh-cn/AIOdyssey/</a><br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/collections/e6kjarx0q38?WT.mc_id=cloudskillschallenge_0bc0dea3-e83b-44f1-99a1-f91a1c041817">https://learn.microsoft.com/zh-cn/collections/e6kjarx0q38?WT.mc_id=cloudskillschallenge_0bc0dea3-e83b-44f1-99a1-f91a1c041817</a><br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/training/modules/get-started-openai/?WT.mc_id=cloudskillschallenge_0bc0dea3-e83b-44f1-99a1-f91a1c041817">https://learn.microsoft.com/zh-cn/training/modules/get-started-openai/?WT.mc_id=cloudskillschallenge_0bc0dea3-e83b-44f1-99a1-f91a1c041817</a><br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/training/modules/explore-azure-openai/">https://learn.microsoft.com/zh-cn/training/modules/explore-azure-openai/</a></p>
+    <h1 id="开始使用-Azure-OpenAI-服务"><a href="#开始使用-Azure-OpenAI-服务" class="headerlink" title="开始使用 Azure OpenAI 服务"></a>开始使用 Azure OpenAI 服务</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>假设你想要生成一个汇总文本和建议代码的支持应用程序。 若要生成此应用，需要利用 ChatGPT 中显示的功能，ChatGPT 是 OpenAI 研究公司构建的聊天机器人，它接受用户的自然语言输入，并返回机器创建的类人响应。</p>
+<p>生成式 AI 模型支持 ChatGPT 基于自然语言提示生成新内容（如文本、代码和图像）的能力。 许多生成 AI 模型是<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/machine-learning/deep-learning-overview?azure-portal=true">深度学习算法</a>的子集。 这些算法支持视觉、语音、语言、决策、搜索等各种工作负载。</p>
+<p>Azure OpenAI 服务将这些生成式 AI 模型引入 Azure 平台，使你能够开发功能强大的 AI 解决方案，这些解决方案受益于 Azure 云平台提供的其他服务的安全性、可伸缩性和集成。 这些模型可用于通过 REST API、各种 SDK 和 Studio 接口生成应用程序。 本模块将指导你完成 Azure OpenAI Studio 体验，为你使用生成式 AI 进一步开发解决方案奠定了基础。</p>
+<h2 id="访问-Azure-OpenAI-服务"><a href="#访问-Azure-OpenAI-服务" class="headerlink" title="访问 Azure OpenAI 服务"></a>访问 Azure OpenAI 服务</h2><p>使用 Azure OpenAI 构建生成型 AI 解决方案的第一步是在 Azure 订阅中预配 Azure OpenAI 资源。 Azure OpenAI 服务目前处于受限访问状态。 用户需要在 <a target="_blank" rel="noopener" href="https://aka.ms/oai/access?azure-portal=true">https://aka.ms/oai/access</a> 上申请服务访问权限。</p>
+<p>注意</p>
+<p>Azure OpenAI 服务已发布，但支持以合乎道德的方式使用该服务的访问权限有限。 可以在<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/transparency-note?azure-portal=true">此处</a>阅读 Azure OpenAI 服务的 Microsoft 透明度说明。</p>
+<p>有权访问 Azure OpenAI 服务后，可以通过在 <a target="_blank" rel="noopener" href="https://portal.azure.com/?azure-portal=true">Azure 门户</a>中创建资源或使用 Azure 命令行接口 (CLI) 开始。</p>
+<h2 id="在-Azure-门户中创建-Azure-OpenAI-服务资源"><a href="#在-Azure-门户中创建-Azure-OpenAI-服务资源" class="headerlink" title="在 Azure 门户中创建 Azure OpenAI 服务资源"></a>在 Azure 门户中创建 Azure OpenAI 服务资源</h2><p>创建 Azure OpenAI 服务资源时，需要提供订阅名称、资源组名称、区域、唯一实例名称，并选择定价层。 <img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/get-started-openai/media/create-azure-openai-portal.png" alt="Screenshot of the Azure portal&#39;s page to create an Azure OpenAI Service resource."></p>
+<h2 id="在-Azure-CLI-中创建-Azure-OpenAI-服务资源"><a href="#在-Azure-CLI-中创建-Azure-OpenAI-服务资源" class="headerlink" title="在 Azure CLI 中创建 Azure OpenAI 服务资源"></a>在 Azure CLI 中创建 Azure OpenAI 服务资源</h2><p>若要从 CLI 创建 Azure OpenAI 服务资源，请参阅此示例，并将以下变量替换为自己的变量：</p>
+<ul>
+<li>MyOpenAIResource：替换为资源的唯一名称</li>
+<li>OAIResourceGroup：替换为资源组名称</li>
+<li>eastus：替换为要部署资源的区域</li>
+<li>subscriptionID：替换为订阅 ID</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">az cognitiveservices account create \</span><br><span class="line">-n MyOpenAIResource \</span><br><span class="line">-g OAIResourceGroup \</span><br><span class="line">-l eastus \</span><br><span class="line">--kind OpenAI \</span><br><span class="line">--sku s0 \</span><br><span class="line">--subscription subscriptionID</span><br></pre></td></tr></table></figure>
+
+<p>注意</p>
+<p>可以通过 CLI 命令 <code>az account list-locations</code> 查找可用于服务的区域。 若要了解如何通过 CLI 登录到 Azure 并创建 Azure 组，请参阅<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/how-to/create-resource?pivots=cli#sign-in-to-the-cli?azure-portal=true">此处的文档</a>。</p>
+<h3 id="区域可用性"><a href="#区域可用性" class="headerlink" title="区域可用性"></a>区域可用性</h3><p>Azure OpenAI 服务提供了对多种类型的模型的访问。 某些模型仅在选定区域中可用。 有关区域可用性，请参阅 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/models#model-summary-table-and-region-availability/?azure-portal=true">Azure OpenAI 模型可用性指南</a>。 可以为每个区域创建两个 Azure OpenAI 资源。</p>
+<p>Azure OpenAI Studio 提供对模型管理、部署、试验、自定义和学习资源的访问权限。</p>
+<p>创建资源后，可以通过 Azure 门户访问 Azure OpenAI Studio，也可以在 <a target="_blank" rel="noopener" href="https://oai.azure.com/?azure-portal=true">https://oai.azure.com</a> 通过使用 Azure OpenAI 资源实例登录来访问 Azure OpenAI Studio。 在登录工作流中，选择适当的目录、Azure 订阅和 Azure OpenAI 资源。</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/get-started-openai/media/studio-portal.png" alt="Screenshot of the Azure OpenAI Studio portal which can be used to access several features."></p>
+<p>首次打开 Azure OpenAI Studio 时，屏幕顶部会显示一个“行动号召”按钮，用于部署第一个模型。 选择创建新部署的选项会打开“部署”页，从中可以部署基础模型并开始试验。</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/get-started-openai/media/openai-portal-navigation.png" alt="Screenshot of the Azure OpenAI Studio portal menu of pages."></p>
+<h2 id="探索生成式-AI-模型的类型"><a href="#探索生成式-AI-模型的类型" class="headerlink" title="探索生成式 AI 模型的类型"></a>探索生成式 AI 模型的类型</h2><p>若要开始使用 Azure OpenAI 进行生成，需要选择一个基础模型并进行部署。 Microsoft 提供基础模型以及创建自定义基础模型的选项。 本模块介绍当前可用的基础模型。</p>
+<p>Azure OpenAI 包括多种类型的模型：</p>
+<ul>
+<li>GPT-4 模型是最新一代的生成式预训练 (GPT) 模型，可以根据自然语言提示生成自然语言和代码补全。</li>
+<li>GPT 3.5 模型可以根据自然语言提示生成自然语言和代码补全。 具体而言，GPT-35-turbo 模型针对基于聊天的交互进行了优化，在大多数生成式 AI 方案中都表现良好。</li>
+<li>嵌入模型将文本转换为数字向量，并且在语言分析方案（例如比较文本源的相似性）中非常有用。</li>
+<li>DALL-E 模型用于基于自然语言提示生成图像。 目前，DALL-E 模型处于预览阶段。 DALL-E 模型未在 Azure OpenAI Studio 界面中列出，并且不需要显式部署。</li>
+</ul>
+<p>模型因速度、成本和完成特定任务的出色程度而异。 可以详细了解 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/models">Azure OpenAI 服务文档</a>中介绍的差异和最新模型。</p>
+<p>注意</p>
+<p>定价由令牌和模型类型决定。 在此处详细了解最新<a target="_blank" rel="noopener" href="https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/">定价</a>。</p>
+<p>在 Azure OpenAI Studio 中，“模型”页列出了可用的基础模型（DALL-E 模型除外），并提供了通过微调基本模型来创建其他自定义模型的选项。 模型状态为“成功”意味着它们已成功训练，并且可被选择用于部署。</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/get-started-openai/media/studio-models.png" alt="Screenshot of the Azure OpenAI Studio portal&#39;s out-of-the-box generative AI models."></p>
+<h2 id="部署生成式-AI-模型"><a href="#部署生成式-AI-模型" class="headerlink" title="部署生成式 AI 模型"></a>部署生成式 AI 模型</h2><p>首先需要部署一个模型，以便进行 API 调用，从而接收提示完成。 创建新部署时，需要指出要部署的基础模型。 可以在一个或多个 Azure OpenAI 资源中实现任意数量的部署，只要它们的 TPM 总数在那个区域中低于 240K。 可通过多种方式部署基础模型。</p>
+<h2 id="使用-Azure-OpenAI-Studio-进行部署"><a href="#使用-Azure-OpenAI-Studio-进行部署" class="headerlink" title="使用 Azure OpenAI Studio 进行部署"></a>使用 Azure OpenAI Studio 进行部署</h2><p>在 Azure OpenAI Studio 的“部署”页中，可以通过从菜单中选择模型名称来创建新部署。 可用的基础模型来自模型页中的列表。</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/get-started-openai/media/studio-deployment.png" alt="Screenshot of the Azure OpenAI Studio portal&#39;s model deployment wizard."></p>
+<p>在 Studio 的“部署”页中，还可以查看所有部署的相关信息，包括部署名称、模型名称、模型版本、状态、创建日期等。</p>
+<h2 id="使用-Azure-CLI-进行部署"><a href="#使用-Azure-CLI-进行部署" class="headerlink" title="使用 Azure CLI 进行部署"></a>使用 Azure CLI 进行部署</h2><p>还可以使用控制台部署模型。 使用此示例，将以下变量替换为自己的资源值：</p>
+<ul>
+<li>OAIResourceGroup：替换为资源组名称</li>
+<li>MyOpenAIResource：<em>替换为资源名称</em></li>
+<li>MyModel：替换为模型的唯一名称</li>
+<li>gpt-35-turbo：替换为要部署的基础模型</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">az cognitiveservices account deployment create \</span><br><span class="line">   -g OAIResourceGroup \</span><br><span class="line">   -n MyOpenAIResource \</span><br><span class="line">   --deployment-name MyModel \</span><br><span class="line">   --model-name gpt-35-turbo \</span><br><span class="line">   --model-version &quot;0301&quot;  \</span><br><span class="line">   --model-format OpenAI \</span><br><span class="line">   --sku-name &quot;Standard&quot; \</span><br><span class="line">   --sku-capacity 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-REST-API-进行部署"><a href="#使用-REST-API-进行部署" class="headerlink" title="使用 REST API 进行部署"></a>使用 REST API 进行部署</h2><p>可以使用 REST API 部署模型。 在请求正文中，指定要部署的基础模型。 请参阅 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/ai-services/openai/">Azure OpenAI 文档</a>中的示例。</p>
+<h2 id="使用提示从模型完成"><a href="#使用提示从模型完成" class="headerlink" title="使用提示从模型完成"></a>使用提示从模型完成</h2><p>部署模型后，可以测试其完成提示的方式。 提示是发送到部署模型的完成终结点的请求的文本部分。 响应被称为完成，可以采用文本、代码的形式或其他形式。</p>
+<h2 id="提示类型"><a href="#提示类型" class="headerlink" title="提示类型"></a>提示类型</h2><p>可以根据任务将提示分组为请求类型。</p>
+<table>
+<thead>
+<tr>
+<th>任务类型</th>
+<th>提示示例</th>
+<th>完成示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对内容进行分类</td>
+<td>Tweet：我喜欢这次旅行。</td>
+<td></td>
+</tr>
+<tr>
+<td>情绪:</td>
+<td>正</td>
+<td></td>
+</tr>
+<tr>
+<td>生成新内容</td>
+<td>列出旅行方式</td>
+<td>1.骑行</td>
+</tr>
+<tr>
+<td>2. 乘车 …</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>进行对话</td>
+<td>友好的 AI 助手</td>
+<td><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/how-to/completions#conversation?portal=true">请参见示例</a></td>
+</tr>
+<tr>
+<td>转换（转换和符号转换）</td>
+<td>英语：你好</td>
+<td></td>
+</tr>
+<tr>
+<td>法语：</td>
+<td>bonjour</td>
+<td></td>
+</tr>
+<tr>
+<td>汇总内容</td>
+<td>提供内容总结</td>
+<td></td>
+</tr>
+<tr>
+<td>{text}</td>
+<td>机器学习的内容共享方法。</td>
+<td></td>
+</tr>
+<tr>
+<td>从离开的位置继续</td>
+<td>种植西红柿的一种方法</td>
+<td>就是播种种子。</td>
+</tr>
+<tr>
+<td>提供事实答复</td>
+<td>地球拥有多少颗卫星？</td>
+<td>一种</td>
+</tr>
+</tbody></table>
+<h2 id="完成质量"><a href="#完成质量" class="headerlink" title="完成质量"></a>完成质量</h2><p>有几个因素会影响从生成式 AI 解决方案中获得的完成质量。</p>
+<ul>
+<li>提示的工程处理方式。 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/prompt-engineering?portal=true">单击此处详细了解提示工程</a>。</li>
+<li>模型参数（下文将介绍）</li>
+<li>训练模型的数据，可以通过<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/how-to/fine-tuning?pivots=programming-language-studio?portal=true">自定义模型微调</a>进行调整</li>
+</ul>
+<p>与通过提示工程和参数调整相比，你可以通过训练自定义模型更好地控制返回的完成。</p>
+<h2 id="发起呼叫"><a href="#发起呼叫" class="headerlink" title="发起呼叫"></a>发起呼叫</h2><p>可以通过 REST API、Python、C# 或从 Studio 开始调用部署的模型。 如果部署的模型具有 GPT-3.5 或 GPT-4 模型库，请使用<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference#chat-completions?azure-portal=true">聊天完成文档</a>，该文档具有与其他基础模型不同的请求终结点和变量。</p>
+<h2 id="在-Azure-OpenAI-Studio-的操场中测试模型"><a href="#在-Azure-OpenAI-Studio-的操场中测试模型" class="headerlink" title="在 Azure OpenAI Studio 的操场中测试模型"></a>在 Azure OpenAI Studio 的操场中测试模型</h2><p>操场是 Azure OpenAI Studio 中的有用接口，可用于试验部署的模型，而无需开发自己的客户端应用程序。 Azure OpenAI Studio 提供了具有不同参数优化选项的多个操场。</p>
+<h2 id="完成操场"><a href="#完成操场" class="headerlink" title="完成操场"></a>完成操场</h2><p>完成操场允许你通过文本输入文本输出接口调用部署的模型，并调整参数。 你需要在“部署”下选择模型的部署名称。 （可选）可以使用提供的示例入门，然后输入自己的提示。</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/get-started-openai/media/azure-openai-completions-playground.png" alt="Screenshot of the Azure OpenAI Studio portal&#39;s completions playground."></p>
+<h4 id="完成操场参数"><a href="#完成操场参数" class="headerlink" title="完成操场参数"></a>完成操场参数</h4><p>可以调整许多参数来更改模型的性能：</p>
+<ul>
+<li>温度：控制随机性。 降低温度意味着模型会产生更多重复性和确定性的回复。 提高温度会导致更多意外或创造性的回复。 请尝试调整温度或 Top P 值，但不要同时调整两者。</li>
+<li>最大长度(标记数)：对每个模型响应的标记数设置限制。 该 API 支持最多 4000 个标记，包括提示（包括系统消息、示例、消息历史记录以及用户查询）和模型的响应。 对于典型的英文文本，一个标记大约是四个字符。</li>
+<li>停止序列：使响应停止在所需点，例如句子或列表的末尾。 指定最多四个序列，模型将停止在响应中生成更多标记。 返回的文本不包含停止序列。</li>
+<li>最高概率(最高 P)：与温度类似，它控制着随机性，但使用不同的方法。 降低 Top P 值会将模型的标记选择范围缩小到可能性更高的标记。 增加 Top P 值会使模型既选择可能高的标记又选择可能性低的标记。 请尝试调整温度或 Top P 值，但不要同时调整两者。</li>
+<li>频率处罚：根据标记在文本中出现的频率，按比例降低标记重复的可能性。 这会降低在响应中重复完全相同文本的可能性。</li>
+<li>存在处罚：降低到目前为止在文本中出现的任何标记重复的可能性。 这会增加在响应中引入新主题的可能性。</li>
+<li>响应前文本：在用户输入之后和模型响应之前插入文本。 这有助于为响应准备模型。</li>
+<li>响应后文本：在模型生成的响应之后插入文本以鼓励进一步的用户输入，就像对话建模一样。</li>
+</ul>
+<h2 id="聊天操场"><a href="#聊天操场" class="headerlink" title="聊天操场"></a>聊天操场</h2><p>聊天操场基于对话传入消息传出界面。 可以使用系统消息初始化会话以设置聊天上下文。</p>
+<p>在聊天操场中，可以添加少样本示例。 “少样本”一词是指提供几个示例来帮助模型了解它需要执行的操作。 可以将其与零样本（指不提供任何示例）进行对比。</p>
+<p>在助手设置中，可以提供用户输入和助手响应的少样本示例。 助手会尝试以你在系统消息中定义的语气、规则和格式来模拟这里包含的响应。</p>
+<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/get-started-openai/media/azure-openai-chat-playground.png" alt="Screenshot of the Azure OpenAI Studio portal&#39;s Chat playground."></p>
+<h4 id="聊天操场参数"><a href="#聊天操场参数" class="headerlink" title="聊天操场参数"></a>聊天操场参数</h4><p>“完成”操场等“聊天”操场还包括温度参数。 “聊天”操场还支持“完成”操场中不可用的其他参数。 其中包括：</p>
+<ul>
+<li>最大响应：对每个模型响应的标记数设置限制。 该 API 支持最多 4000 个标记，包括提示（包括系统消息、示例、消息历史记录以及用户查询）和模型的响应。 对于典型的英文文本，一个标记大约是四个字符。</li>
+<li>最高 P：与温度类似，它控制着随机性，但使用不同的方法。 降低 Top P 值会将模型的标记选择范围缩小到可能性更高的标记。 增加 Top P 值会使模型既选择可能高的标记又选择可能性低的标记。 请尝试调整温度或 Top P 值，但不要同时调整两者。</li>
+<li>包含的过去消息数：选择要包含在每个新 API 请求中的过去消息数。 包含过去的消息有助于为新用户查询提供模型上下文。 将此数字设置为 10 将包含 5 个用户查询和 5 个系统响应。</li>
+</ul>
+<p>可以在聊天操场中查看“当前标记计数”。 由于 API 调用按标记定价，并且可以设置最大响应标记限制，因此需要留意当前标记计数，以确保对话不会超过最大响应标记计数。</p>
+<h2 id="练习-开始使用-Azure-OpenAI-服务"><a href="#练习-开始使用-Azure-OpenAI-服务" class="headerlink" title="练习 - 开始使用 Azure OpenAI 服务"></a>练习 - 开始使用 Azure OpenAI 服务</h2><p>已完成</p>
+<p>现在，你有机会在 Azure OpenAI Studio 中部署和管理模型。 在本练习中，你将部署 Azure OpenAI 基础模型，并在完成和聊天操场中测试它们。 你将有机会了解提示和参数对文本和代码完成的影响。</p>
+<p>注意</p>
+<p>为了完成此实验室，你将需要一个 <a target="_blank" rel="noopener" href="https://azure.microsoft.com/free?azure-portal=true">Azure 订阅</a>。 还需要注册 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/limited-access?azure-portal=true">Azure OpenAI 访问权限</a>才能完成此实验室。</p>
+<p>要完成本模块的练习，请启动 VM 并按照说明操作。</p>
+<p>注意</p>
+<p>若要完成此练习，你将需要 Microsoft Azure 订阅。 如果你还没有该订阅，可以<a target="_blank" rel="noopener" href="https://azure.microsoft.com/?azure-portal=true">注册一个</a>。</p>
+<p>如果需要为此练习设置计算机，可以使用此<a target="_blank" rel="noopener" href="https://microsoftlearning.github.io/mslearn-ai-services/Instructions/setup.html?azure-portal=true">设置指南</a>，然后按照下面链接的练习说明进行操作。 请注意，设置指南适用于多个开发练习，其中可能包括该特定练习不需要的软件。 此外，由于可能的操作系统和设置配置的范围太广，如果你选择在自己的计算机上完成此练习，我们将无法提供支持。</p>
+<p>要在自己的计算机上按照这些说明进行操作，可以按照<a target="_blank" rel="noopener" href="https://aka.ms/mslearn-get-started-azure-openai?azure-portal=true">此处的练习说明</a>进行操作。</p>
+<p>提示</p>
+<p>完成练习后，如果你已完成对 Azure AI 服务的学习，请删除在练习期间创建的 Azure 资源。</p>
+<!--
+
+欢迎同学们加入微软亚洲AI奥德赛技术实战营
+
+AI 奥德赛技术实战营共设有两个级别的挑战。其中第一级的主要内容是学习 Azure AI 服务针对各种情况创建和部署人工智能的解决方案，例如生成式人工智能、智能文档和自然语言处理。而在第二级中，对第一级学到的人工智能技能进行实战与应用。需要在交互式实验室中完成一系列任务，如果通过线上即时评估赢得第二级的认证。
+
+1. 活动链接：https://www.microsoft.com/zh-cn/AIOdyssey/
+2. 活动时间：即日起至 6 月 25 日
+3. 活动奖励：参考下方实验手册 完成第一级获得 50 元京东卡，完成第一级+第二级任务获取 300 元京东卡，礼品先到先得。期待您的参与~
+4. 礼品发放方法：工作人员会每周五下班之前发放上周完成同学的奖品
+5. 兑换规则：
+    （1）完成阶段活动并凭借截图即可参与兑奖，每完成一阶段活动任务，奖品自动升级。
+    （2）除阶段奖品外，每份入选作品的参赛者(“获奖者”)将额外获得价值 50 美元的电子礼券。
+    （3）同一人仅可参与一次兑奖活动，阶段奖品不可累计。(重复手机号、微信号、IP 地址等均作为衡量手段)
+6. 实验手册（详细指导-搞不定问题发群里或@助教-于明浩）
+微软奥德赛AI第一级实验手册：第一级挑战较为简单，开始后按手册流程 仅需直接点击下一步 直到浏览完所有学习页面，即可完成挑战（预计需要20min）
+第一级实验手册链接：https://img-operation.csdnimg.cn/csdn/silkroad/img/1716976239594.html
+第二级实验手册预计近两天上线
+7. 完成挑战后 按照实验手册末尾中的<完成材料提交方法> 将材料私聊给@完成证明发我 
+
+更多学习资料挑战请参考群公告
+
+更多活动详情了解：
+https://marketing.csdn.net/p/2d2c9cdae1e94adbafc50f19ba182027
+
+
+使用 Azure OpenAI 服务开发生成式 AI 解决方案
+展示你使用 Azure OpenAI 服务开发生成式 AI 解决方案的能力。 在 https://learn.microsoft.com/en-us/credentials/applied-skills/develop-generative-ai-solutions-with-azure-openai-service/#applied-skill-take-the-assessment 上进行应用技能评估
+
+
+太棒了！ 你已注册参加 使用 Azure OpenAI 服务开发生成式 AI 解决方案。
+
+
+
+--
+
+https://dotnet.microsoft.com/zh-cn/apps/machinelearning-ai  xx
+
+
+https://www.microsoft.com/zh-cn/AIOdyssey/
+https://learn.microsoft.com/zh-cn/collections/e6kjarx0q38?WT.mc_id=cloudskillschallenge_0bc0dea3-e83b-44f1-99a1-f91a1c041817
+https://learn.microsoft.com/zh-cn/training/modules/get-started-openai/?WT.mc_id=cloudskillschallenge_0bc0dea3-e83b-44f1-99a1-f91a1c041817
+https://learn.microsoft.com/zh-cn/training/modules/explore-azure-openai/
+
+
+-->
 
   </div>
   
