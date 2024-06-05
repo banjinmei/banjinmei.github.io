@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="m" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Azure AI Develop Generative AI solutions 
+      
+      
+    
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/iconfont/iconfont.css">
+
+
+  
+
+  
+    
+<link rel="stylesheet" href="/css/post.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="/js/fancybox.js"></script>
+
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <a href="/">Lost in space and time</a>
+</div>
+
+
+      <p class="links">
+  
+    <a title="archives" target="" href="/archives/">
+      <i class="iconfont icon-bookmark"></i>
+    </a>
+  
+</p>
+
+
+      <div class="main">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jun 06, 2024
+  </h3>
+  <h1>
+    Azure AI Develop Generative AI solutions
+  </h1>
+  <div class="content markdown-body">
+    <!---https://learn.microsoft.com/en-us/credentials/applied-skills/develop-generative-ai-solutions-with-azure-openai-service/#applied-skill-take-the-assessment
+
+https://csdn-static.oss-cn-beijing.aliyuncs.com/release/aodesai/dej-demo1.html
+
+
+https://learn.microsoft.com/en-us/users/c180-9676/credentials?tab=applied-skills-tab
+
+-->
+
+<h1 id="Azure-AI-Develop-Generative-AI-solutions"><a href="#Azure-AI-Develop-Generative-AI-solutions" class="headerlink" title="Azure AI Develop Generative AI solutions"></a>Azure AI Develop Generative AI solutions</h1><h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h1><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/credentials/applied-skills/develop-generative-ai-solutions-with-azure-openai-service/#applied-skill-take-the-assessment">https://learn.microsoft.com/en-us/credentials/applied-skills/develop-generative-ai-solutions-with-azure-openai-service/#applied-skill-take-the-assessment</a></p>
+<h1 id="部署Azure-OpenAI-服务"><a href="#部署Azure-OpenAI-服务" class="headerlink" title="部署Azure OpenAI 服务"></a>部署Azure OpenAI 服务</h1><p>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050001.jpg"></p>
+<p>点击Step 1，然后点击Password右边的T<br>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050002.jpg"></p>
+<p>鼠标双击Email<br>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050003.jpg"><br>对Inbox的内容进行逐个点击，其中Existing Environment包含了微软官方提供的Azure的用户名和密码，Validate proof of concept、Company chatbot、Developer tasks和Use company data分别表示的是本次考试的四大任务的具体要求</p>
+<p>切换到Azure登录的标签页</p>
+<p>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050004.jpg"><br>将邮箱中Existing Environment的用户名和密码依次复制到Azure的标签页面中，并点击Sign in完成Azure的登录</p>
+<p>然后在浏览器中输入URL：<a target="_blank" rel="noopener" href="https://portal.azure.com/#home%EF%BC%8C%E7%82%B9%E5%87%BBAzure">https://portal.azure.com/#home，点击Azure</a> AI services</p>
+<p>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050005.jpg"><br>其中Resource group、Pricing tier勾选下拉列表的存在项，Name可自行填入(如azureservice)，然后点击Next<br>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050006.jpg"></p>
+<p>网络中选择第一项：All networks，然后点击页面左下方的Next<br>Tags可直接点击左下方的Next<br>然后在Review+submit页面点击Create<br>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050007.jpg"><br>等待几十秒后，deployment完成后，点击Deployment details<br>点击Resource中的名称，如azureservice<br>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050008.jpg"><br>点击Endpoints右边的Click here to view endpoints<br>​<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050009.jpg"><br>​</p>
+<p>点击Key 1右侧的复制按钮，复制其到C:\files\AzureOpenAIPoc\Python.env中的AZURE_OAI_KEY变量中。<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050010.jpg"><br>点击Endpoint右侧的复制按钮，分别复制任意一个 KEY 和 EndPoint 到C:\files\AzureOpenAIPoc\Python.env中的AZURE_OAI_KEY 和 AZURE_OAI_ENDPOINT。<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050011.jpg"></p>
+<p>然后在浏览器中输入<a target="_blank" rel="noopener" href="https://portal.azure.com/#home%EF%BC%8C%E5%B9%B6%E7%82%B9%E5%87%BBName%E4%B8%8B%E7%9A%84%E5%90%8D%E7%A7%B0">https://portal.azure.com/#home，并点击Name下的名称</a><br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050012.jpg"></p>
+<p>点击Go to Azure OpenAI Studio</p>
+<p>然后点击Create new deployment</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050013.jpg">
+
+<p>按照下图中的内容进行下拉选择或者填写，其中Select a model勾选为gpt-35-turbo-16k，Deployment name可自定义填写，如gpt_deploy，将Tokens per Minute Rate Limit设置为5K，Enable Dynamic Quota设置为<strong>Disabled</strong>，最后点击Create：<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050014.jpg"></p>
+<p>确保Status为Succeed，则说明部署成功了<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050015.jpg"></p>
+<p>将C:\files\AzureOpenAIPoc\Python.env中AZURE_OAI_MODEL设置为Deployment name，如gpt_deploy<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050016.jpg"></p>
+<h2 id="AI-Search相关操作"><a href="#AI-Search相关操作" class="headerlink" title="AI Search相关操作"></a>AI Search相关操作</h2><p>然后在浏览器中输入<a target="_blank" rel="noopener" href="https://portal.azure.com/#home%EF%BC%8C%E5%9C%A8%E8%BE%93%E5%85%A5%E6%A1%86%E4%B8%AD%E8%BE%93%E5%85%A5ai">https://portal.azure.com/#home，在输入框中输入ai</a> search，点击AI Search<br>点击Name下的名称</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050017.jpg">
+
+<p>点击Import data</p>
+<p>在Connect to your data中勾选Data Source为Azure Blob Storage<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050018.jpg"><br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050019.jpg"></p>
+<p>点击Name下的名称<br>选择blob1，并点击Select</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050020.jpg">
+填入azure，并点击左下方的Next：Add cognitive skills：
+
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050021.jpg">
+在Add cognitive skills中点击Skip to: Customize target index
+
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050022.jpg">
+修改index name为pocindex，然后点击Next: Create an indexe
+修改Indexer的Name为pocindex，然后点击Submit
+
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050023.jpg">
+
+<p>复制其 <strong>url</strong> 作为C:\files\AzureOpenAIPoc\Python.env中的值SEARCH_ENDPOINT</p>
+<p>点击Essentials左边的箭头收起该部分内容，然后点击Properties，再点击API keys</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050024.jpg">
+
+<p>然后点击Primary admin keys中的复制按钮，复制其到C:\files\AzureOpenAIPoc\Python.env中的SEARCH_KEY变量中。<br>修改其中SEARCH_INDEX为pocindex</p>
+<p>修改后完整的.env内容如下所示，写改完后记得保存并关闭</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050025.jpg">
+
+<h2 id="修改PoC-py文件"><a href="#修改PoC-py文件" class="headerlink" title="修改PoC.py文件"></a>修改PoC.py文件</h2><p>具体路径为：C:\files\AzureOpenAIPoc\Python\PoC.py。打开文件的方法可参考部署Azure OpenAI服务中的.env文件，唯一差别之处在于PoC.py可双击打开。需要说明的是：粘贴后记得按下ctrl+s进行保存</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line"><span class="keyword">import</span> utils</span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span>  AzureOpenAI</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> AsyncAzureOpenAI</span><br><span class="line"><span class="comment"># Add OpenAI import. (Add code here)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        load_dotenv()</span><br><span class="line">        utils.initLogFile()</span><br><span class="line">        azure_oai_endpoint = os.getenv(<span class="string">&quot;AZURE_OAI_ENDPOINT&quot;</span>)</span><br><span class="line">        azure_oai_key = os.getenv(<span class="string">&quot;AZURE_OAI_KEY&quot;</span>)</span><br><span class="line">        azure_oai_model = os.getenv(<span class="string">&quot;AZURE_OAI_MODEL&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Define Azure OpenAI client (Add code here)##################</span></span><br><span class="line">        client = AzureOpenAI(</span><br><span class="line">            azure_endpoint=azure_oai_endpoint,</span><br><span class="line">            api_key=azure_oai_key,</span><br><span class="line">            api_version=<span class="string">&quot;2024-02-15-preview&quot;</span></span><br><span class="line">        )</span><br><span class="line">        function_map = &#123;</span><br><span class="line">            <span class="string">&quot;1&quot;</span>: function1,</span><br><span class="line">            <span class="string">&quot;2&quot;</span>: function2,</span><br><span class="line">            <span class="string">&quot;3&quot;</span>: function3,</span><br><span class="line">            <span class="string">&quot;4&quot;</span>: function4</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;1: Validate PoC\n&#x27;</span> +</span><br><span class="line">                  <span class="string">&#x27;2: Company chatbot\n&#x27;</span> +</span><br><span class="line">                  <span class="string">&#x27;3: Developer tasks\n&#x27;</span> +</span><br><span class="line">                  <span class="string">&#x27;4: Use company data\n&#x27;</span> +</span><br><span class="line">                  <span class="string">&#x27;\&#x27;quit\&#x27; to exit the program\n&#x27;</span>)</span><br><span class="line">            command = <span class="built_in">input</span>(<span class="string">&#x27;Enter a number:&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> command.strip() <span class="keyword">in</span> function_map:</span><br><span class="line">                function_map[command](client, azure_oai_model)</span><br><span class="line">            <span class="keyword">elif</span> command.strip().lower() == <span class="string">&#x27;quit&#x27;</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;Exiting program...&#x27;</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Invalid input. Please enter number 1, 2, 3, 4, or 5.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> ex:</span><br><span class="line">        <span class="built_in">print</span>(ex)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Task 1: Validate PoC</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function1</span>(<span class="params">aiClient, aiModel</span>):</span><br><span class="line">    inputText = utils.getPromptInput(<span class="string">&quot;Task 1: Validate PoC&quot;</span>, <span class="string">&quot;sample-text.txt&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Build messages to send to Azure OpenAI model. (Add code here)</span></span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: inputText&#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Define argument list (Add code here)</span></span><br><span class="line">    apiParams = &#123;</span><br><span class="line">        <span class="string">&quot;messages&quot;</span>: messages,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;API Parameters:\n&quot;</span>, apiParams)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Call chat completion connection. (Add code here)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Use the call name and **apiParams to reference our argument list</span></span><br><span class="line">    response = aiClient.chat.completions.create(</span><br><span class="line">        model=aiModel,</span><br><span class="line">        messages=messages,</span><br><span class="line">        temperature=<span class="number">0.7</span>,</span><br><span class="line">        max_tokens=<span class="number">800</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;Response:\n&quot;</span>, <span class="built_in">str</span>(response))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + response.choices[<span class="number">0</span>].message.content + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Task 2: Company chatbot</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function2</span>(<span class="params">aiClient, aiModel</span>):</span><br><span class="line">    inputText = utils.getPromptInput(<span class="string">&quot;Task 2: Company chatbot&quot;</span>, <span class="string">&quot;sample-text.txt&quot;</span>)</span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful assistant that responds in a casual tone. Each response should end with &#x27;Hope that helps! Thanks for using Contoso, Ltd.&#x27;&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;What is the best way to find if a company is hiring?&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You can start by checking the company&#x27;s website, especially the careers section. Hope that helps! Thanks for using Contoso, Ltd.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: inputText&#125;</span><br><span class="line">    ]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Define argument list (Add code here)</span></span><br><span class="line">    apiParams = &#123;</span><br><span class="line">        <span class="string">&quot;model&quot;</span>: aiModel,</span><br><span class="line">        <span class="string">&quot;messages&quot;</span>: messages,</span><br><span class="line">        <span class="string">&quot;max_tokens&quot;</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="string">&quot;temperature&quot;</span>: <span class="number">0.5</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;API Parameters:\n&quot;</span>, apiParams)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Call chat completion connection. (Add code here)</span></span><br><span class="line">    <span class="comment"># Use the call name and **apiParams to reference our argument list</span></span><br><span class="line">    response = aiClient.chat.completions.create(**apiParams)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;Response:\n&quot;</span>, <span class="built_in">str</span>(response))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + response.choices[<span class="number">0</span>].message.content + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="comment"># Task 3: Developer tasks</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function3</span>(<span class="params">aiClient, aiModel</span>):</span><br><span class="line">    inputText = utils.getPromptInput(<span class="string">&quot;Task 3: Developer tasks&quot;</span>, <span class="string">&quot;sample-text.txt&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Define system message based on the task</span></span><br><span class="line">    </span><br><span class="line">    system_message = <span class="string">&quot;Take the legacy code in legacyCode.py, add comments and generate documentation.&quot;</span></span><br><span class="line"></span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: system_message&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: inputText&#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Define argument list (Add code here)</span></span><br><span class="line">    apiParams = &#123;</span><br><span class="line">        <span class="string">&quot;model&quot;</span>: aiModel,</span><br><span class="line">        <span class="string">&quot;messages&quot;</span>: messages,</span><br><span class="line">        <span class="string">&quot;max_tokens&quot;</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="string">&quot;temperature&quot;</span>: <span class="number">0.5</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    utils.writeLog(<span class="string">&quot;API Parameters:\n&quot;</span>, apiParams)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Call chat completion connection. (Add code here)</span></span><br><span class="line">    <span class="comment"># Use the call name and **apiParams to reference our argument list</span></span><br><span class="line">    response = aiClient.chat.completions.create(**apiParams)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    utils.writeLog(<span class="string">&quot;Response:\n&quot;</span>, <span class="built_in">str</span>(response))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + response.choices[<span class="number">0</span>].message.content + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response </span><br><span class="line"></span><br><span class="line"><span class="comment"># Task 4: Use company data</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function4</span>(<span class="params">aiClient, aiModel</span>):</span><br><span class="line">    inputText = utils.getPromptInput(<span class="string">&quot;Task 4: Use company data&quot;</span>, <span class="string">&quot;sample-text.txt&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Build messages to send to Azure OpenAI model. (Add code here)</span></span><br><span class="line">    search_endpoint = os.getenv(<span class="string">&quot;SEARCH_ENDPOINT&quot;</span>)</span><br><span class="line">    search_key = os.getenv(<span class="string">&quot;SEARCH_KEY&quot;</span>)</span><br><span class="line">    search_index = os.getenv(<span class="string">&quot;SEARCH_INDEX&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Perform the search query</span></span><br><span class="line">    search_query = &#123;</span><br><span class="line">        <span class="string">&quot;search&quot;</span>: inputText,</span><br><span class="line">        <span class="string">&quot;searchMode&quot;</span>: <span class="string">&quot;any&quot;</span>,</span><br><span class="line">        <span class="string">&quot;queryType&quot;</span>: <span class="string">&quot;simple&quot;</span>,</span><br><span class="line">        <span class="string">&quot;top&quot;</span>: <span class="number">5</span>  <span class="comment"># Adjust the number of results as needed</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">        <span class="string">&quot;api-key&quot;</span>: search_key</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    search_url = <span class="string">f&quot;<span class="subst">&#123;search_endpoint&#125;</span>/indexes/<span class="subst">&#123;search_index&#125;</span>/docs/search?api-version=2021-04-30-Preview&quot;</span></span><br><span class="line">    </span><br><span class="line">    response = requests.post(search_url, headers=headers, json=search_query)</span><br><span class="line">    search_results = response.json()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Extract relevant search results</span></span><br><span class="line">    search_snippets = [result[<span class="string">&quot;content&quot;</span>] <span class="keyword">for</span> result <span class="keyword">in</span> search_results[<span class="string">&quot;value&quot;</span>]]</span><br><span class="line">    search_content = <span class="string">&quot;\n\n&quot;</span>.join(search_snippets)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Build messages for OpenAI with search results included</span></span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful travel agent.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">f&quot;<span class="subst">&#123;inputText&#125;</span>\n\nSearch Results:\n<span class="subst">&#123;search_content&#125;</span>&quot;</span>&#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Define connection and argument list (Add code here)</span></span><br><span class="line">    apiParams = &#123;</span><br><span class="line">        <span class="string">&quot;model&quot;</span>: aiModel,</span><br><span class="line">        <span class="string">&quot;messages&quot;</span>: messages,</span><br><span class="line">        <span class="string">&quot;max_tokens&quot;</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="string">&quot;temperature&quot;</span>: <span class="number">0.5</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    utils.writeLog(<span class="string">&quot;API Parameters:\n&quot;</span>, apiParams)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Call chat completion connection. Will be the same as function1 (Add code here)</span></span><br><span class="line">    <span class="comment"># Use the call name and **apiParams to reference our argument list</span></span><br><span class="line">    response = aiClient.chat.completions.create(**apiParams)</span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;Response:\n&quot;</span>, <span class="built_in">str</span>(response))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + response.choices[<span class="number">0</span>].message.content + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Call main function. Do not modify.</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>: </span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>将上述修改后的代码复制到C:\files\AzureOpenAIPoc\Python\PoC.py中，打开文件方法较为简单，即通过鼠标双击也就是通过VScode工具打开该文件<br>可使用ctrl+a删除全部内容，然后再通过ctrl+c和ctrl+v进行复制，接着按ctrl+s进行保存，最后在地址栏删除已有内容，并在其中输入cmd，并按下回车键</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050026.jpg">
+进入到cmd中后，输入python PoC.py，每输入完一个命令按回车代表执行该命令
+
+
+
+<p>然后可输入题号，比如 输入1 代表的是第一个题(Validate PoC)，然后可输入type或者file，其中type指的是自行输入prompt，而file是从目录下的sample-text.txt读取得到输入prompt。需要说明的是，可连续进行提问，不需要中间退出。</p>
+<h2 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h2><p>第一题可依次输入type、who are you(或者其它prompt)进行提问或者直接输入file进行提问。查看结果是否正常输出。</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050027.jpg">
+
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050028.jpg">
+
+
+<h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><p>第二题可依次输入type、who are you来进行提问，或者依次输入type和其他问题。查看是否以Hope that helps!Thanks for using Contoso,Ltd.结尾。<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050029.jpg"></p>
+<p>然后再在第二题中输入type和Get the response in both English and Spanish: what is the best way to find if a company is hiring?(可直接ctrl+c、ctrl+v进行复制)进行提问</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050030.jpg">
+
+
+<h2 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h2><p>第三题需要复制并运行文件两次，具体来说：<br>第一次 是将c:\files下的legacyCode.py复制到C:\files\AzureOpenAIPoc\Python 路径下，首先删除文件夹中已有的sample-text.txt，并将legacyCode.py重命名为sample-text.txt(！！！注意是sample-text.txt，而不是sample-text.py)。然后运行python PoC.py，并输入3 和 file，查看结果是否产生了注释。</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050031.jpg">
+第二次需将PoC.py文件进行复制粘贴为以下内容，并按下ctrl+s进行保存
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line"><span class="keyword">import</span> utils</span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span>  AzureOpenAI</span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> AsyncAzureOpenAI</span><br><span class="line"><span class="comment"># Add OpenAI import. (Add code here)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        load_dotenv()</span><br><span class="line">        utils.initLogFile()</span><br><span class="line">        azure_oai_endpoint = os.getenv(<span class="string">&quot;AZURE_OAI_ENDPOINT&quot;</span>)</span><br><span class="line">        azure_oai_key = os.getenv(<span class="string">&quot;AZURE_OAI_KEY&quot;</span>)</span><br><span class="line">        azure_oai_model = os.getenv(<span class="string">&quot;AZURE_OAI_MODEL&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Define Azure OpenAI client (Add code here)##################</span></span><br><span class="line">        client = AzureOpenAI(</span><br><span class="line">            azure_endpoint=azure_oai_endpoint,</span><br><span class="line">            api_key=azure_oai_key,</span><br><span class="line">            api_version=<span class="string">&quot;2024-02-15-preview&quot;</span></span><br><span class="line">        )</span><br><span class="line">        function_map = &#123;</span><br><span class="line">            <span class="string">&quot;1&quot;</span>: function1,</span><br><span class="line">            <span class="string">&quot;2&quot;</span>: function2,</span><br><span class="line">            <span class="string">&quot;3&quot;</span>: function3,</span><br><span class="line">            <span class="string">&quot;4&quot;</span>: function4</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;1: Validate PoC\n&#x27;</span> +</span><br><span class="line">                  <span class="string">&#x27;2: Company chatbot\n&#x27;</span> +</span><br><span class="line">                  <span class="string">&#x27;3: Developer tasks\n&#x27;</span> +</span><br><span class="line">                  <span class="string">&#x27;4: Use company data\n&#x27;</span> +</span><br><span class="line">                  <span class="string">&#x27;\&#x27;quit\&#x27; to exit the program\n&#x27;</span>)</span><br><span class="line">            command = <span class="built_in">input</span>(<span class="string">&#x27;Enter a number:&#x27;</span>)</span><br><span class="line">            <span class="keyword">if</span> command.strip() <span class="keyword">in</span> function_map:</span><br><span class="line">                function_map[command](client, azure_oai_model)</span><br><span class="line">            <span class="keyword">elif</span> command.strip().lower() == <span class="string">&#x27;quit&#x27;</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&#x27;Exiting program...&#x27;</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;Invalid input. Please enter number 1, 2, 3, 4, or 5.&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> ex:</span><br><span class="line">        <span class="built_in">print</span>(ex)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Task 1: Validate PoC</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function1</span>(<span class="params">aiClient, aiModel</span>):</span><br><span class="line">    inputText = utils.getPromptInput(<span class="string">&quot;Task 1: Validate PoC&quot;</span>, <span class="string">&quot;sample-text.txt&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Build messages to send to Azure OpenAI model. (Add code here)</span></span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: inputText&#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Define argument list (Add code here)</span></span><br><span class="line">    apiParams = &#123;</span><br><span class="line">        <span class="string">&quot;messages&quot;</span>: messages,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;API Parameters:\n&quot;</span>, apiParams)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Call chat completion connection. (Add code here)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Use the call name and **apiParams to reference our argument list</span></span><br><span class="line">    response = aiClient.chat.completions.create(</span><br><span class="line">        model=aiModel,</span><br><span class="line">        messages=messages,</span><br><span class="line">        temperature=<span class="number">0.7</span>,</span><br><span class="line">        max_tokens=<span class="number">800</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;Response:\n&quot;</span>, <span class="built_in">str</span>(response))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + response.choices[<span class="number">0</span>].message.content + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Task 2: Company chatbot</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function2</span>(<span class="params">aiClient, aiModel</span>):</span><br><span class="line">    inputText = utils.getPromptInput(<span class="string">&quot;Task 2: Company chatbot&quot;</span>, <span class="string">&quot;sample-text.txt&quot;</span>)</span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful assistant that responds in a casual tone. Each response should end with &#x27;Hope that helps! Thanks for using Contoso, Ltd.&#x27;&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;What is the best way to find if a company is hiring?&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You can start by checking the company&#x27;s website, especially the careers section. Hope that helps! Thanks for using Contoso, Ltd.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: inputText&#125;</span><br><span class="line">    ]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Define argument list (Add code here)</span></span><br><span class="line">    apiParams = &#123;</span><br><span class="line">        <span class="string">&quot;model&quot;</span>: aiModel,</span><br><span class="line">        <span class="string">&quot;messages&quot;</span>: messages,</span><br><span class="line">        <span class="string">&quot;max_tokens&quot;</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="string">&quot;temperature&quot;</span>: <span class="number">0.5</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;API Parameters:\n&quot;</span>, apiParams)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Call chat completion connection. (Add code here)</span></span><br><span class="line">    <span class="comment"># Use the call name and **apiParams to reference our argument list</span></span><br><span class="line">    response = aiClient.chat.completions.create(**apiParams)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;Response:\n&quot;</span>, <span class="built_in">str</span>(response))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + response.choices[<span class="number">0</span>].message.content + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response</span><br><span class="line"></span><br><span class="line"><span class="comment"># Task 3: Developer tasks</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function3</span>(<span class="params">aiClient, aiModel</span>):</span><br><span class="line">    inputText = utils.getPromptInput(<span class="string">&quot;Task 3: Developer tasks&quot;</span>, <span class="string">&quot;sample-text.txt&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Define system message based on the task</span></span><br><span class="line">    </span><br><span class="line">    system_message = <span class="string">&quot;Generate five unit tests for the function in fibonaci.py.&quot;</span></span><br><span class="line"></span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: system_message&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: inputText&#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Define argument list (Add code here)</span></span><br><span class="line">    apiParams = &#123;</span><br><span class="line">        <span class="string">&quot;model&quot;</span>: aiModel,</span><br><span class="line">        <span class="string">&quot;messages&quot;</span>: messages,</span><br><span class="line">        <span class="string">&quot;max_tokens&quot;</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="string">&quot;temperature&quot;</span>: <span class="number">0.5</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    utils.writeLog(<span class="string">&quot;API Parameters:\n&quot;</span>, apiParams)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Call chat completion connection. (Add code here)</span></span><br><span class="line">    <span class="comment"># Use the call name and **apiParams to reference our argument list</span></span><br><span class="line">    response = aiClient.chat.completions.create(**apiParams)</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    utils.writeLog(<span class="string">&quot;Response:\n&quot;</span>, <span class="built_in">str</span>(response))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + response.choices[<span class="number">0</span>].message.content + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response </span><br><span class="line"></span><br><span class="line"><span class="comment"># Task 4: Use company data</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">function4</span>(<span class="params">aiClient, aiModel</span>):</span><br><span class="line">    inputText = utils.getPromptInput(<span class="string">&quot;Task 4: Use company data&quot;</span>, <span class="string">&quot;sample-text.txt&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Build messages to send to Azure OpenAI model. (Add code here)</span></span><br><span class="line">    search_endpoint = os.getenv(<span class="string">&quot;SEARCH_ENDPOINT&quot;</span>)</span><br><span class="line">    search_key = os.getenv(<span class="string">&quot;SEARCH_KEY&quot;</span>)</span><br><span class="line">    search_index = os.getenv(<span class="string">&quot;SEARCH_INDEX&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Perform the search query</span></span><br><span class="line">    search_query = &#123;</span><br><span class="line">        <span class="string">&quot;search&quot;</span>: inputText,</span><br><span class="line">        <span class="string">&quot;searchMode&quot;</span>: <span class="string">&quot;any&quot;</span>,</span><br><span class="line">        <span class="string">&quot;queryType&quot;</span>: <span class="string">&quot;simple&quot;</span>,</span><br><span class="line">        <span class="string">&quot;top&quot;</span>: <span class="number">5</span>  <span class="comment"># Adjust the number of results as needed</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">        <span class="string">&quot;api-key&quot;</span>: search_key</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    search_url = <span class="string">f&quot;<span class="subst">&#123;search_endpoint&#125;</span>/indexes/<span class="subst">&#123;search_index&#125;</span>/docs/search?api-version=2021-04-30-Preview&quot;</span></span><br><span class="line">    </span><br><span class="line">    response = requests.post(search_url, headers=headers, json=search_query)</span><br><span class="line">    search_results = response.json()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Extract relevant search results</span></span><br><span class="line">    search_snippets = [result[<span class="string">&quot;content&quot;</span>] <span class="keyword">for</span> result <span class="keyword">in</span> search_results[<span class="string">&quot;value&quot;</span>]]</span><br><span class="line">    search_content = <span class="string">&quot;\n\n&quot;</span>.join(search_snippets)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Build messages for OpenAI with search results included</span></span><br><span class="line">    messages = [</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful travel agent.&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">f&quot;<span class="subst">&#123;inputText&#125;</span>\n\nSearch Results:\n<span class="subst">&#123;search_content&#125;</span>&quot;</span>&#125;</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Define connection and argument list (Add code here)</span></span><br><span class="line">    apiParams = &#123;</span><br><span class="line">        <span class="string">&quot;model&quot;</span>: aiModel,</span><br><span class="line">        <span class="string">&quot;messages&quot;</span>: messages,</span><br><span class="line">        <span class="string">&quot;max_tokens&quot;</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="string">&quot;temperature&quot;</span>: <span class="number">0.5</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    utils.writeLog(<span class="string">&quot;API Parameters:\n&quot;</span>, apiParams)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Call chat completion connection. Will be the same as function1 (Add code here)</span></span><br><span class="line">    <span class="comment"># Use the call name and **apiParams to reference our argument list</span></span><br><span class="line">    response = aiClient.chat.completions.create(**apiParams)</span><br><span class="line"></span><br><span class="line">    utils.writeLog(<span class="string">&quot;Response:\n&quot;</span>, <span class="built_in">str</span>(response))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response: &quot;</span> + response.choices[<span class="number">0</span>].message.content + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Call main function. Do not modify.</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>: </span><br><span class="line">    main()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后将c:\files下的fibonacci.py，复制到C:\files\AzureOpenAIPoc\Python下，首先删除文件夹中已有的sample-text.txt，并将fibonacci.py重命名为sample-text.txt(！！！注意是sample-text.txt，而不是sample-text.py)。然后关闭原来的命令窗口，重新运行python PoC.py，并输入3、file，查看结果是否产生了5个测试用例。</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050032.jpg">
+
+
+<h1 id="第四题（最后一题了-加油！！）"><a href="#第四题（最后一题了-加油！！）" class="headerlink" title="第四题（最后一题了 加油！！）"></a>第四题（最后一题了 加油！！）</h1><p>第四题可依次输入type和When is the best time to visit London?(可使用ctrl+c和ctrl+v进行复制粘贴)进行提问。</p>
+<img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050033.jpg">
+
+
+<p>完成上述代码测试后，点击界面右下角中的 Submit Assessment 按钮，弹出的确认页面后点击 Submit 按钮。<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050034.jpg"><br>完成凭证<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050035.jpg"><br>证书<br><img src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2406050035plus2.jpg"></p>
+<!--
+
+https://csdn-static.oss-cn-beijing.aliyuncs.com/release/aodesai/dej-demo1.html
+
+https://csdn-static.oss-cn-beijing.aliyuncs.com/release/aodesai/dej-demo2.html
+
+
+2
+Overview
+To earn this Microsoft Applied Skills credential, learners demonstrate the ability to create a natural language processing (NLP) solution by using Azure AI Language.
+
+Candidates for this credential should have a solid understanding of creating and using various Azure NLP models through both Language Studio and in code, including custom models. They should also have experience programming in either Python or C#, be familiar with the Azure portal, and be comfortable provisioning Azure AI resources.
+
+Tasks performed
+Deploy a language resource, and use prebuilt models
+Create a custom text classification solution
+Create a custom named entity recognition (NER) solution
+
+-->
+
+
+<h1 id="Azure-AI-Build-a-natural-language-processing-solution"><a href="#Azure-AI-Build-a-natural-language-processing-solution" class="headerlink" title="Azure AI Build a natural language processing solution"></a>Azure AI Build a natural language processing solution</h1><p>T1</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Azure;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> Azure.AI.TextAnalytics;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">ProofOfConcept</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> AzureKeyCredential credentials = <span class="keyword">new</span> AzureKeyCredential(<span class="string">&quot;&#123;REPLACE-WITH-YOUR-VALUE&#125;&quot;</span>);</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> Uri endpoint = <span class="keyword">new</span> Uri(<span class="string">&quot;&#123;REPLACE-WITH-YOUR-VALUE&#125;&quot;</span>);</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">RecognizeYourText</span>(<span class="params">TextAnalyticsClient client</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> document = <span class="string">&quot;Call our office at 312-555-1234 and ask for Graham Barnes, or send an email to support@contoso.com.&quot;</span>;</span><br><span class="line">            <span class="keyword">var</span> entities = client.<span class="literal">null</span>;</span><br><span class="line">            <span class="comment">// replace null with the correct method to recognize the requested information.a            </span></span><br><span class="line">            Console.WriteLine($ <span class="string">&quot;Redacted Text: &#123;entities.RedactedText&#125;&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(entities.Count &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine($ <span class="string">&quot;Recognized &#123;entities.Count&#125; the following entities &#123;(entities.Count &gt; 1 ? &quot;</span></span><br><span class="line">                    ies <span class="string">&quot; : &quot;</span></span><br><span class="line">                    y <span class="string">&quot;)&#125;:&quot;</span>);</span><br><span class="line">                <span class="keyword">foreach</span>(<span class="keyword">var</span> entity <span class="keyword">in</span> entities)</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine($ <span class="string">&quot;Text: &#123;entity.Text&#125;, Category: &#123;entity.Category&#125;, SubCategory: &#123;entity.SubCategory&#125;, Confidence score: &#123;entity.ConfidenceScore&#125;&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;No entities were found.&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> client = <span class="keyword">new</span> TextAnalyticsClient(endpoint, credentials);</span><br><span class="line">            RecognizeYourText(client);</span><br><span class="line">            Console.Write(<span class="string">&quot;Press any key to exit.&quot;</span>);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>T3</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Azure;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Text.Json;</span><br><span class="line"><span class="keyword">using</span> Azure.Core;</span><br><span class="line"><span class="keyword">using</span> Azure.AI.Language.Conversations;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">ProofOfConcept</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> AzureKeyCredential credential = <span class="keyword">new</span> AzureKeyCredential(<span class="string">&quot;&#123;REPLACE-WITH-YOUR-VALUE&#125;&quot;</span>);</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> Uri endpoint = <span class="keyword">new</span> Uri(<span class="string">&quot;&#123;REPLACE-WITH-YOUR-VALUE&#125;&quot;</span>);</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">string</span> projectName = <span class="string">&quot;&#123;REPLACE-WITH-YOUR-VALUE&#125;&quot;</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">string</span> deploymentName = <span class="string">&quot;&#123;REPLACE-WITH-YOUR-VALUE&#125;&quot;</span>;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">RecognizeYourText</span>(<span class="params"><span class="built_in">string</span> ? query</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(query == <span class="literal">null</span> || query.Length &gt; <span class="number">1000</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                query = <span class="string">&quot;can you send me a few gizmos?&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">var</span> data = <span class="keyword">new</span></span><br><span class="line">            &#123;</span><br><span class="line">                analysisInput = <span class="keyword">new</span></span><br><span class="line">                &#123;</span><br><span class="line">                    conversationItem = <span class="keyword">new</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        text = query, id = <span class="string">&quot;1&quot;</span>, participantId = <span class="string">&quot;1&quot;</span>,</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;, parameters = <span class="keyword">new</span></span><br><span class="line">                &#123;</span><br><span class="line">                    projectName, deploymentName, stringIndexType = <span class="string">&quot;Utf16CodeUnit&quot;</span>,</span><br><span class="line">                &#125;, kind = <span class="string">&quot;Conversation&quot;</span>,</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="comment">// Create client and send request           </span></span><br><span class="line">            <span class="keyword">var</span> client = <span class="keyword">new</span> <span class="literal">null</span>(endpoint, credential);</span><br><span class="line">            <span class="comment">// replace null with the correct method to recognize the requested information.            </span></span><br><span class="line">            Response response = client.<span class="literal">null</span>(RequestContent.Create(data));</span><br><span class="line">            <span class="comment">// replace null with the correct method to recognize the requested information.            </span></span><br><span class="line">            <span class="keyword">if</span>(response.ContentStream == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;No response received.&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">using</span> JsonDocument result = JsonDocument.Parse(response.ContentStream);</span><br><span class="line">            JsonElement conversationalTaskResult = result.RootElement;</span><br><span class="line">            JsonElement conversationPrediction = conversationalTaskResult.GetProperty(<span class="string">&quot;result&quot;</span>).GetProperty(<span class="string">&quot;prediction&quot;</span>);</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Intents:&quot;</span>);</span><br><span class="line">            <span class="keyword">foreach</span>(JsonElement intent <span class="keyword">in</span> conversationPrediction.GetProperty(<span class="string">&quot;intents&quot;</span>).EnumerateArray())</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine($ <span class="string">&quot;Category: &#123;intent.GetProperty(&quot;</span></span><br><span class="line">                    category <span class="string">&quot;).GetString()&#125;&quot;</span>);</span><br><span class="line">                Console.WriteLine($ <span class="string">&quot;Confidence: &#123;intent.GetProperty(&quot;</span></span><br><span class="line">                    confidenceScore <span class="string">&quot;).GetSingle()&#125;&quot;</span>);</span><br><span class="line">                Console.WriteLine();</span><br><span class="line">            &#125;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Entities:&quot;</span>);</span><br><span class="line">            <span class="keyword">foreach</span>(JsonElement entity <span class="keyword">in</span> conversationPrediction.GetProperty(<span class="string">&quot;entities&quot;</span>).EnumerateArray())</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine($ <span class="string">&quot;Category: &#123;entity.GetProperty(&quot;</span></span><br><span class="line">                    category <span class="string">&quot;).GetString()&#125;&quot;</span>);</span><br><span class="line">                Console.WriteLine($ <span class="string">&quot;Text: &#123;entity.GetProperty(&quot;</span></span><br><span class="line">                    text <span class="string">&quot;).GetString()&#125;&quot;</span>);</span><br><span class="line">                Console.WriteLine($ <span class="string">&quot;Offset: &#123;entity.GetProperty(&quot;</span></span><br><span class="line">                    offset <span class="string">&quot;).GetInt32()&#125;&quot;</span>);</span><br><span class="line">                Console.WriteLine($ <span class="string">&quot;Length: &#123;entity.GetProperty(&quot;</span></span><br><span class="line">                    length <span class="string">&quot;).GetInt32()&#125;&quot;</span>);</span><br><span class="line">                Console.WriteLine($ <span class="string">&quot;Confidence: &#123;entity.GetProperty(&quot;</span></span><br><span class="line">                    confidenceScore <span class="string">&quot;).GetSingle()&#125;&quot;</span>);</span><br><span class="line">                Console.WriteLine();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> ? input = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span>(args.Length &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                input = System.IO.File.ReadAllText(args[<span class="number">0</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            RecognizeYourText(input);</span><br><span class="line">            Console.Write(<span class="string">&quot;Press any key to exit.&quot;</span>);</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+  
+    
+      <a id="older" class="blog-nav" href="/2024/06/05/Azure-OpenAI-Language/">OLDER&nbsp;&gt;</a>
+      
+        
+            
+</div>
+        <div class="footer">
+  
+    <div class="footer-more">
+      
+        Copyright © LM 2024
+        
+    </div>
+  
+    <div class="footer-more">
+      
+        Theme by Leedom | Powered by Hexo
+        
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="back-to-top hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+      
+  <div class="search-icon" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-box">
+        <div class="search-title">
+          <!-- <span class="search-icon-input">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </span> -->
+          
+            <input type="text" class="search-input" id="search-input" placeholder="搜索">
+          
+          <span class="search-close-icon" id="search-close-icon">
+            <a href="javascript: void(0)">
+              <i class="iconfont icon-close"></i>
+            </a>
+          </span>
+        </div>
+        <div class="search-result" id="search-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    // inputArea.onclick = function() {
+    //   getSearchFile()
+    //   this.onclick = null
+    // }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        inputArea.focus()
+        getSearchFile()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
+      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
+                }
+                str += "<hr></li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+    </div>
+  </body>
+</html>
