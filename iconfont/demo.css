@@ -119,8 +119,6 @@
   font-size: 42px;
   margin: 10px auto;
   color: #333;
-  -webkit-transition: font-size 0.25s linear, width 0.25s linear;
-  -moz-transition: font-size 0.25s linear, width 0.25s linear;
   transition: font-size 0.25s linear, width 0.25s linear;
 }
 
@@ -417,8 +415,6 @@ pre[class*="language-"] {
   tab-size: 4;
 
   -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
 }
 
@@ -426,6 +422,11 @@ pre[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection, code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
   text-shadow: none;
   background: #b3d4fc;
 }

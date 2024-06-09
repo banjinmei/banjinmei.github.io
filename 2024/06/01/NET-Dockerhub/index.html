@@ -50,7 +50,8 @@
 <script src="/js/fancybox.js"></script>
 
 
-<meta name="generator" content="Hexo 7.2.0"></head>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
 
 
   <body>
@@ -192,17 +193,33 @@ not ok  docker rm -f webapp xxx
 docker images
 
 
-docker login  -u q422073304
+docker login  -u q42207
 
-docker run -d -p 18081:8080 -p 18082:8081 --name webapp1 q422073304/webmvc
+docker run -d -p 18081:8080 -p 18082:8081 --name webapp1 q42304/webmvc
 
 dckr_pat_FBv68qAtAPbH3gRqZgCuzoGxIiM
 
- docker rmi q422073304/webmvc:dev
+ docker rmi q42204/webmvc:dev
 
-docker run -d -p 123:8080 -p 124:8081 -e DOTNET_USE_POLLING_FILE_WATCHER=1  -e ASPNETCORE_HTTP_PORTS=8080 -e DOTNET_RUNNING_IN_CONTAINER=true -e DOTNET_VERSION=8.0.5 -e ASPNET_VERSION=8.0.5  --name webaa q422073304/webmvc
+docker run -d -p 123:8080 -p 124:8081 -e DOTNET_USE_POLLING_FILE_WATCHER=1  -e ASPNETCORE_HTTP_PORTS=8080 -e DOTNET_RUNNING_IN_CONTAINER=true -e DOTNET_VERSION=8.0.5 -e ASPNET_VERSION=8.0.5  --name webaa q4220304/webmvc
 
-docker run -d --name WebMvc_2 -e NUGET_PACKAGES=/.nuget/fallbackpackages2 -e NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2  -e ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true ASPNETCORE_ENVIRONMENT=Development -e DOTNET_USE_POLLING_FILE_WATCHER=1 -e APP_UID=1654 -e ASPNETCORE_HTTP_PORTS=8080 -e DOTNET_RUNNING_IN_CONTAINER=true -e DOTNET_VERSION=8.0.5 -e ASPNET_VERSION=8.0.5 -p 18081:8080  -p 18082:8081  q422073304/webmvc:latest
+docker run -d --name WebMvc_2 -e NUGET_PACKAGES=/.nuget/fallbackpackages2 -e NUGET_FALLBACK_PACKAGES=/.nuget/fallbackpackages;/.nuget/fallbackpackages2  -e ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true ASPNETCORE_ENVIRONMENT=Development -e DOTNET_USE_POLLING_FILE_WATCHER=1 -e APP_UID=1654 -e ASPNETCORE_HTTP_PORTS=8080 -e DOTNET_RUNNING_IN_CONTAINER=true -e DOTNET_VERSION=8.0.5 -e ASPNET_VERSION=8.0.5 -p 18081:8080  -p 18082:8081  q42204/webmvc:latest
+
+
+sudo nohup dotnet run /root/mynets/TcpSk > output111111.log 2>&1 &
+dk hub 里面
+
+kill
+
+ps -ef | grep nohup
+
+ -e TZ=Asia/Shanghai
+
+ 
+
+
+
+
 
 
 https://www.cnblogs.com/hudean/p/18020909
