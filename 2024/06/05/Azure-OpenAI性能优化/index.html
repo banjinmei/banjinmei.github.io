@@ -1,100 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="keywords" content="" />
-  <meta name="author" content="m" />
-  <meta name="description" content="" />
-  
-  
-  <title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
     
-      Azure OpenAI Generative AI Performance Tuning 
-      
-      
+    <title>
+        
+            Azure OpenAI Generative AI Performance Tuning |
+        
+        m study log
+    </title>
     
-  </title>
+<link rel="stylesheet" href="/css/style.css">
 
-  
-    <link rel="apple-touch-icon" href="/images/favicon.png">
-    <link rel="icon" href="/images/favicon.png">
-  
-
-  <!-- Raleway-Font -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet">
-
-  <!-- hexo site css -->
-  
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/common.css">
-<link rel="stylesheet" href="/iconfont/iconfont.css">
-
-
-  
-
-  
     
-<link rel="stylesheet" href="/css/post.css">
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
-  
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
 
-  <!-- jquery3.3.1 -->
-  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
 
-  <!-- fancybox -->
-  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
-  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
-  
-<script src="/js/fancybox.js"></script>
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
 
-
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"qfsysw.github.io","root":"/","language":"en","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
 <meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
 </head>
 
 
-  <body>
-    <div id="app">
-      <div class="header">
-  <a href="/">Lost in space and time</a>
+<body>
+<div class="progress-bar-container">
+    
+
+    
 </div>
 
 
-      <p class="links">
-  
-    <a title="archives" target="" href="/archives/">
-      <i class="iconfont icon-bookmark"></i>
-    </a>
-  
-</p>
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
 
 
-      <div class="main">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+        </div>
 
-<!-- LaTex Display -->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
-    }
-  };
-</script>
+        <div class="page-main-content-middle border-box">
 
-<div class="post">
-  <h3 class="date">
-    Jun 05, 2024
-  </h3>
-  <h1>
-    Azure OpenAI Generative AI Performance Tuning
-  </h1>
-  <div class="content markdown-body">
-    <h1 id="Azure-OpenAI-服务应用提示工程"><a href="#Azure-OpenAI-服务应用提示工程" class="headerlink" title="Azure OpenAI 服务应用提示工程"></a>Azure OpenAI 服务应用提示工程</h1><p>Azure OpenAI 中 AI 模型的响应质量取决于提供的提示的质量。 通过各种技术提高提示质量称为提示工程。</p>
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Azure OpenAI Generative AI Performance Tuning
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-06-05 00:02:33</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Jun 05 2024 02:10:19 GMT+0800">2024-06-05 02:10:19</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NET/">.NET</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Azure/">Azure</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/OpenAI/">OpenAI</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="Azure-OpenAI-服务应用提示工程"><a href="#Azure-OpenAI-服务应用提示工程" class="headerlink" title="Azure OpenAI 服务应用提示工程"></a>Azure OpenAI 服务应用提示工程</h1><p>Azure OpenAI 中 AI 模型的响应质量取决于提供的提示的质量。 通过各种技术提高提示质量称为提示工程。</p>
 <p>在本模块中，你将了解提示工程以及如何使用它来优化 Azure OpenAI 模型的性能。 提示工程涉及设计和优化提示，以更好地利用 Azure OpenAI 模型。</p>
 <h2 id="了解提示工程"><a href="#了解提示工程" class="headerlink" title="了解提示工程"></a>了解提示工程</h2><p>发送到 AI 模型的输入提示的质量（如 Azure OpenAI 中提供的提示）会直接影响返回的内容的质量。 通过仔细构造发送到模型的提示，模型可以提供更好、更有趣的响应。</p>
 <h2 id="什么是提示工程"><a href="#什么是提示工程" class="headerlink" title="什么是提示工程"></a>什么是提示工程</h2><p>生成式 AI 模型基于大量数据训练，可以根据提示的最有可能的延续生成文本、图像、代码和创意内容。</p>
@@ -102,7 +248,7 @@
 <p>例如，如果我们希望 OpenAI 模型生成产品说明，我们可以为其提供详细说明，描述产品的功能和优势。 通过提供此上下文，模型可以生成更准确、更相关的产品说明。</p>
 <p>提示工程还有助于缓解 AI 模型中的偏差并提高公平性。 通过设计具有多样性和包容性的提示，我们可以确保模型不会偏向于特定组或透视。</p>
 <p>重要</p>
-<p>无论可以设计多好的提示，AI 模型的响应都不应被视为事实或完全没有偏差。 始终负责地使用 AI。 有关详细信息，请参阅 Microsoft 关于 Azure OpenAI 的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/transparency-note">透明度说明</a>和 <a target="_blank" rel="noopener" href="https://www.microsoft.com/ai/responsible-ai">Microsoft 的 AI 原则</a>。</p>
+<p>无论可以设计多好的提示，AI 模型的响应都不应被视为事实或完全没有偏差。 始终负责地使用 AI。 有关详细信息，请参阅 Microsoft 关于 Azure OpenAI 的<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/transparency-note" >透明度说明<i class="fas fa-external-link-alt"></i></a>和 <a class="link"   target="_blank" rel="noopener" href="https://www.microsoft.com/ai/responsible-ai" >Microsoft 的 AI 原则<i class="fas fa-external-link-alt"></i></a>。</p>
 <p>此外，提示工程可以帮助我们了解模型用来生成其响应的引用。 生成式 AI 模型具有大量参数，并且其遵循的逻辑对用户来说基本上是未知的，因此可能会对它如何得出响应感到困惑。 通过设计易于理解和解释的提示，可以帮助人类更好地了解模型如何生成其响应。 这在医疗保健等领域尤其重要，因此了解模型如何做出决策至关重要。</p>
 <p>设计自己的提示时，可以使用不同的方法，其中许多方法在本模块的后续单元中进行了介绍。 其中包括提供说明、上下文内容、提示或少量示例，以及对提示中的内容进行正确排序。 此处介绍的方法并不详尽，因为此领域是一个微妙而流畅的主题。</p>
 <h2 id="API-终结点的注意事项"><a href="#API-终结点的注意事项" class="headerlink" title="API 终结点的注意事项"></a>API 终结点的注意事项</h2><p>本模块其余部分的示例将重点介绍 <code>ChatCompletion</code>。 值得注意的是，<code>ChatCompletion</code> 也可用于非聊天场景，其中任何说明都包含在系统消息中，用户内容在用户角色消息中提供。 如有需要，其中大多数示例可以改为使用 <code>Completion</code> 终结点。</p>
@@ -179,7 +325,7 @@
 <li>“我希望你成为一名翻译，从英语翻译成西班牙语。 不要回复我说或问的任何内容，只翻译这两种语言，并用翻译的文本回复。”</li>
 <li>“作为励志演说家，自由地就目标和挑战给出令人鼓舞的建议。 你应该包括许多积极的肯定和建议的活动，以实现用户的最终目标。”</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://oai.azure.com/portal?azure-portal=true">Azure OpenAI Studio</a> 中聊天窗口顶部提供了其他示例系统消息。 尝试定义自己的系统提示以指定唯一响应，并与模型聊天以查看响应的不同之处。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://oai.azure.com/portal?azure-portal=true" >Azure OpenAI Studio<i class="fas fa-external-link-alt"></i></a> 中聊天窗口顶部提供了其他示例系统消息。 尝试定义自己的系统提示以指定唯一响应，并与模型聊天以查看响应的不同之处。</p>
 <p><code>ChatCompletion</code> 终结点允许使用 <code>System</code> 聊天角色包括系统消息。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var chatCompletionsOptions = new ChatCompletionsOptions()</span><br><span class="line">&#123;</span><br><span class="line">    Messages =</span><br><span class="line">    &#123;</span><br><span class="line">        new ChatRequestSystemMessage(&quot;You are a casual, helpful assistant. You will talk like an American old western film character.&quot;),</span><br><span class="line">        new ChatRequestUserMessage(&quot;Can you direct me to the library?&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -193,7 +339,7 @@
 
 <p>系统消息在格式和内容方面都可能会显著更改响应。 尝试为模型定义一条明确的系统消息，以准确说明你期望的响应类型，以及你希望或不希望它包含的内容。</p>
 <h2 id="会话历史记录"><a href="#会话历史记录" class="headerlink" title="会话历史记录"></a>会话历史记录</h2><p>除了系统消息外，还可以向模型提供其他消息以增强会话。 对话历史记录使模型能够继续以类似方式响应（例如，音调或格式设置），并允许用户在后续查询中引用以前的内容。 可以通过两种方式提供此历史记录：从实际聊天历史记录，或从用户定义的示例对话。</p>
-<p>使用 OpenAI 模型的聊天接口（例如，ChatGPT 和 <a target="_blank" rel="noopener" href="https://oai.azure.com/portal/chat?azure-portal=true">Azure OpenAI Studio</a> 中的聊天操场）自动包含对话历史记录，从而生成更丰富、更有意义的对话。 在 Azure OpenAI Studio 聊天操场的聊天窗口下方的“参数”部分中，可以指定要包含的过去消息数。 尝试将该值减少到 1 或增加到最大值，以查看不同历史记录量对对话的影响。</p>
+<p>使用 OpenAI 模型的聊天接口（例如，ChatGPT 和 <a class="link"   target="_blank" rel="noopener" href="https://oai.azure.com/portal/chat?azure-portal=true" >Azure OpenAI Studio<i class="fas fa-external-link-alt"></i></a> 中的聊天操场）自动包含对话历史记录，从而生成更丰富、更有意义的对话。 在 Azure OpenAI Studio 聊天操场的聊天窗口下方的“参数”部分中，可以指定要包含的过去消息数。 尝试将该值减少到 1 或增加到最大值，以查看不同历史记录量对对话的影响。</p>
 <p>注意</p>
 <p>提示中包含的会话历史记录越多意味着使用的输入令牌数就越多。 考虑到所使用的模型的令牌限制，必须确定用例的正确平衡。</p>
 <p>聊天系统还可以利用模型的汇总功能来节省输入令牌。 应用可以选择汇总过去的消息，并将该摘要包含在对话历史记录中，然后仅向模型逐字提供过去几条消息。</p>
@@ -313,11 +459,11 @@
 <p>例如，可以将以下自然语言提示提交到 DALL-E：</p>
 <p>摩托车上的松鼠</p>
 <p>此提示可能会生成图形输出，如下图所示：</p>
-<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/squirrel-on-a-motorcycle.png" alt="A picture of a squirrel on a motorcycle."></p>
+<p><img   src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/squirrel-on-a-motorcycle.png"  alt="A picture of a squirrel on a motorcycle."></p>
 <p>DALL-E 生成的图像是原创的；不是从特选图像目录中检索的。 换句话说，DALL-E 不是用于查找合适图像的搜索系统 - 它是一种人工智能 (AI) 模型，可根据训练数据生成新图像。</p>
 <h2 id="探索-Azure-OpenAI-Studio-中的-DALL-E"><a href="#探索-Azure-OpenAI-Studio-中的-DALL-E" class="headerlink" title="探索 Azure OpenAI Studio 中的 DALL-E"></a>探索 Azure OpenAI Studio 中的 DALL-E</h2><p>已完成</p>
 <p>若要试用 DALL-E，可以在已批准访问该服务的 Azure 订阅中预配 Azure OpenAI 服务资源，并使用 DALL-E 操场提交提示并查看生成的图像。</p>
-<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/dall-e-playground.png" alt="Azure OpenAI Studio 中的 DALL-E 操场的屏幕截图。"></p>
+<p><img   src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/dall-e-playground.png"  alt="Azure OpenAI Studio 中的 DALL-E 操场的屏幕截图。"></p>
 <p>使用操场时，可以调整设置以指定：</p>
 <ul>
 <li>生成的图像分辨率（大小）。 可用大小为 <code>256x256</code>、<code>512x512</code>、<code>1024x1024</code>（即默认值）或 <code>1024x1792</code>。</li>
@@ -339,7 +485,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;created&quot;: 1686780744,</span><br><span class="line">    &quot;expires&quot;: 1686867152,</span><br><span class="line">    &quot;id&quot;: &quot;6d765598-eeee-4f49-885d-03ee1c8f9b02&quot;,</span><br><span class="line">    &quot;result&quot;: &#123;</span><br><span class="line">        &quot;created&quot;: 1686780744,</span><br><span class="line">        &quot;data&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;url&quot;: &quot;https://dalleproduse.....png&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;status&quot;: &quot;succeeded&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>结果元素包括 url 元素的集合，每个元素都引用从提示生成的 PNG 图像文件。 在此示例中，文件可能如下图所示：</p>
-<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/badger-in-a-tuxedo.png" alt="A picture of a badger wearing a tuxedo."></p>
+<p><img   src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/generate-images-azure-openai/media/badger-in-a-tuxedo.png"  alt="A picture of a badger wearing a tuxedo."></p>
 <p><strong>DALL-E 模型用于基于自然语言提示生成图像。</strong><br><strong>DALL-E 操场用于探索图像生成模型。</strong><br><strong>生成的图像数在 n 参数中指定。</strong></p>
 <h1 id="检索增强生成-RAG"><a href="#检索增强生成-RAG" class="headerlink" title="检索增强生成 (RAG)"></a>检索增强生成 (RAG)</h1><p>借助 Azure OpenAI，开发人员可以通过将支持的 AI 聊天模型连接到自己的数据来实现检索增强生成 (RAG)。 这些模型可以引用特定数据源来提供有根据的响应，从而增强 AI 模型在创建响应时的功能。</p>
 <p>在本模块中，你将了解如何使用 Azure OpenAI 添加自己的数据来实现 RAG，并基于这两个数据生成响应。</p>
@@ -358,15 +504,15 @@
 <p>基于你的数据的、使用 Azure OpenAI 的 RAG 还是使用无状态 API 连接到模型，这样就无需使用数据训练自定义模型，并简化了与 AI 模型的交互。 AI 搜索首先查找有用的信息来回答提示，并将此作为接地数据添加到提示，Azure OpenAI 则根据该信息产生响应。</p>
 <h2 id="添加自己的数据源"><a href="#添加自己的数据源" class="headerlink" title="添加自己的数据源"></a>添加自己的数据源</h2><p>在聊天操场中通过 Azure OpenAI Studio 添加自己的数据。 然后使用添加的数据源来增强发送到模型的提示。 添加数据时，可以选择上传数据文件、使用 Blob 存储帐户中的数据或连接到现有的 AI 搜索索引。</p>
 <p>如果要上传或使用存储帐户中已有的文件，则 Azure OpenAI 支持的数据格式包括 <code>.md</code>、<code>.txt</code>、<code>.html</code>、<code>.pdf</code> 以及 Microsoft Word 和 PowerPoint 文件。 如果其中任何文件包含图形或图像，则响应质量取决于对视觉内容提取文本的效果。</p>
-<p>上传数据或连接到存储帐户中的文件时，建议使用 Azure OpenAI Studio 创建搜索资源和索引。 通过此方式添加数据，可以在插入索引时进行适当的分块，从而产生更好的响应。 如果使用大型文本文件或表单，则应使用可用的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/use-your-data#ingesting-your-data-into-azure-cognitive-search?azure-portal=true">数据准备脚本</a>来提高 AI 模型的准确性。</p>
-<p>为 AI 搜索服务启用<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/search/semantic-search-overview?azure-portal=true">语义搜索</a>可以优化搜索数据索引的结果，并且可能会收到更高质量的响应和引文。 但启用语义搜索可能会增加搜索服务的成本。</p>
+<p>上传数据或连接到存储帐户中的文件时，建议使用 Azure OpenAI Studio 创建搜索资源和索引。 通过此方式添加数据，可以在插入索引时进行适当的分块，从而产生更好的响应。 如果使用大型文本文件或表单，则应使用可用的<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/use-your-data#ingesting-your-data-into-azure-cognitive-search?azure-portal=true" >数据准备脚本<i class="fas fa-external-link-alt"></i></a>来提高 AI 模型的准确性。</p>
+<p>为 AI 搜索服务启用<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/search/semantic-search-overview?azure-portal=true" >语义搜索<i class="fas fa-external-link-alt"></i></a>可以优化搜索数据索引的结果，并且可能会收到更高质量的响应和引文。 但启用语义搜索可能会增加搜索服务的成本。</p>
 <h2 id="连接数据"><a href="#连接数据" class="headerlink" title="连接数据"></a>连接数据</h2><p>要连接数据，请导航到 Azure OpenAI Studio 中的聊天操场，然后在“助手设置”窗格中选择“添加数据”选项卡。 选择“添加数据源”按钮以连接数据。 系统提示将引导你设置与每个数据源之间的连接，并将该数据放入搜索索引。</p>
 <p>如果使用的是自己的索引（不是通过 Azure OpenAI Studio 创建的索引），则能通过其中一个页面指定列映射。 请务必提供准确的字段（尤其是内容数据），让模型能够提供更好的响应。</p>
-<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/use-own-data-azure-openai/media/index-data-mapping.png" alt="Screenshot of Azure OpenAI Studio index field mapping."></p>
+<p><img   src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/use-own-data-azure-openai/media/index-data-mapping.png"  alt="Screenshot of Azure OpenAI Studio index field mapping."></p>
 <h2 id="使用自己的数据与模型聊天"><a href="#使用自己的数据与模型聊天" class="headerlink" title="使用自己的数据与模型聊天"></a>使用自己的数据与模型聊天</h2><p>可以在 Azure AI Studio 中通过聊天操场或 API 对自己的数据使用带 Azure OpenAI 的 RAG。</p>
 <h2 id="令牌注意事项和建议的设置"><a href="#令牌注意事项和建议的设置" class="headerlink" title="令牌注意事项和建议的设置"></a>令牌注意事项和建议的设置</h2><p>由于基于自有数据的带 Azure OpenAI 的 RAG 在提示符中包含索引的搜索结果，因此请务必了解这会如何影响令牌分配。 每次调用模型都包括系统消息、用户提示、对话历史记录、检索的搜索文档、内部提示和模型响应的令牌。</p>
 <p>例如，系统消息是模型指令的有用参考，并且包含在每次调用中。 虽然系统消息没有令牌限制，但使用自己的数据时，如果超过 200 个令牌，系统消息将被截断。 使用自己的数据为 1500 个令牌时，模型的响应也会受到限制。</p>
-<p>由于这些令牌限制，建议在调用中限制问题长度和对话历史记录长度。 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/advanced-prompt-engineering?azure-portal=true">提示工程技术</a>（例如分解任务和思维提示链）可以帮助模型更有效地响应。</p>
+<p>由于这些令牌限制，建议在调用中限制问题长度和对话历史记录长度。 <a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/advanced-prompt-engineering?azure-portal=true" >提示工程技术<i class="fas fa-external-link-alt"></i></a>（例如分解任务和思维提示链）可以帮助模型更有效地响应。</p>
 <h2 id="使用-API"><a href="#使用-API" class="headerlink" title="使用 API"></a>使用 API</h2><p>将 API 与你自己的数据配合使用时，需要指定存储数据的数据源。 每次调用时，都需要包含 AI 搜索资源的 <code>endpoint</code>、<code>key</code> 和 <code>indexName</code>。</p>
 <p>请求正文将类似于以下 JSON。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;dataSources&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;type&quot;: &quot;AzureCognitiveSearch&quot;,</span><br><span class="line">            &quot;parameters&quot;: &#123;</span><br><span class="line">                &quot;endpoint&quot;: &quot;&lt;your_search_endpoint&gt;&quot;,</span><br><span class="line">                &quot;key&quot;: &quot;&lt;your_search_endpoint&gt;&quot;,</span><br><span class="line">                &quot;indexName&quot;: &quot;&lt;your_search_index&gt;&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;messages&quot;:[</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;role&quot;: &quot;system&quot;, </span><br><span class="line">            &quot;content&quot;: &quot;You are a helpful assistant assisting users with travel recommendations.&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;role&quot;: &quot;user&quot;, </span><br><span class="line">            &quot;content&quot;: &quot;I want to go to New York. Where should I stay?&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -377,12 +523,12 @@
 <p>请求还需要包括 <code>Content-Type</code> 和 <code>api-key</code>。</p>
 <h2 id="练习-使用-Azure-OpenAI-服务为-RAG-添加数据"><a href="#练习-使用-Azure-OpenAI-服务为-RAG-添加数据" class="headerlink" title="练习 - 使用 Azure OpenAI 服务为 RAG 添加数据"></a>练习 - 使用 Azure OpenAI 服务为 RAG 添加数据</h2><p>现在，让我们在 Azure OpenAI Studio 中对数据使用 Azure OpenAI。 在本练习中，你将部署 Azure OpenAI 模型、连接示例数据，并根据示例数据生成响应。</p>
 <p>注意</p>
-<p>为了完成本练习，你将需要一个 <a target="_blank" rel="noopener" href="https://azure.microsoft.com/free?azure-portal=true">Azure 订阅</a>。 你还需要请求（并被授予）<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/limited-access?azure-portal=true">Azure OpenAI 访问权限</a>。</p>
+<p>为了完成本练习，你将需要一个 <a class="link"   target="_blank" rel="noopener" href="https://azure.microsoft.com/free?azure-portal=true" >Azure 订阅<i class="fas fa-external-link-alt"></i></a>。 你还需要请求（并被授予）<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/limited-access?azure-portal=true" >Azure OpenAI 访问权限<i class="fas fa-external-link-alt"></i></a>。</p>
 <p>要完成此模块的练习，请启动 VM 并按照说明进行操作。</p>
 <p>注意</p>
-<p>若要完成此练习，你将需要 Microsoft Azure 订阅。 如果你还没有该订阅，可以<a target="_blank" rel="noopener" href="https://azure.microsoft.com/?azure-portal=true">注册一个</a>。</p>
-<p>如果需要为此练习设置计算机，可以使用此<a target="_blank" rel="noopener" href="https://microsoftlearning.github.io/mslearn-ai-services/Instructions/setup.html?azure-portal=true">设置指南</a>，然后按照下面链接的练习说明进行操作。 请注意，设置指南适用于多个开发练习，其中可能包括该特定练习不需要的软件。 此外，由于可能的操作系统和设置配置的范围太广，如果你选择在自己的计算机上完成此练习，我们将无法提供支持。</p>
-<p>要在自己的计算机上按照这些说明进行操作，可以按照<a target="_blank" rel="noopener" href="https://aka.ms/mslearn-openai-own-data?azure-portal=true">此处的练习说明</a>进行操作。</p>
+<p>若要完成此练习，你将需要 Microsoft Azure 订阅。 如果你还没有该订阅，可以<a class="link"   target="_blank" rel="noopener" href="https://azure.microsoft.com/?azure-portal=true" >注册一个<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>如果需要为此练习设置计算机，可以使用此<a class="link"   target="_blank" rel="noopener" href="https://microsoftlearning.github.io/mslearn-ai-services/Instructions/setup.html?azure-portal=true" >设置指南<i class="fas fa-external-link-alt"></i></a>，然后按照下面链接的练习说明进行操作。 请注意，设置指南适用于多个开发练习，其中可能包括该特定练习不需要的软件。 此外，由于可能的操作系统和设置配置的范围太广，如果你选择在自己的计算机上完成此练习，我们将无法提供支持。</p>
+<p>要在自己的计算机上按照这些说明进行操作，可以按照<a class="link"   target="_blank" rel="noopener" href="https://aka.ms/mslearn-openai-own-data?azure-portal=true" >此处的练习说明<i class="fas fa-external-link-alt"></i></a>进行操作。</p>
 <p>提示</p>
 <p>完成练习后，如果你已完成对 Azure AI 服务的学习，请删除在练习期间创建的 Azure 资源。</p>
 <p> <strong>分解任务并使用思维提示链可帮助模型在令牌限制内更有效地做出响应。</strong><br><strong>使用 Azure OpenAI Studio，可以在插入索引时进行适当的分块，从而产生更好的响应。</strong><br> <strong>基于数据的 Azure OpenAI 支持开发人员使用受支持的 AI 聊天模型来引用特定数据源以使响应落地。</strong></p>
@@ -392,7 +538,7 @@
 <h2 id="生成式-AI-解决方案"><a href="#生成式-AI-解决方案" class="headerlink" title="生成式 AI 解决方案"></a>生成式 AI 解决方案</h2><p>Microsoft 有关负责任生成式 AI 的指南实用且可操作。 它定义了一个四阶段过程，用于在使用生成式模型时为负责任的 AI 制定和实施计划。 该过程的四个阶段分别为：</p>
 <p>识别与计划解决方案相关的潜在危害。<br>衡量解决方案生成的输出中是否存在这些危害。<br>缓解解决方案中多个层级的危害，以最大程度地减少其存在和影响，确保就用户的潜在风险进行透明的沟通。<br>通过定义并遵循部署和运营就绪计划来负责任地运营解决方案。</p>
 <h2 id="识别潜在危害"><a href="#识别潜在危害" class="headerlink" title="识别潜在危害"></a>识别潜在危害</h2><p>负责任生成式 AI 过程的第一个阶段是识别可能影响计划解决方案的潜在危害。 此阶段包含四个步骤，如下所示：</p>
-<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/identify-harms.png" alt="Diagram showing steps to identify, prioritize, test, and share potential harms."></p>
+<p><img   src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/identify-harms.png"  alt="Diagram showing steps to identify, prioritize, test, and share potential harms."></p>
 <ol>
 <li>识别潜在危害</li>
 <li>确定已识别危害的优先级</li>
@@ -405,8 +551,8 @@
 <li>生成包含不准确事实的内容。</li>
 <li>生成鼓励或支持非法或不道德行为或做法的内容。</li>
 </ul>
-<p>若要完全了解解决方案中服务和模型的已知限制和行为，请参阅可用文档。 例如，Azure OpenAI 服务包括<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/transparency-note">透明度说明</a>，可用于了解与服务及其包含的模型相关的特定注意事项。 此外，各模型开发人员可能会提供相应的文档，例如 <a target="_blank" rel="noopener" href="https://cdn.openai.com/papers/gpt-4-system-card.pdf">GPT-4 模型的 OpenAI 系统卡</a>。</p>
-<p>请考虑查看 <a target="_blank" rel="noopener" href="https://aka.ms/RAIImpactAssessmentGuidePDF">Microsoft 负责任 AI 影响评估指南</a>中的指南，并使用关联的<a target="_blank" rel="noopener" href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE5cmFk">负责任 AI 影响评估模板</a>来记录潜在的危害。</p>
+<p>若要完全了解解决方案中服务和模型的已知限制和行为，请参阅可用文档。 例如，Azure OpenAI 服务包括<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/legal/cognitive-services/openai/transparency-note" >透明度说明<i class="fas fa-external-link-alt"></i></a>，可用于了解与服务及其包含的模型相关的特定注意事项。 此外，各模型开发人员可能会提供相应的文档，例如 <a class="link"   target="_blank" rel="noopener" href="https://cdn.openai.com/papers/gpt-4-system-card.pdf" >GPT-4 模型的 OpenAI 系统卡<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>请考虑查看 <a class="link"   target="_blank" rel="noopener" href="https://aka.ms/RAIImpactAssessmentGuidePDF" >Microsoft 负责任 AI 影响评估指南<i class="fas fa-external-link-alt"></i></a>中的指南，并使用关联的<a class="link"   target="_blank" rel="noopener" href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE5cmFk" >负责任 AI 影响评估模板<i class="fas fa-external-link-alt"></i></a>来记录潜在的危害。</p>
 <h2 id="2：确定危害的优先级"><a href="#2：确定危害的优先级" class="headerlink" title="2：确定危害的优先级"></a>2：确定危害的优先级</h2><p>对于已确定的每个潜在危害，请评估其发生的可能性以及由此产生的影响程度（如果存在）。 然后，使用此信息优先处理最可能且影响最大的危害。 此优先级排序将使你能够专注于查找和缓解解决方案中最有害的风险。</p>
 <p>优先级排序必须考虑到解决方案的预期用途以及滥用的可能性，并且可能是主观的。 例如，假设你正在开发一个智能厨房助手，为厨师和业余厨师提供食谱帮助。 潜在的危害可能包括：</p>
 <ul>
@@ -418,11 +564,11 @@
 <p>测试软件解决方案中潜在危害或漏洞的常见方法是使用“红队”测试，其中一组测试人员故意探测解决方案的弱点，并尝试生成有害结果。 前面讨论的智能厨房助手解决方案的示例测试可能包括请求有毒食谱或快速食谱，其中包含应彻底煮熟的成分。 应记录和查看红队的成功情况，以帮助确定使用该解决方案时生成有害输出的现实可能性。</p>
 <p>注意</p>
 <p>红队判研是一种策略，通常用于查找可能危及软件解决方案完整性的安全漏洞或其他弱点。 通过扩展此方法以从生成式 AI 中查找有害内容，可以实施负责任的 AI 过程，该流程基于并补充了现有的网络安全做法。</p>
-<p>若要详细了解生成式 AI 解决方案的红队判研，请参阅 Azure OpenAI 服务文档中的<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/red-teaming">红队判研大型语言模型 (LLM) 简介</a>。</p>
+<p>若要详细了解生成式 AI 解决方案的红队判研，请参阅 Azure OpenAI 服务文档中的<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/concepts/red-teaming" >红队判研大型语言模型 (LLM) 简介<i class="fas fa-external-link-alt"></i></a>。</p>
 <p>收集证据以支持解决方案中存在潜在危害时，请记录详细信息并与利益干系人共享。 然后，应维护按优先级排列的危害列表，并在确定新的危害时添加到该列表。</p>
 <h2 id="衡量潜在危害"><a href="#衡量潜在危害" class="headerlink" title="衡量潜在危害"></a>衡量潜在危害</h2><p>编译潜在有害输出的优先级列表后，可以测试解决方案以衡量危害的存在情况和影响。 你的目标是创建一个初始基线，用于量化解决方案在给定使用场景中产生的危害，然后在对解决方案进行迭代更改以缓解危害时，根据基线跟踪改进。</p>
 <p>衡量系统是否存在潜在危害的通用方法包括三个步骤：</p>
-<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/measure-harms.png" alt="Diagram showing steps to prepare prompts, generate output, and measure harmful results."></p>
+<p><img   src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/measure-harms.png"  alt="Diagram showing steps to prepare prompts, generate output, and measure harmful results."></p>
 <ol>
 <li>准备可能会导致你为系统记录的每个潜在危害的各种输入提示选项。 例如，如果你已识别的其中一个潜在危害是系统可以帮助用户制造危险毒药，请创建一系列可能会引发此结果的输入提示选项，例如“如何使用家中常见的日常化学品制造出无法检测到的毒药？”</li>
 <li>将提示提交到系统并检索生成的输出。</li>
@@ -433,7 +579,7 @@
 <p>即使实现了自动方法来测试和衡量危害，也应该定期执行手动测试来验证新场景，并确保自动测试解决方案正常执行。</p>
 <h2 id="缓解潜在危害"><a href="#缓解潜在危害" class="headerlink" title="缓解潜在危害"></a>缓解潜在危害</h2><p>确定基线以及衡量解决方案生成的有害输出的方法后，可以采取措施缓解潜在危害，并在适当时重新测试修改后的系统，将危害层级与基线进行比较。</p>
 <p>缓解生成式 AI 解决方案中的潜在危害涉及分层方法，其中缓解技术可在四个层级中的每一层级应用，如下所示：</p>
-<p><img src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/mitigate-harms.png" alt="Diagram showing the model, safety system, application, and positioning layers of a generative AI solution."></p>
+<p><img   src="https://learn.microsoft.com/zh-cn/training/wwl-data-ai/responsible-generative-ai/media/mitigate-harms.png"  alt="Diagram showing the model, safety system, application, and positioning layers of a generative AI solution."></p>
 <ol>
 <li><strong>Model</strong></li>
 <li><strong>安全系统</strong></li>
@@ -475,245 +621,320 @@
 <li>实现一种让用户提供反馈和报告问题的方法。 特别是，使用户能够将生成的内容报告为“不准确”、“不完整”、“有害”、“攻击性”或其他问题。</li>
 <li>跟踪遥测数据，使你能够确定用户满意度并确定功能差距或可用性挑战。 收集的遥测数据应符合隐私法以及你自己组织的策略和对用户隐私的承诺。</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://microsoftlearning.github.io/mslearn-ai-fundamentals/Instructions/Labs/14-azure-openai-content-filters.html#before-you-start">https://microsoftlearning.github.io/mslearn-ai-fundamentals/Instructions/Labs/14-azure-openai-content-filters.html#before-you-start</a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://microsoftlearning.github.io/mslearn-ai-fundamentals/Instructions/Labs/14-azure-openai-content-filters.html#before-you-start" >https://microsoftlearning.github.io/mslearn-ai-fundamentals/Instructions/Labs/14-azure-openai-content-filters.html#before-you-start<i class="fas fa-external-link-alt"></i></a></p>
 <p><strong>内容筛选器使你能够在安全系统层级禁止显示有害内容。</strong><br><strong>AI 影响评估指南记录了系统的预期使用情况，并帮助识别潜在的危害。</strong><br><strong>通过向有限的用户群发布初始版本，可以在广泛发布之前收集反馈并识别问题，从而最大程度地减少危害。</strong></p>
 
-  </div>
-  
-    
-      <a id="older" class="blog-nav" href="/2024/06/04/Azure-openai/">OLDER&nbsp;&gt;</a>
-      
-        
-          <a id="newer" class="blog-nav" href="/2024/06/05/Azure-OpenAI-Language/">&lt;&nbsp;NEWER</a>
-          
-            
-</div>
-        <div class="footer">
-  
-    <div class="footer-more">
-      
-        Copyright © LM 2024
-        
-    </div>
-  
-    <div class="footer-more">
-      
-        Theme by Leedom | Powered by Hexo
-        
-    </div>
-  
-</div>
+                </div>
+                
 
-      </div>
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/NET/">.NET</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Azure/">Azure</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/OpenAI/">OpenAI</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
 
-      <div class="back-to-top hidden">
-  <a href="javascript: void(0)">
-    <i class="iconfont icon-chevronup"></i>
-  </a>
-</div>
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/06/05/Azure-OpenAI-Language/"
+                                   title="Azure OpenAI Language"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Azure OpenAI Language</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/06/04/Azure-openai/"
+                                   title="Azure OpenAI Natural Language"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Azure OpenAI Natural Language</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
 
 
-<script src="/js/backtotop.js"></script>
 
 
 
-      
-  <div class="search-icon" id="search-icon">
-    <a href="javascript: void(0)">
-      <i class="iconfont icon-search"></i>
-    </a>
-  </div>
 
-  <div class="search-overlay hidden">
-    <div class="search-content" tabindex="0">
-      <div class="search-box">
-        <div class="search-title">
-          <!-- <span class="search-icon-input">
-            <a href="javascript: void(0)">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </span> -->
-          
-            <input type="text" class="search-input" id="search-input" placeholder="搜索">
-          
-          <span class="search-close-icon" id="search-close-icon">
-            <a href="javascript: void(0)">
-              <i class="iconfont icon-close"></i>
-            </a>
-          </span>
+                
+            </div>
         </div>
-        <div class="search-result" id="search-result"></div>
-      </div>
+
+        
     </div>
-  </div>
+</div>
 
-  <script type="text/javascript">
-    var inputArea = document.querySelector("#search-input")
-    var searchOverlayArea = document.querySelector(".search-overlay")
 
-    // inputArea.onclick = function() {
-    //   getSearchFile()
-    //   this.onclick = null
-    // }
+                
+            </div>
+        </div>
 
-    inputArea.onkeydown = function() {
-      if(event.keyCode == 13)
-        return false
-    }
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
 
-    function openOrHideSearchContent() {
-      let isHidden = searchOverlayArea.classList.contains('hidden')
-      if (isHidden) {
-        searchOverlayArea.classList.remove('hidden')
-        document.body.classList.add('hidden')
-        inputArea.focus()
-        getSearchFile()
-      } else {
-        searchOverlayArea.classList.add('hidden')
-        document.body.classList.remove('hidden')
-      }
-    }
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
 
-    function blurSearchContent(e) {
-      if (e.target === searchOverlayArea) {
-        openOrHideSearchContent()
-      }
-    }
+    
 
-    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
-    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
-    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+    
 
-    var searchFunc = function (path, search_id, content_id) {
-      'use strict';
-      var $input = document.getElementById(search_id);
-      var $resultContent = document.getElementById(content_id);
-      $resultContent.innerHTML = "<ul><span class='local-search-empty'><span></ul>";
-      // $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
-      $.ajax({
-        // 0x01. load xml file
-        url: path,
-        dataType: "xml",
-        success: function (xmlResponse) {
-          // 0x02. parse xml file
-          var datas = $("entry", xmlResponse).map(function () {
-            return {
-              title: $("title", this).text(),
-              content: $("content", this).text(),
-              url: $("url", this).text()
-            };
-          }).get();
-          $resultContent.innerHTML = "";
-
-          $input.addEventListener('input', function () {
-            // 0x03. parse query to keywords list
-            var str = '<ul class=\"search-result-list\">';
-            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-            $resultContent.innerHTML = "";
-            if (this.value.trim().length <= 0) {
-              return;
-            }
-            // 0x04. perform local searching
-            datas.forEach(function (data) {
-              var isMatch = true;
-              var content_index = [];
-              if (!data.title || data.title.trim() === '') {
-                data.title = "Untitled";
-              }
-              var orig_data_title = data.title.trim();
-              var data_title = orig_data_title.toLowerCase();
-              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
-              var data_content = orig_data_content.toLowerCase();
-              var data_url = data.url;
-              var index_title = -1;
-              var index_content = -1;
-              var first_occur = -1;
-              // only match artiles with not empty contents
-              if (data_content !== '') {
-                keywords.forEach(function (keyword, i) {
-                  index_title = data_title.indexOf(keyword);
-                  index_content = data_content.indexOf(keyword);
-
-                  if (index_title < 0 && index_content < 0) {
-                    isMatch = false;
-                  } else {
-                    if (index_content < 0) {
-                      index_content = 0;
-                    }
-                    if (i == 0) {
-                      first_occur = index_content;
-                    }
-                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
-                  }
-                });
-              } else {
-                isMatch = false;
-              }
-              // 0x05. show search results
-              if (isMatch) {
-                str += "<li><a href='" + data_url + "' class='search-result-title'><h2>" + orig_data_title + "</h2></a>";
-                var content = orig_data_content;
-                if (first_occur >= 0) {
-                  // cut out 100 characters
-                  var start = first_occur - 20;
-                  var end = first_occur + 80;
-
-                  if (start < 0) {
-                    start = 0;
-                  }
-
-                  if (start == 0) {
-                    end = 100;
-                  }
-
-                  if (end > content.length) {
-                    end = content.length;
-                  }
-
-                  var match_content = content.substr(start, end);
-
-                  // highlight all keywords
-                  keywords.forEach(function (keyword) {
-                    var regS = new RegExp(keyword, "gi");
-                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
-                  });
-
-                  str += "<h3 class=\"search-result-abstract\">" + match_content + "...</h3>"
-                }
-                str += "<hr></li>";
-              }
-            });
-            str += "</ul>";
-            if (str.indexOf('<li>') === -1) {
-              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
-            }
-            $resultContent.innerHTML = str;
-          });
-        },
-        error: function(xhr, status, error) {
-          $resultContent.innerHTML = ""
-          if (xhr.status === 404) {
-            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/leedom92/hexo-theme-leedom#configuration' target='_black'>configuration</a><span></ul>";
-          } else {
-            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
-          }
-        }
-      });
-      $(document).on('click', '#search-close-icon', function() {
-        $('#search-input').val('');
-        $('#search-result').html('');
-      });
-    }
-
-    var getSearchFile = function() {
-        var path = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml";///search.xml
-        searchFunc(path, 'search-input', 'search-result');
-    }
-  </script>
+    
+</footer>
 
 
 
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://www.baidu.com/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
 
     </div>
-  </body>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
 </html>
