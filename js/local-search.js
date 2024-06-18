@@ -2,7 +2,7 @@
 
 KEEP.initLocalSearch = () => {
   // Search DB path
-  let searchPath = KEEP.hexo_config.path
+  let searchPath = "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml"// KEEP.hexo_config.path
   if (!searchPath) {
     // Search DB path
     console.warn('`hexo-generator-searchdb` plugin is not installed!')
@@ -217,7 +217,7 @@ KEEP.initLocalSearch = () => {
   }
 
   const fetchData = () => {
-    fetch(KEEP.hexo_config.root + searchPath)
+    fetch( searchPath)//  fetch(KEEP.hexo_config.root + searchPath)
       .then((response) => response.text())
       .then((res) => {
         // Get the contents from search data
