@@ -9,7 +9,7 @@
     
     <title>
         
-            hexo githubio |
+            Go-fastdfs |
         
         m study log
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        hexo githubio
+                        Go-fastdfs
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-05-28 03:38:21</span>
+                <span class="datetime">2024-06-19 23:58:46</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 19 2024 00:10:27 GMT+0800">2024-06-19 00:10:27</span>
+                <span class="datetime" data-updated="Wed Jun 19 2024 23:59:01 GMT+0800">2024-06-19 23:59:01</span>
             </span>
         
 
@@ -206,18 +206,6 @@
             </span>
         
 
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/github/">github</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/hexo/">hexo</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
@@ -237,102 +225,36 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <h1 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h1><p>npm install hexo-cli -g<br>hexo init blog<br>cd blog<br>npm install<br>hexo server</p>
-<h1 id="key配置"><a href="#key配置" class="headerlink" title="key配置"></a>key配置</h1><p>ssh-keygen -t ed25519 -C “<a class="link"   href="mailto:&#x65;&#109;&#97;&#105;&#108;&#64;&#x65;&#46;&#x63;&#x6f;&#x6d;" >&#x65;&#109;&#97;&#105;&#108;&#64;&#x65;&#46;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>“<br>添加key到github</p>
-<p>err<br><a class="link"   href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#x6d;" >&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>: Permission denied (publickey).<br>fatal: Could not read from remote repository.</p>
-<h1 id="配置GitHub仓库"><a href="#配置GitHub仓库" class="headerlink" title="配置GitHub仓库"></a>配置GitHub仓库</h1><p>在GitHub上创建一个新的仓库，其名称应该是 用户名.github.io，其中用户名是你的GitHub用户名。<br> git config –global user.email “<a class="link"   href="mailto:&#120;&#120;&#64;&#x71;&#113;&#46;&#99;&#111;&#x6d;" >&#120;&#120;&#64;&#x71;&#113;&#46;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>“<br> git config –global user.name “user”</p>
-<h1 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h1><p>deploy:<br>  type: git<br>  repo: <repository url> # 替换为你的GitHub仓库url<br>  branch: master</p>
-<h1 id="安装hexo-deployer-git插件："><a href="#安装hexo-deployer-git插件：" class="headerlink" title="安装hexo-deployer-git插件："></a>安装hexo-deployer-git插件：</h1><p>npm install hexo-deployer-git –save</p>
-<h1 id="部署到GitHub："><a href="#部署到GitHub：" class="headerlink" title="部署到GitHub："></a>部署到GitHub：</h1><p>hexo clean<br>hexo g #hexo generate<br>hexo d #hexo deploy</p>
-<!-- ​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240528.jpg"  >
- -->
+                    <h1 id="go-fastdfs"><a href="#go-fastdfs" class="headerlink" title="go-fastdfs"></a>go-fastdfs</h1><p>Go-fastdfs 是简单、可靠、高效的分布式文件系统。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a class="link"   target="_blank" rel="noopener" href="https://sjqzhang.github.io/go-fastdfs/#character" >https://sjqzhang.github.io/go-fastdfs/#character<i class="fas fa-external-link-alt"></i></a></p>
+<p>or<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/sjqzhang/go-fastdfs/releases" >https://github.com/sjqzhang/go-fastdfs/releases<i class="fas fa-external-link-alt"></i></a></p>
+<!---
+releases下载
+ fileserver
+fileserver.exe
+-->
+
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fileserver server </span><br></pre></td></tr></table></figure>
 
 
-<h1 id="建立仓库-testhtml"><a href="#建立仓库-testhtml" class="headerlink" title="建立仓库 testhtml"></a>建立仓库 testhtml</h1><p>Settings -&gt; pages</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://xxx.github.io/testhtml/index.html" >https://xxx.github.io/testhtml/index.html<i class="fas fa-external-link-alt"></i></a></p>
-   <!-- 
-err 提交问题 
-fatal: unable to access 'https://github OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 0
- git config --global http.sslVerify "false"
+<h1 id="docker部署"><a href="#docker部署" class="headerlink" title="docker部署"></a>docker部署</h1><!---  curl -fsSL https://get.docker.com -o get-docker.sh
+ sudo sh get-docker.sh
+ --->
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --network=host --name fastdfs -v /data/fastdfs_data:/data -p 8080:8080 -e GO_FASTDFS_DIR=/data sjqzhang/go-fastdfs</span><br></pre></td></tr></table></figure>
 
 
+<h1 id="NET"><a href="#NET" class="headerlink" title=".NET"></a>.NET</h1><p>参考java实现<br><a class="link"   target="_blank" rel="noopener" href="https://sjqzhang.github.io/go-fastdfs/usage.html#java" >https://sjqzhang.github.io/go-fastdfs/usage.html#java<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">string</span> UPLOAD_PATH2 = <span class="string">&quot;go-fastdfs地址XXX:XX&quot;</span>;</span><br><span class="line">  [<span class="meta">HttpPost(<span class="string">&quot;FormFile&quot;</span>)</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;<span class="built_in">string</span>&gt; <span class="title">UploadGo</span>(<span class="params">IFormFile file</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">if</span> (file == <span class="literal">null</span> || file.Length == <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&quot;File is empty&quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">string</span> result = <span class="built_in">string</span>.Empty;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">try</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">using</span> (<span class="keyword">var</span> httpClient = <span class="keyword">new</span> HttpClient())</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">using</span> (<span class="keyword">var</span> form = <span class="keyword">new</span> MultipartFormDataContent())</span><br><span class="line">              &#123;</span><br><span class="line">                  <span class="keyword">var</span> streamContent = <span class="keyword">new</span> StreamContent(file.OpenReadStream());</span><br><span class="line">                  streamContent.Headers.Add(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">$&quot;form-data; name=\&quot;file\&quot;; filename=\&quot;<span class="subst">&#123;file.FileName&#125;</span>\&quot;&quot;</span>);</span><br><span class="line">                  form.Add(streamContent, <span class="string">&quot;file&quot;</span>, file.FileName);</span><br><span class="line">                  </span><br><span class="line">                  form.Add(<span class="keyword">new</span> StringContent(<span class="string">&quot;default&quot;</span>), <span class="string">&quot;scene&quot;</span>);</span><br><span class="line">                  form.Add(<span class="keyword">new</span> StringContent(<span class="string">&quot;20240619&quot;</span>), <span class="string">&quot;path&quot;</span>);</span><br><span class="line">                  form.Add(<span class="keyword">new</span> StringContent(<span class="string">&quot;json2&quot;</span>), <span class="string">&quot;output&quot;</span>);</span><br><span class="line">                  form.Add(<span class="keyword">new</span> StringContent(<span class="string">&quot;upload&quot;</span>), <span class="string">&quot;submit&quot;</span>);</span><br><span class="line">                  <span class="keyword">var</span> response = <span class="keyword">await</span> httpClient.PostAsync(UPLOAD_PATH2, form);<span class="comment">//await</span></span><br><span class="line">                  result = <span class="keyword">await</span> response.Content.ReadAsStringAsync();<span class="comment">//await</span></span><br><span class="line">        </span><br><span class="line">                  Console.WriteLine(<span class="string">$&quot;resp: <span class="subst">&#123;response&#125;</span>&quot;</span>);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span> (Exception e)</span><br><span class="line">      &#123;</span><br><span class="line">          Console.WriteLine(e.ToString());</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-err提交问题 
-
-  (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
-remote:        https://github.com/qfsysw/qfsysw.github.io/security/secret-scanning/unblock-secret/2hHiwZUqlhqb19DH43f0VUKQbY0
-remote:
-remote:
-remote:
-To https://github.com/qfsysw/qfsysw.github.io.git
- ! [remote rejected] HEAD -> master (push declined due to repository rule violations)
-error: failed to push some refs to 'https://github.com/qfsysw/qfsysw.github.io.git'
-remote =>>>> url
-or 
-settings ==> security_analysis ==> Secret scanning =>DIS
+<p>“url”: “<a class="link"   target="_blank" rel="noopener" href="http://xxx/group1/20240619/test1619.png?name=test1619.png&download=1" >http://xxx/group1/20240619/test1619.png?name=test1619.png&amp;download=1<i class="fas fa-external-link-alt"></i></a>“</p>
+<h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">url = <span class="string">&#x27;http://xxx:xx/group1/upload&#x27;</span></span><br><span class="line">files = &#123;<span class="string">&#x27;file&#x27;</span>: open(<span class="string">&#x27;resized240525.jpg&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)&#125;</span><br><span class="line">options=&#123;<span class="string">&#x27;output&#x27;</span>:<span class="string">&#x27;json&#x27;</span>,<span class="string">&#x27;path&#x27;</span>:<span class="string">&#x27;20240619&#x27;</span>,<span class="string">&#x27;scene&#x27;</span>:<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;filename&#x27;</span>:<span class="string">&#x27;test123.jpg&#x27;</span>&#125; </span><br><span class="line">r = requests.post(url,data=options, files=files)</span><br><span class="line">print(r.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-
-安装 hexo-generator-search
-$ npm install hexo-generator-search --save
-
-配置
-在_config.yml中添加
-
-search:
-  path: search.xml
-  field: post
-
-   秃了也弱了
-   -
-    name: github
-    icon: github
-    path: https://github.com/leedom92/hexo-theme-leedom
-    target: _blank
-  -
-    name: email
-    icon: envelope
-    path: 
-  -
-    name: facebook
-    icon: facebooksquare
-    path:
-  -
-    name: twitter
-    icon: twitter
-    path:
-  -
-    name: wechat
-    icon: wechat
-    path:
-  -
-    name: weibo
-    icon: weibo
-    path:
-  -
-    # rss需安装 hexo-generator-feed 插件
-    # 具体参照https://github.com/hexojs/hexo-generator-feed
-    name: rss
-    icon: rss
-    path: /atom.xml
-    target: _blank -->
                 </div>
                 
 
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
-                        
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/github/">github</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/hexo/">hexo</a>
-                                    </li>
-                                
-                            </ul>
                         
                     </div>
                     <div>
@@ -345,31 +267,15 @@ search:
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/05/29/NET-RocketMQ/"
-                                   title=".NET RocketMQ"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">.NET RocketMQ</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/05/26/HarmonyOS-Socket/"
-                                   title="HarmonyOS socket websocket"
+                                   href="/2024/06/18/2FA-Enable-two-factor-authentication-2FA/"
+                                   title="2FA-Enable two-factor authentication (2FA)"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">HarmonyOS socket websocket</span>
+                                        <span class="post-nav-title-item text-ellipsis">2FA-Enable two-factor authentication (2FA)</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
