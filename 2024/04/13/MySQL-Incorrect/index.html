@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Jun 01 2024 10:59:30 GMT+0800">2024-06-01 10:59:30</span>
+                <span class="datetime" data-updated="Wed Jul 24 2024 00:28:25 GMT+0800">2024-07-24 00:28:25</span>
             </span>
         
 
@@ -235,7 +235,7 @@
                     
 
                     <p>MySQL存储IOS传过来emoji错误处理 Incorrect string value: ‘‘ for column ‘xxx‘ at row<br>MySQL Incorrect string value: ‘\xF0\x9F\x8D\xBA‘ for column ‘xxx‘ at row</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132a.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132a.jpg"  ></p>
 <p>调用接口提示</p>
 <p>Incorrect string value: ‘\xF0\x9F\x8D\xBA’ for column ‘xxx’ at row </p>
 <p>😵‍💫</p>
@@ -243,7 +243,7 @@
 <p>utf8mb4_0900_ai_ci</p>
 <p>改成</p>
 <p>utf8mb4_unicode_ci</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132b.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132b.jpg"  ></p>
 <h1 id="💤SQL调整"><a href="#💤SQL调整" class="headerlink" title="💤SQL调整"></a>💤SQL调整</h1><p>ALTER TABLE <code>MUser</code> CHANGE <code>Signature</code> <code>Signature</code> VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;</p>
 <ul>
 <li>设置该列的字符集为<code>utf8mb4</code>。<code>utf8mb4</code>是MySQL中的一个字符集，它可以存储四字节的UTF-8字符，因此可以支持更多的Unicode字符，如某些表情符号。  </li>
@@ -256,11 +256,11 @@
 <li><p>设置该数据库的校对规则为<code>utf8mb4_unicode_ci</code>。</p>
 </li>
 </ul>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132c.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132c.jpg"  ></p>
 <h1 id="💤服务端连接调整"><a href="#💤服务端连接调整" class="headerlink" title="💤服务端连接调整"></a>💤服务端连接调整</h1><p>  ChatSet utf8mb4</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132d.jpg"  ></p>
-<h1 id="💤Runing"><a href="#💤Runing" class="headerlink" title="💤Runing"></a>💤Runing</h1><p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132e.jpg"  ></p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132f.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132d.jpg"  ></p>
+<h1 id="💤Runing"><a href="#💤Runing" class="headerlink" title="💤Runing"></a>💤Runing</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132e.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/202404132f.jpg"  ></p>
 
                 </div>
                 
@@ -375,7 +375,7 @@
             var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
             //console.log(filename); // 输出: 20201124032511.png  
       
-            imgElement.src = "https://www.baidu.com/" + filename+"?timestamp=" + Date.now();
+            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
     
             imgElement.onerror = null; // 解绑onerror事件  
         }  

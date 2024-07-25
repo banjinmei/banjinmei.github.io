@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Jun 01 2024 10:26:58 GMT+0800">2024-06-01 10:26:58</span>
+                <span class="datetime" data-updated="Wed Jul 24 2024 00:28:25 GMT+0800">2024-07-24 00:28:25</span>
             </span>
         
 
@@ -248,20 +248,20 @@
 <p>-e 参数</p>
 <p>截至目前最新的mysql是mysql8.0.36 那就整这个试下。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name mysql-container -e TZ=UTC -p 30306:3306 -e MYSQL_ROOT_PASSWORD=你的密码 mysql:8.0.36-debian</span><br></pre></td></tr></table></figure>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411a.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411a.jpg"  ></p>
 <p>等待一会，看到mysql已经pull下来。</p>
 <p>回到docker看到容器已经创建。</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411b.jpg"  ></p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411c.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411b.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411c.jpg"  ></p>
 <p>可以输入docker images查看</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411d.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411d.jpg"  ></p>
 <p>3.创建mysql数据库管理软件容器</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name myadmin -d --<span class="built_in">link</span> mysql-container:db -p 8880:80 phpmyadmin/phpmyadmin</span><br></pre></td></tr></table></figure>
 
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411e.jpg"  ></p>
-<p>回到docker查看下容器是否创建成功。<br>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411f.jpg"  ></p>
-<p>复制地址到浏览器访问。<br>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411g.jpg"  ></p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411h.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411e.jpg"  ></p>
+<p>回到docker查看下容器是否创建成功。<br>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411f.jpg"  ></p>
+<p>复制地址到浏览器访问。<br>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411g.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411h.jpg"  ></p>
 <p>okok</p>
 <p>唉哟不错哦~</p>
 <p>扩展：ubuntu版本</p>
@@ -386,7 +386,7 @@
             var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
             //console.log(filename); // 输出: 20201124032511.png  
       
-            imgElement.src = "https://www.baidu.com/" + filename+"?timestamp=" + Date.now();
+            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
     
             imgElement.onerror = null; // 解绑onerror事件  
         }  

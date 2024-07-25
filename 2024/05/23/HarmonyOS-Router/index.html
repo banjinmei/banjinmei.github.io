@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Jun 01 2024 10:51:57 GMT+0800">2024-06-01 10:51:57</span>
+                <span class="datetime" data-updated="Wed Jul 24 2024 00:28:25 GMT+0800">2024-07-24 00:28:25</span>
             </span>
         
 
@@ -241,15 +241,15 @@
 
 
 
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/a2.gif"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/a2.gif"  ></p>
 <h1 id="📽️TransitionEnter-scale"><a href="#📽️TransitionEnter-scale" class="headerlink" title="📽️TransitionEnter  scale"></a>📽️TransitionEnter  scale</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//home2 page2</span></span><br><span class="line">  <span class="meta">@State</span> <span class="attr">scale1</span>: <span class="built_in">number</span> = <span class="number">1</span></span><br><span class="line">  <span class="meta">@State</span> <span class="attr">opacity1</span>: <span class="built_in">number</span> = <span class="number">1</span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">   <span class="title class_">Column</span>()</span><br><span class="line">.<span class="title function_">scale</span>(&#123; <span class="attr">x</span>: <span class="variable language_">this</span>.<span class="property">scale1</span> &#125;).<span class="title function_">opacity</span>(<span class="variable language_">this</span>.<span class="property">opacity1</span>)</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"> <span class="title function_">pageTransition</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">PageTransitionEnter</span>(&#123; <span class="attr">duration</span>: <span class="number">1200</span>, <span class="attr">curve</span>: <span class="title class_">Curve</span>.<span class="property">Linear</span> &#125;)</span><br><span class="line">      .<span class="title function_">onEnter</span>(<span class="function">(<span class="params"><span class="keyword">type</span>: RouteType, progress: <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">scale1</span> = <span class="number">1</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">opacity1</span> = progress</span><br><span class="line">      &#125;) <span class="comment">// onEnter (0% -- 100%)</span></span><br><span class="line">    <span class="title class_">PageTransitionExit</span>(&#123; <span class="attr">duration</span>: <span class="number">1500</span>, <span class="attr">curve</span>: <span class="title class_">Curve</span>.<span class="property">Ease</span> &#125;)</span><br><span class="line">      .<span class="title function_">onExit</span>(<span class="function">(<span class="params"><span class="keyword">type</span>: RouteType, progress: <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">scale1</span> = <span class="number">1</span> - progress</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">opacity1</span> = <span class="number">1</span></span><br><span class="line">      &#125;) <span class="comment">// onExit (0% -- 100%)</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/a3.gif"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/a3.gif"  ></p>
 <h1 id="🎥SlideEffect-Left"><a href="#🎥SlideEffect-Left" class="headerlink" title="🎥SlideEffect.Left"></a>🎥SlideEffect.Left</h1><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">pageTransition</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title class_">PageTransitionEnter</span>(&#123; <span class="attr">duration</span>: <span class="number">1200</span> &#125;)</span><br><span class="line">    .<span class="title function_">slide</span>(<span class="title class_">SlideEffect</span>.<span class="property">Left</span>)</span><br><span class="line">  <span class="title class_">PageTransitionExit</span>(&#123; <span class="attr">delay</span>: <span class="number">100</span> &#125;)</span><br><span class="line">    .<span class="title function_">translate</span>(&#123; <span class="attr">x</span>: <span class="number">100.0</span>, <span class="attr">y</span>: <span class="number">100.0</span> &#125;)</span><br><span class="line">    .<span class="title function_">opacity</span>(<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/a4.gif"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/a4.gif"  ></p>
 
                 </div>
                 
@@ -356,7 +356,7 @@
             var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
             //console.log(filename); // 输出: 20201124032511.png  
       
-            imgElement.src = "https://www.baidu.com/" + filename+"?timestamp=" + Date.now();
+            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
     
             imgElement.onerror = null; // 解绑onerror事件  
         }  

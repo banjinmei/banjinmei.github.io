@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Jun 01 2024 11:01:16 GMT+0800">2024-06-01 11:01:16</span>
+                <span class="datetime" data-updated="Wed Jul 24 2024 00:28:25 GMT+0800">2024-07-24 00:28:25</span>
             </span>
         
 
@@ -238,11 +238,11 @@
                     
 
                     <p>环境 WIN10 VS2022 .NET8  </p>
-<h1 id="👋创建项目"><a href="#👋创建项目" class="headerlink" title="👋创建项目"></a>👋创建项目</h1><p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041301.jpg"  ></p>
+<h1 id="👋创建项目"><a href="#👋创建项目" class="headerlink" title="👋创建项目"></a>👋创建项目</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041301.jpg"  ></p>
 <h1 id="👀创建Resources-Controllers"><a href="#👀创建Resources-Controllers" class="headerlink" title="👀创建Resources Controllers"></a>👀创建Resources Controllers</h1><p>HomeController.en.resx</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041302.jpg"  ><br>HomeController.fr.resx</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041303.jpg"  ><br>HomeController.zh.resx</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041304.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041302.jpg"  ><br>HomeController.fr.resx</p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041303.jpg"  ><br>HomeController.zh.resx</p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041304.jpg"  ></p>
 <h1 id="🌱Program-cs添加国际化支持"><a href="#🌱Program-cs添加国际化支持" class="headerlink" title="🌱Program.cs添加国际化支持"></a>🌱Program.cs添加国际化支持</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加国际化支持</span></span><br><span class="line">builder.Services.AddLocalization(options =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    options.ResourcesPath = <span class="string">&quot;Resources&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> app = builder.Build();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 多语言</span></span><br><span class="line"><span class="keyword">var</span> supportedCultures = <span class="keyword">new</span> List&lt;CultureInfo&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">new</span> CultureInfo(<span class="string">&quot;en&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> CultureInfo(<span class="string">&quot;zh&quot;</span>),</span><br><span class="line">                 <span class="keyword">new</span> CultureInfo(<span class="string">&quot;fr&quot;</span>),</span><br><span class="line">            &#125;;</span><br><span class="line"> </span><br><span class="line">app.UseRequestLocalization(<span class="keyword">new</span> RequestLocalizationOptions</span><br><span class="line">&#123;</span><br><span class="line">    DefaultRequestCulture = <span class="keyword">new</span> RequestCulture(<span class="string">&quot;zh&quot;</span>),</span><br><span class="line">    SupportedCultures = supportedCultures,</span><br><span class="line">    SupportedUICultures = supportedCultures</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h1 id="⚡注入localizer"><a href="#⚡注入localizer" class="headerlink" title="⚡注入localizer"></a>⚡注入localizer</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">private</span> <span class="keyword">readonly</span> IStringLocalizer&lt;HomeController&gt; localizer;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HomeController</span>(<span class="params">ILogger&lt;HomeController&gt; logger,     </span></span></span><br><span class="line"><span class="params"><span class="function">IStringLocalizer&lt;HomeController&gt; localizer</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    _logger = logger;</span><br><span class="line">    <span class="keyword">this</span>.localizer = localizer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="📫编写调用方法"><a href="#📫编写调用方法" class="headerlink" title="📫编写调用方法"></a>📫编写调用方法</h1><pre><code>    [HttpGet]
@@ -254,8 +254,8 @@
 </code></pre>
 <p>默认是中文</p>
 <p>?ui-culture&#x3D;en 则取对应HomeController.en.resx 里面的String1</p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041306.jpg"  ></p>
-<p>​<img     src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041307.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041306.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/2024041307.jpg"  ></p>
 <p>🐟</p>
 
                 </div>
@@ -375,7 +375,7 @@
             var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
             //console.log(filename); // 输出: 20201124032511.png  
       
-            imgElement.src = "https://www.baidu.com/" + filename+"?timestamp=" + Date.now();
+            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
     
             imgElement.onerror = null; // 解绑onerror事件  
         }  
