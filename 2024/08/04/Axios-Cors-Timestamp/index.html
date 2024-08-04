@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            Axios Cors  &amp;&amp; Timestamp |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"qfsysw.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Axios Cors  &amp;&amp; Timestamp
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-08-04 12:16:25</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sun Aug 04 2024 12:21:11 GMT+0800">2024-08-04 12:21:11</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h1><p>安装 Axios: 使用 Axios 进行 HTTP 请求。</p>
+<p>封装 Axios: 将 Axios 封装成一个模块以便在项目中复用。</p>
+<p>解决跨域问题: 在 vite.config.ts 文件中配置代理以解决跨域问题。</p>
+<p>调用 API: 在 Vue 组件中使用封装的 Axios 进行数据请求和显示。</p>
+<h2 id="安装-Axios"><a href="#安装-Axios" class="headerlink" title="安装 Axios"></a>安装 Axios</h2><p>首先，确保你已经安装了 Axios：</p>
+<p>bash<br>Copy Code<br>npm install axios</p>
+<h2 id="封装-Axios"><a href="#封装-Axios" class="headerlink" title="封装 Axios"></a>封装 Axios</h2><p>创建一个 http 文件夹并在其中创建一个 request.ts 文件：</p>
+<p><strong>src&#x2F;http&#x2F;request.ts:</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> service = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: <span class="string">&#x27;http://localhost:16552/api/zblack&#x27;</span>, <span class="comment">// 根据你的后端API地址调整</span></span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">5000</span>, <span class="comment">// 请求超时时间</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求拦截器</span></span><br><span class="line">service.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(</span><br><span class="line">  <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;请求错误:&#x27;</span>, error);</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 响应拦截器</span></span><br><span class="line">service.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(</span><br><span class="line">  <span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = response.<span class="property">data</span>;</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">isOk</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.<span class="property">rsData</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;请求错误:&#x27;</span>, res.<span class="property">msg</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(res.<span class="property">msg</span> || <span class="string">&#x27;Error&#x27;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;响应错误:&#x27;</span>, error);</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> service;</span><br></pre></td></tr></table></figure>
+<h2 id="3-解决跨域问题"><a href="#3-解决跨域问题" class="headerlink" title="3. 解决跨域问题"></a>3. 解决跨域问题</h2><p>在 vite.config.ts 文件中添加代理配置：</p>
+<p>vite.config.ts:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">vue</span>()],</span><br><span class="line">  <span class="attr">server</span>: &#123;</span><br><span class="line">    <span class="attr">proxy</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;/api&#x27;</span>: &#123;</span><br><span class="line">        <span class="attr">target</span>: <span class="string">&#x27;http://localhost:16552&#x27;</span>,</span><br><span class="line">        <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">rewrite</span>: <span class="function">(<span class="params">path</span>) =&gt;</span> path.<span class="title function_">replace</span>(<span class="regexp">/^\/api/</span>, <span class="string">&#x27;&#x27;</span>),</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="4-在-Vue-组件中调用-API"><a href="#4-在-Vue-组件中调用-API" class="headerlink" title="4. 在 Vue 组件中调用 API"></a>4. 在 Vue 组件中调用 API</h2><p>使用封装的 Axios：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:data</span>=<span class="string">&quot;tableData&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">fixed</span> <span class="attr">prop</span>=<span class="string">&quot;UserBlackID&quot;</span> <span class="attr">label</span>=<span class="string">&quot;UserBlackID&quot;</span> <span class="attr">width</span>=<span class="string">&quot;150&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">&quot;UserBlockerID&quot;</span> <span class="attr">label</span>=<span class="string">&quot;UserBlockerID&quot;</span> <span class="attr">width</span>=<span class="string">&quot;120&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">&quot;UserBlockedID&quot;</span> <span class="attr">label</span>=<span class="string">&quot;UserBlockedID&quot;</span> <span class="attr">width</span>=<span class="string">&quot;120&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">&quot;CreatedAt&quot;</span> <span class="attr">label</span>=<span class="string">&quot;CreatedAt&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">&quot;UserBlackReason&quot;</span> <span class="attr">label</span>=<span class="string">&quot;Reason&quot;</span> <span class="attr">width</span>=<span class="string">&quot;300&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">&quot;UserBlackIP&quot;</span> <span class="attr">label</span>=<span class="string">&quot;IP&quot;</span> <span class="attr">width</span>=<span class="string">&quot;150&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">&quot;UserBlackStatus&quot;</span> <span class="attr">label</span>=<span class="string">&quot;Status&quot;</span> <span class="attr">width</span>=<span class="string">&quot;120&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">&quot;ts&quot;</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> &#123; ref, onMounted &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&#x27;@/http/request&#x27;</span>; <span class="comment">// 根据你的路径调整</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> tableData = <span class="title function_">ref</span>([]);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="title function_">onMounted</span>(<span class="keyword">async</span> () =&gt; &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">request</span>(&#123; <span class="attr">url</span>: <span class="string">&#x27;/api/zblack/FindUserBlackLLL&#x27;</span> &#125;);</span></span><br><span class="line"><span class="language-javascript">    tableData.<span class="property">value</span> = response;</span></span><br><span class="line"><span class="language-javascript">  &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;获取数据失败:&#x27;</span>, error);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span> <span class="attr">lang</span>=<span class="string">&quot;scss&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="keyword">@import</span> <span class="string">&#x27;./index.scss&#x27;</span>;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>调用成功则跨域问题 解决~</p>
+<!--https://github.com/zanjiahao/Vue-ElPlus-Admin adm
+-->
+
+<h1 id="什么是Unix时间戳-Unix-timestamp-："><a href="#什么是Unix时间戳-Unix-timestamp-：" class="headerlink" title="什么是Unix时间戳(Unix timestamp)："></a>什么是Unix时间戳(Unix timestamp)：</h1><p>Unix时间戳(Unix timestamp)，或称Unix时间(Unix time)、POSIX时间(POSIX time)，是一种时间表示方式，定义为从格林威治时间1970年01月01日08时00分00秒起至现在的总秒数。Unix时间戳不仅被使用在Unix 系统、类Unix系统中，也在许多其他操作系统中被广泛采用。<br>时间戳(timestamp)，通常是一个字符序列，唯一地标识某一刻的时间。数字时间戳技术是数字签名技术一种变种的应用。</p>
+<h2 id="时间戳转化："><a href="#时间戳转化：" class="headerlink" title="时间戳转化："></a>时间戳转化：</h2><p>第一步：把时间戳转成Date对象(为什么乘以1000，因为1000毫秒换算成秒等于1秒)<br>const date &#x3D; new Date(1722408384*1000)</p>
+<h2 id="将date进行格式化，转成对应的字符串"><a href="#将date进行格式化，转成对应的字符串" class="headerlink" title="将date进行格式化，转成对应的字符串"></a>将date进行格式化，转成对应的字符串</h2><p>（因为时间戳格式化太常见，可以封装，formatData）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">formatDate</span> = (<span class="params">timestamp: number</span>) =&gt; &#123;</span><br><span class="line">  timestamp = timestamp * <span class="number">1000</span></span><br><span class="line">  <span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(timestamp)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(timestamp + <span class="string">&#x27;&#x27;</span> + date)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;date.getFullYear()&#125;</span>-<span class="subst">$&#123;<span class="built_in">String</span>(date.getMonth() + <span class="number">1</span>).padStart(<span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>)&#125;</span>-<span class="subst">$&#123;<span class="built_in">String</span>(date.getDate()).padStart(</span></span></span><br><span class="line"><span class="subst"><span class="string">    <span class="number">2</span>,<span class="string">&#x27;0&#x27;</span>)&#125;</span> <span class="subst">$&#123;<span class="built_in">String</span>(date.getHours()).padStart(<span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>)&#125;</span>:<span class="subst">$&#123;<span class="built_in">String</span>(date.getMinutes()).padStart(<span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>)&#125;</span>:<span class="subst">$&#123;<span class="built_in">String</span>(</span></span></span><br><span class="line"><span class="subst"><span class="string">    date.getSeconds()</span></span></span><br><span class="line"><span class="subst"><span class="string">  ).padStart(<span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>)&#125;</span>`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/07/29/yolov10/"
+                                   title="yolov10"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">yolov10</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
