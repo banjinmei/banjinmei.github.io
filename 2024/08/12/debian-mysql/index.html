@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Aug 12 2024 21:52:30 GMT+0800">2024-08-12 21:52:30</span>
+                <span class="datetime" data-updated="Mon Aug 12 2024 21:55:19 GMT+0800">2024-08-12 21:55:19</span>
             </span>
         
 
@@ -249,7 +249,7 @@
 <h1 id="6-登录MySQL服务器"><a href="#6-登录MySQL服务器" class="headerlink" title="6. 登录MySQL服务器"></a>6. 登录MySQL服务器</h1><p>使用root用户登录到MySQL服务器。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
 <p>输入密码后，您将进入MySQL命令行。使用 <code>exit</code> 命令退出。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">&#x27;myuser&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;new_password&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">ALTER USER <span class="string">&#x27;myuser&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;new_password&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>可选</p>
 <h1 id="7-测试"><a href="#7-测试" class="headerlink" title="7.测试"></a>7.测试</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE mydatabase;</span><br></pre></td></tr></table></figure>
 <p>Query OK, 1 row affected (0.00 sec)</p>
@@ -259,7 +259,13 @@
 <!--待解决 mysql admin
 -->
 <h1 id="8-重启MySQL服务"><a href="#8-重启MySQL服务" class="headerlink" title="8. 重启MySQL服务"></a>8. 重启MySQL服务</h1><p>保存并关闭文件后，重新启动MySQL服务以应用更改。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mysql</span><br><span class="line"><span class="comment">#停止</span></span><br><span class="line">sudo systemctl stop mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#restart</span></span><br><span class="line">sudo systemctl restart mysql</span><br><span class="line"><span class="comment">#停止</span></span><br><span class="line">sudo systemctl stop mysql</span><br><span class="line"><span class="comment">#status</span></span><br><span class="line">systemctl status mysql 查看状态</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="9-备份"><a href="#9-备份" class="headerlink" title="9. 备份"></a>9. 备份</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="operator">-</span>u 用户名 <span class="operator">-</span>p 数据库名 <span class="operator">&lt;</span> 文件路径.<span class="keyword">sql</span></span><br><span class="line"></span><br><span class="line">mysql <span class="operator">-</span>u 用户名 <span class="operator">-</span>p <span class="operator">-</span>e &quot;CREATE DATABASE mydatabase;&quot;</span><br><span class="line">mysql <span class="operator">-</span>u 用户名 <span class="operator">-</span>p mydatabase <span class="operator">&lt;</span> <span class="operator">/</span>path<span class="operator">/</span><span class="keyword">to</span><span class="operator">/</span>backup.sql</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="10-docker"><a href="#10-docker" class="headerlink" title="10.docker"></a>10.docker</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name myadmin -d -e PMA_ARBITRARY=1 -p 12121:80 phpmyadmin</span><br></pre></td></tr></table></figure>
 
 <!--
 #  编辑MySQL配置文件
