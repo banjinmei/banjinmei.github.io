@@ -14,7 +14,7 @@ KEEP.initLocalSearch = () => {
   let datas
   let isXml = true
   if (searchPath.length === 0) {
-    searchPath = 'search.xml' // searchPath =  "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml" //; // searchPath = 'search.xml'
+    searchPath = 'search1.xml' // searchPath =  "https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/search.xml" //; // searchPath = 'search.xml'
   } else if (searchPath.endsWith('json')) {
     isXml = false
   }
