@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Aug 12 2024 21:55:19 GMT+0800">2024-08-12 21:55:19</span>
+                <span class="datetime" data-updated="Tue Aug 13 2024 21:21:31 GMT+0800">2024-08-13 21:21:31</span>
             </span>
         
 
@@ -256,6 +256,9 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;myuser&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;mypassword&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> mydatabase.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;myuser&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span>;</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"></span><br><span class="line">Use mydatabase;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `Test` (</span><br><span class="line">  `id` <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  `name` <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `age` <span class="type">INT</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE<span class="operator">=</span>InnoDB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8mb4;</span><br><span class="line"></span><br><span class="line"><span class="keyword">Insert</span> <span class="keyword">into</span> Test(name,age) <span class="keyword">value</span> (<span class="string">&#x27;zs&#x27;</span>,<span class="number">17</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Test</span><br></pre></td></tr></table></figure>
 
 
+<p><strong>python mysql test</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pip install mysql-connector-python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"><span class="keyword">from</span> mysql.connector <span class="keyword">import</span> Error</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_connection</span>(<span class="params">host_name, user_name, user_password, db_name</span>):</span><br><span class="line">    connection = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        connection = mysql.connector.connect(</span><br><span class="line">            host=host_name,</span><br><span class="line">            user=user_name,</span><br><span class="line">            passwd=user_password,</span><br><span class="line">            database=db_name</span><br><span class="line">        )</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Connection to MySQL DB successful&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Error <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;The error &#x27;<span class="subst">&#123;e&#125;</span>&#x27; occurred&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> connection</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">execute_read_query</span>(<span class="params">connection, query</span>):</span><br><span class="line">    cursor = connection.cursor()</span><br><span class="line">    result = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        cursor.execute(query)</span><br><span class="line">        result = cursor.fetchall()</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">except</span> Error <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;The error &#x27;<span class="subst">&#123;e&#125;</span>&#x27; occurred&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Replace with your actual credentials 3306</span></span><br><span class="line">host = <span class="string">&quot;39.108.xxxxx&quot;</span> </span><br><span class="line">user = <span class="string">&quot;root&quot;</span></span><br><span class="line">password = <span class="string">&quot;xx.zxcv&quot;</span></span><br><span class="line">database = <span class="string">&quot;xx&quot;</span></span><br><span class="line"></span><br><span class="line">connection = create_connection(host, user, password, database)</span><br><span class="line"></span><br><span class="line">query = <span class="string">&quot;SELECT * FROM test LIMIT 5&quot;</span>  <span class="comment"># Replace &#x27;your_table&#x27; with the name of your table</span></span><br><span class="line"></span><br><span class="line">results = execute_read_query(connection, query)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remember to close the connection when you&#x27;re done</span></span><br><span class="line"><span class="keyword">if</span> connection.is_connected():</span><br><span class="line">    connection.close()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;MySQL connection is closed&quot;</span>)</span><br></pre></td></tr></table></figure>
+
 <!--待解决 mysql admin
 -->
 <h1 id="8-重启MySQL服务"><a href="#8-重启MySQL服务" class="headerlink" title="8. 重启MySQL服务"></a>8. 重启MySQL服务</h1><p>保存并关闭文件后，重新启动MySQL服务以应用更改。</p>
@@ -267,7 +270,23 @@
 
 <h1 id="10-docker"><a href="#10-docker" class="headerlink" title="10.docker"></a>10.docker</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name myadmin -d -e PMA_ARBITRARY=1 -p 12121:80 phpmyadmin</span><br></pre></td></tr></table></figure>
 
+<h1 id="err"><a href="#err" class="headerlink" title="err"></a>err</h1><h2 id="1130-HY000-Host"><a href="#1130-HY000-Host" class="headerlink" title="1130 (HY000): Host"></a>1130 (HY000): Host</h2><p> mysql&gt;use mysql;  &#x2F;&#x2F;选中数据库</p>
+<p>mysql&gt;select ‘host’ from user where user&#x3D;’root’; &#x2F;&#x2F;查看该表的值</p>
+<p>mysql&gt;update user set host &#x3D; ‘%’ where user &#x3D;’root’; &#x2F;&#x2F;修改</p>
+<p>mysql&gt;flush privileges; &#x2F;&#x2F;刷新数据库</p>
 <!--
+
+wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+
+sudo apt-get update
+
+sudo apt-get install dotnet-sdk-8.0
+
+sudo nohup dotnet run /root/nets/TcpSk > output20240813hhhhh.log 2>&1 &
+
+ALTER DATABASE IMDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
 #  编辑MySQL配置文件
 
 编辑MySQL的配置文件以允许来自任何IP地址的连接。
@@ -315,6 +334,22 @@
 
                 
                     <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/08/13/stable-diffusion/"
+                                   title="stable diffusion"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">stable diffusion</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
                         
                         
                             <div class="next-post">

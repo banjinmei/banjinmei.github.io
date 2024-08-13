@@ -9,7 +9,7 @@
     
     <title>
         
-            Debian docker mssql |
+            stable diffusion |
         
         m study log
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Debian docker mssql
+                        stable diffusion
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-08-06 19:30:54</span>
+                <span class="datetime">2024-08-13 21:22:29</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Aug 06 2024 20:22:20 GMT+0800">2024-08-06 20:22:20</span>
+                <span class="datetime" data-updated="Tue Aug 13 2024 22:02:25 GMT+0800">2024-08-13 22:02:25</span>
             </span>
         
 
@@ -210,10 +210,10 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docker/">docker</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/AI/">AI</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/debian/">debian</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SD/">SD</a></li>
                         
                     
                 </ul>
@@ -237,29 +237,28 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh</span><br></pre></td></tr></table></figure>
+                    <h1 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h1><p>部署Stable Diffusion，内置模型库+常用插件+ControlNet。</p>
+<p>这是一项接近零基础的教程，其中并不会包含复杂的概念或者深奥的算法。换句话说，只要你稍有计算机基础，了解如何敲入命令，知道怎么使用浏览器打开网页，您就能很轻松的完成这个实验。</p>
+<p>AI生成内容的形式相当丰富，除了文字外，还可以进行绘画、作曲、演唱、编剧、设计等。最近热度非常高的Text to Image就是AI加持下非常时髦的一种图片创造方式。看看下面这些图片，你一定很难想象它们都是AI生成的吧。</p>
+<p>许多人可能觉得，使用AIGC有很高的门槛，普通人是很难入门的。其实不然，随着AI技术的快速发展以及众多开源项目的诞生，我们每个人都可以很轻松且廉价的使用到AIGC。谁能想到，在2018 年，人工智能生成的画作在佳士得拍卖价还高达43.25万美元，而时隔才数年，让AI为我们创作绘画已经成了人人触手可及的事情。</p>
+<p>在这些开源项目中，Stable Diffusion无疑是优秀生之一。Stable Diffusion是一种扩散模型（Diffusion Model）的变体，称为“潜在扩散模型”（Latent Diffusion Model），由CompVis、Stability AI和LAION的研究人员和工程师创建。</p>
+<p>它使用来自LAION-5B数据库子集的图像进行训练。使用这个模型，可以生成包括人脸在内的任何图像，因为有开源的预训练模型，所以我们也可以在自己的机器上运行它。Stable Diffusion能够根据我们提供的一些提示词以及可以调整的部分参数，通过模型计算生成一张不错的图片。</p>
+<p><strong>函数计算FC</strong></p>
+<p>函数计算（Function Compute）是一个事件驱动的全托管 Serverless 计算服务，您无需管理服务器等基础设施，只需编写代码并上传，函数计算会为您准备好计算资源，并以弹性、可靠的方式运行代码。</p>
+<p>SD1.5<br>动漫风格<br>真人风格<br>轻量版<br>TensorRT<br>艺术字</p>
+<p>提示词就是生成图片的依据，既可以是描述需要生成内容的词，例如girl, sunset, forest等；<br>也可以是用于是描述图像属性的词，例如best quality, beautiful, masterpiece等。我们甚至可以通过提示词选择图片生成的视角、光线、画风；人物的姿势、着装、表情、背景的内容等。</p>
+<p>建议加上画风描述词，让您的图片更加美观，如：Cyberpunk（赛博朋克），shinkai makoto（新海诚），Ghibli Studio（吉卜力），Paul Gauguin（梵高）等等</p>
+<p><strong>SD提示词</strong><br>qwen<br>你是一个优秀的导演和Stable Difusion专家。接下来我们要共同完成一部电视剧的AI创作，请你根据我给你的场景，尽可能详细地描述场景的画面，并给出制作这个场累的Stable Difusion 英语提示词，所有提示词中都要加上“画面比例16:9,超写实，高质量，”的英语，场景描述不少于200字，提示词不少于30个单词。如果你明白了，请回复“明白”，然后我将开始发给你场景。场景一:一个12岁的少年百里东君在一棵桃花树上躺着闭目养神，手上拿着一个白玉酒杯，穿着浅蓝色的长袍，带一点点花纹样式，腰间佩着长剑，阳光透过树叶酒在他的脸上，远，落雪飞，桃花盛开，显示小河，远处的凉亭、茅屋、草坪。</p>
+<p><strong>prompt:</strong><br>Prompt for Stable Diffusion:<br>“Scene ratio 16:9, hyper-realistic, high-quality. A 12-year-old boy in ancient Chinese clothing, wearing a light blue robe with intricate patterns, lying on a branch of a peach blossom tree. He holds a white jade wine cup in his hand and has a long sword at his waist. Snowflakes and peach blossoms mix together as they fall, while sunlight filters through the branches. There’s a small river, a pavilion, and a thatched cottage in the background, all set against a backdrop of green grass and a serene landscape.”</p>
+<p>采样步数40 高度1980 宽度1080 提示词引导 高 种子1<br>反向提示词 写入不要什么</p>
+<h1 id="扩展-高级定制-lora模型"><a href="#扩展-高级定制-lora模型" class="headerlink" title="扩展 高级定制 lora模型"></a>扩展 高级定制 lora模型</h1><p><a class="link"   target="_blank" rel="noopener" href="https://www.liblib.art/" >https://www.liblib.art/<i class="fas fa-external-link-alt"></i></a></p>
+<p>我们可以从LiblibAI下载lora模型到本地，然后把它上传到&#x2F;mnt&#x2F;auto&#x2F;sd&#x2F;models&#x2F;Lora&#x2F;目录。</p>
+<p>前往LiblibAI，进行基础模型的筛选。</p>
+<h1 id="拓展-ControlNet使用"><a href="#拓展-ControlNet使用" class="headerlink" title="拓展 ControlNet使用"></a>拓展 ControlNet使用</h1><p>ControlNet包含插件和模型两部分。为了降低费用消耗，建议先下载到本地后，通过admin上传至NAS。</p>
+<p>ControlNet插件地址。</p>
+<p>项目地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/Mikubill/sd-webui-controlnet%E3%80%82" >https://github.com/Mikubill/sd-webui-controlnet。<i class="fas fa-external-link-alt"></i></a></p>
+<p>进入页面后，单击右侧的Code，并选择Download ZIP下载插件代码。</p>
 
-<p>查看架构</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">uname</span> -m</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e <span class="string">&quot;ACCEPT_EULA=Y&quot;</span> -e <span class="string">&quot;SA_PASSWORD=Qq123123.&quot;</span> -e <span class="string">&quot;TZ=Asia/Shanghai&quot;</span> -p 1433:1433 --name sqlserver2022 -d mcr.microsoft.com/mssql/server:2022-latest</span><br></pre></td></tr></table></figure>
-
-<p>开放端口 1433</p>
-<p>进入容器 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it sqlserver2022 /bin/bash</span><br></pre></td></tr></table></figure>
-
-
-<p>使用navicat test<br>sa Qq123123. 测试连接</p>
-<p>SQL测试 </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE mydb;</span><br><span class="line">GO</span><br><span class="line">USE mydb;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Users (</span><br><span class="line">    UserId <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY <span class="keyword">IDENTITY</span>(<span class="number">1</span>,<span class="number">1</span>),</span><br><span class="line">    UserName NVARCHAR(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">);</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Users (UserName) <span class="keyword">VALUES</span> (<span class="string">&#x27;zs&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Users (UserName) <span class="keyword">VALUES</span> (<span class="string">&#x27;ls&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Users (UserName) <span class="keyword">VALUES</span> (<span class="string">&#x27;w5&#x27;</span>);</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Users;</span><br><span class="line">GO</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="BACKUP"><a href="#BACKUP" class="headerlink" title="BACKUP"></a>BACKUP</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">USE master;</span><br><span class="line">GO</span><br><span class="line">BACKUP DATABASE mydb <span class="keyword">TO</span> DISK <span class="operator">=</span> <span class="string">&#x27;mydblog.bak&#x27;</span> <span class="keyword">WITH</span> COMPRESSION, INIT, STATS<span class="operator">=</span><span class="number">5</span>;</span><br><span class="line">GO</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="RESTORE"><a href="#RESTORE" class="headerlink" title="RESTORE"></a>RESTORE</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> users <span class="keyword">set</span> username <span class="operator">=</span> <span class="string">&#x27;zsss1&#x27;</span> <span class="keyword">where</span> userid<span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">go</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users;</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line">GO</span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 检查数据库是否存在，如果存在则删除</span></span><br><span class="line">IF <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> name <span class="keyword">FROM</span> sys.databases <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;mydb&#x27;</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">DROP</span> DATABASE mydb;</span><br><span class="line"><span class="keyword">END</span></span><br><span class="line">GO</span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 还原数据库</span></span><br><span class="line">RESTORE DATABASE mydb</span><br><span class="line"><span class="keyword">FROM</span> DISK <span class="operator">=</span> <span class="string">&#x27;mydblog.bak&#x27;</span> </span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-
-<p>if restore err   SET RECOVERY SIMPL</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">USE[master]  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY SIMPLE <span class="keyword">WITH</span> NO_WAIT  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY SIMPLE   <span class="comment">--简单模式  </span></span><br><span class="line">GO  </span><br><span class="line">RESTORE DATABASE mydb <span class="keyword">FROM</span> DISK <span class="operator">=</span> <span class="string">&#x27;mydblog.bak&#x27;</span> </span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY <span class="keyword">FULL</span> <span class="keyword">WITH</span> NO_WAIT  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY <span class="keyword">FULL</span>  <span class="comment">--还原为完全模式  </span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">use mydb </span><br><span class="line">go </span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users;</span><br><span class="line">go</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="bak-file"><a href="#bak-file" class="headerlink" title="bak file"></a>bak file</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var lib docker</span><br><span class="line"></span><br><span class="line">/var/lib/docker/overlay2/c3753774b8f233196f80cb43e0b38ff0e1d2600e6d6f48e10e9c472ff90b4d81/merged/var/opt/mssql/data/mydblog.bak</span><br><span class="line">/var/lib/docker/overlay2/c3753774b8f233196f80cb43e0b38ff0e1d2600e6d6f48e10e9c472ff90b4d81/diff/var/opt/mssql/data/mydblog.bak                              </span><br><span class="line"></span><br></pre></td></tr></table></figure>
                 </div>
                 
 
@@ -269,11 +268,11 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/docker/">docker</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/AI/">AI</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/debian/">debian</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SD/">SD</a>
                                     </li>
                                 
                             </ul>
@@ -289,31 +288,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/08/06/Email-Server/"
-                                   title="Email Server"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Email Server</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/08/05/Linux-CPU-now/"
-                                   title="Linux CPU now"
+                                   href="/2024/08/12/debian-mysql/"
+                                   title="debian mysql"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Linux CPU now</span>
+                                        <span class="post-nav-title-item text-ellipsis">debian mysql</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
