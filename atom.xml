@@ -452,9 +452,9 @@
     <category term="技术" scheme="https://qfsysw.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="AI" scheme="https://qfsysw.github.io/tags/AI/"/>
-    
     <category term="ollama" scheme="https://qfsysw.github.io/tags/ollama/"/>
+    
+    <category term="AI" scheme="https://qfsysw.github.io/tags/AI/"/>
     
   </entry>
   
