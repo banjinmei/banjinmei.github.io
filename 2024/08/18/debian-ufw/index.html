@@ -9,7 +9,7 @@
     
     <title>
         
-            Docker mssql |
+            debian ufw |
         
         m study log
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Docker mssql
+                        debian ufw
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-08-18 11:08:56</span>
+                <span class="datetime">2024-08-18 12:44:31</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sun Aug 18 2024 11:48:30 GMT+0800">2024-08-18 11:48:30</span>
+                <span class="datetime" data-updated="Sun Aug 18 2024 12:47:21 GMT+0800">2024-08-18 12:47:21</span>
             </span>
         
 
@@ -210,13 +210,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docker/">docker</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mssql/">mssql</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/python/">python</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/debian/">debian</a></li>
                         
                     
                 </ul>
@@ -240,35 +234,29 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <h1 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e <span class="string">&quot;ACCEPT_EULA=Y&quot;</span> -e <span class="string">&quot;MSSQL_SA_PASSWORD=Admin@123&quot;</span>  -p 1433:1433 --name sql1 --hostname sql1  -d mcr.microsoft.com/mssql/server:2017-latest</span><br></pre></td></tr></table></figure>
+                    <h1 id="安装ufw"><a href="#安装ufw" class="headerlink" title="安装ufw"></a>安装ufw</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install ufw </span><br></pre></td></tr></table></figure>
+<p>#开启防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw <span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
+<p>#关闭防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ufw <span class="built_in">disable</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ufw status verbose</span><br><span class="line">ufw status numbered</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo ufw status <span class="comment">#查看状态</span></span><br><span class="line">sudo ufw <span class="built_in">disable</span> <span class="comment">#关闭</span></span><br><span class="line">sudo ufw enble <span class="comment">#开启</span></span><br><span class="line">sudo ufw allow 8000/tcp <span class="comment">#添加规则，允许所有ip访问8000端口</span></span><br><span class="line">sudo ufw deny 8000/tcp <span class="comment">#添加或者修改规则，禁止访问8000端口</span></span><br><span class="line">sudo ufw delete 8000/tcp <span class="comment">#删除该规则</span></span><br></pre></td></tr></table></figure>
 
+<h1 id="恢复默认策略："><a href="#恢复默认策略：" class="headerlink" title="恢复默认策略："></a>恢复默认策略：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ufw default deny incoming</span><br><span class="line"> ufw default allow outgoing</span><br><span class="line"> ufw default reject routed</span><br></pre></td></tr></table></figure>
+<p>重置UFW（将删除所有自定义策略并关闭UFW）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ufw reset</span><br></pre></td></tr></table></figure>
+<p>添加允许连接的商端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ufw allow [port]</span><br></pre></td></tr></table></figure>
+<p>放行指定范围的端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ufw allow 10010:10086/tcp</span><br><span class="line">ufw allow 10010:10086/udp</span><br></pre></td></tr></table></figure>
+<p>允许指定ip访问</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 放行ip</span></span><br><span class="line">ufw allow 221.123.1.1</span><br><span class="line">ufw allow 221.123.1.1 to any port 22</span><br><span class="line"></span><br><span class="line"><span class="comment"># 放行ip段</span></span><br><span class="line">ufw allow 221.123.1.0/24</span><br><span class="line">ufw allow 221.123.1.0/24 to any port 22</span><br></pre></td></tr></table></figure>
 
-<h1 id="进入"><a href="#进入" class="headerlink" title="进入"></a>进入</h1><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo docker <span class="built_in">exec</span> -it sql1 <span class="string">&quot;bash&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P <span class="string">&quot;Admin@123&quot;</span></span><br></pre></td></tr></table></figure>
-</code></pre>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE TestDB;</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> Name <span class="keyword">from</span> sys.databases;</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line">use TestDB;</span><br><span class="line">go;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Employees ( EmployeeID <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY, FirstName NVARCHAR(<span class="number">50</span>), LastName NVARCHAR(<span class="number">50</span>), BirthDate <span class="type">DATE</span>, Position NVARCHAR(<span class="number">50</span>) );</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Employees (EmployeeID, FirstName, LastName, BirthDate, Position) <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;z&#x27;</span>, <span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;2000-01-01&#x27;</span>, <span class="string">&#x27;Software Developer&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Employees (EmployeeID, FirstName, LastName, BirthDate, Position) <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;2001-01-15&#x27;</span>, <span class="string">&#x27;Project Manager&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Employees (FirstName, LastName, BirthDate, Position) <span class="keyword">VALUES</span> ( <span class="string">&#x27;l1&#x27;</span>, <span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;2001-01-15&#x27;</span>, <span class="string">&#x27;Project Manager&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Employees;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="py测试"><a href="#py测试" class="headerlink" title="py测试"></a>py测试</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyodbc</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pyodbc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置数据库连接信息</span></span><br><span class="line">server = <span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">database = <span class="string">&#x27;TestDB&#x27;</span></span><br><span class="line">username = <span class="string">&#x27;SA&#x27;</span></span><br><span class="line">password = <span class="string">&#x27;Admin@123&#x27;</span></span><br><span class="line">driver = <span class="string">&#x27;&#123;ODBC Driver 17 for SQL Server&#125;&#x27;</span>  <span class="comment"># 根据你的SQL Server版本选择合适的驱动</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立连接</span></span><br><span class="line">connection_string = <span class="string">f&quot;DRIVER=<span class="subst">&#123;driver&#125;</span>;SERVER=<span class="subst">&#123;server&#125;</span>;DATABASE=<span class="subst">&#123;database&#125;</span>;UID=<span class="subst">&#123;username&#125;</span>;PWD=<span class="subst">&#123;password&#125;</span>&quot;</span></span><br><span class="line">conn = pyodbc.connect(connection_string)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行查询</span></span><br><span class="line">query = <span class="string">&quot;SELECT * FROM Employees&quot;</span></span><br><span class="line">cursor.execute(query)</span><br><span class="line">rows = cursor.fetchall()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> rows:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭连接</span></span><br><span class="line">cursor.close()</span><br><span class="line">conn.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python mssql.py</span><br></pre></td></tr></table></figure>
-<p>(1, ‘z’, ‘s’, datetime.date(2000, 1, 1), ‘Software Developer’)<br>(2, ‘l’, ‘s’, datetime.date(2001, 1, 15), ‘Project Manager’)</p>
-<h1 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">USE master;</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BACKUP DATABASE [TestDB]</span><br><span class="line"><span class="keyword">TO</span> DISK <span class="operator">=</span> <span class="string">&#x27;C:\path\YourDatabaseName.bak&#x27;</span> </span><br><span class="line"><span class="keyword">WITH</span> FORMAT;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="restore"><a href="#restore" class="headerlink" title="restore"></a>restore</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">USE master; </span><br><span class="line">GO  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> DATABASE [TestDB] <span class="keyword">SET</span> SINGLE_USER <span class="keyword">WITH</span> <span class="keyword">ROLLBACK</span> IMMEDIATE;</span><br><span class="line">RESTORE DATABASE [TestDB] <span class="keyword">FROM</span> DISK <span class="operator">=</span> <span class="string">&#x27;C:\path\YourDatabaseName.bak&#x27;</span> <span class="keyword">WITH</span> REPLACE;</span><br><span class="line"><span class="keyword">ALTER</span> DATABASE [TestDB] <span class="keyword">SET</span> MULTI_USER;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop sql1</span><br></pre></td></tr></table></figure>
-<p>停止 </p>
-<!--  BACKUP DATABASE [TestDB] TO DISK = 'db.bak' WITH FORMAT;
-
-RESTORE DATABASE [TestDB] FROM DISK = 'db.bak' WITH REPLACE;
-
-modao.cc
-
--->
-
-
+<p>拒绝连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ufw deny http</span><br><span class="line">ufw deny from 221.123.1.1</span><br></pre></td></tr></table></figure>
+<p>删除规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按编号删除</span></span><br><span class="line">ufw delete [num]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按实际规则删除</span></span><br><span class="line">ufw delete allow http </span><br><span class="line"><span class="comment"># or </span></span><br><span class="line">ufw delete allow 80</span><br></pre></td></tr></table></figure>
+<!-- 
+ -->
+<!--https://blog.51cto.com/u_14249042/10235443-->
                 </div>
                 
 
@@ -278,15 +266,7 @@ modao.cc
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/docker/">docker</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mssql/">mssql</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/python/">python</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/debian/">debian</a>
                                     </li>
                                 
                             </ul>
@@ -305,14 +285,14 @@ modao.cc
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/08/18/git-443-couldt-connect/"
-                                   title="git 443 couldt connect"
+                                   href="/2024/08/18/aliyun-RabbitMQ/"
+                                   title="aliyun RabbitMQ"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">git 443 couldt connect</span>
+                                        <span class="post-nav-title-item text-ellipsis">aliyun RabbitMQ</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -322,11 +302,11 @@ modao.cc
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/08/15/Hologres-DataWorks/"
-                                   title="Hologres DataWorks"
+                                   href="/2024/08/18/git-443-couldt-connect/"
+                                   title="git 443 couldt connect"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Hologres DataWorks</span>
+                                        <span class="post-nav-title-item text-ellipsis">git 443 couldt connect</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
