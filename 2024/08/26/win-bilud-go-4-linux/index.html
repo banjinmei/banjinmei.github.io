@@ -9,7 +9,7 @@
     
     <title>
         
-            Debian docker mssql |
+            win bilud go 4 linux |
         
         m study log
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Debian docker mssql
+                        win bilud go 4 linux
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-08-06 19:30:54</span>
+                <span class="datetime">2024-08-26 00:58:39</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Aug 06 2024 20:22:20 GMT+0800">2024-08-06 20:22:20</span>
+                <span class="datetime" data-updated="Mon Aug 26 2024 01:03:48 GMT+0800">2024-08-26 01:03:48</span>
             </span>
         
 
@@ -210,10 +210,13 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docker/">docker</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/debian/">debian</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/debian/">debian</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/go/">go</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/linux/">linux</a></li>
                         
                     
                 </ul>
@@ -237,29 +240,42 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh</span><br></pre></td></tr></table></figure>
+                    <h1 id="1-安装必要的工具和依赖"><a href="#1-安装必要的工具和依赖" class="headerlink" title="1. 安装必要的工具和依赖"></a>1. 安装必要的工具和依赖</h1><p>首先，确保你已经安装了Go编译器和VS Code。如果还没有安装Go，可以从官方网站下载并安装。</p>
+<h1 id="2-配置Go环境"><a href="#2-配置Go环境" class="headerlink" title="2. 配置Go环境"></a>2. 配置Go环境</h1><p>打开VS Code，按 Ctrl + Shift + P 打开命令面板，输入 “shell” 选择 “Shell: Windows” 或 “Shell: Linux”</p>
+<ol start="3">
+<li>创建一个新的Go项目</li>
+</ol>
+<p>在VS Code中创建一个新的文件夹作为你的Go项目目录，然后在终端中导航到该目录并初始化一个新的Go项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> my-go-app</span><br><span class="line"><span class="built_in">cd</span> my-go-app</span><br><span class="line">go mod init my-go-app</span><br><span class="line"><span class="built_in">touch</span> main.go</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="4-编写Go程序"><a href="#4-编写Go程序" class="headerlink" title="4. 编写Go程序"></a>4. 编写Go程序</h1><p>在 main.go 文件中编写一个简单的Hello World程序：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="5-安装交叉编译工具-⭐"><a href="#5-安装交叉编译工具-⭐" class="headerlink" title="5. 安装交叉编译工具  ⭐"></a>5. 安装交叉编译工具  ⭐</h1><p>Go提供了一些工具来进行跨平台编译。你可以使用以下命令来安装这些工具：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">go install github.com/golang/tools/cmd/goimports@latest</span><br><span class="line">go install golang.org/x/lint/golint@latest</span><br><span class="line">go install github.com/cweill/gotests/...@latest</span><br></pre></td></tr></table></figure>
 
-<p>查看架构</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">uname</span> -m</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e <span class="string">&quot;ACCEPT_EULA=Y&quot;</span> -e <span class="string">&quot;SA_PASSWORD=Qq123123.&quot;</span> -e <span class="string">&quot;TZ=Asia/Shanghai&quot;</span> -p 1433:1433 --name sqlserver2022 -d mcr.microsoft.com/mssql/server:2022-latest</span><br></pre></td></tr></table></figure>
-
-<p>开放端口 1433</p>
-<p>进入容器 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it sqlserver2022 /bin/bash</span><br></pre></td></tr></table></figure>
-
-
-<p>使用navicat test<br>sa Qq123123. 测试连接</p>
-<p>SQL测试 </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE mydb;</span><br><span class="line">GO</span><br><span class="line">USE mydb;</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> Users (</span><br><span class="line">    UserId <span class="type">INT</span> <span class="keyword">PRIMARY</span> KEY <span class="keyword">IDENTITY</span>(<span class="number">1</span>,<span class="number">1</span>),</span><br><span class="line">    UserName NVARCHAR(<span class="number">50</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">);</span><br><span class="line">GO</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Users (UserName) <span class="keyword">VALUES</span> (<span class="string">&#x27;zs&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Users (UserName) <span class="keyword">VALUES</span> (<span class="string">&#x27;ls&#x27;</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Users (UserName) <span class="keyword">VALUES</span> (<span class="string">&#x27;w5&#x27;</span>);</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> Users;</span><br><span class="line">GO</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="BACKUP"><a href="#BACKUP" class="headerlink" title="BACKUP"></a>BACKUP</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">USE master;</span><br><span class="line">GO</span><br><span class="line">BACKUP DATABASE mydb <span class="keyword">TO</span> DISK <span class="operator">=</span> <span class="string">&#x27;mydblog.bak&#x27;</span> <span class="keyword">WITH</span> COMPRESSION, INIT, STATS<span class="operator">=</span><span class="number">5</span>;</span><br><span class="line">GO</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="RESTORE"><a href="#RESTORE" class="headerlink" title="RESTORE"></a>RESTORE</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> users <span class="keyword">set</span> username <span class="operator">=</span> <span class="string">&#x27;zsss1&#x27;</span> <span class="keyword">where</span> userid<span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">go</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users;</span><br><span class="line">go</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">USE master;</span><br><span class="line">GO</span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 检查数据库是否存在，如果存在则删除</span></span><br><span class="line">IF <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> name <span class="keyword">FROM</span> sys.databases <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;mydb&#x27;</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">    <span class="keyword">DROP</span> DATABASE mydb;</span><br><span class="line"><span class="keyword">END</span></span><br><span class="line">GO</span><br><span class="line"> </span><br><span class="line"><span class="comment">-- 还原数据库</span></span><br><span class="line">RESTORE DATABASE mydb</span><br><span class="line"><span class="keyword">FROM</span> DISK <span class="operator">=</span> <span class="string">&#x27;mydblog.bak&#x27;</span> </span><br><span class="line"></span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+<h1 id="6-配置VS-Code以使用Linux环境"><a href="#6-配置VS-Code以使用Linux环境" class="headerlink" title="6. 配置VS Code以使用Linux环境"></a>6. 配置VS Code以使用Linux环境</h1><p>你需要一个Linux环境来进行交叉编译。Windows Subsystem for Linux (WSL)来实现。<br>(<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/install?source=recommendations" >https://learn.microsoft.com/zh-cn/windows/wsl/install?source=recommendations<i class="fas fa-external-link-alt"></i></a>)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --install </span><br></pre></td></tr></table></figure>
+<p>扩展 Remoto Development </p>
+<p>左侧会出现Remote Explorer Tab，在这个tab下可以切换wsl target +</p>
+<p>在VS Code中，打开终端，然后选择“WSL: Ubuntu”或其他安装的Linux发行版。</p>
+<h1 id="7-编译成Linux可执行程序"><a href="#7-编译成Linux可执行程序" class="headerlink" title="7. 编译成Linux可执行程序"></a>7. 编译成Linux可执行程序</h1><p>在终端中运行以下命令来编译你的Go程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o my-go-app-linux main.go</span><br></pre></td></tr></table></figure>
+<p>这里的 CGO_ENABLED&#x3D;0 是必要的，因为默认情况下Go会使用cgo来进行一些系统调用，而Linux并不支持这些调用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">go build -o YourProgramName -ldflags <span class="string">&quot;-s -w&quot;</span> --buildmode=exe -o out/linux/YourProgramName main.go</span><br><span class="line"></span><br><span class="line">go build -o Fs -ldflags <span class="string">&quot;-s -w&quot;</span> --buildmode=exe  main.go</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-<p>if restore err   SET RECOVERY SIMPL</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">USE[master]  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY SIMPLE <span class="keyword">WITH</span> NO_WAIT  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY SIMPLE   <span class="comment">--简单模式  </span></span><br><span class="line">GO  </span><br><span class="line">RESTORE DATABASE mydb <span class="keyword">FROM</span> DISK <span class="operator">=</span> <span class="string">&#x27;mydblog.bak&#x27;</span> </span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY <span class="keyword">FULL</span> <span class="keyword">WITH</span> NO_WAIT  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY <span class="keyword">FULL</span>  <span class="comment">--还原为完全模式  </span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">use mydb </span><br><span class="line">go </span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users;</span><br><span class="line">go</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="ubuntu-go-lang-setup"><a href="#ubuntu-go-lang-setup" class="headerlink" title="ubuntu go lang setup"></a>ubuntu go lang setup</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://go.dev/dl/go1.17.3.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">(SUDO) tar -C /usr/local -xzf go1.17.3.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<h1 id="8-测试你的可执行程序"><a href="#8-测试你的可执行程序" class="headerlink" title="8. 测试你的可执行程序"></a>8. 测试你的可执行程序</h1><p>编译完成后，你可以运行以下命令来检查生成的可执行文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./my-go-app-linux</span><br></pre></td></tr></table></figure>
+<p> “Hello, World!”</p>
+<h1 id="9-打包和分发（可选）"><a href="#9-打包和分发（可选）" class="headerlink" title="9. 打包和分发（可选）"></a>9. 打包和分发（可选）</h1><p>Go程序打包并分发到Linux服务器上，可以使用tar或scp等工具来传输文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf my-go-app-linux.tar.gz my-go-app-linux</span><br><span class="line">scp my-go-app-linux.tar.gz user@remote-server:/path/to/destination</span><br></pre></td></tr></table></figure>
 
-<h1 id="bak-file"><a href="#bak-file" class="headerlink" title="bak file"></a>bak file</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var lib docker</span><br><span class="line"></span><br><span class="line">/var/lib/docker/overlay2/c3753774b8f233196f80cb43e0b38ff0e1d2600e6d6f48e10e9c472ff90b4d81/merged/var/opt/mssql/data/mydblog.bak</span><br><span class="line">/var/lib/docker/overlay2/c3753774b8f233196f80cb43e0b38ff0e1d2600e6d6f48e10e9c472ff90b4d81/diff/var/opt/mssql/data/mydblog.bak                              </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
                 </div>
                 
 
@@ -269,11 +285,15 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/docker/">docker</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/debian/">debian</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/debian/">debian</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/go/">go</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/linux/">linux</a>
                                     </li>
                                 
                             </ul>
@@ -289,31 +309,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/08/06/Email-Server/"
-                                   title="Email Server"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Email Server</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/08/05/Linux-CPU-now/"
-                                   title="Linux CPU now"
+                                   href="/2024/08/25/Anolis8-4-NET/"
+                                   title="Anolis8.4 .NET"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Linux CPU now</span>
+                                        <span class="post-nav-title-item text-ellipsis">Anolis8.4 .NET</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
