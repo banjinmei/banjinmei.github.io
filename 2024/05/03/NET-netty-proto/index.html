@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jul 24 2024 00:28:25 GMT+0800">2024-07-24 00:28:25</span>
+                <span class="datetime" data-updated="Thu Aug 29 2024 22:30:24 GMT+0800">2024-08-29 22:30:24</span>
             </span>
         
 
@@ -210,7 +210,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NET/">.NET</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net/">.net</a></li>
                         
                     
                 </ul>
@@ -237,7 +237,7 @@
                     <p>DotNetty是微软的Azure团队，使用C#实现的Netty的版本发布。不但使用了C#和.Net平台的技术特点，并且保留了Netty原来绝大部分的编程接口。让我们在使用时，完全可以依照Netty官方的教程来学习和使用DotNetty应用程序。</p>
 <p>Netty 是一个异步事件驱动的网络应用程序框架，用于快速开发可维护的高性能协议服务器和客户端。</p>
 <p>优点<br>关注点分离——业务和网络逻辑解耦；<br>模块化和可复用性；<br>可测试性作为首要的要求<br>历史<br>阻塞Socket通信特点：</p>
-<p>建立连接要阻塞线程，读取数据要阻塞线程<br>如果要管理多个客户端，就需要为每个客户端建立不同的线程<br>会有大量的线程在休眠状态，等待接收数据，资源浪费<br>每个线程都要占用系统资源<br>线程的切换很耗费系统资源<br>非阻塞Socket（NIO）特点：<br>每个Socket如果需要读写操作，都通过事件通知的方式通知选择器，这样就实现了一个线程管理多个Socket的目的。<br>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240504.jpg"  ></p>
+<p>建立连接要阻塞线程，读取数据要阻塞线程<br>如果要管理多个客户端，就需要为每个客户端建立不同的线程<br>会有大量的线程在休眠状态，等待接收数据，资源浪费<br>每个线程都要占用系统资源<br>线程的切换很耗费系统资源<br>非阻塞Socket（NIO）特点：<br>每个Socket如果需要读写操作，都通过事件通知的方式通知选择器，这样就实现了一个线程管理多个Socket的目的。<br>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240504.jpg"  ></p>
 <p>选择器甚至可以在所有的Socket空闲的时候允许线程先去干别的事情<br>减少了线程数量导致的资源占用，减少了线程切换导致的资源消耗</p>
 <p>Protobuf<br>wakeng</p>
 
@@ -250,7 +250,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/NET/">.NET</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net/">.net</a>
                                     </li>
                                 
                             </ul>
@@ -354,7 +354,7 @@
             var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
             //console.log(filename); // 输出: 20201124032511.png  
       
-            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
     
             imgElement.onerror = null; // 解绑onerror事件  
         }  

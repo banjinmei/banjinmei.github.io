@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jul 24 2024 00:28:25 GMT+0800">2024-07-24 00:28:25</span>
+                <span class="datetime" data-updated="Thu Aug 29 2024 22:30:24 GMT+0800">2024-08-29 22:30:24</span>
             </span>
         
 
@@ -210,7 +210,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/NET/">.NET</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net/">.net</a></li>
                         
                     
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Swagger/">Swagger</a></li>
@@ -238,21 +238,21 @@
                     
 
                     <p>开发环境 Win10 VS2022 .NET8.0</p>
-<h1 id="1-从NuGet添加Swagger"><a href="#1-从NuGet添加Swagger" class="headerlink" title="1.从NuGet添加Swagger"></a>1.从NuGet添加Swagger</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411a1.jpg"  ></p>
+<h1 id="1-从NuGet添加Swagger"><a href="#1-从NuGet添加Swagger" class="headerlink" title="1.从NuGet添加Swagger"></a>1.从NuGet添加Swagger</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240411a1.jpg"  ></p>
 <p>在解决方案资源管理器中右键单击项目&gt;管理 NuGet 包<br>将包源设置为“nuget.org”<br>确保启用“包括预发行”选项<br>在搜索框中输入“Swashbuckle.AspNetCore”<br>从“浏览”选项卡中选择最新的“Swashbuckle.AspNetCore”包，然后单击“安装”</p>
 <h1 id="2-将-Swagger-生成器添加到以下位置的服务集合中Program-cs："><a href="#2-将-Swagger-生成器添加到以下位置的服务集合中Program-cs：" class="headerlink" title="2.将 Swagger 生成器添加到以下位置的服务集合中Program.cs："></a>2.将 Swagger 生成器添加到以下位置的服务集合中Program.cs：</h1><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">builder.Services.AddControllers();</span><br><span class="line"> </span><br><span class="line">builder.Services.AddEndpointsApiExplorer();</span><br><span class="line">builder.Services.AddSwaggerGen();</span><br></pre></td></tr></table></figure>
 
-<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411a2.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240411a2.jpg"  ></p>
 <p>启用中间件 生成</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">app.UseSwagger();</span><br><span class="line">app.UseSwaggerUI();</span><br><span class="line"> </span><br><span class="line">app.UseSwaggerUI(options =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    options.SwaggerEndpoint(<span class="string">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="string">&quot;v1&quot;</span>);</span><br><span class="line">    options.RoutePrefix = <span class="built_in">string</span>.Empty;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411a3.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240411a3.jpg"  ></p>
 <h1 id="3-添加API控制器"><a href="#3-添加API控制器" class="headerlink" title="3.添加API控制器"></a>3.添加API控制器</h1><p>创建api</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// GET api/&lt;myapi&gt;/5</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> getid</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;id&quot;&gt;</span>id参数<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>valuestr<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">[<span class="meta">HttpGet(<span class="string">&quot;&#123;id&#125;&quot;</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Get</span>(<span class="params"><span class="built_in">int</span> id</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;value&quot;</span> + id;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// POST api/&lt;myapi&gt;</span></span><br><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Post</span>(<span class="params">[FromBody] <span class="built_in">string</span> <span class="keyword">value</span></span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//post逻辑代码</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;myPost&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// PUT api/&lt;myapi&gt;/5</span></span><br><span class="line">[<span class="meta">HttpPut(<span class="string">&quot;&#123;id&#125;&quot;</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Put</span>(<span class="params"><span class="built_in">int</span> id, [FromBody] <span class="built_in">string</span> <span class="keyword">value</span></span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//put逻辑代码</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;myPut&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// DELETE api/&lt;myapi&gt;/5</span></span><br><span class="line">[<span class="meta">HttpDelete(<span class="string">&quot;&#123;id&#125;&quot;</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Delete</span>(<span class="params"><span class="built_in">int</span> id</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//delete逻辑代码</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;myDelete&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411a4.jpg"  ></p>
-<h1 id="4-F5运行-访问-swagger-index-html"><a href="#4-F5运行-访问-swagger-index-html" class="headerlink" title="4.F5运行 访问&#x2F;swagger&#x2F;index.html"></a>4.F5运行 访问&#x2F;swagger&#x2F;index.html</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411a5.jpg"  ></p>
-<h1 id="5-try-it-out测试API"><a href="#5-try-it-out测试API" class="headerlink" title="5.try it out测试API"></a>5.try it out测试API</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources@1.3/v2/20240411a6.jpg"  ></p>
+<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240411a4.jpg"  ></p>
+<h1 id="4-F5运行-访问-swagger-index-html"><a href="#4-F5运行-访问-swagger-index-html" class="headerlink" title="4.F5运行 访问&#x2F;swagger&#x2F;index.html"></a>4.F5运行 访问&#x2F;swagger&#x2F;index.html</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240411a5.jpg"  ></p>
+<h1 id="5-try-it-out测试API"><a href="#5-try-it-out测试API" class="headerlink" title="5.try it out测试API"></a>5.try it out测试API</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240411a6.jpg"  ></p>
 <p>看到返回了 value111  即接口没问题</p>
 
                 </div>
@@ -264,7 +264,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/NET/">.NET</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net/">.net</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
@@ -372,7 +372,7 @@
             var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
             //console.log(filename); // 输出: 20201124032511.png  
       
-            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
     
             imgElement.onerror = null; // 解绑onerror事件  
         }  

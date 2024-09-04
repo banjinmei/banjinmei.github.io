@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Aug 26 2024 01:11:48 GMT+0800">2024-08-26 01:11:48</span>
+                <span class="datetime" data-updated="Mon Aug 26 2024 01:28:08 GMT+0800">2024-08-26 01:28:08</span>
             </span>
         
 
@@ -236,7 +236,10 @@
 
                     <p>Git Err</p>
 <p>unable to access ‘<a class="link"   target="_blank" rel="noopener" href="https://github.com/%E2%80%A6%E2%80%99" >https://github.com/…’<i class="fas fa-external-link-alt"></i></a>: Failed to connect to github.com port 443 after 21096 ms: Couldn’t connect to server</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>
+<p>err </p>
+<p>OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443</p>
+<p>重置git代理<br>检查是否开了网络代理，如果有先关闭<br>在命令行输入如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>找到本机代理端口号</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git config --global http.proxy http://127.0.0.1:端口号</span><br><span class="line">git config --global https.proxy http://127.0.0.1:端口号</span><br></pre></td></tr></table></figure>
 
@@ -356,7 +359,7 @@
             var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
             //console.log(filename); // 输出: 20201124032511.png  
       
-            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
     
             imgElement.onerror = null; // 解绑onerror事件  
         }  

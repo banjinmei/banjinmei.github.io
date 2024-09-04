@@ -166,6 +166,22 @@
                 
                     <li class="post-item border-box">
                         <span class="starting-point border-box flex-center"></span>
+                        <span class="post-date border-box">09-04</span>
+                        <a class="post-title border-box text-ellipsis"
+                           href="/2024/09/04/nginx/"
+                        >nginx load balance</a>
+                    </li>
+                
+                    <li class="post-item border-box">
+                        <span class="starting-point border-box flex-center"></span>
+                        <span class="post-date border-box">08-31</span>
+                        <a class="post-title border-box text-ellipsis"
+                           href="/2024/08/31/node-keep-backend/"
+                        >node keep backend</a>
+                    </li>
+                
+                    <li class="post-item border-box">
+                        <span class="starting-point border-box flex-center"></span>
                         <span class="post-date border-box">08-26</span>
                         <a class="post-title border-box text-ellipsis"
                            href="/2024/08/26/win-bilud-go-4-linux/"
@@ -244,22 +260,6 @@
                         >stable diffusion</a>
                     </li>
                 
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">08-12</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2024/08/12/debian-mysql/"
-                        >debian mysql</a>
-                    </li>
-                
-                    <li class="post-item border-box">
-                        <span class="starting-point border-box flex-center"></span>
-                        <span class="post-date border-box">08-12</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2024/08/12/debian-apt-update/"
-                        >debian apt update</a>
-                    </li>
-                
             </ul>
         </section>
     
@@ -334,7 +334,7 @@
             var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
             //console.log(filename); // 输出: 20201124032511.png  
       
-            imgElement.src = "http://sh33dshez.hn-bkt.clouddn.com/v2/" + filename+"?timestamp=" + Date.now();
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
     
             imgElement.onerror = null; // 解绑onerror事件  
         }  
