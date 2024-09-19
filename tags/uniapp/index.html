@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="debian">
-    <meta name="description" content="debian">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="lm">
     
     <title>
         
-            Debian Gnome-Desktop GUI  |
+            Tag: uniapp |
         
         m study log
     </title>
@@ -149,179 +149,39 @@
             <div class="main-content border-box">
                 
 
-                    
-<div class="fade-in-down-animation">
-    <div class="post-page-container border-box">
-        <div class="post-content-container border-box">
+                    <div class="fade-in-down-animation">
+    <div class="tag-archive-container border-box">
+        <div class="tag-name"><i class="fas fa-hashtag"></i>&nbsp;uniapp
+        </div>
+        <div class="tag-post-list">
             
-
-            <div class="post-content-bottom border-box">
+<div class="archive-list-container border-box">
+    
+        <section class="archive-item border-box">
+            <div class="archive-item-header border-box">
+                <span class="archive-year">2024</span>
+            </div>
+            <ul class="archive-item-body border-box">
                 
-                    <div class="post-title">
-                        Debian Gnome-Desktop GUI 
-                    </div>
+                    <li class="post-item border-box">
+                        <span class="starting-point border-box flex-center"></span>
+                        <span class="post-date border-box">09-19</span>
+                        <a class="post-title border-box text-ellipsis"
+                           href="/2024/09/19/electron-uniapp-mp3/"
+                        >electron uniapp mp3</a>
+                    </li>
                 
-
-                
-                    <div class="post-header border-box">
-                        
-                            <div class="avatar-box border-box">
-                                <img src="/images/face.png">
-                            </div>
-                        
-                        <div class="info-box">
-                            <div class="author border-box">
-                                <span class="name">mu</span>
-                                
-                                    <span class="author-badge">Lv5</span>
-                                
-                            </div>
-                            <div class="meta-info border-box">
-                                
-
-<div class="post-meta-info-container border-box post">
-    <div class="post-meta-info border-box">
-        
-
-        
-            <span class="meta-info-item post-create-date">
-                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-04-26 23:19:27</span>
-            </span>
-
-            <span class="meta-info-item post-update-date">
-                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Aug 29 2024 22:30:26 GMT+0800">2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/debian/">debian</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
-
-        
-        
-        
-        
-    </div>
-
+            </ul>
+        </section>
     
 </div>
 
-                            </div>
-                        </div>
-                    </div>
-                
-
-                <div class="post-content keep-markdown-body ">
-                    
-
-                    <p>debian   gnome-desktop</p>
-<h1 id="🌞更新"><a href="#🌞更新" class="headerlink" title="🌞更新"></a>🌞更新</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">[2024042601]</span><br><span class="line">sudo apt -y upgrade</span><br></pre></td></tr></table></figure>
-
-<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2024042602.jpg"  ></p>
-<h1 id="🎨安装"><a href="#🎨安装" class="headerlink" title="🎨安装"></a>🎨安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt -y install task-gnome-desktop</span><br></pre></td></tr></table></figure>
-<p> 这个过程比较久</p>
-<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2024042603.jpg"  ></p>
-<h1 id="🍎分配"><a href="#🍎分配" class="headerlink" title="🍎分配"></a>🍎分配</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl set-default graphical.target</span><br><span class="line">vi /etc/pam.d/gdm-password</span><br><span class="line">``` bash</span><br><span class="line">注释 auth required pam_succeed_if.so user != root quiet_success</span><br><span class="line">``` bash</span><br><span class="line"><span class="comment">#auth required pam_succeed_if.so user != root quiet_success</span></span><br></pre></td></tr></table></figure>
-<h1 id="🛋️重启"><a href="#🛋️重启" class="headerlink" title="🛋️重启"></a>🛋️重启</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<h1 id="🔑通过VNC连接"><a href="#🔑通过VNC连接" class="headerlink" title="🔑通过VNC连接"></a>🔑通过VNC连接</h1><p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2024042604.jpg"  ></p>
-<p>配置后</p>
-<p>​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/2024042605.jpg"  ></p>
-
-                </div>
-                
-
-                <div class="post-bottom-tags-and-share border-box">
-                    <div>
-                        
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/debian/">debian</a>
-                                    </li>
-                                
-                            </ul>
-                        
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-
-                
-
-                
-                    <div class="post-nav border-box">
-                        
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/04/27/NET-Avalonia/"
-                                   title=".NET Avalonia Linux "
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">.NET Avalonia Linux </span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
-                        
-                            <div class="next-post">
-                                <a class="next"
-                                   rel="next"
-                                   href="/2024/04/21/HarmonyOS-Base/"
-                                   title="HarmonyOS开发环境搭建 移动开发 鸿蒙开发 ArkTS"
-                                >
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">HarmonyOS开发环境搭建 移动开发 鸿蒙开发 ArkTS</span>
-                                        <span class="post-nav-item">Next posts</span>
-                                    </span>
-                                    <span class="right arrow-icon flex-center">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        
-                    </div>
-                
-
-                
-                    
-
-
-
-
-
-
-                
-            </div>
         </div>
-
-        
     </div>
+    
+
+
+
 </div>
 
 
@@ -381,24 +241,6 @@
     </div>
 
     <!-- post tools -->
-    
-        <div class="post-tools right-toc">
-            <div class="post-tools-container border-box">
-    <ul class="tools-list border-box">
-        <!-- PC TOC show toggle -->
-        
-
-        <!-- PC go comment -->
-        
-
-        <!-- PC full screen -->
-        <li class="tools-item flex-center full-screen">
-            <i class="fa-solid fa-expand"></i>
-        </li>
-    </ul>
-</div>
-
-        </div>
     
 
     <!-- side tools -->
@@ -487,6 +329,7 @@
 
 
 
+
 <!-- common -->
 
 <script src="/js/utils.js"></script>
@@ -515,20 +358,6 @@
 
 
 <div class="">
-    
-        <!-- post-helper -->
-        
-<script src="/js/post/post-helper.js"></script>
-
-
-        <!-- toc -->
-        
-
-        <!-- copyright-info -->
-        
-
-        <!-- share -->
-        
     
 
     <!-- categories page -->
