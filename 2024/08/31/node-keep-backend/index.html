@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Sep 04 2024 22:30:22 GMT+0800">2024-09-04 22:30:22</span>
+                <span class="datetime" data-updated="Sat Sep 21 2024 01:35:32 GMT+0800">2024-09-21 01:35:32</span>
             </span>
         
 
@@ -235,7 +235,7 @@
                     
 
                     <p>在 Debian 系统上运行 Node.js 应用程序并使其保持常驻运行有几种方法</p>
-<h1 id="方法一：使用-systemd-服务"><a href="#方法一：使用-systemd-服务" class="headerlink" title="方法一：使用 systemd 服务"></a>方法一：使用 systemd 服务</h1><p>创建一个 systemd 服务文件：<br>你可以创建一个 .service 文件来定义你的 Node.js 应用程序作为系统服务。<br>my-node-app</p>
+<h1 id="方法一：使用-systemd-服务"><a href="#方法一：使用-systemd-服务" class="headerlink" title="方法一：使用 systemd 服务"></a>方法一：使用 systemd 服务</h1><p>可以创建一个 .service 文件来定义 Node.js 应用程序作为系统服务。<br>my-node-app</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/systemd/system/my-node-app.service</span><br></pre></td></tr></table></figure>
 
 <p>编辑服务文件：<br>在文件中添加以下内容  ：</p>
@@ -248,11 +248,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status my-node-app</span><br></pre></td></tr></table></figure>
 
 
-<h1 id="方法二：使用-nohup-和"><a href="#方法二：使用-nohup-和" class="headerlink" title="方法二：使用 nohup 和 &amp;"></a>方法二：使用 nohup 和 &amp;</h1><p>如果你不想使用 systemd，可以使用 nohup 命令来保持应用程序在后台运行。</p>
+<h1 id="方法二：使用-nohup-和"><a href="#方法二：使用-nohup-和" class="headerlink" title="方法二：使用 nohup 和 &amp;"></a>方法二：使用 nohup 和 &amp;</h1><p>如果不想使用 systemd，可以使用 nohup 命令来保持应用程序在后台运行。</p>
 <p>启动应用程序：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">nohup</span> node /root/nodexxx/app.js &gt; outputapp3.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 
-<p>这会启动你的 Node.js 应用程序，并将输出和错误重定向到 app.log 文件中。</p>
+<p>这会启动 Node.js 应用程序，并将输出和错误重定向到 app.log 文件中。</p>
 <p>查看后台进程：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep node</span><br></pre></td></tr></table></figure>
 
@@ -266,7 +266,7 @@
 <p>创建一个新的 screen 会话：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S my-node-app</span><br></pre></td></tr></table></figure>
 
-<p>在 screen 中启动你的应用程序：</p>
+<p>在 screen 中启动应用程序：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node /path/to/your/app/index.js</span><br></pre></td></tr></table></figure>
 
 <p>分离 screen 会话：<br>按下 Ctrl+A，然后按下 D。</p>
@@ -276,9 +276,9 @@
 <h2 id="安装-tmux（如果未安装）"><a href="#安装-tmux（如果未安装）" class="headerlink" title="安装 tmux（如果未安装）"></a>安装 tmux（如果未安装）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tmux</span><br></pre></td></tr></table></figure>
 <p>启动一个 tmux 会话：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux new -s my_node_app</span><br></pre></td></tr></table></figure>
-<p>在里面运行你的 Node.js 应用程序：</p>
+<p>在里面运行 Node.js 应用程序：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node your_app.js</span><br></pre></td></tr></table></figure>
-<p>按下 Ctrl+B，然后按 D 键分离 tmux。你可以随时重新连接到这个会话：</p>
+<p>按下 Ctrl+B，然后按 D 键分离 tmux。可以随时重新连接到这个会话：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmux attach -t my_node_app</span><br></pre></td></tr></table></figure>
                 </div>
                 
