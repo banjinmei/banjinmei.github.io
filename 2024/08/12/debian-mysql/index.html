@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Aug 13 2024 21:21:32 GMT+0800">2024-08-13 21:21:32</span>
+                <span class="datetime" data-updated="Sun Sep 29 2024 11:26:51 GMT+0800">2024-09-29 11:26:51</span>
             </span>
         
 
@@ -270,10 +270,12 @@
 
 <h1 id="10-docker"><a href="#10-docker" class="headerlink" title="10.docker"></a>10.docker</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name myadmin -d -e PMA_ARBITRARY=1 -p 12121:80 phpmyadmin</span><br></pre></td></tr></table></figure>
 
-<h1 id="err"><a href="#err" class="headerlink" title="err"></a>err</h1><h2 id="1130-HY000-Host"><a href="#1130-HY000-Host" class="headerlink" title="1130 (HY000): Host"></a>1130 (HY000): Host</h2><p> mysql&gt;use mysql;  &#x2F;&#x2F;选中数据库</p>
+<h1 id="err"><a href="#err" class="headerlink" title="err"></a>err</h1><h2 id="1130-HY000-Host"><a href="#1130-HY000-Host" class="headerlink" title="1130 (HY000): Host"></a>1130 (HY000): Host</h2><p>Host is not allowed to connect to this MySQL server</p>
+<p> mysql&gt;use mysql;  &#x2F;&#x2F;选中数据库</p>
 <p>mysql&gt;select ‘host’ from user where user&#x3D;’root’; &#x2F;&#x2F;查看该表的值</p>
 <p>mysql&gt;update user set host &#x3D; ‘%’ where user &#x3D;’root’; &#x2F;&#x2F;修改</p>
 <p>mysql&gt;flush privileges; &#x2F;&#x2F;刷新数据库</p>
+<p>检查MySQL服务器的配置文件（如 my.cnf 或 my.ini），确保没有禁止远程连接的相关设置， bind-address 参数通常需要设置为 0.0.0.0 或者指定的公网IP地址以接受远程连接。</p>
 <!--
 
 wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
