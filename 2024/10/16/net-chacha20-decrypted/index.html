@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            .net chacha20 decrypted |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        .net chacha20 decrypted
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-10-16 01:10:02</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Oct 16 2024 01:18:44 GMT+0800">2024-10-16 01:18:44</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net/">.net</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/chacha20/">chacha20</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p>.NET 实现  ChaCha20 加密和解密</p>
+<h1 id="add-package"><a href="#add-package" class="headerlink" title="add package"></a>add package</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Package BouncyCastle</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="chacha20-helper"><a href="#chacha20-helper" class="headerlink" title="chacha20 helper"></a>chacha20 helper</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">using Org.BouncyCastle.Crypto;</span><br><span class="line">using Org.BouncyCastle.Crypto.Engines;</span><br><span class="line">using Org.BouncyCastle.Crypto.Parameters;</span><br><span class="line">using System;</span><br><span class="line"></span><br><span class="line">public class ChaCha20</span><br><span class="line">&#123;</span><br><span class="line">    private <span class="built_in">readonly</span> byte[] key;</span><br><span class="line">    private <span class="built_in">readonly</span> byte[] nonce;</span><br><span class="line"></span><br><span class="line">    // Constructor to initialize key and nonce</span><br><span class="line">    public ChaCha20(byte[] key, byte[] nonce)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (key.Length != 32)</span><br><span class="line">        &#123;</span><br><span class="line">            throw new ArgumentException(<span class="string">&quot;Key must be 32 bytes (256 bits).&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (nonce.Length != 12)</span><br><span class="line">        &#123;</span><br><span class="line">            throw new ArgumentException(<span class="string">&quot;Nonce must be 12 bytes (96 bits).&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        this.key = key;</span><br><span class="line">        this.nonce = nonce;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Method to encrypt the data using ChaCha20</span><br><span class="line">    public byte[] Encrypt(byte[] data, int offset, int count)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> ProcessData(<span class="literal">true</span>, data, offset, count);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Method to decrypt the data using ChaCha20</span><br><span class="line">    public byte[] Decrypt(byte[] data, int offset, int count)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> ProcessData(<span class="literal">false</span>, data, offset, count);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Helper method to process encryption/decryption</span><br><span class="line">    private byte[] ProcessData(bool forEncryption, byte[] data, int offset, int count)</span><br><span class="line">    &#123;</span><br><span class="line">        var engine = new ChaCha7539Engine(); // ChaCha20/Poly1305 engine (ChaCha7539)</span><br><span class="line">        var parameters = new ParametersWithIV(new KeyParameter(key), nonce);</span><br><span class="line">        engine.Init(forEncryption, parameters);</span><br><span class="line"></span><br><span class="line">        byte[] output = new byte[count];</span><br><span class="line">        engine.ProcessBytes(data, offset, count, output, 0);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> output;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键点解释：</strong><br>ChaCha7539Engine:</p>
+<p>BouncyCastle 提供了 ChaCha7539Engine，这是 ChaCha20 加密算法的实现（96-bit nonce，32-byte key）。<br><strong>ProcessData:</strong></p>
+<p>ProcessData 方法负责执行加密和解密，取决于传入的 forEncryption 参数。<br>加密时，forEncryption 为 true，否则为 false。<br><strong>Key 和 Nonce:</strong></p>
+<p>ChaCha20 使用 32 字节（256 位）的密钥和 12 字节（96 位）的 nonce。<br>如果传入的密钥或 nonce 不符合长度要求，会抛出 ArgumentException。<br><strong>Encrypt 和 Decrypt:</strong></p>
+<p>Encrypt 和 Decrypt 调用 ProcessData 来执行加解密，分别用于加密和解密数据。<br><strong>调用示例：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 示例密钥和 nonce</span></span><br><span class="line">        <span class="built_in">byte</span>[] key = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">32</span>] &#123; <span class="number">0x1E</span>, <span class="number">0x12</span>, <span class="number">0x0B</span>, <span class="number">0x02</span>, <span class="number">0x05</span>, <span class="number">0x18</span>, <span class="number">0x01</span>, <span class="number">0x13</span>,</span><br><span class="line">                                    <span class="number">0x10</span>, <span class="number">0x0D</span>, <span class="number">0x04</span>, <span class="number">0x06</span>, <span class="number">0x07</span>, <span class="number">0x19</span>, <span class="number">0x09</span>, <span class="number">0x15</span>,</span><br><span class="line">                                    <span class="number">0x0F</span>, <span class="number">0x17</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x1A</span>, <span class="number">0x16</span>, <span class="number">0x1D</span>, <span class="number">0x14</span>,</span><br><span class="line">                                    <span class="number">0x0E</span>, <span class="number">0x03</span>, <span class="number">0x1B</span>, <span class="number">0x1C</span>, <span class="number">0x11</span>, <span class="number">0x0C</span>, <span class="number">0x1E</span>, <span class="number">0x1F</span> &#125;;</span><br><span class="line">        <span class="built_in">byte</span>[] nonce = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">12</span>] &#123; <span class="number">0x00</span>, <span class="number">0x01</span>, <span class="number">0x02</span>, <span class="number">0x03</span>, <span class="number">0x04</span>, <span class="number">0x05</span>, <span class="number">0x06</span>, <span class="number">0x07</span>, <span class="number">0x08</span>, <span class="number">0x09</span>, <span class="number">0x0A</span>, <span class="number">0x0B</span> &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 要加密的示例数据</span></span><br><span class="line">        <span class="built_in">byte</span>[] plainText = System.Text.Encoding.UTF8.GetBytes(<span class="string">&quot;Hello, ChaCha20 encryption!&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 加密</span></span><br><span class="line">        ChaCha20 chacha20 = <span class="keyword">new</span> ChaCha20(key, nonce);</span><br><span class="line">        <span class="built_in">byte</span>[] cipherText = chacha20.Encrypt(plainText, <span class="number">0</span>, plainText.Length);</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Encrypted: &quot;</span> + BitConverter.ToString(cipherText));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解密</span></span><br><span class="line">        <span class="built_in">byte</span>[] decryptedText = chacha20.Decrypt(cipherText, <span class="number">0</span>, cipherText.Length);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Decrypted: &quot;</span> + System.Text.Encoding.UTF8.GetString(decryptedText));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Encrypted: &lt;加密的十六进制字节串&gt;</span><br><span class="line">Decrypted: Hello, ChaCha20 encryption!</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="通过CHACHA2加解密文件"><a href="#通过CHACHA2加解密文件" class="headerlink" title="通过CHACHA2加解密文件"></a>通过CHACHA2加解密文件</h1><!-- //https://github.com/mcraiha/CSharp-ChaCha20-NetStandard     How many bytes to read and write at time  --- 4096
+ -->
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FileEncryptorHelper</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 生成随机的 Nonce（12字节）</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="built_in">byte</span>[] <span class="title">GenerateRandomNonce</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">byte</span>[] nonce = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">12</span>]; <span class="comment">// 12字节的Nonce</span></span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> rng = RandomNumberGenerator.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            rng.GetBytes(nonce);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nonce;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成固定的 Key（32字节）</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="built_in">byte</span>[] <span class="title">GenerateKey</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 使用固定的 256 位（32 字节）的密钥</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">byte</span>[]</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="number">0x1E</span>, <span class="number">0x12</span>, <span class="number">0x0B</span>, <span class="number">0x02</span>, <span class="number">0x05</span>, <span class="number">0x18</span>, <span class="number">0x01</span>, <span class="number">0x13</span>,</span><br><span class="line">        <span class="number">0x10</span>, <span class="number">0x0D</span>, <span class="number">0x04</span>, <span class="number">0x06</span>, <span class="number">0x07</span>, <span class="number">0x19</span>, <span class="number">0x09</span>, <span class="number">0x15</span>,</span><br><span class="line">        <span class="number">0x0F</span>, <span class="number">0x17</span>, <span class="number">0x08</span>, <span class="number">0x00</span>, <span class="number">0x1A</span>, <span class="number">0x16</span>, <span class="number">0x1D</span>, <span class="number">0x14</span>,</span><br><span class="line">        <span class="number">0x0E</span>, <span class="number">0x03</span>, <span class="number">0x1B</span>, <span class="number">0x1C</span>, <span class="number">0x11</span>, <span class="number">0x0C</span>, <span class="number">0x1E</span>, <span class="number">0x1F</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加密文件 每4096</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">EncryptFile</span>(<span class="params"><span class="built_in">string</span> inputPath, <span class="built_in">string</span> outputPath, <span class="built_in">int</span> blockSize = <span class="number">4096</span></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">byte</span>[] nonce = GenerateRandomNonce();</span><br><span class="line">        <span class="built_in">byte</span>[] key = GenerateKey();</span><br><span class="line"></span><br><span class="line">        EncryptFile(inputPath, outputPath, key, nonce, blockSize);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用随机生成的 Nonce 和固定的 Key 进行 ChaCha20 加密</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">EncryptFile</span>(<span class="params"><span class="built_in">string</span> inputPath, <span class="built_in">string</span> outputPath, <span class="built_in">byte</span>[] key, <span class="built_in">byte</span>[] nonce, <span class="built_in">int</span> blockSize</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!File.Exists(outputPath))</span><br><span class="line">        &#123;</span><br><span class="line">            File.Create(outputPath).Dispose();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> inputFile = File.OpenRead(inputPath))</span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> outputFile = File.OpenWrite(outputPath))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 将 nonce 写入输出文件的开头</span></span><br><span class="line">            outputFile.Write(nonce, <span class="number">0</span>, nonce.Length);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> chacha20 = <span class="keyword">new</span> MyCC20(key, nonce))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">byte</span>[] buffer = <span class="keyword">new</span> <span class="built_in">byte</span>[blockSize];</span><br><span class="line">                <span class="built_in">int</span> bytesRead;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 逐块读取文件内容并加密</span></span><br><span class="line">                <span class="keyword">while</span> ((bytesRead = inputFile.Read(buffer, <span class="number">0</span>, blockSize)) &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">byte</span>[] encryptedData = chacha20.EncryptBytes(buffer, bytesRead);</span><br><span class="line">                    outputFile.Write(encryptedData, <span class="number">0</span>, encryptedData.Length);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;File encrypted successfully: &quot;</span> + outputPath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解密文件</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DecryptFile</span>(<span class="params"><span class="built_in">string</span> inputPath, <span class="built_in">string</span> outputPath, <span class="built_in">int</span> blockSize = <span class="number">4096</span></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!File.Exists(outputPath))</span><br><span class="line">        &#123;</span><br><span class="line">            File.Create(outputPath).Dispose();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> inputFile = File.OpenRead(inputPath))</span><br><span class="line">        <span class="keyword">using</span> (<span class="keyword">var</span> outputFile = File.OpenWrite(outputPath))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 从输入文件的开头读取 nonce</span></span><br><span class="line">            <span class="built_in">byte</span>[] nonce = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">12</span>];</span><br><span class="line">            <span class="built_in">int</span> nonceRead = inputFile.Read(nonce, <span class="number">0</span>, nonce.Length);</span><br><span class="line">            <span class="keyword">if</span> (nonceRead != <span class="number">12</span>) <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;Invalid nonce&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="built_in">byte</span>[] key = GenerateKey();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> chacha20 = <span class="keyword">new</span> MyCC20(key, nonce))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">byte</span>[] buffer = <span class="keyword">new</span> <span class="built_in">byte</span>[blockSize];</span><br><span class="line">                <span class="built_in">int</span> bytesRead;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 逐块读取文件内容并解密</span></span><br><span class="line">                <span class="keyword">while</span> ((bytesRead = inputFile.Read(buffer, <span class="number">0</span>, blockSize)) &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">byte</span>[] decryptedData = chacha20.DecryptBytes(buffer, bytesRead);</span><br><span class="line">                    outputFile.Write(decryptedData, <span class="number">0</span>, decryptedData.Length);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;File decrypted successfully: &quot;</span> + outputPath);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>调用</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 创建 FileEncryptorHelper 对象</span></span><br><span class="line">    FileEncryptorHelper fileEncryptor = <span class="keyword">new</span> FileEncryptorHelper();</span><br><span class="line">    <span class="comment">// 指定加密文件路径和解密后的输出文件路径</span></span><br><span class="line">    <span class="built_in">string</span> encryptedFilePath = <span class="string">&quot;13632AE2-354E-45B8-9BBA-D474005B5DBC.data&quot;</span>; <span class="comment">// 加密文件路径 &quot;http://8xxx4:8080/group1/110/13632AE2-354E-45B8-9BBA-D474005B5DBC.data&quot;;//</span></span><br><span class="line">    <span class="built_in">string</span> decryptedFilePath = <span class="string">&quot;decryptedFile3.png&quot;</span>; <span class="comment">// 解密后的文件路径</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用解密方法</span></span><br><span class="line">    fileEncryptor.DecryptFile(encryptedFilePath, decryptedFilePath);</span><br><span class="line"></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;文件解密成功！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception ex)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;文件解密失败: &quot;</span> + ex.Message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;5&quot;</span>:<span class="string">&quot;\/group1\/110\/13632AE2-354E-45B8-9BBA-D474005B5DBC.data&quot;</span>&#125;</span><br><span class="line">Str5 : /group1/110/13632AE2-354E-45B8-9BBA-D474005B5DBC.data</span><br><span class="line">File decrypted successfully: decryptedFile3.png</span><br><span class="line">文件解密成功！</span><br></pre></td></tr></table></figure>
+
+
+<p>同理解密音频文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xxx93EC685A2D41.data</span><br><span class="line">File decrypted successfully: decryptedFileaac.aac</span><br><span class="line"></span><br><span class="line">文件解密成功！</span><br></pre></td></tr></table></figure>
+
+<p>mp4视频同理</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net/">.net</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/chacha20/">chacha20</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/10/16/net-write-wwwroot-json/"
+                                   title=".net write wwwroot json"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">.net write wwwroot json</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/10/16/net-local-LLM/"
+                                   title=".net local LLM"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">.net local LLM</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

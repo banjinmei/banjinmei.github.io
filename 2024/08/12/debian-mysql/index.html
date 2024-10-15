@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sun Sep 29 2024 11:26:51 GMT+0800">2024-09-29 11:26:51</span>
+                <span class="datetime" data-updated="Wed Oct 16 2024 01:22:09 GMT+0800">2024-10-16 01:22:09</span>
             </span>
         
 
@@ -276,6 +276,32 @@
 <p>mysql&gt;update user set host &#x3D; ‘%’ where user &#x3D;’root’; &#x2F;&#x2F;修改</p>
 <p>mysql&gt;flush privileges; &#x2F;&#x2F;刷新数据库</p>
 <p>检查MySQL服务器的配置文件（如 my.cnf 或 my.ini），确保没有禁止远程连接的相关设置， bind-address 参数通常需要设置为 0.0.0.0 或者指定的公网IP地址以接受远程连接。</p>
+<h1 id="mysql卸载"><a href="#mysql卸载" class="headerlink" title="mysql卸载"></a>mysql卸载</h1><p>卸载 –卸载当前MySQL实例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove --purge mysql-server mysql-client mysql-common</span><br><span class="line">sudo apt-get autoremove</span><br><span class="line">sudo apt-get autoclean</span><br></pre></td></tr></table></figure>
+<p>删除MySQL的数据目录（默认为&#x2F;var&#x2F;lib&#x2F;mysql）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">rm</span> -rf /var/lib/mysql</span><br></pre></td></tr></table></figure>
+<p>清理残留的配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo find /etc -name <span class="string">&quot;mysql*&quot;</span> | sudo xargs <span class="built_in">rm</span> -rf</span><br></pre></td></tr></table></figure>
+<p>更新包管理器的索引：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>重新安装MySQL服务器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server   ---sql</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="远程错误-Host-is-not-allowed-to-connect-to-this-MySQL-server"><a href="#远程错误-Host-is-not-allowed-to-connect-to-this-MySQL-server" class="headerlink" title="远程错误  Host is not allowed to connect to this MySQL server"></a>远程错误  Host is not allowed to connect to this MySQL server</h1><p>通过远程客户端访问MySQL服务器时会遇到“Host is not allowed to connect to this MySQL server”的错误提示。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>MySQL服务器当前配置不允许来自特定主机的连接尝试。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>允许远程主机访问MySQL服务器，按照以下步骤操作：</p>
+<h2 id="登录本地MySQL服务器："><a href="#登录本地MySQL服务器：" class="headerlink" title="登录本地MySQL服务器："></a>登录本地MySQL服务器：</h2><p>以管理员身份登录到MySQL服务器，输入MySQL root用户的密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<h2 id="选择MySQL数据库："><a href="#选择MySQL数据库：" class="headerlink" title="选择MySQL数据库："></a>选择MySQL数据库：</h2><p>登录成功后，切换到MySQL系统数据库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br></pre></td></tr></table></figure>
+<h2 id="更新用户权限："><a href="#更新用户权限：" class="headerlink" title="更新用户权限："></a>更新用户权限：</h2><p>修改root用户的host字段（或其他需要远程访问的用户），允许任意远程主机（用 ‘%’ 表示）进行连接，但这一步可能涉及到安全风险，建议只针对需要远程访问的特定用户设置具体的远程IP地址，而不是使用通配符 % 开启所有远程访问：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update user <span class="built_in">set</span> host = <span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user = <span class="string">&#x27;root&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="刷新权限："><a href="#刷新权限：" class="headerlink" title="刷新权限："></a>刷新权限：</h2> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<h2 id="防火墙设置："><a href="#防火墙设置：" class="headerlink" title="防火墙设置："></a>防火墙设置：</h2><p>确保服务器的防火墙规则允许MySQL服务端口（默认为3306）上的入站流量。</p>
+<h2 id="MySQL配置文件："><a href="#MySQL配置文件：" class="headerlink" title="MySQL配置文件："></a>MySQL配置文件：</h2><p>检查MySQL服务器的配置文件（如 my.cnf 或 my.ini），确保没有禁止远程连接的相关设置， bind-address 参数通常需要设置为 0.0.0.0 或者指定的公网IP地址以接受远程连接。</p>
 <!--
 
 wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
