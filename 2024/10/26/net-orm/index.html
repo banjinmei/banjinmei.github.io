@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            .net orm |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        .net orm
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-10-26 22:35:57</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sat Oct 26 2024 22:38:36 GMT+0800">2024-10-26 22:38:36</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net/">.net</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/orm/">orm</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="SqlSugar"><a href="#SqlSugar" class="headerlink" title="SqlSugar"></a>SqlSugar</h1><p>nuget 安装 SqlSugar</p>
+<p>安装 MySql.Data</p>
+<p>实体类 </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">SugarTable(<span class="string">&quot;IMMenu&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">class</span> <span class="title">IMMenu</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">SugarColumn(IsPrimaryKey = true, IsIdentity = true)</span>] <span class="comment">//id</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 其他属性...</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="built_in">string</span> <span class="title">ToString</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">$&quot;id: <span class="subst">&#123;id&#125;</span>, name: <span class="subst">&#123;name&#125;</span>&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连接字符串</span></span><br><span class="line"><span class="built_in">string</span> connectionString = <span class="string">&quot;server=xxx;user=root;password=xxx;database=DB&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建SqlSugar客户端实例</span></span><br><span class="line">SqlSugarClient db = <span class="keyword">new</span> SqlSugarClient(<span class="keyword">new</span> ConnectionConfig()</span><br><span class="line">&#123;</span><br><span class="line">    ConnectionString = connectionString,</span><br><span class="line">    DbType = DbType.MySql,</span><br><span class="line">    IsAutoCloseConnection = <span class="literal">true</span>,</span><br><span class="line">    InitKeyType = InitKeyType.Attribute</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询数据</span></span><br><span class="line"><span class="keyword">var</span> data = db.Queryable&lt;IMMenu&gt;().ToList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出结果</span></span><br><span class="line">data.ForEach(item =&gt; Console.WriteLine(item.ToString()));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="dapper"><a href="#dapper" class="headerlink" title="dapper"></a>dapper</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">IMMenu</span></span><br><span class="line">&#123;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DapperExample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;IMMenu&gt; <span class="title">GetAllIMMenus</span>(<span class="params"><span class="built_in">string</span> connectionString</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (IDbConnection db = <span class="keyword">new</span> MySqlConnection(connectionString))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> db.Query&lt;IMMenu&gt;(<span class="string">&quot;SELECT * FROM IMMenu&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="built_in">string</span> connectionString = <span class="string">&quot;server=xxx;user=root;password=xxx;database=DB&quot;</span>;</span><br><span class="line"></span><br><span class="line">IEnumerable&lt;IMMenu&gt; ms = DapperExample.GetAllIMMenus(connectionString);</span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> m <span class="keyword">in</span> ms)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;Id: <span class="subst">&#123;m.id&#125;</span>, Name: <span class="subst">&#123;m.name&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="EF-EF-Core"><a href="#EF-EF-Core" class="headerlink" title="EF&#x2F;EF Core"></a>EF&#x2F;EF Core</h1><p>Entity Framework (EF) Core 是轻量化、可扩展、开源和跨平台版的常用 Entity Framework 数据访问技术，EF Core 是适用于 .NET 的现代对象数据库映射器。它支持 LINQ 查询、更改跟踪、更新和架构迁移。EF Core 通过提供程序插件 API 与 SQL Server、Azure SQL 数据库、SQLite、Azure Cosmos DB、MySQL、PostgreSQL 和其他数据库一起使用（微软官方出品）。</p>
+<p>官方文档教程：<a class="link"   target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/ef/" >https://docs.microsoft.com/zh-cn/ef/<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/dotnet/efcore" >https://github.com/dotnet/efcore<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="Dapper"><a href="#Dapper" class="headerlink" title="Dapper"></a>Dapper</h1><p>Dapper是一个简单的.NET对象映射器，在速度方面具有”King of Micro ORM”的头衔，几乎与使用原始的ADO.NET数据读取器一样快。ORM是一个对象关系映射器，它负责数据库和编程语言之间的映射。Dapper通过扩展IDbConnection提供一些有用的扩展方法去查询您的数据库。</p>
+<p>官方文档教程：<a class="link"   target="_blank" rel="noopener" href="https://www.learndapper.com/" >https://www.learndapper.com/<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/DapperLib/Dapper" >https://github.com/DapperLib/Dapper<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="SqlSugar-1"><a href="#SqlSugar-1" class="headerlink" title="SqlSugar"></a>SqlSugar</h1><p>SqlSugar 是一款 老牌 .NET 开源多库架构ORM框架（EF Core单库架构），由果糖大数据科技团队 维护和更新 ，开箱即用最易上手的.NET ORM框架 。</p>
+<p>官网地址：<a class="link"   target="_blank" rel="noopener" href="http://www.donet5.com/" >http://www.donet5.com<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/donet5/SqlSugar" >https://github.com/donet5/SqlSugar<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="FreeSql"><a href="#FreeSql" class="headerlink" title="FreeSql"></a>FreeSql</h1><p>FreeSql 是一款功能强大的对象关系映射（O&#x2F;RM）组件，支持 .NET Core 2.1+、.NET Framework 4.0+ 以及 Xamarin。</p>
+<p>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/dotnetcore/FreeSql" >https://github.com/dotnetcore/FreeSql<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="Chloe-ORM"><a href="#Chloe-ORM" class="headerlink" title="Chloe.ORM"></a>Chloe.ORM</h1><p>Chloe.ORM 是一款国产十分稳定可靠的 ORM 框架。除了常规增删查改外还支持连接查询、分组查询、聚合查询、子查询，大部分操作可通过 lambda 完成。还支持分库分表分页、聚合、分组聚合，并支持多个字段组合分片以及多字段路由。</p>
+<p>文档地址：https :&#x2F;&#x2F;github.com&#x2F;shuxinqin&#x2F;Chloe&#x2F;wiki<br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/shuxinqin/Chloe" >https://github.com/shuxinqin/Chloe<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="nhibernate-core"><a href="#nhibernate-core" class="headerlink" title="nhibernate-core"></a>nhibernate-core</h1><p>NHibernate是.NET框架的成熟、开源的对象关系映射工具。它在积极开发中，功能齐全，并已成功应用于数千个项目中。</p>
+<p>NHibernate社区网站: <a class="link"   target="_blank" rel="noopener" href="https://nhibernate.info/" >https://nhibernate.info<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/nhibernate/nhibernate-core" >https://github.com/nhibernate/nhibernate-core<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="SmartSql"><a href="#SmartSql" class="headerlink" title="SmartSql"></a>SmartSql</h1><p>SmartSql &#x3D; C# 中的 MyBatis + .NET Core+ 缓存（内存 | Redis）+ R&#x2F;W 拆分 + PropertyChangedTrack +动态存储库 + InvokeSync + 诊断。SmartSql 借鉴了 MyBatis 的思想，使用 XML 来管理 SQL ，并且提供了若干个筛选器标签来消除代码层面的各种 if&#x2F;else 的判断分支。SmartSql将管理你的 SQL ，并且通过筛选标签来维护本来你在代码层面的各种条件判断，使你的代码更加优美。</p>
+<p>文档地址： <a class="link"   target="_blank" rel="noopener" href="https://smartsql.net/guide/" >https://smartsql.net/guide/<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/dotnetcore/SmartSql" >https://github.com/dotnetcore/SmartSql<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="PetaPoco"><a href="#PetaPoco" class="headerlink" title="PetaPoco"></a>PetaPoco</h1><p>PetaPoco 是一个用于 .NET（4、4.5+、net standard 2.0+）和 Mono 的微型、快速、易于使用的 micro-ORM。由于 PetaPoco 所代表的简单性和易用性，它受到许多人的喜爱。PetaPoco 是首选的微 ORM，也是任何体面的开发人员工具包中必不可少的实用程序。</p>
+<p>文档地址：<a class="link"   target="_blank" rel="noopener" href="https://discoverdot.net/projects/peta-poco" >https://discoverdot.net/projects/peta-poco<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/CollaboratingPlatypus/PetaPoco" >https://github.com/CollaboratingPlatypus/PetaPoco<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="linq2db"><a href="#linq2db" class="headerlink" title="linq2db"></a>linq2db</h1><p>LINQ to DB 是最快的LINQ数据库访问库，在POCO对象和数据库之间提供了一个简单、轻量、快速且类型安全的层。在架构上，它比 Dapper、Massive 或 PetaPoco 等微 ORM 高出一步，因为您使用 LINQ 表达式，而不是魔术字符串，同时在代码和数据库之间维护一个薄抽象层。您的查询由 C# 编译器检查并允许轻松重构。但是，它不像 LINQ to SQL 或实体框架那么重。没有更改跟踪，因此您必须自己进行管理，但从积极的方面来说，您可以获得更多控制权并更快地访问您的数据。</p>
+<p>文档地址：<a class="link"   target="_blank" rel="noopener" href="https://linq2db.github.io/" >https://linq2db.github.io/<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/linq2db/linq2db" >https://github.com/linq2db/linq2db<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="RepoDb"><a href="#RepoDb" class="headerlink" title="RepoDb"></a>RepoDb</h1><p>RepoDB是一个开源的.NET ORM库，它弥合了微ORM和完整ORM之间的差距。它帮助您简化在开发过程中何时使用基本操作和高级操作的切换。</p>
+<p>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/mikependon/RepoDB" >https://github.com/mikependon/RepoDB<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="ServiceStack-OrmLite"><a href="#ServiceStack-OrmLite" class="headerlink" title="ServiceStack.OrmLite"></a>ServiceStack.OrmLite</h1><p>OrmLite是一个快速、简单、类型化的.NET ORM，OrmLite 的目标是提供一个方便、DRY、无配置、与 RDBMS 无关的类型包装器，该包装器与 SQL 保持高度亲和性，公开直观的 API，生成可预测的 SQL 并干净地映射到断开连接和数据传输对象 (DTO) 友好、普通的旧C# 对象 (POCO)。这种方法更容易推理您的数据访问，从而清楚地知道什么 SQL 在什么时间执行，同时减轻意外行为、隐式 N+1 查询和重对象关系映射器 (ORM) 中普遍存在的泄漏数据访问。</p>
+<p>文档地址：<a class="link"   target="_blank" rel="noopener" href="https://docs.servicestack.net/ormlite/" >https://docs.servicestack.net/ormlite/<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/ServiceStack/ServiceStack.OrmLite" >https://github.com/ServiceStack/ServiceStack.OrmLite<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="SQLite-net"><a href="#SQLite-net" class="headerlink" title="SQLite-net"></a>SQLite-net</h1><p>简单、强大、跨平台的 SQLite 客户端和 .NET 的 ORM。</p>
+<p>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/praeclarum/sqlite-net" >https://github.com/praeclarum/sqlite-net<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="Insight-Database"><a href="#Insight-Database" class="headerlink" title="Insight.Database"></a>Insight.Database</h1><p>Insight.Database是一个用于 .NET 的快速、轻量级的 micro-orm。</p>
+<p>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/jonwagner/Insight.Database" >https://github.com/jonwagner/Insight.Database<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="cyqdata"><a href="#cyqdata" class="headerlink" title="cyqdata"></a>cyqdata</h1><p>cyq.data是一个高性能且功能最强大的orm（支持.NET Core），支持Txt、Xml、Access、Sqlite、Mssql、Mysql、Oracle、Sybase、Postgres、DB2、Redis、MemCache。</p>
+<p>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/cyq1162/cyqdata" >https://github.com/cyq1162/cyqdata<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="querybuilder"><a href="#querybuilder" class="headerlink" title="querybuilder"></a>querybuilder</h1><p>SQL 查询构建器，用 c# 编写，帮助您轻松构建复杂的查询，支持 SqlServer、MySql、PostgreSql、Oracle、Sqlite 和 Firebird。</p>
+<p>官网地址：<a class="link"   target="_blank" rel="noopener" href="https://sqlkata.com/" >https://sqlkata.com/<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/sqlkata/querybuilder" >https://github.com/sqlkata/querybuilder<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="TinyORM"><a href="#TinyORM" class="headerlink" title="TinyORM"></a>TinyORM</h1><p>TinyORM是一个简单、快速且安全的微型.NET ORM。</p>
+<p>Wiki地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/sdrapkin/SecurityDriven.TinyORM/wiki" >https://github.com/sdrapkin/SecurityDriven.TinyORM/wiki<i class="fas fa-external-link-alt"></i></a><br>GitHub地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/sdrapkin/SecurityDriven.TinyORM" >https://github.com/sdrapkin/SecurityDriven.TinyORM<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net/">.net</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/orm/">orm</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/10/26/android-run-linux/"
+                                   title="android run linux"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">android run linux</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/10/17/NET-ZIP/"
+                                   title=".NET ZIP"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">.NET ZIP</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
