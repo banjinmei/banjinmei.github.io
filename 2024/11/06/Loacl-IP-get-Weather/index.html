@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            Loacl IP get Weather |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Loacl IP get Weather
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-06 06:22:53</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Nov 06 2024 06:30:18 GMT+0800">2024-11-06 06:30:18</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/weather/">weather</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p>通过当前网络IP获取天气~</p>
+<h1 id="获取天气的接口"><a href="#获取天气的接口" class="headerlink" title="获取天气的接口"></a>获取天气的接口</h1><p>地址：<br><a class="link"   target="_blank" rel="noopener" href="https://weather.sl.al/" >https://weather.sl.al/<i class="fas fa-external-link-alt"></i></a></p>
+<p>参数：<br><a class="link"   target="_blank" rel="noopener" href="https://weather.sl.al/?lat=29.881583&lon=121.568458" >https://weather.sl.al/?lat=29.881583&amp;lon=121.568458<i class="fas fa-external-link-alt"></i></a></p>
+<p>&amp;lang&#x3D;en</p>
+<p>lat：纬度</p>
+<p>lon：经度</p>
+<p>lang：语言</p>
+<p>(默认不带 lang 的话为中文)</p>
+<p>结果参考：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;lat&quot;</span><span class="punctuation">:</span> <span class="string">&quot;23.1181&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lon&quot;</span><span class="punctuation">:</span> <span class="string">&quot;113.2539&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;location&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;city&quot;</span><span class="punctuation">:</span> <span class="string">&quot;越秀区&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;region&quot;</span><span class="punctuation">:</span> <span class="string">&quot;广东省&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;current&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">21</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;feelsLike&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;晴&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;airQuality&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;差&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;statement&quot;</span><span class="punctuation">:</span> <span class="string">&quot;空气污染已经达到了很高水平，对敏感人群是不健康的。如果您感到呼吸困难或喉咙刺激等症状，应减少户外活动时间。&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sun&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;duration&quot;</span><span class="punctuation">:</span> <span class="string">&quot;11 hrs 11 mins&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;sunrise&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AM6:35&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;sunset&quot;</span><span class="punctuation">:</span> <span class="string">&quot;PM5:46&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hourly&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;上午7时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;上午8时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">21</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;上午9时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">23</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;上午10时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">24</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;上午11时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">25</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;下午12时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">26</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;下午1时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">27</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;下午2时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">27</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;下午3时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">28</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;下午4时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">27</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;下午5时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">27</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;time&quot;</span><span class="punctuation">:</span> <span class="string">&quot;下午6时&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;temperature&quot;</span><span class="punctuation">:</span> <span class="number">25</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;daily&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-06&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">28</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">17</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分晴，天气宜人&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分多云&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-07&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">27</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">16</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分晴，天气宜人&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;多云&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-08&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">27</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">17</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;多云&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分多云&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-09&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">28</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">19</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;多云&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分多云&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-10&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">28</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">20</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分晴，天气宜人&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分多云，暖和&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-11&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">29</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">21</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分晴，暖和&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分多云，暖和潮湿&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-12&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">30</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">21</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分晴，炎热&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分多云，暖和&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-13&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">29</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">21</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分晴，暖和&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分多云，暖和&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-14&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">29</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">23</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;部分晴，暖和&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;多云，暖和潮湿&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;date&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2024-11-15&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;high&quot;</span><span class="punctuation">:</span> <span class="number">28</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;low&quot;</span><span class="punctuation">:</span> <span class="number">23</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;dayDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;大部分多云，暖和&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;nightDescription&quot;</span><span class="punctuation">:</span> <span class="string">&quot;大部分多云，暖和&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;rainProbability&quot;</span><span class="punctuation">:</span> <span class="string">&quot;25%&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="获取经纬度接口"><a href="#获取经纬度接口" class="headerlink" title="获取经纬度接口"></a>获取经纬度接口</h1><p>获取当前网络经纬度的免费且稳定的接口有几个选择。这些接口通常提供基于IP地址的服务，能够返回访问者的大致地理位置信息，包括经纬度。请注意，基于IP地址的服务精度有限，特别是在城市范围内，因为它们依赖于ISP提供的数据。以下是一些常用的免费API选项：</p>
+<h2 id="1-ip-api-com"><a href="#1-ip-api-com" class="headerlink" title="1. ip-api.com"></a>1. ip-api.com</h2><p>URL: <a class="link"   target="_blank" rel="noopener" href="http://ip-api.com/json" >http://ip-api.com/json<i class="fas fa-external-link-alt"></i></a><br>方法: GET<br>返回值: JSON格式的数据，包含国家、地区、城市、邮编、经纬度等信息。</p>
+<h2 id="2-ipinfo-io"><a href="#2-ipinfo-io" class="headerlink" title="2. ipinfo.io"></a>2. ipinfo.io</h2><p>URL: <a class="link"   target="_blank" rel="noopener" href="https://ipinfo.io/json" >https://ipinfo.io/json<i class="fas fa-external-link-alt"></i></a><br>方法: GET<br>返回值: JSON格式的数据，包括IP地址、城市、区域、国家、位置（经纬度）、组织等信息。</p>
+<h2 id="3-freegeoip-app"><a href="#3-freegeoip-app" class="headerlink" title="3. freegeoip.app"></a>3. freegeoip.app</h2><p>URL: <a class="link"   target="_blank" rel="noopener" href="https://api.freegeoip.app/json/" >https://api.freegeoip.app/json/<i class="fas fa-external-link-alt"></i></a><br>方法: GET<br>请求头: 需要加入 Accept-Language: en 和 User-Agent: YourAppName，其中 YourAppName 应用的名字。<br>返回值: JSON格式的数据，包括IP、国家代码、国家名、地区、城市、邮政编码、纬度、经度等信息。</p>
+<p>使用示例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Get Current Position<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;getLocation()&quot;</span>&gt;</span>Get Location<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;location&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">function</span> <span class="title function_">getLocation</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">fetch</span>(<span class="string">&#x27;https://ipinfo.io/json&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">                .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> response.<span class="title function_">json</span>())</span></span><br><span class="line"><span class="language-javascript">                .<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">const</span> location = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;location&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">                    location.<span class="property">textContent</span> = <span class="string">`Latitude: <span class="subst">$&#123;data.loc.split(<span class="string">&#x27;,&#x27;</span>)[<span class="number">0</span>]&#125;</span>, Longitude: <span class="subst">$&#123;data.loc.split(<span class="string">&#x27;,&#x27;</span>)[<span class="number">1</span>]&#125;</span>`</span>;</span></span><br><span class="line"><span class="language-javascript">                &#125;)</span></span><br><span class="line"><span class="language-javascript">                .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error:&#x27;</span>, error));</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>两者结合</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Weather Information<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-family</span>: Arial, sans-serif;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.section</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.header</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-size</span>: <span class="number">18px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">font-weight</span>: bold;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.details</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin-left</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.hourly-forecast</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">flex-wrap</span>: wrap;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.hourly-item</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">150px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.daily-forecast</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">flex-wrap</span>: wrap;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.daily-item</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;getWeather()&quot;</span>&gt;</span>Get Weather<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;weather-info&quot;</span> <span class="attr">class</span>=<span class="string">&quot;section&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">function</span> <span class="title function_">getWeather</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="comment">// 获取经纬度</span></span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">fetch</span>(<span class="string">&#x27;https://ipinfo.io/json&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">                .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> response.<span class="title function_">json</span>())</span></span><br><span class="line"><span class="language-javascript">                .<span class="title function_">then</span>(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">const</span> lat = data.<span class="property">loc</span>.<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>)[<span class="number">0</span>];</span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">const</span> lon = data.<span class="property">loc</span>.<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>)[<span class="number">1</span>];</span></span><br><span class="line"><span class="language-javascript">                    </span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 使用经纬度调用天气API</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">return</span> <span class="title function_">fetch</span>(<span class="string">`https://weather.sl.al/?lat=<span class="subst">$&#123;lat&#125;</span>&amp;lon=<span class="subst">$&#123;lon&#125;</span>`</span>);</span></span><br><span class="line"><span class="language-javascript">                &#125;)</span></span><br><span class="line"><span class="language-javascript">                .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> response.<span class="title function_">json</span>())</span></span><br><span class="line"><span class="language-javascript">                .<span class="title function_">then</span>(<span class="function"><span class="params">weatherData</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">const</span> weatherInfo = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;weather-info&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">                    weatherInfo.<span class="property">innerHTML</span> = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 显示当前天气</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">const</span> currentWeather = <span class="string">`</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        &lt;div class=&quot;section&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;div class=&quot;header&quot;&gt;Current Weather in <span class="subst">$&#123;weatherData.location.city&#125;</span>&lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;div class=&quot;details&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                Temperature: <span class="subst">$&#123;weatherData.current.temperature&#125;</span>°C&lt;br&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                Feels Like: <span class="subst">$&#123;weatherData.current.feelsLike&#125;</span>°C&lt;br&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                Description: <span class="subst">$&#123;weatherData.current.description&#125;</span>&lt;br&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                Air Quality: <span class="subst">$&#123;weatherData.current.airQuality.category&#125;</span>&lt;br&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                <span class="subst">$&#123;weatherData.current.airQuality.statement&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        &lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                    `</span>;</span></span><br><span class="line"><span class="language-javascript">                    weatherInfo.<span class="property">innerHTML</span> += currentWeather;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 显示今日天气详情</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">const</span> todayWeather = <span class="string">`</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        &lt;div class=&quot;section&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;div class=&quot;header&quot;&gt;Today&#x27;s Weather (<span class="subst">$&#123;weatherData.daily[<span class="number">0</span>].date&#125;</span>)&lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;div class=&quot;details&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                High: <span class="subst">$&#123;weatherData.daily[<span class="number">0</span>].high&#125;</span>°C&lt;br&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                Low: <span class="subst">$&#123;weatherData.daily[<span class="number">0</span>].low&#125;</span>°C&lt;br&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                Day: <span class="subst">$&#123;weatherData.daily[<span class="number">0</span>].dayDescription&#125;</span>&lt;br&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                Night: <span class="subst">$&#123;weatherData.daily[<span class="number">0</span>].nightDescription&#125;</span>&lt;br&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                Rain Probability: <span class="subst">$&#123;weatherData.daily[<span class="number">0</span>].rainProbability&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        &lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                    `</span>;</span></span><br><span class="line"><span class="language-javascript">                    weatherInfo.<span class="property">innerHTML</span> += todayWeather;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 显示未来几天的天气预报</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">const</span> dailyForecast = <span class="string">`</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        &lt;div class=&quot;section&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;div class=&quot;header&quot;&gt;Daily Forecast&lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;div class=&quot;daily-forecast&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                <span class="subst">$&#123;weatherData.daily.slice(<span class="number">1</span>).map(day =&gt; <span class="string">`</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                    &lt;div class=&quot;daily-item&quot;&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        Date: <span class="subst">$&#123;day.date&#125;</span>&lt;br&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        High: <span class="subst">$&#123;day.high&#125;</span>°C&lt;br&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        Low: <span class="subst">$&#123;day.low&#125;</span>°C&lt;br&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        Day: <span class="subst">$&#123;day.dayDescription&#125;</span>&lt;br&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        Night: <span class="subst">$&#123;day.nightDescription&#125;</span>&lt;br&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        Rain Probability: <span class="subst">$&#123;day.rainProbability&#125;</span></span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                    &lt;/div&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                `</span>).join(<span class="string">&#x27;&#x27;</span>)&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        &lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                    `</span>;</span></span><br><span class="line"><span class="language-javascript">                    weatherInfo.<span class="property">innerHTML</span> += dailyForecast;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 显示每小时的天气预报</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">const</span> hourlyForecast = <span class="string">`</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        &lt;div class=&quot;section&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;div class=&quot;header&quot;&gt;Hourly Forecast&lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;div class=&quot;hourly-forecast&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                                <span class="subst">$&#123;weatherData.hourly.map(hour =&gt; <span class="string">`</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                    &lt;div class=&quot;hourly-item&quot;&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        Time: <span class="subst">$&#123;hour.time&#125;</span>&lt;br&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        Temperature: <span class="subst">$&#123;hour.temperature&#125;</span>°C&lt;br&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                        Rain Probability: <span class="subst">$&#123;hour.rainProbability&#125;</span></span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                    &lt;/div&gt;</span></span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string"><span class="language-javascript">                                `</span>).join(<span class="string">&#x27;&#x27;</span>)&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                            &lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                        &lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="language-javascript">                    `</span>;</span></span><br><span class="line"><span class="language-javascript">                    weatherInfo.<span class="property">innerHTML</span> += hourlyForecast;</span></span><br><span class="line"><span class="language-javascript">                &#125;)</span></span><br><span class="line"><span class="language-javascript">                .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error:&#x27;</span>, error));</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果为当前天气、今日天气详情、未来几天的天气预报以及每小时的天气预报~<br>（Current Weather、Today’s Weather、Daily Forecast、Hourly Forecast）</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/weather/">weather</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/04/IIS-Web/"
+                                   title="IIS Web"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">IIS Web</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
