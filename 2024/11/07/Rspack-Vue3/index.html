@@ -9,7 +9,7 @@
     
     <title>
         
-            .net local LLM |
+            Rspack Vue3 |
         
         m study log
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        .net local LLM
+                        Rspack Vue3
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-10-16 00:11:42</span>
+                <span class="datetime">2024-11-07 00:31:15</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Oct 16 2024 00:42:19 GMT+0800">2024-10-16 00:42:19</span>
+                <span class="datetime" data-updated="Thu Nov 07 2024 00:36:49 GMT+0800">2024-11-07 00:36:49</span>
             </span>
         
 
@@ -210,13 +210,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net/">.net</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/LLM/">LLM</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ollama/">ollama</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/vue3/">vue3</a></li>
                         
                     
                 </ul>
@@ -240,28 +234,58 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <h1 id="ollama"><a href="#ollama" class="headerlink" title="ollama"></a>ollama</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama --version</span><br></pre></td></tr></table></figure>
-<p>比较常用的指令不多，也很简单<br>列出本地下载的模型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama list</span><br></pre></td></tr></table></figure>
-<p>查看正在运行的模型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama ps</span><br></pre></td></tr></table></figure>
-<p>模型标识下载模型到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama pull </span><br></pre></td></tr></table></figure>
-<p>比如我要下载llama2-chinese:7b则使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama pull llama2-chinese:7b</span><br></pre></td></tr></table></figure>
-<p>模型标识运行模型，如果已下载则直接运行，如果没下载则先下载再运行。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run</span><br></pre></td></tr></table></figure>
-<p>比如我要运行llama2-chinese:7b可以直接运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run llama2-chinese:7b</span><br></pre></td></tr></table></figure>
+                    <h1 id="Rspack-Vue3-TS-项目环境构建到实战Rspack是什么"><a href="#Rspack-Vue3-TS-项目环境构建到实战Rspack是什么" class="headerlink" title="Rspack+Vue3+TS 项目环境构建到实战Rspack是什么?"></a>Rspack+Vue3+TS 项目环境构建到实战Rspack是什么?</h1><p>Rspack是一个基于 Rust 编写的高性能JavaScript 打包工具，它提供对 webpack 生态良好的兼容性能够无缝替换 webpack，并提供闪电般的构建速度。</p>
+<h1 id="为什么要做-Rspack"><a href="#为什么要做-Rspack" class="headerlink" title="为什么要做 Rspack"></a>为什么要做 Rspack</h1><p>创建 Rspack 的原因，是为了解决在<strong>字节跳动</strong>维护构建工具时遇到的各种性能问题。在字节跳动内部存在许多巨石应用，它们都具有复杂的构建配置，生产环境的构建需要耗费十几分钟，甚至超过半小时;开发环境的耗时也超过十几分钟。<br>我们在 webpack 上尝试了多种方法来优化这些巨石应用，但是效果甚微。我们意识到在 webpack 上的优化已经难以为继，必须要从底层改造，才能适应我们的需求。<br>同时在聆听解决业务各种复杂的构建需求中，我们意识到开发人员对构建工具有以下要求:<br><strong>快速的 Dev 启动性能</strong> npm run dev 是开发者每天需要运行很多次的命令，但大型项目每次都需和要等待 10分钟，这对于工程师来说非常痛苦，因此优化开发模式下启动的时间至关重要<br><strong>高效的 Build 性能</strong> npm run bui1d 经常在 CI&#x2F;CD 环境中运行，它决定了应用生产交付的效率,有些应用在生产环境中需要 20 到 30 分钟的构建时间，如果能缩短这段时间，对开发流程也将非<br>常有帮助。<br><strong>灵活的配置</strong> 用户工程的配置非常灵活，不够统一。在之前的尝试中，将webpack配置迁移到其他构建工具时，我们遇到了许多问题，因为其他构建工具的配置不如 webpack 灵活。<br><strong>生产环境的优化能力</strong> 在启用 Rspack之前，我们尝试了社区内的各种方案，但它们都面临着一定程度的生产环境负优化，例如拆分包不够精细等。因此，优化生产环境的产物是我们不可放弃的功能。<br>在确定了这四个需求后，我们调查了社区中的所有技术方案，它们通常都能很好的满足其中个别需求但没有一个方案能同时满足所有条件，因此，我们决定自研 Rspack。</p>
+<h1 id="和-webpack-的区别"><a href="#和-webpack-的区别" class="headerlink" title="和 webpack 的区别"></a>和 webpack 的区别</h1><p>webpack是目前最为成熟的构建工具，有着活跃的生态，灵活的配置和丰富的功能，但是其最为人诟病的是其性能问题，尤其在一些大型项目上，构建花费的时间可能会达到几分钟甚至几十分钟，&lt;&lt;&lt;性能问题是目前 webpack 最大的短板。因此 Rspack 解决的问题核心就是webpack 的性能问题。 Rspack 比webpack 快得益于如下几方面:<br><strong>Rust 语言优势</strong>: Rspack 使用 Rust 语言编写，得益于 Rust的高性能编译器支持， Rust 编译生成的 Native Code 通常比JavaScript 性能更为高效。<br><strong>高度并行的架构</strong>: webpack 受限于JavaScript 对多线程的赢弱支持，导致其很难进行高度的并行化计算，而得益于 Rust语言的并行化的良好支持，Rspack采用了高度并行化的架构，如模块图生成，代码生成等阶段，都是采用多线程并行执行，这使得其编译性能随着 CPU核心数的增长而增长，充分挖掘 CPU的多核优势。<br><strong>内置大部分的功能</strong>: 事实上 webpack 本身的性能足够高效，但是因为 webpack 本身内置了较少的功能，这使得我们在使用 webpack 做现代 Web App 开发时，通常需要配合很多的 plugin 和loader 进行使用，而这些loader和 plugin 往往是性能的瓶颈，而 Rspack 虽然支持loader 和plugin，但是保证绝大部分常用功能都内置在Rspack内，从而减小Spluginlloader 导致的低性能和通信开销问题，<br><strong>增量编译</strong>: 尽管 Rspack 的全量编译足够高效，但是当项目庞大时，全量的编译仍然难以满足 HMR的性能要求，因此在 HMR 阶段，我们采用的是更为高效的增量编译策略，从而保证，无论你的项目多大，其 HMR 的开销总是控制在合理范围内。</p>
+<h1 id="和-Vite-的区别"><a href="#和-Vite-的区别" class="headerlink" title="和 Vite 的区别"></a>和 Vite 的区别</h1><p>Vite提供了很好的开发者体验，但 Vite 在生产构建中依赖了 Rollup，因此与其他基于JavaScript 的工具链一样，面临着生产环境的构建性能问题。<br>另外，Rollup相较于 webpack做了一些平衡取舍，在这里同样适用。比如，Rollup缺失了 webpack对于拆包的灵活性，即缺失了 optimization.splitChunks提供的很多功能。</p>
+<h1 id="和-esbuild-的区别"><a href="#和-esbuild-的区别" class="headerlink" title="和 esbuild 的区别"></a>和 esbuild 的区别</h1><p>我们在内部进行过大规模地将 esbuild作为通用的 Web App 构建工具的实践，但是遇到如下一些问题:缺乏对 JavaScript HMR 和增量编译的良好支持，这导致大型项目中的 HMR 性能较差。拆包策略也非常原始，难以满足业务复杂多变的拆包优化需求。</p>
+<h1 id="Rspack快速上手"><a href="#Rspack快速上手" class="headerlink" title="Rspack快速上手"></a>Rspack快速上手</h1><p>环境准备<br>在开始使用前， 需要安装 Node.js&gt;&#x3D;16 版本，推荐使用 Node,js LTS 版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>创建新项目</p>
+<h1 id="使用-Rsbuild"><a href="#使用-Rsbuild" class="headerlink" title="使用 Rsbuild"></a>使用 Rsbuild</h1><p>Rsbuip 是由 Rspack 驱动的高性能构建工具，由 Rspack 团队开发，它默认包含了一套精心设计的构建配置，提供开箱即用的开发体验，并能够充分发挥出 Rspack的性能优势。</p>
+<p>我们推荐使用 Rsbuild来创建新项目，执行如下命令即可:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm create rsbuild@latest</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create rsbuild</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm create rsbuildalatest</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bun create rsbuildalatest</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">◇  Project name or path</span><br><span class="line">│  <span class="built_in">test</span></span><br><span class="line">│</span><br><span class="line">◇  Select framework</span><br><span class="line">│  Vue 3</span><br><span class="line">│</span><br><span class="line">◇  Select language</span><br><span class="line">│  TypeScript</span><br><span class="line">│</span><br><span class="line">◇  Select additional tools (Use &lt;space&gt; to <span class="keyword">select</span>, &lt;enter&gt; to <span class="built_in">continue</span>)</span><br><span class="line">(enter)</span><br><span class="line">│  none</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">│◇ Next steps ──╮</span><br><span class="line">│              	 │</span><br><span class="line">│  <span class="built_in">cd</span> <span class="built_in">test</span>     	 │</span><br><span class="line">│  npm install 	 │</span><br><span class="line">│  npm run dev	 │</span><br><span class="line">│            	 │</span><br></pre></td></tr></table></figure>
 
-<h1 id="net-package"><a href="#net-package" class="headerlink" title=".net package"></a>.net package</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet add package Ollama --version 1.9.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//模型名称是必须要传递的，默认 流式输出,如果想一次返回同样的是设置stream为false。</span></span><br><span class="line">    <span class="built_in">string</span> modelName = <span class="string">&quot;llama2-chinese:7b&quot;</span>;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">var</span> ollama = <span class="keyword">new</span> OllamaApiClient(baseUri: <span class="keyword">new</span> Uri(<span class="string">&quot;http://127.0.0.1:11434/api&quot;</span>));</span><br><span class="line"></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;begin~~~&quot;</span>);</span><br><span class="line">    <span class="built_in">string</span> userInput = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;User:&quot;</span>);</span><br><span class="line">        userInput = Console.ReadLine()!;</span><br><span class="line">        <span class="keyword">var</span> enumerable = ollama.Completions.GenerateCompletionAsync(modelName, userInput);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Agent:&quot;</span>);</span><br><span class="line">        <span class="keyword">await</span> <span class="keyword">foreach</span> (<span class="keyword">var</span> response <span class="keyword">in</span> enumerable)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.Write(<span class="string">$&quot;<span class="subst">&#123;response.Response&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        Console.WriteLine();</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">while</span> (!<span class="built_in">string</span>.Equals(userInput, <span class="string">&quot;exit&quot;</span>, StringComparison.OrdinalIgnoreCase));</span><br><span class="line"></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;end~~~&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>package.json</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;  <span class="string">&quot;ast&quot;</span>: <span class="string">&quot;rsbuild dev --open&quot;</span>&#125; </span><br></pre></td></tr></table></figure>
+<p>npm run ast</p>
+<p>dependencies 生产<br>devDependencies 安装</p>
+<p>rsbuild.config.ts </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">pluginVue</span>()],</span><br><span class="line"></span><br><span class="line">  <span class="attr">server</span>:&#123;</span><br><span class="line">    <span class="attr">port</span>:<span class="number">8116</span>,<span class="comment">//开发服务器端口</span></span><br><span class="line">    <span class="attr">open</span>:<span class="literal">true</span>,<span class="comment">//是否自动打开浏览器</span></span><br><span class="line">    <span class="attr">proxy</span>:&#123;<span class="comment">//代理设置</span></span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 
 
-<!--https://www.cnblogs.com/wucy/p/18400124/csharp-ollama-->
+<p>tsconfig.json</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   <span class="string">&quot;target&quot;</span>: <span class="string">&quot;ES2020&quot;</span>,   编译的js版本 </span><br><span class="line"><span class="string">&quot;include&quot;</span>: [<span class="string">&quot;src&quot;</span>] 包含目录</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="安装element-plus"><a href="#安装element-plus" class="headerlink" title="安装element-plus"></a>安装element-plus</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install element-plus -s</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add element-plus</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm insta1l element-plus</span><br></pre></td></tr></table></figure>
+
+<p>index.ts</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import&#123;createApp&#125;from <span class="string">&quot;vue&quot;</span>;</span><br><span class="line">import ElementPlus from<span class="string">&quot;element-plus&quot;</span></span><br><span class="line">import <span class="string">&quot;element-plus/dist/index.css&quot;</span></span><br><span class="line">import App from <span class="string">&quot;./App.vue&quot;</span>;</span><br><span class="line">import<span class="string">&#x27;/index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line">createApp(App).use(ElementPlus).mount(<span class="string">&#x27;#root&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>.vue使用即可</p>
+<h1 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h1><p> vue-router<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router</span><br></pre></td></tr></table></figure><br>src-router-index.ts<br>const router &#x3D; CreateRouter()</p>
+<p>index.ts<br>add rout<br>import router from “.&#x2F;router”; </p>
+
                 </div>
                 
 
@@ -271,15 +295,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net/">.net</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/LLM/">LLM</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ollama/">ollama</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/vue3/">vue3</a>
                                     </li>
                                 
                             </ul>
@@ -298,14 +314,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/10/16/net-chacha20-decrypted/"
-                                   title=".net chacha20 decrypted"
+                                   href="/2024/11/07/Node-Swagger/"
+                                   title="Node Swagger"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">.net chacha20 decrypted</span>
+                                        <span class="post-nav-title-item text-ellipsis">Node Swagger</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -315,11 +331,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/10/15/debian-docker-gitlab-gitea/"
-                                   title="debian docker gitlab gitea"
+                                   href="/2024/11/06/Loacl-IP-get-Weather/"
+                                   title="Loacl IP get Weather"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">debian docker gitlab gitea</span>
+                                        <span class="post-nav-title-item text-ellipsis">Loacl IP get Weather</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

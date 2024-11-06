@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            Node Swagger |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Node Swagger
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-07 00:37:19</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Nov 07 2024 00:39:20 GMT+0800">2024-11-07 00:39:20</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/node/">node</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/swagger/">swagger</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p> Node.js 和 Swagger 创建简单增删改查 (CRUD) API ，<br> 使用 Express 作为 Web 框架，并集成 Swagger UI 来自动生成 API 文档。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> node-swagger-crud</span><br><span class="line"><span class="built_in">cd</span> node-swagger-crud</span><br><span class="line">npm init -y</span><br><span class="line">npm install express swagger-jsdoc swagger-ui-express</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-设置-Express-应用"><a href="#2-设置-Express-应用" class="headerlink" title="2: 设置 Express 应用"></a>2: 设置 Express 应用</h1><p>创建一个文件 app.js，用于定义 Express 应用及基本路由。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>()); <span class="comment">// 解析 JSON 请求</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> swaggerJsDoc = <span class="built_in">require</span>(<span class="string">&quot;swagger-jsdoc&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> swaggerUi = <span class="built_in">require</span>(<span class="string">&quot;swagger-ui-express&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Swagger 配置</span></span><br><span class="line"><span class="keyword">const</span> swaggerOptions = &#123;</span><br><span class="line">  <span class="attr">swaggerDefinition</span>: &#123;</span><br><span class="line">    <span class="attr">openapi</span>: <span class="string">&quot;3.0.0&quot;</span>,</span><br><span class="line">    <span class="attr">info</span>: &#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;Simple CRUD API&quot;</span>,</span><br><span class="line">      <span class="attr">version</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">      <span class="attr">description</span>: <span class="string">&quot;A simple CRUD API with Swagger documentation&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">apis</span>: [<span class="string">&quot;./routes/*.js&quot;</span>],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> swaggerDocs = <span class="title function_">swaggerJsDoc</span>(swaggerOptions);</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&quot;/api-docs&quot;</span>, swaggerUi.<span class="property">serve</span>, swaggerUi.<span class="title function_">setup</span>(swaggerDocs));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入 CRUD 路由</span></span><br><span class="line"><span class="keyword">const</span> itemsRouter = <span class="built_in">require</span>(<span class="string">&quot;./routes/items&quot;</span>);</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&quot;/api/items&quot;</span>, itemsRouter);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PORT</span> = process.<span class="property">env</span>.<span class="property">PORT</span> || <span class="number">3000</span>;</span><br><span class="line">app.<span class="title function_">listen</span>(<span class="variable constant_">PORT</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Server running on http://localhost:<span class="subst">$&#123;PORT&#125;</span>`</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Swagger docs available on http://localhost:<span class="subst">$&#123;PORT&#125;</span>/api-docs`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="3-创建-CRUD-路由"><a href="#3-创建-CRUD-路由" class="headerlink" title="3: 创建 CRUD 路由"></a>3: 创建 CRUD 路由</h1><p>在项目根目录下创建 routes 文件夹，并在其中创建 items.js 文件，定义 CRUD 操作接口。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// routes/items.js</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.<span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> items = []; <span class="comment">// 模拟数据库中的数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@swagger</span></span></span><br><span class="line"><span class="comment"> * components:</span></span><br><span class="line"><span class="comment"> *   schemas:</span></span><br><span class="line"><span class="comment"> *     Item:</span></span><br><span class="line"><span class="comment"> *       type: object</span></span><br><span class="line"><span class="comment"> *       required:</span></span><br><span class="line"><span class="comment"> *         - name</span></span><br><span class="line"><span class="comment"> *       properties:</span></span><br><span class="line"><span class="comment"> *         id:</span></span><br><span class="line"><span class="comment"> *           type: integer</span></span><br><span class="line"><span class="comment"> *           description: The auto-generated id of the item</span></span><br><span class="line"><span class="comment"> *         name:</span></span><br><span class="line"><span class="comment"> *           type: string</span></span><br><span class="line"><span class="comment"> *           description: The name of the item</span></span><br><span class="line"><span class="comment"> *       example:</span></span><br><span class="line"><span class="comment"> *         id: 1</span></span><br><span class="line"><span class="comment"> *         name: Sample Item</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@swagger</span></span></span><br><span class="line"><span class="comment"> * /api/items:</span></span><br><span class="line"><span class="comment"> *   get:</span></span><br><span class="line"><span class="comment"> *     summary: 获取所有 items</span></span><br><span class="line"><span class="comment"> *     tags: [Items]</span></span><br><span class="line"><span class="comment"> *     responses:</span></span><br><span class="line"><span class="comment"> *       200:</span></span><br><span class="line"><span class="comment"> *         description: The list of items</span></span><br><span class="line"><span class="comment"> *         content:</span></span><br><span class="line"><span class="comment"> *           application/json:</span></span><br><span class="line"><span class="comment"> *             schema:</span></span><br><span class="line"><span class="comment"> *               type: array</span></span><br><span class="line"><span class="comment"> *               items:</span></span><br><span class="line"><span class="comment"> *                 $ref: &#x27;#/components/schemas/Item&#x27;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="title function_">json</span>(items);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@swagger</span></span></span><br><span class="line"><span class="comment"> * /api/items/&#123;id&#125;:</span></span><br><span class="line"><span class="comment"> *   get:</span></span><br><span class="line"><span class="comment"> *     summary: 获取单个 item</span></span><br><span class="line"><span class="comment"> *     tags: [Items]</span></span><br><span class="line"><span class="comment"> *     parameters:</span></span><br><span class="line"><span class="comment"> *       - in: path</span></span><br><span class="line"><span class="comment"> *         name: id</span></span><br><span class="line"><span class="comment"> *         schema:</span></span><br><span class="line"><span class="comment"> *           type: integer</span></span><br><span class="line"><span class="comment"> *         required: true</span></span><br><span class="line"><span class="comment"> *         description: Item ID</span></span><br><span class="line"><span class="comment"> *     responses:</span></span><br><span class="line"><span class="comment"> *       200:</span></span><br><span class="line"><span class="comment"> *         description: Item data</span></span><br><span class="line"><span class="comment"> *         content:</span></span><br><span class="line"><span class="comment"> *           application/json:</span></span><br><span class="line"><span class="comment"> *             schema:</span></span><br><span class="line"><span class="comment"> *               $ref: &#x27;#/components/schemas/Item&#x27;</span></span><br><span class="line"><span class="comment"> *       404:</span></span><br><span class="line"><span class="comment"> *         description: Item not found</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/:id&quot;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> item = items.<span class="title function_">find</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> i.<span class="property">id</span> === <span class="built_in">parseInt</span>(req.<span class="property">params</span>.<span class="property">id</span>));</span><br><span class="line">  <span class="keyword">if</span> (!item) <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">404</span>).<span class="title function_">send</span>(<span class="string">&quot;Item not found&quot;</span>);</span><br><span class="line">  res.<span class="title function_">json</span>(item);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@swagger</span></span></span><br><span class="line"><span class="comment"> * /api/items:</span></span><br><span class="line"><span class="comment"> *   post:</span></span><br><span class="line"><span class="comment"> *     summary: 创建一个新的 item</span></span><br><span class="line"><span class="comment"> *     tags: [Items]</span></span><br><span class="line"><span class="comment"> *     requestBody:</span></span><br><span class="line"><span class="comment"> *       required: true</span></span><br><span class="line"><span class="comment"> *       content:</span></span><br><span class="line"><span class="comment"> *         application/json:</span></span><br><span class="line"><span class="comment"> *           schema:</span></span><br><span class="line"><span class="comment"> *             $ref: &#x27;#/components/schemas/Item&#x27;</span></span><br><span class="line"><span class="comment"> *     responses:</span></span><br><span class="line"><span class="comment"> *       201:</span></span><br><span class="line"><span class="comment"> *         description: Item created</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">router.<span class="title function_">post</span>(<span class="string">&quot;/&quot;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> item = &#123;</span><br><span class="line">    <span class="attr">id</span>: items.<span class="property">length</span> + <span class="number">1</span>,</span><br><span class="line">    <span class="attr">name</span>: req.<span class="property">body</span>.<span class="property">name</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  items.<span class="title function_">push</span>(item);</span><br><span class="line">  res.<span class="title function_">status</span>(<span class="number">201</span>).<span class="title function_">json</span>(item);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@swagger</span></span></span><br><span class="line"><span class="comment"> * /api/items/&#123;id&#125;:</span></span><br><span class="line"><span class="comment"> *   put:</span></span><br><span class="line"><span class="comment"> *     summary: 更新指定 ID 的 item</span></span><br><span class="line"><span class="comment"> *     tags: [Items]</span></span><br><span class="line"><span class="comment"> *     parameters:</span></span><br><span class="line"><span class="comment"> *       - in: path</span></span><br><span class="line"><span class="comment"> *         name: id</span></span><br><span class="line"><span class="comment"> *         schema:</span></span><br><span class="line"><span class="comment"> *           type: integer</span></span><br><span class="line"><span class="comment"> *         required: true</span></span><br><span class="line"><span class="comment"> *         description: Item ID</span></span><br><span class="line"><span class="comment"> *     requestBody:</span></span><br><span class="line"><span class="comment"> *       required: true</span></span><br><span class="line"><span class="comment"> *       content:</span></span><br><span class="line"><span class="comment"> *         application/json:</span></span><br><span class="line"><span class="comment"> *           schema:</span></span><br><span class="line"><span class="comment"> *             $ref: &#x27;#/components/schemas/Item&#x27;</span></span><br><span class="line"><span class="comment"> *     responses:</span></span><br><span class="line"><span class="comment"> *       200:</span></span><br><span class="line"><span class="comment"> *         description: Item updated</span></span><br><span class="line"><span class="comment"> *       404:</span></span><br><span class="line"><span class="comment"> *         description: Item not found</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">router.<span class="title function_">put</span>(<span class="string">&quot;/:id&quot;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> item = items.<span class="title function_">find</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> i.<span class="property">id</span> === <span class="built_in">parseInt</span>(req.<span class="property">params</span>.<span class="property">id</span>));</span><br><span class="line">  <span class="keyword">if</span> (!item) <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">404</span>).<span class="title function_">send</span>(<span class="string">&quot;Item not found&quot;</span>);</span><br><span class="line"></span><br><span class="line">  item.<span class="property">name</span> = req.<span class="property">body</span>.<span class="property">name</span>;</span><br><span class="line">  res.<span class="title function_">json</span>(item);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@swagger</span></span></span><br><span class="line"><span class="comment"> * /api/items/&#123;id&#125;:</span></span><br><span class="line"><span class="comment"> *   delete:</span></span><br><span class="line"><span class="comment"> *     summary: 删除指定 ID 的 item</span></span><br><span class="line"><span class="comment"> *     tags: [Items]</span></span><br><span class="line"><span class="comment"> *     parameters:</span></span><br><span class="line"><span class="comment"> *       - in: path</span></span><br><span class="line"><span class="comment"> *         name: id</span></span><br><span class="line"><span class="comment"> *         schema:</span></span><br><span class="line"><span class="comment"> *           type: integer</span></span><br><span class="line"><span class="comment"> *         required: true</span></span><br><span class="line"><span class="comment"> *         description: Item ID</span></span><br><span class="line"><span class="comment"> *     responses:</span></span><br><span class="line"><span class="comment"> *       200:</span></span><br><span class="line"><span class="comment"> *         description: Item deleted</span></span><br><span class="line"><span class="comment"> *       404:</span></span><br><span class="line"><span class="comment"> *         description: Item not found</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">router.<span class="title function_">delete</span>(<span class="string">&quot;/:id&quot;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> itemIndex = items.<span class="title function_">findIndex</span>(<span class="function">(<span class="params">i</span>) =&gt;</span> i.<span class="property">id</span> === <span class="built_in">parseInt</span>(req.<span class="property">params</span>.<span class="property">id</span>));</span><br><span class="line">  <span class="keyword">if</span> (itemIndex === -<span class="number">1</span>) <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">404</span>).<span class="title function_">send</span>(<span class="string">&quot;Item not found&quot;</span>);</span><br><span class="line"></span><br><span class="line">  items.<span class="title function_">splice</span>(itemIndex, <span class="number">1</span>);</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;Item deleted&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = router;</span><br></pre></td></tr></table></figure>
+<h1 id="4-启动服务器"><a href="#4-启动服务器" class="headerlink" title="4: 启动服务器"></a>4: 启动服务器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+<p>访问 <a class="link"   target="_blank" rel="noopener" href="http://localhost:3000/api-docs%EF%BC%8C" >http://localhost:3000/api-docs，<i class="fas fa-external-link-alt"></i></a><br>可以查看生成的 Swagger 文档。</p>
+<h1 id="测试-API"><a href="#测试-API" class="headerlink" title="测试 API"></a>测试 API</h1><p>以下是 API 接口的示例请求：</p>
+<p>获取所有 items: GET <a class="link"   target="_blank" rel="noopener" href="http://localhost:3000/api/items" >http://localhost:3000/api/items<i class="fas fa-external-link-alt"></i></a><br>获取单个 item: GET <a class="link"   target="_blank" rel="noopener" href="http://localhost:3000/api/items/%7Bid%7D" >http://localhost:3000/api/items/{id}<i class="fas fa-external-link-alt"></i></a><br>创建 item: POST <a class="link"   target="_blank" rel="noopener" href="http://localhost:3000/api/items%EF%BC%8CJSON" >http://localhost:3000/api/items，JSON<i class="fas fa-external-link-alt"></i></a> 数据 { “name”: “New Item” }<br>更新 item: PUT <a class="link"   target="_blank" rel="noopener" href="http://localhost:3000/api/items/%7Bid%7D%EF%BC%8CJSON" >http://localhost:3000/api/items/{id}，JSON<i class="fas fa-external-link-alt"></i></a> 数据 { “name”: “Updated Item” }<br>删除 item: DELETE <a class="link"   target="_blank" rel="noopener" href="http://localhost:3000/api/items/%7Bid%7D" >http://localhost:3000/api/items/{id}<i class="fas fa-external-link-alt"></i></a></p>
+<p>这样，一个简单的 CRUD 接口及其文档就构建完成了！</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/node/">node</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/swagger/">swagger</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/07/Rspack-Vue3/"
+                                   title="Rspack Vue3"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Rspack Vue3</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
