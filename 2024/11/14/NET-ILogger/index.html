@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="docker">
+    <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="lm">
     
     <title>
         
-            Debian Docker Redis  |
+            .NET ILogger |
         
         m study log
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Debian Docker Redis 
+                        .NET ILogger
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-04-12 09:27:49</span>
+                <span class="datetime">2024-11-14 00:55:06</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Nov 14 2024 00:34:44 GMT+0800">2024-11-14 00:34:44</span>
+                <span class="datetime" data-updated="Thu Nov 14 2024 00:56:46 GMT+0800">2024-11-14 00:56:46</span>
             </span>
         
 
@@ -210,13 +210,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Docker/">Docker</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Debian/">Debian</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reids/">Reids</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net/">.net</a></li>
                         
                     
                 </ul>
@@ -240,45 +234,28 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <p>Debian安装docker</p>
-<h1 id="1-使用官方脚本自动安装docker"><a href="#1-使用官方脚本自动安装docker" class="headerlink" title="1.使用官方脚本自动安装docker"></a>1.使用官方脚本自动安装docker</h1><p>安装命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh</span><br></pre></td></tr></table></figure>
-<p>如果安装提示</p>
-<p>-bash sudo command not found</p>
-<p>则需要</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#update</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install sudo</span><br></pre></td></tr></table></figure>
-<p>再执行安装脚本1</p>
-<p>安装成功后可以输入 docker命令查看docker版本 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#version</span></span><br><span class="line">docker --version</span><br></pre></td></tr></table></figure>
-
-<p>能查到表明安装成功</p>
-<h1 id="2-pull-redis"><a href="#2-pull-redis" class="headerlink" title="2.pull redis"></a>2.pull redis</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pull redis</span></span><br><span class="line">docker pull redis:latest</span><br><span class="line">pull redis镜像</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-创建reids容器"><a href="#3-创建reids容器" class="headerlink" title="3.创建reids容器"></a>3.创建reids容器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name redis-test -p 6379:6379 redis</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-测试redis"><a href="#4-测试redis" class="headerlink" title="4.测试redis"></a>4.测试redis</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis-test /bin/bash </span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> <span class="built_in">test</span> 1 </span><br><span class="line">get <span class="built_in">test</span> </span><br><span class="line"><span class="built_in">set</span> <span class="built_in">test</span> 1</span><br></pre></td></tr></table></figure>
-<p>提示ok</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get <span class="built_in">test</span> </span><br></pre></td></tr></table></figure>
-<p>一些命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#images</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment">#redis</span></span><br><span class="line">docker pull redis:latest</span><br><span class="line">docker run -itd --name redis-test -p 6379:6379 redis</span><br><span class="line"><span class="comment">#test redis</span></span><br><span class="line">docker <span class="built_in">exec</span> -it redis-test /bin/bash - </span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> <span class="built_in">test</span> 1 </span><br><span class="line">get <span class="built_in">test</span> </span><br></pre></td></tr></table></figure>
-
-<p><strong>持久化</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name some-redis -p 6379:6379 -v /path/to/redis/data:/data -d redis</span><br></pre></td></tr></table></figure>
-<p>这里的 &#x2F;path&#x2F;to&#x2F;redis&#x2F;data 是你本地的一个路径，&#x2F;data 是容器内 Redis 数据存储的默认位置。<br> -v 参数来挂载一个本地目录作为数据卷</p>
-<!--
-redis可以实现
-
-轻量消息队列
-计数器 
-全局自增 
-分布式ID
-分布式锁 
-GEO
-
-
-
--->
-
+                    <p>ILogger<T> 是 ASP.NET Core 中的一个接口，用于记录应用程序的日志信息。它是一个泛型接口，其中 T 是日志记录的上下文类型。通常情况下，会使用 ILogger 接口而不是 ILogger<T>，除非需要将特定的上下文类型传递给日志记录器。</p>
+<p>ILogger 的示例：</p>
+<h1 id="1-注入-ILogger"><a href="#1-注入-ILogger" class="headerlink" title="1. 注入 ILogger"></a>1. 注入 ILogger</h1><p>在的控制器、服务或其他依赖注入组件中，可以注入 ILogger<T> 或 ILogger。例如，在控制器中注入 ILogger<YourController>：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">YourController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> ILogger&lt;YourController&gt; _logger;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">YourController</span>(<span class="params">ILogger&lt;YourController&gt; logger</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _logger = logger;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者，如果不需要特定的上下文类型，可以注入 ILogger：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">YourService</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> ILogger _logger;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">YourService</span>(<span class="params">ILogger logger</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _logger = logger;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2-记录日志"><a href="#2-记录日志" class="headerlink" title="2. 记录日志"></a>2. 记录日志</h1><p>使用 _logger 对象记录不同级别的日志，例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_logger.LogInformation(<span class="string">&quot;This is an information message.&quot;</span>);</span><br><span class="line">_logger.LogWarning(<span class="string">&quot;This is a warning message.&quot;</span>);</span><br><span class="line">_logger.LogError(<span class="string">&quot;This is an error message.&quot;</span>, exception);</span><br></pre></td></tr></table></figure>
+<h1 id="3-配置日志记录"><a href="#3-配置日志记录" class="headerlink" title="3. 配置日志记录"></a>3. 配置日志记录</h1><p>在 appsettings.json 或其他配置文件中配置日志记录级别和输出目标。例如，在 appsettings.Development.json 中：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Debug&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;System&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Microsoft&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这将设置默认日志级别为 Debug，系统日志级别为 Information，Microsoft 日志级别为 Warning。</p>
+<p>还可以配置日志记录器将日志输出到控制台、文件或其他目标。例如，在 appsettings.json 中：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Logging&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;Console&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;IncludeScopes&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Debug&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Information&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Warning&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Warning&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Error&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;Error&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;LogLevel&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">          <span class="attr">&quot;Default&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Critical&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这将配置控制台日志记录器，并为不同级别的日志设置不同的输出级别。</p>
+<p>总之，ILogger 和 ILogger<T> 提供了一种灵活且强大的方式来记录应用程序的日志信息。通过配置不同的日志级别和输出目标，可以轻松地满足各种日志记录需求。</p>
+<h2 id="日志级别和分类："><a href="#日志级别和分类：" class="headerlink" title="日志级别和分类："></a>日志级别和分类：</h2><p>ILogger 提供了日志级别的概念，如 Trace、Debug、Info、Warning、Error 和 Critical。这允许开发者根据需要记录不同严重程度的信息，并且可以在配置中设置日志级别，以便在不同环境中（如开发、测试、生产）显示或隐藏某些级别的日志。<br>Console.WriteLine 只是简单地将文本输出到控制台，没有日志级别的概念。</p>
+<h2 id="可配置性："><a href="#可配置性：" class="headerlink" title="可配置性："></a>可配置性：</h2><p>ILogger 是可配置的，可以配置日志记录器将日志输出到不同的目标（如文件、数据库、网络服务等），并且可以设置不同的格式化选项。<br>Console.WriteLine 只是将输出发送到控制台，没有可配置的输出目标或格式化选项。</p>
+<h2 id="结构化日志："><a href="#结构化日志：" class="headerlink" title="结构化日志："></a>结构化日志：</h2><p>ILogger 支持结构化日志记录，这意味着可以记录包含键值对的对象，这些对象可以更容易地被日志分析工具解析和查询。<br>Console.WriteLine 只能输出文本字符串，不支持结构化日志。</p>
+<h2 id="集成和扩展性："><a href="#集成和扩展性：" class="headerlink" title="集成和扩展性："></a>集成和扩展性：</h2><p>ILogger 是 ASP.NET Core 和许多其他 .NET 应用程序框架的一部分，它与其他框架组件（如依赖注入、中间件等）集成良好，并且可以通过第三方库轻松扩展。<br>Console.WriteLine 是 .NET 基础类库的一部分，但它不特定于任何特定的应用程序框架，也没有集成的概念。</p>
+<h2 id="异常处理："><a href="#异常处理：" class="headerlink" title="异常处理："></a>异常处理：</h2><p>使用 ILogger 记录异常时，可以将异常对象作为参数传递，这样日志记录器可以捕获并记录异常的详细信息。<br>Console.WriteLine 只能手动将异常信息转换为字符串，然后输出。</p>
+<p><strong>总结：</strong></p>
+<p>ILogger 提供了更丰富的日志记录功能，包括日志级别、可配置性、结构化日志支持以及与框架的良好集成。<br>Console.WriteLine 更简单易用，适用于快速原型开发或简单的日志记录需求。<br>在大多数情况下，对于生产环境中的应用程序，推荐使用 ILogger，因为它提供了更多的灵活性和控制能力。</p>
 
                 </div>
                 
@@ -289,15 +266,7 @@ GEO
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Docker/">Docker</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Debian/">Debian</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Reids/">Reids</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net/">.net</a>
                                     </li>
                                 
                             </ul>
@@ -316,14 +285,14 @@ GEO
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/04/13/MySQL-Incorrect/"
-                                   title="MySQL Incorrect string value "
+                                   href="/2024/11/14/NET-MemoryPack/"
+                                   title=".NET MemoryPack"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">MySQL Incorrect string value </span>
+                                        <span class="post-nav-title-item text-ellipsis">.NET MemoryPack</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -333,11 +302,11 @@ GEO
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/04/12/NET-SignalR-Redis/"
-                                   title=".NET SignalR Redis "
+                                   href="/2024/11/10/Bogus-NET-Fake-Data/"
+                                   title="Bogus-.NET Fake Data"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">.NET SignalR Redis </span>
+                                        <span class="post-nav-title-item text-ellipsis">Bogus-.NET Fake Data</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

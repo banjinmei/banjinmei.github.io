@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="docker">
+    <meta name="keywords" content="Hexo Theme Keep">
     <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="lm">
     
     <title>
         
-            Debian Docker Redis  |
+            .NET MemoryPack |
         
         m study log
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Debian Docker Redis 
+                        .NET MemoryPack
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-04-12 09:27:49</span>
+                <span class="datetime">2024-11-14 00:57:37</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Nov 14 2024 00:34:44 GMT+0800">2024-11-14 00:34:44</span>
+                <span class="datetime" data-updated="Thu Nov 14 2024 00:59:25 GMT+0800">2024-11-14 00:59:25</span>
             </span>
         
 
@@ -210,13 +210,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Docker/">Docker</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Debian/">Debian</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reids/">Reids</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net/">.net</a></li>
                         
                     
                 </ul>
@@ -240,45 +234,17 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <p>Debian安装docker</p>
-<h1 id="1-使用官方脚本自动安装docker"><a href="#1-使用官方脚本自动安装docker" class="headerlink" title="1.使用官方脚本自动安装docker"></a>1.使用官方脚本自动安装docker</h1><p>安装命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh</span><br></pre></td></tr></table></figure>
-<p>如果安装提示</p>
-<p>-bash sudo command not found</p>
-<p>则需要</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#update</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install sudo</span><br></pre></td></tr></table></figure>
-<p>再执行安装脚本1</p>
-<p>安装成功后可以输入 docker命令查看docker版本 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#version</span></span><br><span class="line">docker --version</span><br></pre></td></tr></table></figure>
-
-<p>能查到表明安装成功</p>
-<h1 id="2-pull-redis"><a href="#2-pull-redis" class="headerlink" title="2.pull redis"></a>2.pull redis</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pull redis</span></span><br><span class="line">docker pull redis:latest</span><br><span class="line">pull redis镜像</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-创建reids容器"><a href="#3-创建reids容器" class="headerlink" title="3.创建reids容器"></a>3.创建reids容器</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name redis-test -p 6379:6379 redis</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-测试redis"><a href="#4-测试redis" class="headerlink" title="4.测试redis"></a>4.测试redis</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis-test /bin/bash </span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> <span class="built_in">test</span> 1 </span><br><span class="line">get <span class="built_in">test</span> </span><br><span class="line"><span class="built_in">set</span> <span class="built_in">test</span> 1</span><br></pre></td></tr></table></figure>
-<p>提示ok</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get <span class="built_in">test</span> </span><br></pre></td></tr></table></figure>
-<p>一些命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#images</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment">#redis</span></span><br><span class="line">docker pull redis:latest</span><br><span class="line">docker run -itd --name redis-test -p 6379:6379 redis</span><br><span class="line"><span class="comment">#test redis</span></span><br><span class="line">docker <span class="built_in">exec</span> -it redis-test /bin/bash - </span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> <span class="built_in">test</span> 1 </span><br><span class="line">get <span class="built_in">test</span> </span><br></pre></td></tr></table></figure>
-
-<p><strong>持久化</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name some-redis -p 6379:6379 -v /path/to/redis/data:/data -d redis</span><br></pre></td></tr></table></figure>
-<p>这里的 &#x2F;path&#x2F;to&#x2F;redis&#x2F;data 是你本地的一个路径，&#x2F;data 是容器内 Redis 数据存储的默认位置。<br> -v 参数来挂载一个本地目录作为数据卷</p>
-<!--
-redis可以实现
-
-轻量消息队列
-计数器 
-全局自增 
-分布式ID
-分布式锁 
-GEO
-
-
-
--->
-
+                    <p><strong>MemoryPack</strong><br>是一个高效的数据序列化库，它专注于性能优化，适用于需要快速序列化和反序列化的场景。这个库是由 Yuki Yogo 开发的，并且在 .NET 社区中获得了相当的关注。MemoryPack 支持<strong>零拷贝</strong>（zero-copy）读取，这意味着可以在不需要额外内存分配的情况下直接从原始字节数据中读取值。</p>
+<p>MemoryPack使用示例，包括定义一个可序列化的类、序列化对象以及反序列化回对象的过程。</p>
+<h1 id="安装-MemoryPack"><a href="#安装-MemoryPack" class="headerlink" title="安装 MemoryPack"></a>安装 MemoryPack</h1><p>首先，需要安装 MemoryPack 库。可以通过 NuGet 包管理器来安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet add package MemoryPack</span><br></pre></td></tr></table></figure>
+<p>或者在 Visual Studio 中使用 NuGet 包管理器界面来安装。</p>
+<h1 id="定义可序列化的类"><a href="#定义可序列化的类" class="headerlink" title="定义可序列化的类"></a>定义可序列化的类</h1><p>为了使一个类能够被 MemoryPack 序列化，需要为该类添加 [MemoryPackable] 属性，并为类中的每个字段或属性添加 [MemoryPackIgnore] 属性（如果想要忽略某些字段或属性的话）。这里有一个简单的例子：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> MemoryPack;</span><br><span class="line"></span><br><span class="line">[<span class="meta">MemoryPackable</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">MemoryPackIgnore</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> NotSerializedProperty &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：partial 关键字是必须的，因为 MemoryPack 在编译时会生成一些额外的代码来支持序列化&#x2F;反序列化。</p>
+<h1 id="序列化和反序列化"><a href="#序列化和反序列化" class="headerlink" title="序列化和反序列化"></a>序列化和反序列化</h1><p>接下来，我们可以创建一个 Person 对象，然后使用 MemoryPack 将其序列化为字节数组，再从字节数组反序列化回 Person 对象。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> MemoryPack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 创建一个 Person 实例</span></span><br><span class="line">        <span class="keyword">var</span> person = <span class="keyword">new</span> Person</span><br><span class="line">        &#123;</span><br><span class="line">            Name = <span class="string">&quot;John Doe&quot;</span>,</span><br><span class="line">            Age = <span class="number">30</span>,</span><br><span class="line">            NotSerializedProperty = <span class="string">&quot;This will not be serialized&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 序列化</span></span><br><span class="line">        <span class="built_in">byte</span>[] serialized = MemoryPackSerializer.Serialize(person);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 反序列化  （零拷贝）</span></span><br><span class="line">        Person deserializedPerson = MemoryPackSerializer.Deserialize&lt;Person&gt;(serialized);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出结果</span></span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Name: <span class="subst">&#123;deserializedPerson.Name&#125;</span>, Age: <span class="subst">&#123;deserializedPerson.Age&#125;</span>&quot;</span>);</span><br><span class="line">        <span class="comment">// 注意：NotSerializedProperty 不会被输出，因为它没有被序列化</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意事项<br>MemoryPack 支持大多数基本类型和复杂类型，但是也有一些限制，例如不支持循环引用的对象图。<br>如果的项目中存在多个需要序列化的类，每个类都需要标记 [MemoryPackable] 并且是 partial 类型。<br>由于 MemoryPack 使用了源生成器（source generators），因此它在编译时会生成额外的代码，这可能会稍微增加构建时间，但可以显著提高运行时的性能。<br>以上就是一个使用 MemoryPack 进行序列化和反序列化的简单示例。</p>
 
                 </div>
                 
@@ -289,15 +255,7 @@ GEO
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Docker/">Docker</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Debian/">Debian</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Reids/">Reids</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net/">.net</a>
                                     </li>
                                 
                             </ul>
@@ -313,31 +271,15 @@ GEO
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/04/13/MySQL-Incorrect/"
-                                   title="MySQL Incorrect string value "
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">MySQL Incorrect string value </span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/04/12/NET-SignalR-Redis/"
-                                   title=".NET SignalR Redis "
+                                   href="/2024/11/14/NET-ILogger/"
+                                   title=".NET ILogger"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">.NET SignalR Redis </span>
+                                        <span class="post-nav-title-item text-ellipsis">.NET ILogger</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
