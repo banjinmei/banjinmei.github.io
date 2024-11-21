@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            nginx keepalived |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        nginx keepalived
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-21 23:37:23</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Nov 21 2024 23:54:57 GMT+0800">2024-11-21 23:54:57</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/nigix/">nigix</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/keepalived/">keepalived</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/inotify/">inotify</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/rsync/">rsync</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="Keepalived"><a href="#Keepalived" class="headerlink" title="Keepalived"></a>Keepalived</h1><p>是一种用于实现高可用性的工具，它通过VRRP（虚拟路由冗余协议）来管理虚拟IP地址，从而确保在主服务器故障时，备用服务器能够接管服务。</p>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>假设有两台Debian服务器：</p>
+<p>Server 1 (Master): IP地址 192.168.1.100<br>Server 2 (Backup): IP地址 192.168.1.101<br>虚拟IP地址: 192.168.1.102</p>
+<h1 id="步骤一：安装Nginx"><a href="#步骤一：安装Nginx" class="headerlink" title="步骤一：安装Nginx"></a>步骤一：安装Nginx</h1><p>在两台服务器上安装Nginx。</p>
+<p>Server 1 (Master)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+<p>Server 2 (Backup)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+<h1 id="步骤二：安装Keepalived"><a href="#步骤二：安装Keepalived" class="headerlink" title="步骤二：安装Keepalived"></a>步骤二：安装Keepalived</h1><p>在两台服务器上安装Keepalived。</p>
+<p>Server 1 (Master)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install keepalived</span><br><span class="line">Server 2 (Backup)</span><br><span class="line">```Bash</span><br><span class="line">sudo apt install keepalived</span><br></pre></td></tr></table></figure>
+<h1 id="步骤三：配置Keepalived"><a href="#步骤三：配置Keepalived" class="headerlink" title="步骤三：配置Keepalived"></a>步骤三：配置Keepalived</h1><p>编辑Keepalived的配置文件 &#x2F;etc&#x2F;keepalived&#x2F;keepalived.conf。</p>
+<p>Server 1 (Master)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/keepalived/keepalived.conf</span><br></pre></td></tr></table></figure>
+<p>添加以下配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">    state MASTER</span><br><span class="line">    interface eth0</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 100</span><br><span class="line">    advert_int 1</span><br><span class="line"></span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        192.168.1.102</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Server 2 (Backup)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/keepalived/keepalived.conf</span><br></pre></td></tr></table></figure>
+<p>添加以下配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vrrp_instance VI_1 &#123;</span><br><span class="line">    state BACKUP</span><br><span class="line">    interface eth0</span><br><span class="line">    virtual_router_id 51</span><br><span class="line">    priority 90</span><br><span class="line">    advert_int 1</span><br><span class="line"></span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">        192.168.1.102</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="步骤四：启动Keepalived"><a href="#步骤四：启动Keepalived" class="headerlink" title="步骤四：启动Keepalived"></a>步骤四：启动Keepalived</h1><p>启动并启用Keepalived服务。</p>
+<p>Server 1 (Master)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start keepalived</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> keepalived</span><br></pre></td></tr></table></figure>
+<p>Server 2 (Backup)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start keepalived</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> keepalived</span><br></pre></td></tr></table></figure>
+<h2 id="步骤五：配置Nginx"><a href="#步骤五：配置Nginx" class="headerlink" title="步骤五：配置Nginx"></a>步骤五：配置Nginx</h2><p>确保两台服务器上的Nginx配置相同。编辑Nginx配置文件 &#x2F;etc&#x2F;nginx&#x2F;sites-available&#x2F;default。</p>
+<p>Nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name your_domain_or_ip;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://backend_servers;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>步骤六：测试配置<br>测试Nginx配置文件是否正确无误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+<p>重新加载Nginx以使更改生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure>
+<p>步骤七：验证高可用性<br>访问虚拟IP地址:<br>使用浏览器或其他工具访问虚拟IP地址 192.168.1.102，确保Nginx服务正常工作。<br>模拟故障:<br>关闭主服务器上的Nginx服务或Keepalived服务，观察备用服务器是否接管虚拟IP地址。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop nginx</span><br><span class="line">sudo systemctl stop keepalived</span><br></pre></td></tr></table></figure>
+<p>检查状态:<br>在备用服务器上检查虚拟IP地址是否已经接管：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show eth0</span><br></pre></td></tr></table></figure>
+<p>步骤八：日志和监控<br>查看Keepalived的日志以确保没有错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">tail</span> -f /var/log/syslog</span><br></pre></td></tr></table></figure>
+<p>通过以上步骤，可以在两台Debian服务器上成功部署Keepalived实现高可用Nginx。<br>这样，即使主服务器发生故障，备用服务器也会自动接管服务，确保系统的高可用性和稳定性。</p>
+<h1 id="不同虚拟IP地址的高可用性："><a href="#不同虚拟IP地址的高可用性：" class="headerlink" title="不同虚拟IP地址的高可用性："></a>不同虚拟IP地址的高可用性：</h1><p>跨云服务商</p>
+<h2 id="1-使用DNS轮询"><a href="#1-使用DNS轮询" class="headerlink" title="1. 使用DNS轮询"></a>1. 使用DNS轮询</h2><p>通过DNS轮询（Round Robin DNS）来实现负载均衡和高可用性。</p>
+<p>步骤：<br>如 example.com。<br>配置DNS记录:<br>在DNS管理面板中，为的域名配置两个A记录，分别指向两个云服务商的IP地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">example.com.  A  192.168.1.100  (阿里云IP)</span><br><span class="line">example.com.  A  192.168.1.101  (腾讯云IP)</span><br></pre></td></tr></table></figure>
+<p>客户端访问:<br>当客户端访问 example.com 时，DNS服务器会轮流返回两个IP地址之一，实现负载均衡。<br>健康检查:<br>可以使用DNS提供商的健康检查功能，自动将流量切换到健康的服务器。</p>
+<h2 id="2-使用全局负载均衡器"><a href="#2-使用全局负载均衡器" class="headerlink" title="2. 使用全局负载均衡器"></a>2. 使用全局负载均衡器</h2><p>一些云服务商提供了全局负载均衡器（Global Load Balancer），可以跨区域和跨服务商实现高可用性。</p>
+<h1 id="nginx-配置文件的同步"><a href="#nginx-配置文件的同步" class="headerlink" title="nginx 配置文件的同步"></a>nginx 配置文件的同步</h1><p>使用 <strong>inotify</strong> 和 <strong>rsync</strong> 实现两个 Debian 服务器之间的数据实时同步是一个常见且有效的方法。<br>inotify 可以监控文件系统的变更事件，而 rsync 则负责实际的数据同步。以下是详细的步骤：</p>
+<h1 id="环境准备-1"><a href="#环境准备-1" class="headerlink" title="环境准备"></a>环境准备</h1><p>Server 1 (Master): IP地址 192.168.1.100<br>Server 2 (Backup): IP地址 192.168.1.101</p>
+<h1 id="步骤一：安装必要的软件"><a href="#步骤一：安装必要的软件" class="headerlink" title="步骤一：安装必要的软件"></a>步骤一：安装必要的软件</h1><p>在两台服务器上安装 rsync 和 inotify-tools。</p>
+<p>Server 1 (Master)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install rsync inotify-tools</span><br></pre></td></tr></table></figure>
+<p>Server 2 (Backup)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install rsync</span><br></pre></td></tr></table></figure>
+<h1 id="步骤二：配置-SSH-密钥免密登录"><a href="#步骤二：配置-SSH-密钥免密登录" class="headerlink" title="步骤二：配置 SSH 密钥免密登录"></a>步骤二：配置 SSH 密钥免密登录</h1><p>为了简化 rsync 的操作，建议配置从主服务器到备份服务器的 SSH 密钥免密登录。</p>
+<p>在主服务器上生成 SSH 密钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096</span><br></pre></td></tr></table></figure>
+<p>按提示操作，默认保存路径即可。</p>
+<p>将公钥复制到备份服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id user@192.168.1.101</span><br></pre></td></tr></table></figure>
+<h1 id="步骤三：编写同步脚本"><a href="#步骤三：编写同步脚本" class="headerlink" title="步骤三：编写同步脚本"></a>步骤三：编写同步脚本</h1><p>在主服务器上编写一个脚本，使用 inotifywait 监控文件系统的变更事件，并调用 rsync 进行同步。</p>
+<p>创建同步脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /usr/local/bin/inotify_sync.sh</span><br></pre></td></tr></table></figure>
+<p>添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 监控的目录</span></span><br><span class="line">WATCH_DIR=<span class="string">&quot;/path/to/sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份服务器的IP地址和目标目录</span></span><br><span class="line">REMOTE_USER=<span class="string">&quot;user&quot;</span></span><br><span class="line">REMOTE_HOST=<span class="string">&quot;192.168.1.101&quot;</span></span><br><span class="line">REMOTE_DIR=<span class="string">&quot;/path/to/sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 inotifywait 监控目录变化</span></span><br><span class="line">inotifywait -m -r -e modify,create,delete,move <span class="string">&quot;<span class="variable">$WATCH_DIR</span>&quot;</span> | <span class="keyword">while</span> <span class="built_in">read</span> path action file; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Change detected: <span class="variable">$action</span> <span class="variable">$file</span> on <span class="variable">$path</span>&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 使用 rsync 同步文件</span></span><br><span class="line">    rsync -avz --delete --exclude <span class="string">&#x27;.git&#x27;</span> --exclude <span class="string">&#x27;.DS_Store&#x27;</span> <span class="string">&quot;<span class="variable">$WATCH_DIR</span>/&quot;</span> <span class="string">&quot;<span class="variable">$REMOTE_USER</span>@<span class="variable">$REMOTE_HOST</span>:<span class="variable">$REMOTE_DIR</span>/&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>赋予脚本执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x /usr/local/bin/inotify_sync.sh</span><br></pre></td></tr></table></figure>
+<p>步骤四：启动同步脚本<br>可以手动启动脚本，或者将其添加到 systemd 服务中以确保其在后台持续运行。</p>
+<p>手动启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">nohup</span> /usr/local/bin/inotify_sync.sh &amp;</span><br></pre></td></tr></table></figure>
+<h1 id="创建-systemd-服务-启动"><a href="#创建-systemd-服务-启动" class="headerlink" title="创建 systemd 服务 启动"></a>创建 systemd 服务 启动</h1><p>创建服务文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/systemd/system/inotify_sync.service</span><br></pre></td></tr></table></figure>
+<p>添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Ini</span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=Inotify Sync Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/usr/local/bin/inotify_sync.sh</span><br><span class="line">Restart=always</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>启动并启用服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl start inotify_sync.service</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> inotify_sync.service</span><br></pre></td></tr></table></figure>
+<h1 id="步骤五：验证同步"><a href="#步骤五：验证同步" class="headerlink" title="步骤五：验证同步"></a>步骤五：验证同步</h1><p>在主服务器上创建或修改文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Test content&quot;</span> &gt; /path/to/sync/testfile.txt</span><br></pre></td></tr></table></figure>
+<p>在备份服务器上检查文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /path/to/sync/</span><br><span class="line"><span class="built_in">cat</span> /path/to/sync/testfile.txt</span><br></pre></td></tr></table></figure>
+
+<p>注意事项<br><strong>性能考虑:</strong><br>inotify 会消耗一定的系统资源，特别是在监控大量文件时。确保的服务器有足够的资源来处理这些事件。<br>可以通过排除不必要的文件或目录（如 .git、.DS_Store）来减少不必要的同步操作。<br><strong>安全考虑:</strong><br>确保 SSH 密钥的安全性，避免泄露。<br>可以使用更严格的 SSH 配置，例如限制密钥的使用范围和有效期。<br>通过以上步骤，可以在两台 Debian 服务器之间使用 inotify 和 rsync 实现实时数据同步。</p>
+<h1 id="nginx-反代"><a href="#nginx-反代" class="headerlink" title="nginx 反代"></a>nginx 反代</h1><p>在Debian系统上安装Nginx并配置反向代理到特定的IP地址和端口</p>
+<h2 id="1-更新软件包列表"><a href="#1-更新软件包列表" class="headerlink" title="1. 更新软件包列表"></a>1. 更新软件包列表</h2><p>首先，确保软件包列表是最新的。打开终端并执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<h2 id="2-安装Nginx"><a href="#2-安装Nginx" class="headerlink" title="2. 安装Nginx"></a>2. 安装Nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+<h2 id="配置Nginx作为反向代理"><a href="#配置Nginx作为反向代理" class="headerlink" title=". 配置Nginx作为反向代理"></a>. 配置Nginx作为反向代理</h2><p>安装完成后，需要编辑Nginx的配置文件来设置反向代理。默认情况下，Nginx的配置文件位于&#x2F;etc&#x2F;nginx&#x2F;sites-available&#x2F;default。</p>
+<p>使用喜欢的文本编辑器（如nano或vim）打开此文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
+<p>在文件中找到server块，并添加或修改如下配置以设置反向代理。假设要将所有请求代理到192.168.1.100:8080：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Nginx</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name your_domain_or_ip;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://192.168.1.100:8080;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">listen 80; 指定了Nginx监听的端口号，这里使用的是80端口，即HTTP服务的标准端口。</span><br><span class="line">server_name 应该替换为域名或服务器的公网IP地址。</span><br><span class="line">proxy_pass 指令用于指定要代理的目标服务器的URL。</span><br><span class="line">proxy_set_header 指令用于设置转发给后端服务器的请求头信息。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-测试配置文件"><a href="#4-测试配置文件" class="headerlink" title="4. 测试配置文件"></a>4. 测试配置文件</h2><p>在保存并退出编辑器之后，测试Nginx配置是否正确无误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+<p>如果输出显示语法正确且测试成功，可以继续下一步。</p>
+<h2 id="5-重新加载Nginx"><a href="#5-重新加载Nginx" class="headerlink" title="5. 重新加载Nginx"></a>5. 重新加载Nginx</h2><p>使更改生效，需要重新加载Nginx服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure>
+<h2 id="6-验证反向代理工作情况"><a href="#6-验证反向代理工作情况" class="headerlink" title="6. 验证反向代理工作情况"></a>6. 验证反向代理工作情况</h2><p>现在，可以通过浏览器访问域名或服务器的公网IP地址，看看是否能够正确地将请求代理到192.168.1.100:8080。</p>
+<p>如果遇到任何问题，可以查看Nginx的日志文件来诊断问题。错误日志通常位于&#x2F;var&#x2F;log&#x2F;nginx&#x2F;error.log。</p>
+<h2 id="Nginx中配置多个反向代理目标"><a href="#Nginx中配置多个反向代理目标" class="headerlink" title="Nginx中配置多个反向代理目标"></a>Nginx中配置多个反向代理目标</h2><p>可以使用upstream模块来定义一个负载均衡池。<br>Nginx可以根据配置的策略（例如轮询、最少连接等）将请求分发到不同的后端服务器。</p>
+<p>以下是具体步骤：</p>
+<h2 id="1-编辑Nginx配置文件"><a href="#1-编辑Nginx配置文件" class="headerlink" title="1. 编辑Nginx配置文件"></a>1. 编辑Nginx配置文件</h2><p>打开Nginx的配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo nano /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
+<h2 id="2-添加upstream块"><a href="#2-添加upstream块" class="headerlink" title="2. 添加upstream块"></a>2. 添加upstream块</h2><p>在配置文件的顶部或适当位置添加一个upstream块，定义后端服务器池：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Nginx</span><br><span class="line">upstream backend_servers &#123;</span><br><span class="line">    server 192.168.1.100:8080;</span><br><span class="line">    server 192.168.1.101:8081;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-修改server块"><a href="#3-修改server块" class="headerlink" title="3. 修改server块"></a>3. 修改server块</h2><p>在server块中，将proxy_pass指令指向刚刚定义的upstream块：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Nginx</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name your_domain_or_ip;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://backend_servers;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-测试配置文件-1"><a href="#4-测试配置文件-1" class="headerlink" title="4. 测试配置文件"></a>4. 测试配置文件</h2><p>保存并退出编辑器后，测试Nginx配置是否正确无误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+<h2 id="5-重新加载Nginx-1"><a href="#5-重新加载Nginx-1" class="headerlink" title="5. 重新加载Nginx"></a>5. 重新加载Nginx</h2><p>如果测试成功，重新加载Nginx以使更改生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure>
+<h2 id="6-验证配置"><a href="#6-验证配置" class="headerlink" title="6. 验证配置"></a>6. 验证配置</h2><p>通过浏览器访问域名或服务器的公网IP地址，检查请求是否正确地被分发到两个后端服务器。</p>
+<h2 id="7-进一步配置（可选）"><a href="#7-进一步配置（可选）" class="headerlink" title="7. 进一步配置（可选）"></a>7. 进一步配置（可选）</h2><p>如果需要更复杂的负载均衡策略，可以在upstream块中添加更多选项。例如：</p>
+<p>轮询（默认）：每个请求按时间顺序逐一分配到不同的服务器，如果后端某个服务器宕机，能自动剔除。<br>最少连接：请求分配给连接数最少的服务器。<br>IP哈希：每个请求按访问客户端的IP哈希结果分配，这样来自同一客户端的请求会分配到同一台后端服务器。<br>示例配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Nginx</span><br><span class="line"></span><br><span class="line">upstream backend_servers &#123;</span><br><span class="line">    <span class="comment"># 轮询（默认）</span></span><br><span class="line">    server 192.168.1.100:8080;</span><br><span class="line">    server 192.168.1.101:8081;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 最少连接</span></span><br><span class="line">    <span class="comment"># least_conn;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># IP哈希</span></span><br><span class="line">    <span class="comment"># ip_hash;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="负载均衡策略及其配置方法："><a href="#负载均衡策略及其配置方法：" class="headerlink" title="负载均衡策略及其配置方法："></a>负载均衡策略及其配置方法：</h1><h2 id="1-轮询（默认）"><a href="#1-轮询（默认）" class="headerlink" title="1. 轮询（默认）"></a>1. 轮询（默认）</h2><p>轮询是Nginx默认的负载均衡策略，每个请求按时间顺序逐一分配到不同的服务器。如果后端某个服务器宕机，Nginx会自动将其从轮询列表中剔除。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream backend_servers &#123;</span><br><span class="line">    server 192.168.1.100:8080;</span><br><span class="line">    server 192.168.1.101:8081;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-最少连接"><a href="#2-最少连接" class="headerlink" title="2. 最少连接"></a>2. 最少连接</h2><p>最少连接策略将请求分配给当前连接数最少的服务器，适用于处理长连接的场景。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream backend_servers &#123;</span><br><span class="line">    least_conn;</span><br><span class="line">    server 192.168.1.100:8080;</span><br><span class="line">    server 192.168.1.101:8081;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-IP哈希"><a href="#3-IP哈希" class="headerlink" title="3. IP哈希"></a>3. IP哈希</h2><p>IP哈希策略根据客户端的IP地址进行哈希运算，确保来自同一客户端的请求总是被分配到同一台后端服务器。这在会话保持（Session Stickiness）场景中非常有用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream backend_servers &#123;</span><br><span class="line">    ip_hash;</span><br><span class="line">    server 192.168.1.100:8080;</span><br><span class="line">    server 192.168.1.101:8081;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-加权轮询"><a href="#4-加权轮询" class="headerlink" title="4. 加权轮询"></a>4. 加权轮询</h2><p>加权轮询允许为每个后端服务器分配权重，权重越高，被分配到请求的概率越大。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream backend_servers &#123;</span><br><span class="line">    server 192.168.1.100:8080 weight=3;</span><br><span class="line">    server 192.168.1.101:8081 weight=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5-备用服务器"><a href="#5-备用服务器" class="headerlink" title="5. 备用服务器"></a>5. 备用服务器</h2><p>可以指定备用服务器，当主服务器不可用时，请求会被转发到备用服务器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream backend_servers &#123;</span><br><span class="line">    server 192.168.1.100:8080;</span><br><span class="line">    server 192.168.1.101:8081 backup;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-组合策略"><a href="#6-组合策略" class="headerlink" title="6. 组合策略"></a>6. 组合策略</h2><p>也可以组合使用多种策略，例如同时使用IP哈希和加权轮询。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream backend_servers &#123;</span><br><span class="line">    ip_hash;</span><br><span class="line">    server 192.168.1.100:8080 weight=3;</span><br><span class="line">    server 192.168.1.101:8081 weight=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="7-测试和应用配置"><a href="#7-测试和应用配置" class="headerlink" title="7. 测试和应用配置"></a>7. 测试和应用配置</h2><p>完成配置后，测试Nginx配置文件是否正确无误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+<p>如果测试成功，重新加载Nginx以使更改生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br></pre></td></tr></table></figure>
+<h2 id="8-验证配置"><a href="#8-验证配置" class="headerlink" title="8. 验证配置"></a>8. 验证配置</h2><p>通过浏览器或其他工具访问域名或服务器的公网IP地址，检查请求是否按预期被分发到不同的后端服务器。<br>使用日志或后端服务器上的访问记录来验证负载均衡的效果。</p>
+<p>通过这些配置，可以实现更灵活和强大的负载均衡策略，以满足不同业务场景的需求。</p>
+<h2 id="完整的Nginx配置示例"><a href="#完整的Nginx配置示例" class="headerlink" title="完整的Nginx配置示例"></a>完整的Nginx配置示例</h2><p>完整的Nginx配置示例，其中包含两台主用服务器和一台备用服务器。<br>这个配置将使用轮询策略，并且备用服务器将在主用服务器不可用时接管请求。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/sites-available/default</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义上游服务器组</span></span><br><span class="line">upstream backend_servers &#123;</span><br><span class="line">    <span class="comment"># 主用服务器</span></span><br><span class="line">    server 192.168.1.100:8080;</span><br><span class="line">    server 192.168.1.101:8081;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 备用服务器</span></span><br><span class="line">    server 192.168.1.102:8082 backup;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义服务器块</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name your_domain_or_ip;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义location块</span></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://backend_servers;</span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 可选：定义错误页面</span></span><br><span class="line">    error_page 404 /404.html;</span><br><span class="line">    location = /404.html &#123;</span><br><span class="line">        internal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    error_page 500 502 503 504 /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        internal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>upstream 块:</strong><br>server 192.168.1.100:8080; 和 server 192.168.1.101:8081; 是两台主用服务器。<br>server 192.168.1.102:8082 backup; 是一台备用服务器，只有在主用服务器不可用时才会被使用。<br><strong>server 块:</strong><br>listen 80; 指定了Nginx监听的端口号，这里是80端口。<br>server_name your_domain_or_ip; 应该替换为域名或服务器的公网IP地址。<br><strong>location 块:</strong><br>proxy_pass <a class="link"   target="_blank" rel="noopener" href="http://backend_servers/" >http://backend_servers<i class="fas fa-external-link-alt"></i></a>; 将请求代理到定义的上游服务器组。<br>proxy_set_header 指令用于设置转发给后端服务器的请求头信息。<br><strong>错误页面:</strong><br>error_page 404 &#x2F;404.html; 和 location &#x3D; &#x2F;404.html { internal; } 用于定义404错误页面。<br>error_page 500 502 503 504 &#x2F;50x.html; 和 location &#x3D; &#x2F;50x.html { internal; } 用于定义500系列错误页面。</p>
+<p>日志:<br>查看Nginx的访问日志和错误日志，确保一切正常：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Bash</span><br><span class="line"></span><br><span class="line">sudo tail -f /var/log/nginx/access.log</span><br><span class="line">sudo tail -f /var/log/nginx/error.log</span><br></pre></td></tr></table></figure>
+<p>以实现两台主用服务器和一台备用服务器的负载均衡。</p>
+<!--
+
+
+inotify+rsync实时同步
+
+https://cloud.tencent.com/developer/article/1373541
+
+https://www.cnblogs.com/hxqwe/p/18298664
+
+->
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/nigix/">nigix</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/keepalived/">keepalived</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/inotify/">inotify</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/rsync/">rsync</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/21/python-whoisdomain/"
+                                   title="python whoisdomain"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">python whoisdomain</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

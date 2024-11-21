@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            Python股票爬虫 |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Python股票爬虫
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-19 22:07:04</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Nov 19 2024 22:52:46 GMT+0800">2024-11-19 22:52:46</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/python/">python</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="功能概况："><a href="#功能概况：" class="headerlink" title="功能概况："></a>功能概况：</h1><p>根据股票代码，采集指定日期连续N个交易日数据，输出保存为xls数据表。</p>
+<h1 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明:"></a>详细说明:</h1><p>变量为股票代码、指定日期、N个交易日，变量以xls表格形式给出，爬虫根据股票代码，逐条爬取交易数据(字段为日期、开盘价、收盘价、最高价、最低价，涨跌幅、成交量、成交额、振幅，换手率等），并输出保存到xls中。<br>采集来源 东方财富网  </p>
+<h1 id="安装了必要的库"><a href="#安装了必要的库" class="headerlink" title="安装了必要的库"></a>安装了必要的库</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests pandas openpyxl</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_stock_data</span>(<span class="params">stock_code, start_date, days</span>):</span><br><span class="line">    <span class="comment"># 将输入的字符串日期转换为datetime对象</span></span><br><span class="line">    start_date = datetime.strptime(start_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">    end_date = start_date + timedelta(days=days)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 构建请求URL</span></span><br><span class="line">    url = <span class="string">f&quot;http://push2his.eastmoney.com/api/qt/stock/kline/get?secid=<span class="subst">&#123;stock_code&#125;</span>&amp;fields1=f1,f2,f3,f4,f5&amp;fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61&amp;klt=101&amp;fqt=0&amp;beg=<span class="subst">&#123;start_date.strftime(<span class="string">&#x27;%Y%m%d&#x27;</span>)&#125;</span>&amp;end=<span class="subst">&#123;end_date.strftime(<span class="string">&#x27;%Y%m%d&#x27;</span>)&#125;</span>&quot;</span></span><br><span class="line">    </span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 检查响应状态码</span></span><br><span class="line">    <span class="keyword">if</span> response.status_code != <span class="number">200</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">f&quot;Request failed with status code <span class="subst">&#123;response.status_code&#125;</span>&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    data = response.json()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 打印响应内容，以便调试</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Response content:&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;rc&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> data <span class="keyword">or</span> data[<span class="string">&#x27;rc&#x27;</span>] != <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">f&quot;Error fetching data: <span class="subst">&#123;data.get(<span class="string">&#x27;rt&#x27;</span>, <span class="string">&#x27;Unknown error&#x27;</span>)&#125;</span>&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    klines = data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;klines&#x27;</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 解析数据</span></span><br><span class="line">    records = []</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> klines:</span><br><span class="line">        parts = line.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">        record = &#123;</span><br><span class="line">            <span class="string">&#x27;日期&#x27;</span>: parts[<span class="number">0</span>],</span><br><span class="line">            <span class="string">&#x27;开盘价&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">1</span>]),</span><br><span class="line">            <span class="string">&#x27;收盘价&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">2</span>]),</span><br><span class="line">            <span class="string">&#x27;最高价&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">3</span>]),</span><br><span class="line">            <span class="string">&#x27;最低价&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">4</span>]),</span><br><span class="line">            <span class="string">&#x27;涨跌幅&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">8</span>]),</span><br><span class="line">            <span class="string">&#x27;成交量&#x27;</span>: <span class="built_in">int</span>(parts[<span class="number">5</span>]),</span><br><span class="line">            <span class="string">&#x27;成交额&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">6</span>]),</span><br><span class="line">            <span class="string">&#x27;振幅&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">9</span>]),</span><br><span class="line">            <span class="string">&#x27;换手率&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">10</span>])</span><br><span class="line">        &#125;</span><br><span class="line">        records.append(record)</span><br><span class="line">    </span><br><span class="line">    df = pd.DataFrame(records)</span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_to_excel</span>(<span class="params">df, filename</span>):</span><br><span class="line">    df.to_excel(filename, index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    stock_code = <span class="string">&quot;1.600519&quot;</span>  <span class="comment"># 示例股票代码，前缀1表示上海A股</span></span><br><span class="line">    start_date = <span class="string">&quot;2024-10-01&quot;</span></span><br><span class="line">    days = <span class="number">30</span>  <span class="comment"># 获取30个交易日的数据</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = get_stock_data(stock_code, start_date, days)</span><br><span class="line">        save_to_excel(df, <span class="string">&quot;stock_data.xlsx&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Data saved to stock_data.xlsx&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Error: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+
+<h1 id="加入-港股-代码"><a href="#加入-港股-代码" class="headerlink" title="加入 港股 代码"></a>加入 港股 代码</h1><p>自动识别股票市场：根据股票代码的长度判断是港股还是大陆股票。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> calendar</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_weekend</span>(<span class="params">date_str</span>):</span><br><span class="line">    year, month, day = <span class="built_in">map</span>(<span class="built_in">int</span>, date_str.split(<span class="string">&#x27;-&#x27;</span>))</span><br><span class="line">    <span class="keyword">return</span> calendar.weekday(year, month, day) &gt;= <span class="number">5</span>  <span class="comment"># 5是周六，6是周日</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_stock_data</span>(<span class="params">stock_code, start_date, days, retries=<span class="number">3</span>, delay=<span class="number">1</span></span>):</span><br><span class="line">    <span class="comment"># 将输入的字符串日期转换为datetime对象</span></span><br><span class="line">    start_date = datetime.strptime(start_date, <span class="string">&#x27;%Y-%m-%d&#x27;</span>)</span><br><span class="line">    end_date = start_date + timedelta(days=days)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 根据股票代码长度识别市场</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(stock_code) == <span class="number">5</span>:</span><br><span class="line">        market = <span class="string">&#x27;HK&#x27;</span></span><br><span class="line">        secid = <span class="string">f&quot;116.<span class="subst">&#123;stock_code&#125;</span>&quot;</span>  <span class="comment"># 东方财富网港股代码前缀</span></span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(stock_code) == <span class="number">6</span>:</span><br><span class="line">        market = <span class="string">&#x27;SH&#x27;</span> <span class="keyword">if</span> stock_code.startswith(<span class="string">&#x27;6&#x27;</span>) <span class="keyword">else</span> <span class="string">&#x27;SZ&#x27;</span></span><br><span class="line">        secid = <span class="string">f&quot;<span class="subst">&#123;market&#125;</span>.<span class="subst">&#123;stock_code&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">&quot;Invalid stock code length. Stock code should be 5 digits for HK stocks and 6 digits for mainland stocks.&quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 构建请求URL</span></span><br><span class="line">    url = <span class="string">f&quot;http://push2his.eastmoney.com/api/qt/stock/kline/get?secid=<span class="subst">&#123;secid&#125;</span>&amp;fields1=f1,f2,f3,f4,f5&amp;fields2=f51,f52,f53,f54,f55,f56,f57,f58,f59,f60,f61&amp;klt=101&amp;fqt=0&amp;beg=<span class="subst">&#123;start_date.strftime(<span class="string">&#x27;%Y%m%d&#x27;</span>)&#125;</span>&amp;end=<span class="subst">&#123;end_date.strftime(<span class="string">&#x27;%Y%m%d&#x27;</span>)&#125;</span>&quot;</span></span><br><span class="line">    </span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> attempt <span class="keyword">in</span> <span class="built_in">range</span>(retries):</span><br><span class="line">        response = requests.get(url, headers=headers)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 检查响应状态码</span></span><br><span class="line">        <span class="keyword">if</span> response.status_code != <span class="number">200</span>:</span><br><span class="line">            <span class="keyword">if</span> attempt &lt; retries - <span class="number">1</span>:</span><br><span class="line">                time.sleep(delay)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">f&quot;Request failed with status code <span class="subst">&#123;response.status_code&#125;</span>&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        data = response.json()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 打印响应内容，以便调试</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Response content:&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(data)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;rc&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> data <span class="keyword">or</span> data[<span class="string">&#x27;rc&#x27;</span>] != <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> attempt &lt; retries - <span class="number">1</span>:</span><br><span class="line">                time.sleep(delay)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">raise</span> Exception(<span class="string">f&quot;Error fetching data: <span class="subst">&#123;data.get(<span class="string">&#x27;rt&#x27;</span>, <span class="string">&#x27;Unknown error&#x27;</span>)&#125;</span>&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        klines = data[<span class="string">&#x27;data&#x27;</span>][<span class="string">&#x27;klines&#x27;</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 解析数据</span></span><br><span class="line">        records = []</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> klines:</span><br><span class="line">            parts = line.split(<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">            record = &#123;</span><br><span class="line">                <span class="string">&#x27;日期&#x27;</span>: parts[<span class="number">0</span>],</span><br><span class="line">                <span class="string">&#x27;开盘价&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">1</span>]),</span><br><span class="line">                <span class="string">&#x27;收盘价&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">2</span>]),</span><br><span class="line">                <span class="string">&#x27;最高价&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">3</span>]),</span><br><span class="line">                <span class="string">&#x27;最低价&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">4</span>]),</span><br><span class="line">                <span class="string">&#x27;涨跌幅&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">8</span>]),</span><br><span class="line">                <span class="string">&#x27;成交量&#x27;</span>: <span class="built_in">int</span>(parts[<span class="number">5</span>]),</span><br><span class="line">                <span class="string">&#x27;成交额&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">6</span>]),</span><br><span class="line">                <span class="string">&#x27;振幅&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">9</span>]),</span><br><span class="line">                <span class="string">&#x27;换手率&#x27;</span>: <span class="built_in">float</span>(parts[<span class="number">10</span>])</span><br><span class="line">            &#125;</span><br><span class="line">            records.append(record)</span><br><span class="line">        </span><br><span class="line">        df = pd.DataFrame(records)</span><br><span class="line">        <span class="keyword">return</span> df</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_to_excel</span>(<span class="params">df, filename</span>):</span><br><span class="line">    df.to_excel(filename, index=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    stock_code = <span class="string">&quot;09999&quot;</span>  <span class="comment"># 示例股票代码，五位表示港股</span></span><br><span class="line">    start_date = <span class="string">&quot;2024-10-01&quot;</span></span><br><span class="line">    days = <span class="number">30</span>  <span class="comment"># 获取30个交易日的数据</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        df = get_stock_data(stock_code, start_date, days, retries=<span class="number">5</span>, delay=<span class="number">2</span>)</span><br><span class="line">        save_to_excel(df, <span class="string">&quot;%s_%s_%d.xlsx&quot;</span> % (stock_code, start_date,days))</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Data saved to &quot;</span>+<span class="string">&quot;%s_%s_%d.xlsx&quot;</span> % (stock_code, start_date,days) )</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Error: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/python/">python</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/19/XAI/"
+                                   title="XAI Grok"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">XAI Grok</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/17/canal-mysql-auto-bak/"
+                                   title="canal mysql auto bak"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">canal mysql auto bak</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

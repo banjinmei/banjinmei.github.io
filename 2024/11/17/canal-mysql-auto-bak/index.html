@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            canal mysql auto bak |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        canal mysql auto bak
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-17 23:28:55</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Nov 21 2024 21:08:16 GMT+0800">2024-11-21 21:08:16</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mysql/">mysql</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/canal/">canal</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="Canal"><a href="#Canal" class="headerlink" title="Canal"></a>Canal</h1><p>是阿里巴巴开源的一个数据库binlog解析工具，它能够捕获并解析MySQL等数据库的增量数据变化（即binlog），然后将这些变化的数据以消息的形式发送给其他系统或服务，如Elasticsearch、HBase、Redis等。这样做的好处是可以实现数据的实时同步，保证不同存储系统之间的数据一致性。</p>
+<p><strong>Canal</strong>的设计理念主要是基于数据库的增量订阅与消费模式，它通过模拟MySQL的slave来实现对MySQL主库binlog的监听，当主库有数据更新时，Canal能及时捕捉到这些变化，并将变化的数据按照一定的格式输出，供下游系统消费使用。</p>
+<p><strong>使用Canal的主要优势包括：</strong><br><strong>实时性</strong><br>Canal通过模仿MySQL的slave节点行为，向MySQL master节点发送dump协议请求，以获取binlog日志8。这种方法使得Canal能够以较低的延迟捕获到数据库的变化，从而实现实时的数据同步。对于需要保持数据最新性的应用场景，如搜索引擎的索引更新或缓存系统的数据刷新，这一特性尤为重要。</p>
+<p><strong>解耦</strong><br>Canal作为一个独立的服务，充当了数据库和数据消费者之间的中介角色。它不仅减少了直接连接数据库带来的性能压力，还避免了因数据库结构或数据模型变更导致的下游系统适配问题。这种解耦机制增强了系统的灵活性和可维护性，使得各个组件可以独立发展而不相互干扰18。</p>
+<p><strong>灵活性</strong><br>Canal支持多种数据输出格式，包括但不限于JSON、XML等，这使得它可以很容易地与其他数据处理工具和服务集成。此外，Canal还提供了对Kafka、RocketMQ等消息队列的支持，这意味着数据不仅可以被同步到不同的存储系统，还可以被发送到消息队列中，供更多的应用和服务消费14。</p>
+<p>除了上述提到的优点外，Canal还具备以下特点：</p>
+<p><strong>高性能：</strong>经过优化的Canal能够在高并发环境下保持稳定的性能表现，适合大规模数据同步场景。<br><strong>低延迟：</strong>通过高效的日志解析和数据传输机制，Canal能够确保数据从源头到目的地的传输延迟尽可能低。<br><strong>高可用性：</strong>Canal支持集群部署，结合Zookeeper等协调服务，可以实现故障自动切换，保证服务的连续性和稳定性21。<br><strong>安全性：</strong>Canal可以通过配置SSL&#x2F;TLS加密通信，保护数据在传输过程中的安全18。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>Canal的应用场景非常广泛，包括但不限于：</p>
+<p><strong>数据同步：</strong>将MySQL数据库的数据同步到Elasticsearch、Redis等其他存储系统，用于构建搜索引擎、缓存层等18。<br><strong>数据备份：</strong>定期或实时备份MySQL数据库的数据，用于灾难恢复或数据归档18。<br><strong>数据集成：</strong>在微服务架构中，使用Canal将多个数据库中的数据进行集成，提供统一的数据视图18。<br><strong>数据监控：</strong>通过监听数据库的变化，及时发现异常操作或潜在的安全风险18。<br>Canal是一个功能强大、灵活多变的数据同步工具，它在保证数据实时性和一致性的基础上，提供了丰富的特性和广泛的应用场景，是现代数据驱动应用的理想选择。</p>
+<h1 id="Canal环境准备"><a href="#Canal环境准备" class="headerlink" title="Canal环境准备"></a>Canal环境准备</h1><p>设置MySQL远程访问</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> privileges <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;123456&#x27;</span>;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>MySQL配置</p>
+<p>Canal的原理基于MySQL binlog技术，所以，要想使用Canal就要开启MySQL的binlog写入功能，建议配置binlog的模式为row。</p>
+<p>可以在MySQL命令行输入如下命令来查看binlog的模式。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;binlog_format&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<!--
+show variables like 'log_bin';
+SHOW VARIABLES LIKE 'binlog_format';
+-->
+
+
+
+
+<p>如果MySQL中默认的binlog格式为STATEMENT，需要将STATEMENT修改为ROW。修改&#x2F;etc&#x2F;my.cnf文件。</p>
+<p>&#x2F;etc&#x2F;my.cnf<br>在[mysqld]下面新增如下三项配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log-bin=mysql-bin  <span class="comment">#开启MySQL二进制日志</span></span><br><span class="line">binlog_format=ROW <span class="comment">#将二进制日志的格式设置为ROW</span></span><br><span class="line">server_id=1 <span class="comment">#server_id需要唯一，不能与Canal的slaveId重复</span></span><br></pre></td></tr></table></figure>
+<p>修改完my.cnf文件后，需要重启MySQL服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure>
+<p>再次查看binlog模式。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;binlog_format&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>MySQL创建用户授权</p>
+<p>Canal的原理是模式自己为MySQL Slave，所以一定要设置MySQL Slave的相关权限。这里，需要创建一个主从同步的账户，并且赋予这个账户相关的权限。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> canal@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;canal&#x27;</span>;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, REPLICATION SLAVE, REPLICATION CLIENT <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;canal&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span>;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="服务器信息"><a href="#服务器信息" class="headerlink" title="服务器信息"></a>服务器信息</h1><p>124.219.119.2xx 主库所在服务器</p>
+<p>192.168.80.203 canal数据同步所在服务器</p>
+<h1 id="连接主库所在服务器"><a href="#连接主库所在服务器" class="headerlink" title="连接主库所在服务器"></a>连接主库所在服务器</h1><h2 id="切换-root-账号"><a href="#切换-root-账号" class="headerlink" title="切换 root 账号"></a>切换 root 账号</h2><p>su root</p>
+<h2 id="启动MySQL8-0数据库"><a href="#启动MySQL8-0数据库" class="headerlink" title="启动MySQL8.0数据库"></a>启动MySQL8.0数据库</h2><p>systemctl start mysqld.service</p>
+<h2 id="创建复制账号和密码"><a href="#创建复制账号和密码" class="headerlink" title="创建复制账号和密码"></a>创建复制账号和密码</h2><p>连接主库所在服务器，即：192.168.91.131，运行MySQL 8.0数据库，创建复制账号和密码，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE USER canal IDENTIFIED BY &#x27;canal&#x27;;  </span><br><span class="line">mysql&gt; GRANT SELECT, SHOW VIEW, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &#x27;canal&#x27;@&#x27;%&#x27;;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<h1 id="canal数据同步服务器操作"><a href="#canal数据同步服务器操作" class="headerlink" title="canal数据同步服务器操作"></a>canal数据同步服务器操作</h1><h2 id="创建canal文件夹"><a href="#创建canal文件夹" class="headerlink" title="创建canal文件夹"></a>创建canal文件夹</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local</span><br><span class="line"><span class="built_in">mkdir</span> canal</span><br><span class="line"><span class="built_in">cd</span> canal</span><br><span class="line"><span class="built_in">mkdir</span> canal-package canal-adapter canal-deployer</span><br></pre></td></tr></table></figure>
+<h2 id="安装canal-deployer和canal-adapter"><a href="#安装canal-deployer和canal-adapter" class="headerlink" title="安装canal deployer和canal adapter"></a>安装canal deployer和canal adapter</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> canal-package</span><br><span class="line">wget https://github.com/alibaba/canal/releases/download/canal-1.1.8canal.deployer-1.1.8.tar.gz</span><br><span class="line">wget https://github.com/alibaba/canal/releases/download/canal-1.1.8/canal.adapter-1.1.8.tar.gz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>tar -zxvf canal.adapter.tar.gz -C &#x2F;usr&#x2F;local&#x2F;canal&#x2F;canal-adapter<br>tar -zxvf canal.deployer.tar.gz -C &#x2F;usr&#x2F;local&#x2F;canal&#x2F;canal-deployer</p>
+<p>github:<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/alibaba/canal/releases?page=1" >https://github.com/alibaba/canal/releases?page=1<i class="fas fa-external-link-alt"></i></a> </p>
+<!-- 
+
+wget  https://github.com/alibaba/canal/releases/download/canal-1.1.8-alpha-2/canal.adapter-1.1.8-SNAPSHOT.tar.gz
+wget  https://github.com/alibaba/canal/releases/download/canal-1.1.8-alpha-2/canal.deployer-1.1.8-SNAPSHOT.tar.gz
+
+
+wget https://github.com/alibaba/canal/releases/download/canal-1.1.7/canal.deployer-1.1.7.tar.gz
+wget https://github.com/alibaba/canal/releases/download/canal-1.1.7/canal.adapter-1.1.7.tar.gz
+tar -zxvf canal.adapter-1.1.7.tar.gz -C /usr/local/canal/canal-adapter3
+tar -zxvf canal.deployer-1.1.7.tar.gz -C /usr/local/canal/canal-deployer3
+
+tar -zxvf canal.adapter-1.1.8-SNAPSHOT.tar.gz -C /usr/local/canal/canal-adapter1183
+tar -zxvf canal.deployer-1.1.8-SNAPSHOT.tar.gz -C /usr/local/canal/canal-deployer1183
+
+tar -zxvf canal.adapter-1.1.5.tar.gz -C /usr/local/canal/canal-adapter
+tar -zxvf canal.deployer-1.1.5.tar.gz -C /usr/local/canal/canal-deployer -->
+
+
+<h2 id="配置和启动canal-deployer"><a href="#配置和启动canal-deployer" class="headerlink" title="配置和启动canal-deployer"></a>配置和启动canal-deployer</h2><h2 id="配置canal-deployer"><a href="#配置canal-deployer" class="headerlink" title="配置canal-deployer"></a>配置canal-deployer</h2><p>由于此次同步为MySQL数据库间的数据同步，所以此处不需要修改 canal.properties 配置文件，只需修改 instance.properties 即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/canal/canal-deployer/conf/example</span><br><span class="line">vi instance.properties</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># position info</span></span><br><span class="line">canal.instance.master.address= xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># username/password</span></span><br><span class="line">canal.instance.dbUsername=root</span><br><span class="line">canal.instance.dbPassword=123123</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># table regex</span></span><br><span class="line">canal.instance.filter.regex=.*\\..*</span><br></pre></td></tr></table></figure>
+
+<p>说明</p>
+<p> canal.id：设置Canal实例的唯一ID，建议使用UUID。</p>
+<p> canal.ip：设置Canal实例的IP地址。</p>
+<p> canal.port：设置Canal实例的端口号。</p>
+<p> canal.destinations：设置Canal实例要连接的目标数据库地址和端口号，格式为&lt;协议：&#x2F;&#x2F;用户名：密码@IP地址：端口号&#x2F;数据库名。</p>
+<p> canal.username：设置连接目标数据库的用户名。</p>
+<p> canal.password：设置连接目标数据库的密码。</p>
+<p> canal.driverClassName：设置连接目标数据库的驱动类名，例如oracle.jdbc.driver.OracleDriver。</p>
+<p> canal.connectionCharset：设置连接目标数据库的字符集，例如UTF8。</p>
+<h2 id="可能遇到的问题："><a href="#可能遇到的问题：" class="headerlink" title="可能遇到的问题："></a>可能遇到的问题：</h2><p>canal-deployer启动之后，如果在 logs 文件夹下没有 example 文件，参考如下情况说明：</p>
+<h3 id="查看-usr-local-canal-canal-deployer-bin-文件夹下，是否存在以hs-err-pid开头的文件。"><a href="#查看-usr-local-canal-canal-deployer-bin-文件夹下，是否存在以hs-err-pid开头的文件。" class="headerlink" title="查看 &#x2F;usr&#x2F;local&#x2F;canal&#x2F;canal-deployer&#x2F;bin 文件夹下，是否存在以hs_err_pid开头的文件。"></a>查看 &#x2F;usr&#x2F;local&#x2F;canal&#x2F;canal-deployer&#x2F;bin 文件夹下，是否存在以hs_err_pid开头的文件。</h3><p>出现hs_err_pid开头的文件，主要原因有两个：<br>1&gt; 服务器内存不足，导致服务启动失败，出现OOM问题，这时需要增加服务器内存<br>2&gt; 服务器打开的线程数达到上限，这时需要修改线程上限，操作如下：<br>vi &#x2F;etc&#x2F;security&#x2F;limits.conf</p>
+<p>修改内容可参考下面配置：</p>
+<ul>
+<li><pre><code>     soft    nproc          102400
+</code></pre>
+</li>
+<li><pre><code>     hard    nofile         102400
+</code></pre>
+</li>
+</ul>
+<h3 id="上述配置参数说明："><a href="#上述配置参数说明：" class="headerlink" title="上述配置参数说明："></a>上述配置参数说明：</h3><p>第一列：linux系统用户名，*代表所有用户<br>第二列：软连接&#x2F;硬连接<br>第三列：类型，nproc 进程的数量&#x2F;nofile 文件打开数&#x2F;core-core 文件大小<br>第四列：数量</p>
+<h3 id="bin文件夹下不存在以hs-err-pid开头的文件，查看logs文件夹下的canal文件夹下的canal-stdout-log文件，命令如下："><a href="#bin文件夹下不存在以hs-err-pid开头的文件，查看logs文件夹下的canal文件夹下的canal-stdout-log文件，命令如下：" class="headerlink" title="bin文件夹下不存在以hs_err_pid开头的文件，查看logs文件夹下的canal文件夹下的canal_stdout.log文件，命令如下："></a>bin文件夹下不存在以hs_err_pid开头的文件，查看logs文件夹下的canal文件夹下的canal_stdout.log文件，命令如下：</h3><p>cat &#x2F;usr&#x2F;local&#x2F;canal&#x2F;canal-deployer&#x2F;logs&#x2F;canal&#x2F;canal_stdout.log</p>
+<p>若出现如下报错信息：</p>
+<p>OpenJDK 64-Bit Server VM warning: Ignoring option PermSize; support was removed in 8.0<br>OpenJDK 64-Bit Server VM warning: Ignoring option MaxPermSize; support was removed in 8.0<br>OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.</p>
+<h3 id="Unrecognized-VM-option-‘UseCMSCompactAtFullCollection’"><a href="#Unrecognized-VM-option-‘UseCMSCompactAtFullCollection’" class="headerlink" title="Unrecognized VM option ‘UseCMSCompactAtFullCollection’"></a>Unrecognized VM option ‘UseCMSCompactAtFullCollection’</h3><p>Error: Could not create the Java Virtual Machine.<br>Error: A fatal exception has occurred. Program will exit.</p>
+<p>出现此报错的原因是由于当前服务器安装的jdk版本高于jdk8，此时需要修改 startup.sh 的启动参数，操作如下：</p>
+<p>cd &#x2F;usr&#x2F;local&#x2F;canal&#x2F;canal-deployer&#x2F;bin<br>.&#x2F;stop.sh<br>vi startup.sh</p>
+<h3 id="删除-XX-UseCMSCompactAtFullCollection-XX-UseFastAccessorMethods-参数"><a href="#删除-XX-UseCMSCompactAtFullCollection-XX-UseFastAccessorMethods-参数" class="headerlink" title="删除 -XX:+UseCMSCompactAtFullCollection -XX:+UseFastAccessorMethods 参数"></a>删除 -XX:+UseCMSCompactAtFullCollection -XX:+UseFastAccessorMethods 参数</h3><p>.&#x2F;startup.sh</p>
+<h3 id="Unrecognized-VM-option-‘UseBiasedLocking’"><a href="#Unrecognized-VM-option-‘UseBiasedLocking’" class="headerlink" title="Unrecognized VM option ‘UseBiasedLocking’"></a>Unrecognized VM option ‘UseBiasedLocking’</h3><p>Error: Could not create the Java Virtual Machine.<br>Error: A fatal exception has occurred. Program will exit.  </p>
+<h3 id="移除-UseBiasedLocking-选项"><a href="#移除-UseBiasedLocking-选项" class="headerlink" title="移除 UseBiasedLocking 选项"></a>移除 UseBiasedLocking 选项</h3><p>-XX:+UseBiasedLocking</p>
+<h3 id="Unrecognized-VM-option-‘AggressiveOpts’"><a href="#Unrecognized-VM-option-‘AggressiveOpts’" class="headerlink" title="Unrecognized VM option ‘AggressiveOpts’"></a>Unrecognized VM option ‘AggressiveOpts’</h3><p>Error: Could not create the Java Virtual Machine.<br>Error: A fatal exception has occurred. Program will exit. </p>
+<h3 id="Remove-XX-AggressiveOpts"><a href="#Remove-XX-AggressiveOpts" class="headerlink" title="Remove -XX:+AggressiveOpts"></a>Remove -XX:+AggressiveOpts</h3><p>canal.deployer-1.1.8-SNAPSHOT.tar.gz</p>
+<p>com.alibaba.druid.pool.DruidDataSource 类未找到，导致 Canal 的 dataSource bean 初始化失败。</p>
+<p>.&#x2F;startup.sh</p>
+<h2 id="若需要同步某几张表，可以参考如下配置"><a href="#若需要同步某几张表，可以参考如下配置" class="headerlink" title="若需要同步某几张表，可以参考如下配置"></a>若需要同步某几张表，可以参考如下配置</h2><h2 id="同步某数据库test1下的user表-test2数据库下的所有表，所有库下所有表数据"><a href="#同步某数据库test1下的user表-test2数据库下的所有表，所有库下所有表数据" class="headerlink" title="同步某数据库test1下的user表,test2数据库下的所有表，所有库下所有表数据"></a>同步某数据库test1下的user表,test2数据库下的所有表，所有库下所有表数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">canal.instance.filter.regex=test1.user,test2\\..*,.*\\..*</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="启动canal-deployer"><a href="#启动canal-deployer" class="headerlink" title="启动canal-deployer"></a>启动canal-deployer</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/canal/canal-deployer/bin</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
+<p>查看日志确定是否启动成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/canal/canal-deployer/logs/example</span><br><span class="line"><span class="built_in">cat</span> example.log</span><br></pre></td></tr></table></figure>
+
+<p>log内容…<br> [main] INFO  c.a.otter.canal.instance.core.AbstractCanalInstance - stop CannalInstance for null-example<br> [main] INFO  c.a.otter.canal.instance.core.AbstractCanalInstance - stop successful….<br>启动</p>
+<h2 id="启动canal需要jdk"><a href="#启动canal需要jdk" class="headerlink" title="启动canal需要jdk"></a>启动canal需要jdk</h2><p>安装 OpenJDK</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">apt search openjdk</span><br><span class="line"></span><br><span class="line">sudo apt install openjdk-17-jdk</span><br><span class="line"></span><br><span class="line">sudo apt install -y openjdk-17-jdk</span><br></pre></td></tr></table></figure>
+<p><strong>手动下载并安装</strong><br>前往 Oracle JDK 下载页面，下载最新的 .tar.gz 包。<br><a class="link"   target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/?er=221886" >https://www.oracle.com/java/technologies/downloads/?er=221886<i class="fas fa-external-link-alt"></i></a><br>下载完成后，解压缩文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvzf jdk-&lt;version&gt;-linux-x64_bin.tar.gz</span><br></pre></td></tr></table></figure>
+<p>将 JDK 移动到 &#x2F;opt 目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">mv</span> jdk-&lt;version&gt; /opt/</span><br></pre></td></tr></table></figure>
+<p>配置环境变量。在 ~&#x2F;.bashrc 中添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/jdk-&lt;version&gt;</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p>使配置生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>验证安装,确认安装成功，检查 Java 版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><strong>卸载jdk</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --list | grep -i jdk</span><br></pre></td></tr></table></figure>
+<p>一旦知道了要卸载的JDK包的确切名称，使用apt-get命令卸载它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove your-jdk-package-name</span><br></pre></td></tr></table></figure>
+<p>将your-jdk-package-name替换为从列表中找到的实际JDK包名称。<br>如果想同时删除配置文件，可以使用–purge选项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge your-jdk-package-name</span><br></pre></td></tr></table></figure>
+<p>最后，运行autoremove来清除系统中不再需要的依赖项：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+<p>例如，如果安装的是OpenJDK 11，并且通过apt安装，可以使用以下命令来卸载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove openjdk-11-jdk</span><br><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="canal-deployer-和-canal-adapter-是-Canal-的两个独立模块，各自承担不同的功能："><a href="#canal-deployer-和-canal-adapter-是-Canal-的两个独立模块，各自承担不同的功能：" class="headerlink" title="canal-deployer 和 canal-adapter 是 Canal 的两个独立模块，各自承担不同的功能："></a>canal-deployer 和 canal-adapter 是 Canal 的两个独立模块，各自承担不同的功能：</h1><h2 id="canal-deployer"><a href="#canal-deployer" class="headerlink" title="canal-deployer"></a>canal-deployer</h2><p><strong>功能：</strong>canal-deployer 是 Canal 的核心组件，用于从 MySQL 数据库中读取 binlog，并解析 binlog 事件。<br><strong>作用：</strong>主要负责数据的实时捕获和解析。它将从 MySQL 实例捕获的 binlog 数据转换成 Canal 可以处理的格式，并通过网络或其他方式将这些数据推送给下游消费者。<br><strong>配置：</strong>canal-deployer 需要配置连接信息（如 MySQL 的地址、用户名、密码等）以及相关的过滤条件，比如要监控的表和过滤的字段。<br><strong>应用场景：</strong>适用于需要捕获 MySQL 数据变更的场景，比如数据库的实时增量数据同步和数据监控。</p>
+<h2 id="canal-adapter"><a href="#canal-adapter" class="headerlink" title="canal-adapter"></a>canal-adapter</h2><p><strong>功能：</strong>canal-adapter 负责将 Canal 捕获并解析的数据，适配并同步到不同的下游目标。<br><strong>作用：</strong>可以将数据写入到 ElasticSearch、Kafka、HBase 等多种目标，起到数据同步的桥梁作用。<br><strong>配置：</strong>canal-adapter 提供了丰富的适配器配置（如 ES、Kafka、RocketMQ 等），可以根据业务需求配置同步的字段映射、数据转换和过滤规则。<br><strong>应用场景：</strong>适用于需要将 MySQL 的 binlog 数据实时同步到其他数据存储或消息队列的场景，比如数据仓库同步、实时索引等。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>canal-deployer 专注于从 MySQL 读取并解析 binlog 数据。<br>canal-adapter 则将解析后的数据推送或同步到下游目标，起到数据适配和转换的作用。</p>
+<h1 id="配置和启动canal-adapter"><a href="#配置和启动canal-adapter" class="headerlink" title="配置和启动canal-adapter"></a>配置和启动canal-adapter</h1><h2 id="配置canal-adapter"><a href="#配置canal-adapter" class="headerlink" title="配置canal-adapter"></a>配置canal-adapter</h2><p> 修改application.yml文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/canal/canal-adapter/conf</span><br><span class="line">vi application.yml</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># canal tcp consumer</span></span><br><span class="line"><span class="comment"># 修改位置：Canal deployer所在主机IP</span></span><br><span class="line">canal.tcp.server.host: 192.168.91.135:11111</span><br></pre></td></tr></table></figure>
+
+<p>修改位置：添加源库配置信息，此处为同步同库下所有表信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">srcDataSources:</span><br><span class="line">  defaultDS:</span><br><span class="line">    url: jdbc:mysql://124.219.119.xxx:3306/IMDB?useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf8mb4&amp;autoReconnect=<span class="literal">true</span>&amp;useSSL=<span class="literal">false</span></span><br><span class="line">    username: root</span><br><span class="line">    password: 123123.xx</span><br><span class="line">canalAdapters:</span><br><span class="line">- instance: example <span class="comment"># canal instance Name or mq topic name</span></span><br><span class="line">  <span class="built_in">groups</span>:</span><br><span class="line">  - groupId: g1</span><br><span class="line">    outerAdapters:</span><br><span class="line">    - name: logger</span><br><span class="line">    - name: rdb</span><br><span class="line">      key: mysql1</span><br><span class="line">      properties:</span><br><span class="line">        jdbc.driverClassName: com.mysql.jdbc.Driver</span><br><span class="line">        jdbc.url: jdbc:mysql://192.168.80.xxx/IMDB?useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf8mb4&amp;autoReconnect=<span class="literal">true</span>&amp;useSSL=<span class="literal">false</span></span><br><span class="line">        jdbc.username: root</span><br><span class="line">        jdbc.password: 123123.xx</span><br></pre></td></tr></table></figure>
+
+
+<p>说明: </p>
+<p>其中 outAdapter 的配置: name统一为rdb, key为对应的数据源的唯一标识需和下面的表映射文件中的outerAdapterKey对应, properties为目标库jdbc的相关参数</p>
+<p>adapter将会自动加载 conf&#x2F;rdb 下的所有.yml结尾的表映射配置文件</p>
+<h2 id="修改canal-adapter-conf-rdb文件夹下的yml文件"><a href="#修改canal-adapter-conf-rdb文件夹下的yml文件" class="headerlink" title="修改canal-adapter&#x2F;conf&#x2F;rdb文件夹下的yml文件"></a>修改canal-adapter&#x2F;conf&#x2F;rdb文件夹下的yml文件</h2><p>说明：canal-adapter&#x2F;conf&#x2F;rdb文件夹下的yml文件可以同步数据库下的一张表，也可以同步数据库下的所有表(此处的前提是：同步数据的数据库与主库的schema一致)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/local/canal/canal-adapter/conf/rdb</span><br><span class="line">.yml</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## Mirror schema synchronize config</span></span><br><span class="line">dataSourceKey: defaultDS</span><br><span class="line">destination: example</span><br><span class="line">groupId: g1</span><br><span class="line">outerAdapterKey: mysql1</span><br><span class="line">concurrent: <span class="literal">true</span></span><br><span class="line">dbMapping:</span><br><span class="line">  mirrorDb: <span class="literal">true</span></span><br><span class="line">  database: <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h2 id="启动canal-adapter"><a href="#启动canal-adapter" class="headerlink" title="启动canal-adapter"></a>启动canal-adapter</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/canal/canal-adapter/bin</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
+<p>查看日志信息，确保正常启动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/canal/canal-adapter/logs/adapter</span><br><span class="line"><span class="built_in">cat</span> adapter.log</span><br></pre></td></tr></table></figure>
+
+
+<p>log err<br>[main] ERROR org.springframework.boot.SpringApplication - Application run failed<br>org.yaml.snakeyaml.error.YAMLException: </p>
+<p>如果没有log 或启动不成功</p>
+<h2 id="移除未支持的-JVM-参数"><a href="#移除未支持的-JVM-参数" class="headerlink" title="移除未支持的 JVM 参数"></a>移除未支持的 JVM 参数</h2><p>-XX:+UseFastAccessorMethods<br>-XX:+PrintAdaptiveSizePolicy<br>-XX:+PrintTenuringDistribution</p>
+<p> 参考1</p>
+<h2 id="去掉-XX-AggressiveOpts-XX-UseBiasedLocking"><a href="#去掉-XX-AggressiveOpts-XX-UseBiasedLocking" class="headerlink" title="去掉  -XX:+AggressiveOpts -XX:-UseBiasedLocking"></a>去掉  -XX:+AggressiveOpts -XX:-UseBiasedLocking</h2><p>-XX:+UseFastAccessorMethods </p>
+<p>去掉<br>str&#x3D;<code>file -L $JAVA | grep 64-bit</code></p>
+<p>JAVA_OPTS&#x3D;”$JAVA_OPTS -Xss1m  -XX:-OmitStackTraceInFastThrow -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath&#x3D;$base&#x2F;logs”<br>if [ $JavaVersion -ge 11 ] ; then<br>  #JAVA_OPTS&#x3D;”$JAVA_OPTS -Xlog:gc*:$base_log&#x2F;gc.log:time “<br>  JAVA_OPTS&#x3D;”$JAVA_OPTS”<br>else<br>  #JAVA_OPTS&#x3D;”$JAVA_OPTS -Xloggc:$base&#x2F;logs&#x2F;canal&#x2F;gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCApplicationStoppedTime”<br>  JAVA_OPTS&#x3D;”$JAVA_OPTS -XX:+PrintAdaptiveSizePolicy -XX:+PrintTenuringDistribution”<br>fi</p>
+<!-- 
+ canal-adapter 时，启动步骤如下：
+
+1. 准备工作
+确保已经完成以下事项：
+
+下载了 Canal 的 adapter 包（通常在 Canal GitHub 或相关资源中可以找到）。
+配置了 Canal 服务并已成功启动。
+MySQL 数据库开启了 binlog（Canal 依赖 binlog 日志进行数据捕获）。
+2. 配置 Canal Adapter
+（1）解压 canal.adapter 压缩包
+解压 Canal Adapter 的 ZIP 或 TAR 包，目录结构通常如下：
+
+python
+复制代码
+canal.adapter/
+├── conf/
+│   ├── application.yml
+│   ├── instance/
+│   │   ├── example/
+│   │   │   ├── rdb/
+│   │   │   │   └── rdb.yml
+│   │   │   └── es/
+│   │   │       └── es.yml
+├── lib/
+├── logs/
+└── bin/
+（2）配置 application.yml
+在 conf/application.yml 中，配置 Canal Server 和适配器实例的信息。示例配置如下：
+
+yaml
+复制代码
+server:
+  port: 8081 # Adapter 运行端口
+
+canal.conf:
+  mode: tcp
+  canalAdapters:
+    - instance: example # Canal Server 的 instance 名称
+      groups:
+        - groupId: g1
+          outerAdapters:
+            - name: rdb
+              key: mysql1
+              properties:
+                jdbc.driverClassName: com.mysql.cj.jdbc.Driver
+                jdbc.url: jdbc:mysql://127.0.0.1:3306/your_database?useUnicode=true
+                jdbc.username: your_username
+                jdbc.password: your_password
+（3）实例配置（instance 文件夹）
+根据的需求（如同步到数据库或 Elasticsearch），配置适配器。例如：
+rdb.yml：用于 RDB（关系型数据库）。
+es.yml：用于 Elasticsearch。
+3. 启动 Canal Adapter
+进入 canal.adapter/bin 目录并执行以下命令：
+
+（1）Linux/MacOS
+bash
+复制代码
+sh startup.sh
+（2）Windows
+cmd
+复制代码
+startup.bat
+4. 验证服务是否启动
+检查日志：logs/canal.adapter.log，确认是否有启动成功的日志。
+使用浏览器访问：http://localhost:8081，如果显示接口信息说明服务启动成功。
+5. 注意事项
+确保 Canal Server 已正常运行，Adapter 才能正常连接。
+配置文件中的端口号、数据库信息等要与实际环境匹配。
+如果 Adapter 无法连接 Canal Server，检查网络连通性以及 Canal Server 的配置是否允许连接。
+
+
+
+
+
+startup
+
+jdk17
+1. 移除已废弃的 JVM 参数
+移除：
+bash
+复制代码
+-XX:+AggressiveOpts
+原因：AggressiveOpts 已被 JDK 17 移除。
+修改后：
+bash
+复制代码
+JAVA_OPTS="$JAVA_OPTS -Xss1m -XX:-UseBiasedLocking -XX:-OmitStackTraceInFastThrow -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=$base/logs"
+2. 移除未支持的 JVM 参数
+移除：
+bash
+复制代码
+-XX:+UseFastAccessorMethods
+-XX:+PrintAdaptiveSizePolicy
+-XX:+PrintTenuringDistribution
+原因：这些参数在 JDK 17 中已经被废弃。
+修改后：
+bash
+复制代码
+JAVA_OPTS="$JAVA_OPTS -Xss1m -XX:-UseBiasedLocking -XX:-OmitStackTraceInFastThrow -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=$base/logs"
+3. 调整 G1 GC 相关参数
+如果脚本中启用了 G1 GC，建议调整为适合 JDK 17 的参数：
+
+原始 G1 参数：
+bash
+复制代码
+JAVA_OPTS="-server -Xms2g -Xmx3g -XX:+UseG1GC -XX:MaxGCPauseMillis=250 -XX:+UseGCOverheadLimit -XX:+ExplicitGCInvokesConcurrent $JAVA_OPTS"
+修改后：
+bash
+复制代码
+JAVA_OPTS="-server -Xms2g -Xmx3g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseGCOverheadLimit $JAVA_OPTS"
+移除了 -XX:+ExplicitGCInvokesConcurrent，因为在 JDK 17 中已经不推荐使用。
+4. 替换 PermGen 相关参数
+JDK 8 及之后移除了 PermGen，改用 Metaspace。因此，需要调整以下参数：
+
+原始代码：
+bash
+复制代码
+-XX:PermSize=96m -XX:MaxPermSize=256m
+修改后：
+bash
+复制代码
+-XX:MetaspaceSize=96m -XX:MaxMetaspaceSize=256m
+5. 确保编码配置有效
+JDK 17 默认支持 UTF-8 文件编码，但建议显式指定编码：
+
+确保存在以下参数：
+bash
+复制代码
+-Dfile.encoding=UTF-8
+6. 校验 JAVA_DEBUG_OPT 配置
+如果需要调试，确保以下配置使用正确的格式：
+bash
+复制代码
+JAVA_DEBUG_OPT="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:$DEBUG_PORT"
+这是 JDK 17 调试的推荐格式。 -->
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">current_path=`<span class="built_in">pwd</span>`</span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;`uname`&quot;</span> <span class="keyword">in</span></span><br><span class="line">    Linux)</span><br><span class="line">		bin_abs_path=$(<span class="built_in">readlink</span> -f $(<span class="built_in">dirname</span> <span class="variable">$0</span>))</span><br><span class="line">		;;</span><br><span class="line">	*)</span><br><span class="line">		bin_abs_path=`<span class="built_in">cd</span> $(<span class="built_in">dirname</span> <span class="variable">$0</span>); <span class="built_in">pwd</span>`</span><br><span class="line">		;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line">base=<span class="variable">$&#123;bin_abs_path&#125;</span>/..</span><br><span class="line"><span class="built_in">export</span> LANG=en_US.UTF-8</span><br><span class="line"><span class="built_in">export</span> BASE=<span class="variable">$base</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -f <span class="variable">$base</span>/bin/adapter.pid ] ; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="string">&quot;found adapter.pid , Please run stop.sh first ,then startup.sh&quot;</span> 2&gt;&amp;2</span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="variable">$base</span>/logs ] ; <span class="keyword">then</span></span><br><span class="line">	<span class="built_in">mkdir</span> -p <span class="variable">$base</span>/logs</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## set java path</span></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$JAVA</span>&quot;</span> ] ; <span class="keyword">then</span></span><br><span class="line">  JAVA=$(<span class="built_in">which</span> java)</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">ALIBABA_JAVA=<span class="string">&quot;/usr/alibaba/java/bin/java&quot;</span></span><br><span class="line">TAOBAO_JAVA=<span class="string">&quot;/opt/taobao/java/bin/java&quot;</span></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">&quot;<span class="variable">$JAVA</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">if</span> [ -f <span class="variable">$ALIBABA_JAVA</span> ] ; <span class="keyword">then</span></span><br><span class="line">  	JAVA=<span class="variable">$ALIBABA_JAVA</span></span><br><span class="line">  <span class="keyword">elif</span> [ -f <span class="variable">$TAOBAO_JAVA</span> ] ; <span class="keyword">then</span></span><br><span class="line">  	JAVA=<span class="variable">$TAOBAO_JAVA</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  	<span class="built_in">echo</span> <span class="string">&quot;Cannot find a Java JDK. Please set either set JAVA or put java (&gt;=1.5) in your PATH.&quot;</span> 2&gt;&amp;2</span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$#</span>&quot;</span></span><br><span class="line"><span class="keyword">in</span></span><br><span class="line">0 )</span><br><span class="line">  ;;</span><br><span class="line">2 )</span><br><span class="line">  <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$1</span>&quot;</span> = <span class="string">&quot;debug&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    DEBUG_PORT=<span class="variable">$2</span></span><br><span class="line">    DEBUG_SUSPEND=<span class="string">&quot;n&quot;</span></span><br><span class="line">    JAVA_DEBUG_OPT=<span class="string">&quot;-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=<span class="variable">$DEBUG_PORT</span>,server=y,suspend=<span class="variable">$DEBUG_SUSPEND</span>&quot;</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  ;;</span><br><span class="line">* )</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;THE PARAMETERS MUST BE TWO OR LESS.PLEASE CHECK AGAIN.&quot;</span></span><br><span class="line">  <span class="built_in">exit</span>;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line">JavaVersion=`<span class="variable">$JAVA</span> -version 2&gt;&amp;1 |awk <span class="string">&#x27;NR==1&#123; gsub(/&quot;/,&quot;&quot;); print $3 &#125;&#x27;</span> | awk  -F <span class="string">&#x27;.&#x27;</span> <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>`</span><br><span class="line">str=`file -L <span class="variable">$JAVA</span> | grep 64-bit`</span><br><span class="line"></span><br><span class="line">JAVA_OPTS=<span class="string">&quot;<span class="variable">$JAVA_OPTS</span> -Xss1m -XX:-UseBiasedLocking -XX:-OmitStackTraceInFastThrow -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=<span class="variable">$base</span>/logs&quot;</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$JavaVersion</span> -ge 11 ] ; <span class="keyword">then</span></span><br><span class="line">  <span class="comment">#JAVA_OPTS=&quot;$JAVA_OPTS -Xlog:gc*:$base_log/gc.log:time &quot;</span></span><br><span class="line">  JAVA_OPTS=<span class="string">&quot;<span class="variable">$JAVA_OPTS</span>&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="comment">#JAVA_OPTS=&quot;$JAVA_OPTS -Xloggc:$base/logs/canal/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCApplicationStoppedTime&quot;   -XX:+UseFastAccessorMethods -XX:+PrintAdaptiveSizePolicy -XX:+PrintTenuringDistribution</span></span><br><span class="line">  JAVA_OPTS=<span class="string">&quot;<span class="variable">$JAVA_OPTS</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$str</span>&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$JavaVersion</span> -ge 11 ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="comment"># For G1</span></span><br><span class="line">    JAVA_OPTS=<span class="string">&quot;-server -Xms2g -Xmx3g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseGCOverheadLimit <span class="variable">$JAVA_OPTS</span>&quot;</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">	  JAVA_OPTS=<span class="string">&quot;-server -Xms2g -Xmx3g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseGCOverheadLimit <span class="variable">$JAVA_OPTS</span>&quot;</span></span><br><span class="line">	<span class="keyword">fi</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	JAVA_OPTS=<span class="string">&quot;-server -Xms2g -Xmx3g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseGCOverheadLimit <span class="variable">$JAVA_OPTS</span>&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">JAVA_OPTS=<span class="string">&quot; <span class="variable">$JAVA_OPTS</span> -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Dfile.encoding=UTF-8&quot;</span></span><br><span class="line">ADAPTER_OPTS=<span class="string">&quot;-DappName=canal-adapter&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$base</span>/lib/*;</span><br><span class="line">    <span class="keyword">do</span> CLASSPATH=<span class="variable">$i</span>:<span class="string">&quot;<span class="variable">$CLASSPATH</span>&quot;</span>;</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">CLASSPATH=<span class="string">&quot;<span class="variable">$base</span>/conf:<span class="variable">$CLASSPATH</span>&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;cd to <span class="variable">$bin_abs_path</span> for workaround relative path&quot;</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$bin_abs_path</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> CLASSPATH :<span class="variable">$CLASSPATH</span></span><br><span class="line"><span class="variable">$JAVA</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$JAVA_DEBUG_OPT</span> <span class="variable">$ADAPTER_OPTS</span> -classpath .:<span class="variable">$CLASSPATH</span> com.alibaba.otter.canal.adapter.launcher.CanalAdapterApplication 1&gt;&gt;/dev/null 2&gt;&amp;1 &amp;</span><br><span class="line"><span class="built_in">echo</span> $! &gt; <span class="variable">$base</span>/bin/adapter.pid</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;cd to <span class="variable">$current_path</span> for continue&quot;</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$current_path</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>.&#x2F;startup.sh</p>
+<p>启动成功<strong>log</strong></p>
+<p>2024-11-15 16:43:42.033 [main] INFO  c.a.o.canal.adapter.launcher.loader.CanalAdapterLoader - Start adapter for canal-client mq topic: example-g1 succeed<br>2024-11-15 16:43:42.034 [main] INFO  c.a.o.canal.adapter.launcher.loader.CanalAdapterService - ## the canal client adapters are running now ……<br>2024-11-15 16:43:42.035 [Thread-3] INFO  c.a.otter.canal.adapter.launcher.loader.AdapterProcessor - &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&gt; Start to connect destination: example &lt;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>2024-11-15 16:43:42.047 [main] INFO  c.a.otter.canal.adapter.launcher.CanalAdapterApplication - Started CanalAdapterApplication in 1.721 seconds (JVM running for 2.038)<br>2024-11-15 16:43:42.109 [Thread-3] INFO  c.a.otter.canal.adapter.launcher.loader.AdapterProcessor - &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&gt; Subscribe destination: example succeed &lt;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<h1 id="插入原sql则可以看到-canal的数据库也插入"><a href="#插入原sql则可以看到-canal的数据库也插入" class="headerlink" title="插入原sql则可以看到 canal的数据库也插入"></a>插入原sql则可以看到 canal的数据库也插入</h1><p>在主库test数据库下的user表中插入数据，查看canal所在数据库test下的user表中是否同步。</p>
+<p><strong>Canal 依赖主键或唯一键来确定同步数据</strong><br>如果有新增唯一键，则也需要bak到备份的数据库中才能正确备份</p>
+<!--
+
+ss -tuln
+
+https://www.cnblogs.com/cndarren/p/16318728.html
+
+-->
+
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mysql/">mysql</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/canal/">canal</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/19/Python%E8%82%A1%E7%A5%A8%E7%88%AC%E8%99%AB/"
+                                   title="Python股票爬虫"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Python股票爬虫</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/14/NET-MemoryPack/"
+                                   title=".NET MemoryPack"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">.NET MemoryPack</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

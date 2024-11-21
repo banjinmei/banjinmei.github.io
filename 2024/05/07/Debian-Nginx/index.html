@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Aug 29 2024 22:30:26 GMT+0800">2024-08-29 22:30:26</span>
+                <span class="datetime" data-updated="Tue Nov 19 2024 23:18:39 GMT+0800">2024-11-19 23:18:39</span>
             </span>
         
 
@@ -305,6 +305,17 @@ TCP:4000
 <p>sudo apt-get purge nginx nginx-common<br>最后，你可以运行以下命令来清除无用的包和依赖：</p>
 <p>sudo apt-get autoremove<br>确保在执行这些步骤之前，你已经停止了nginx服务：</p>
 <p>sudo systemctl stop nginx<br>如果nginx是通过其他方式安装的，比如编译安装，那么你需要手动删除nginx或者按照其安装方式来卸载。</p>
+<h1 id="常用的Nginx管理工具："><a href="#常用的Nginx管理工具：" class="headerlink" title="常用的Nginx管理工具："></a>常用的Nginx管理工具：</h1><ol>
+<li>Nginx UI<br>项目地址: GitHub - Nginx UI<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/0xJacky/nginx-ui" >https://github.com/0xJacky/nginx-ui<i class="fas fa-external-link-alt"></i></a><br>主要特点:</li>
+</ol>
+<p>简化配置: 通过图形化界面简化Nginx的配置过程。<br>实时监控: 显示Nginx服务器的关键指标，如连接数、请求处理时间等。<br>易于扩展: 支持插件系统，用户可以根据需求安装额外的功能模块。<br>高效管理: 集中管理多个Nginx实例。<br>安全性: 提供多种认证机制，确保数据的安全传输。<br>兼容性: 支持Docker等容器化平台。</p>
+<p>bash &lt;(curl -L -s <a class="link"   target="_blank" rel="noopener" href="https://raw.githubusercontent.com/0xJacky/nginx-ui/master/install.sh" >https://raw.githubusercontent.com/0xJacky/nginx-ui/master/install.sh<i class="fas fa-external-link-alt"></i></a>) install</p>
+<p>systemctl start nginx-ui  systemctl stop nginx-ui</p>
+<ol start="2">
+<li>Nginx Proxy Manager<br>项目地址: GitHub - Nginx Proxy Manager<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/NginxProxyManager/nginx-proxy-manager" >https://github.com/NginxProxyManager/nginx-proxy-manager<i class="fas fa-external-link-alt"></i></a><br>官方网站: Nginx Proxy Manager</li>
+</ol>
+<p>主要特点:</p>
+<p>美观和安全的管理界面: 提供直观的用户界面，方便管理和配置。<br>轻松创建转发和重定向: 支持自定义SSL证书。<br>高级Nginx配置: 提供高级配置选项。<br>用户管理权限和审计日志: 支持多用户管理和日志记录。<br>Docker支持: 提供预构建的Docker镜像，方便部署</p>
 
                 </div>
                 
