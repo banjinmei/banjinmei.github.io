@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            redis sentinel cluster |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        redis sentinel cluster
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-22 22:18:29</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Fri Nov 22 2024 22:37:47 GMT+0800">2024-11-22 22:37:47</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/redis/">redis</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p> Debian 服务器上部署分布式 Redis 可以实现高可用性或负载均衡，具体可以选择以下两种方案之一：</p>
+<p>主从复制 (Master-Slave Replication)<br>主从复制用于数据冗余备份和读写分离，但并不提供自动故障切换功能。</p>
+<h1 id="Redis-Sentinel-哨兵模式"><a href="#Redis-Sentinel-哨兵模式" class="headerlink" title="Redis Sentinel (哨兵模式)"></a>Redis Sentinel (哨兵模式)</h1><p>Redis Sentinel 在主从复制的基础上增加了自动故障切换功能，用于实现高可用性。</p>
+<h1 id="Redis-Cluster-集群模式"><a href="#Redis-Cluster-集群模式" class="headerlink" title="Redis Cluster (集群模式)"></a>Redis Cluster (集群模式)</h1><p>Redis Cluster 是一种分布式部署方式，支持数据分片和高可用性，适用于需要扩展性的场景。</p>
+<h1 id="Redis-Sentinel-部署架构"><a href="#Redis-Sentinel-部署架构" class="headerlink" title="Redis Sentinel 部署架构"></a>Redis Sentinel 部署架构</h1><p>两台服务器：<br>主 Redis 服务器（假设 IP：192.168.1.101）<br>从 Redis 服务器（假设 IP：192.168.1.102）<br>Sentinel 哨兵进程：<br>每台服务器运行一个 Sentinel 进程，用于监控和故障切换。</p>
+<h2 id="步骤-1：安装-Redis"><a href="#步骤-1：安装-Redis" class="headerlink" title="步骤 1：安装 Redis"></a>步骤 1：安装 Redis</h2><p>在两台服务器上分别安装 Redis：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install redis-server</span><br></pre></td></tr></table></figure>
+<p>验证 Redis 版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server --version</span><br></pre></td></tr></table></figure>
+<h2 id="步骤-2：配置-Redis-主从复制"><a href="#步骤-2：配置-Redis-主从复制" class="headerlink" title="步骤 2：配置 Redis 主从复制"></a>步骤 2：配置 Redis 主从复制</h2><p>在主服务器 (192.168.1.101) 上<br>编辑 Redis 配置文件 &#x2F;etc&#x2F;redis&#x2F;redis.conf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0           <span class="comment"># 允许外部访问</span></span><br><span class="line">protected-mode no      <span class="comment"># 关闭保护模式（测试环境使用）</span></span><br><span class="line">appendonly <span class="built_in">yes</span>         <span class="comment"># 开启持久化</span></span><br></pre></td></tr></table></figure>
+<p>启动 Redis 服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart redis</span><br></pre></td></tr></table></figure>
+<p>在从服务器 (192.168.1.102) 上<br>编辑 Redis 配置文件 &#x2F;etc&#x2F;redis&#x2F;redis.conf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0</span><br><span class="line">protected-mode no</span><br><span class="line">appendonly <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置为主服务器的从节点</span></span><br><span class="line">replicaof 192.168.1.101 6379</span><br></pre></td></tr></table></figure>
+<p>启动 Redis 服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart redis</span><br></pre></td></tr></table></figure>
+
+<p>验证主从复制<br>在主服务器上设置一个测试键：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> mykey <span class="string">&quot;hello_redis&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在从服务器上读取：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">get mykey</span><br><span class="line"><span class="comment"># 返回 &quot;hello_redis&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="步骤-3：配置-Redis-Sentinel"><a href="#步骤-3：配置-Redis-Sentinel" class="headerlink" title="步骤 3：配置 Redis Sentinel"></a>步骤 3：配置 Redis Sentinel</h2><p>在两台服务器上配置 Redis Sentinel。Redis 自带 Sentinel 二进制文件，不需要额外安装。</p>
+<p>配置主服务器的 Sentinel<br>编辑 &#x2F;etc&#x2F;redis&#x2F;sentinel.conf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0                        <span class="comment"># 允许外部访问</span></span><br><span class="line">protected-mode no                   <span class="comment"># 关闭保护模式（测试环境使用）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 监控主节点，设置 quorum 为 2</span></span><br><span class="line">sentinel monitor mymaster 192.168.1.101 6379 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果主节点在 5 秒内无响应，则认为其失效</span></span><br><span class="line">sentinel down-after-milliseconds mymaster 5000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置故障切换的超时时间</span></span><br><span class="line">sentinel failover-timeout mymaster 10000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果主节点有密码，需添加以下配置</span></span><br><span class="line"><span class="comment"># sentinel auth-pass mymaster &lt;password&gt;</span></span><br></pre></td></tr></table></figure>
+<p>配置从服务器的 Sentinel<br>在从服务器上，配置 &#x2F;etc&#x2F;redis&#x2F;sentinel.conf，内容与主服务器一致。</p>
+<h2 id="步骤-4：启动-Redis-Sentinel"><a href="#步骤-4：启动-Redis-Sentinel" class="headerlink" title="步骤 4：启动 Redis Sentinel"></a>步骤 4：启动 Redis Sentinel</h2><p>在两台服务器上启动 Sentinel：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /etc/redis/sentinel.conf --sentinel</span><br></pre></td></tr></table></figure>
+<p>检查是否启动成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep redis</span><br></pre></td></tr></table></figure>
+<p>应该能看到 Redis Sentinel 进程运行。</p>
+<h2 id="步骤-5：测试高可用性"><a href="#步骤-5：测试高可用性" class="headerlink" title="步骤 5：测试高可用性"></a>步骤 5：测试高可用性</h2><p>模拟主节点故障<br>在主服务器上停止 Redis 服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop redis</span><br></pre></td></tr></table></figure>
+<p>Sentinel 检测到主节点不可用后，会自动将从节点（192.168.1.102）提升为主节点。</p>
+<p>验证故障切换<br>在 Sentinel 中查看新的主节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 26379</span><br><span class="line">SENTINEL get-master-addr-by-name mymaster</span><br></pre></td></tr></table></figure>
+<p>应返回从节点的 IP 和端口（192.168.1.102:6379）。</p>
+<p>恢复主节点<br>启动主节点服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start redis</span><br></pre></td></tr></table></figure>
+<p>主节点会自动成为新的从节点，重新加入集群。</p>
+<p>附加：常用命令<br>查看 Sentinel 监控的所有节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 26379</span><br><span class="line">SENTINEL masters</span><br></pre></td></tr></table></figure>
+<p>查看特定主节点的所有从节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 26379</span><br><span class="line">SENTINEL slaves mymaster</span><br></pre></td></tr></table></figure>
+<p>手动触发故障切换：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 26379</span><br><span class="line">SENTINEL failover mymaster</span><br></pre></td></tr></table></figure>
+<p>部署总结<br>Redis Sentinel 实现了主从复制的监控和自动故障切换，其核心是：</p>
+<p>主节点负责写操作，从节点提供读操作。<br>Sentinel 检测主节点是否不可用，并自动将从节点提升为主节点。<br>整个系统实现了高可用性，无需人工干预。</p>
+<p><strong>三台服务器</strong></p>
+<p>假设有三台服务器：</p>
+<p>主节点（Master）：192.168.1.101<br>从节点1（Replica1）：192.168.1.102<br>从节点2（Replica2）：192.168.1.103<br>每台服务器同时运行 Redis 和 Sentinel。</p>
+<h2 id="1-安装-Redis"><a href="#1-安装-Redis" class="headerlink" title="1. 安装 Redis"></a>1. 安装 Redis</h2><p>在所有服务器上安装 Redis：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install redis-server</span><br></pre></td></tr></table></figure>
+<p>验证 Redis 安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server --version</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置主从复制"><a href="#2-配置主从复制" class="headerlink" title="2. 配置主从复制"></a>2. 配置主从复制</h2><p>主节点配置（192.168.1.101）<br>编辑 &#x2F;etc&#x2F;redis&#x2F;redis.conf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0</span><br><span class="line">protected-mode no</span><br><span class="line">appendonly <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+<p>启动 Redis 主节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart redis</span><br></pre></td></tr></table></figure>
+<p>从节点配置（192.168.1.102 和 192.168.1.103）<br>编辑 &#x2F;etc&#x2F;redis&#x2F;redis.conf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0</span><br><span class="line">protected-mode no</span><br><span class="line">appendonly <span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置为从节点，指向主节点 IP 和端口</span></span><br><span class="line">replicaof 192.168.1.101 6379</span><br></pre></td></tr></table></figure>
+
+<p>启动 Redis 从节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart redis</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>验证主从同步<br>在主节点上插入数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">SET test_key <span class="string">&quot;hello_redis&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在从节点验证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line">GET test_key</span><br><span class="line"><span class="comment"># 应返回 &quot;hello_redis&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-配置-Sentinel"><a href="#3-配置-Sentinel" class="headerlink" title="3. 配置 Sentinel"></a>3. 配置 Sentinel</h2><p>配置文件路径<br>默认 Sentinel 配置文件路径为 &#x2F;etc&#x2F;redis&#x2F;sentinel.conf。</p>
+<p>编辑 Sentinel 配置文件<br>在所有服务器（192.168.1.101、192.168.1.102、192.168.1.103）上，编辑 &#x2F;etc&#x2F;redis&#x2F;sentinel.conf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0</span><br><span class="line">protected-mode no</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义监控的主节点名称和地址</span></span><br><span class="line">sentinel monitor mymaster 192.168.1.101 6379 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置检测主节点失败的时间（毫秒）</span></span><br><span class="line">sentinel down-after-milliseconds mymaster 5000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置故障转移完成的超时时间（毫秒）</span></span><br><span class="line">sentinel failover-timeout mymaster 10000</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果启用了密码认证，请设置主节点密码</span></span><br><span class="line"><span class="comment"># sentinel auth-pass mymaster &lt;的密码&gt;</span></span><br></pre></td></tr></table></figure>
+<p>启动 Sentinel<br>在每台服务器上分别启动 Sentinel：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server /etc/redis/sentinel.conf --sentinel</span><br></pre></td></tr></table></figure>
+<h2 id="4-验证-Sentinel"><a href="#4-验证-Sentinel" class="headerlink" title="4. 验证 Sentinel"></a>4. 验证 Sentinel</h2><p>查看 Sentinel 状态<br>在任意 Sentinel 节点执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 26379</span><br><span class="line">SENTINEL masters</span><br></pre></td></tr></table></figure>
+<p>输出应显示主节点的信息，例如：</p>
+<p>name: mymaster, status: ok, slaves: 2</p>
+<p>模拟故障转移<br>手动停止主节点服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop redis</span><br></pre></td></tr></table></figure>
+<p>Sentinel 将检测主节点不可用，并自动提升从节点为主节点。<br>验证新的主节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -p 26379</span><br><span class="line">SENTINEL get-master-addr-by-name mymaster</span><br></pre></td></tr></table></figure>
+<p>新主节点的 IP 和端口将被返回。</p>
+<h3 id="5-高可用性测试"><a href="#5-高可用性测试" class="headerlink" title="5. 高可用性测试"></a>5. 高可用性测试</h3><p>在新主节点上插入数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h &lt;新主节点IP&gt;</span><br><span class="line">SET test_key2 <span class="string">&quot;new_data&quot;</span></span><br></pre></td></tr></table></figure>
+<p>验证数据是否同步到从节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h &lt;从节点IP&gt;</span><br><span class="line">GET test_key2</span><br></pre></td></tr></table></figure>
+<p>总结<br>通过 Redis Sentinel，可以实现：</p>
+<p>自动故障检测：当主节点不可用时，Sentinel 会自动检测并进行切换。<br>自动主从切换：从节点自动提升为主节点，保障服务持续可用。<br>无需人工干预：服务的高可用性大大提高。<br>如需进一步调整配置（如增加节点或优化参数），可根据具体业务需求进行调整。</p>
+<h1 id="Redis-Cluster"><a href="#Redis-Cluster" class="headerlink" title="Redis Cluster"></a>Redis Cluster</h1><h2 id="步骤一：安装Redis"><a href="#步骤一：安装Redis" class="headerlink" title="步骤一：安装Redis"></a>步骤一：安装Redis</h2><p>在每台服务器上安装Redis。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install redis-server</span><br></pre></td></tr></table></figure>
+<h2 id="步骤二：配置Redis"><a href="#步骤二：配置Redis" class="headerlink" title="步骤二：配置Redis"></a>步骤二：配置Redis</h2><p>备份原始配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/redis/redis.conf /etc/redis/redis.conf.bak</span><br></pre></td></tr></table></figure>
+<p><strong>编辑Redis配置文件：</strong><br>编辑 &#x2F;etc&#x2F;redis&#x2F;redis.conf 文件，进行以下修改：<br>启用集群模式：</p>
+<p>cluster-enabled yes<br><strong>指定集群配置文件：</strong></p>
+<p>cluster-config-file nodes-6379.conf<br><strong>设置节点超时时间：</strong><br>cluster-node-timeout 5000<br><strong>启用AOF持久化（可选，但推荐）：</strong><br>appendonly yes<br><strong>绑定服务器的IP地址：</strong><br>将 bind 127.0.0.1 修改为服务器的实际IP地址，例如：<br>bind 192.168.1.1<br><strong>设置监听端口：</strong><br>默认端口是6379，确保每个节点的端口不同。例如，第一台服务器保持6379，第二台服务器可以设置为6380，第三台服务器可以设置为6381。</p>
+<h2 id="步骤三：启动Redis服务"><a href="#步骤三：启动Redis服务" class="headerlink" title="步骤三：启动Redis服务"></a>步骤三：启动Redis服务</h2><p>在每台服务器上启动Redis服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart redis-server</span><br></pre></td></tr></table></figure>
+<h2 id="步骤四：创建Redis集群"><a href="#步骤四：创建Redis集群" class="headerlink" title="步骤四：创建Redis集群"></a>步骤四：创建Redis集群</h2><p>下载Redis工具：<br>如果你还没有安装Redis的命令行工具，可以从官方GitHub仓库下载最新的Redis版本，解压后找到 redis-trib.rb 脚本。<br>创建集群：<br>使用 redis-cli 工具来创建集群。假设你的三台服务器的IP地址分别为 192.168.1.1、192.168.1.2 和 192.168.1.3，且Redis实例分别监听6379、6380和6381端口，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli --cluster create 192.168.1.1:6379 192.168.1.2:6380 192.168.1.3:6381 --cluster-replicas 1</span><br></pre></td></tr></table></figure>
+<p>这里 –cluster-replicas 1 表示每个主节点有一个副本。</p>
+<h2 id="步骤五：验证集群"><a href="#步骤五：验证集群" class="headerlink" title="步骤五：验证集群"></a>步骤五：验证集群</h2><p>连接到任意一个节点：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 192.168.1.1 -p 6379</span><br></pre></td></tr></table></figure>
+<p>执行基本命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> testkey <span class="string">&quot;Hello Redis Cluster&quot;</span></span><br><span class="line">get testkey</span><br></pre></td></tr></table></figure>
+<p>检查集群状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cluster nodes</span><br></pre></td></tr></table></figure>
+<h2 id="步骤六：监控和维护"><a href="#步骤六：监控和维护" class="headerlink" title="步骤六：监控和维护"></a>步骤六：监控和维护</h2><p>定期检查日志：<br>查看 &#x2F;var&#x2F;log&#x2F;redis&#x2F;redis-server.log 文件中的日志信息，确保没有错误。<br>监控性能：<br>使用 redis-cli 的 info 命令来监控集群的性能和状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 192.168.1.1 -p 6379 info</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Debian-root登录"><a href="#Debian-root登录" class="headerlink" title="Debian root登录"></a>Debian root登录</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;PermitRootLogin yes&#x27;</span> &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># 重启ssh服务，使配置生效</span></span><br><span class="line">sudo systemctl restart ssh</span><br></pre></td></tr></table></figure>
+
+<h1 id="debian-更换源"><a href="#debian-更换源" class="headerlink" title="debian 更换源"></a>debian 更换源</h1><h2 id="1-备份文件"><a href="#1-备份文件" class="headerlink" title="1.  备份文件"></a>1.  备份文件</h2><p>cp &#x2F;etc&#x2F;apt&#x2F;sources.list  &#x2F;etc&#x2F;apt&#x2F;sources.list.bak</p>
+<h2 id="2-更改-sources-list文件内容为："><a href="#2-更改-sources-list文件内容为：" class="headerlink" title="2. 更改 sources.list文件内容为："></a>2. 更改 sources.list文件内容为：</h2><p>(官方源)<br>deb <a class="link"   target="_blank" rel="noopener" href="http://deb.debian.org/debian" >http://deb.debian.org/debian<i class="fas fa-external-link-alt"></i></a> bullseye main contrib non-free<br>deb-src <a class="link"   target="_blank" rel="noopener" href="http://deb.debian.org/debian" >http://deb.debian.org/debian<i class="fas fa-external-link-alt"></i></a> bullseye main contrib non-free</p>
+<h2 id="3-更新"><a href="#3-更新" class="headerlink" title="3. 更新"></a>3. 更新</h2><p>apt-get -y update</p>
+<!--
+https://www.runoob.com/redis/redis-commands.html
+
+
+在Debian系统上安装Redis并设置密码可以按照以下步骤进行：
+
+安装Redis
+更新软件包列表：
+Bash
+
+sudo apt update
+安装Redis服务器：
+Bash
+
+sudo apt install redis-server
+设置Redis密码
+编辑Redis配置文件：
+使用文本编辑器（如nano或vim）打开Redis配置文件。通常这个文件位于/etc/redis/redis.conf。
+Bash
+
+sudo nano /etc/redis/redis.conf
+找到requirepass指令：
+在配置文件中搜索requirepass关键字。默认情况下，这一行可能被注释掉了（前面有#号）。
+设置密码：
+删除#号以取消注释，并设置的密码。例如：
+Conf
+
+requirepass yourStrongPasswordHere
+请确保选择一个强密码来保护的Redis实例。
+保存并退出编辑器：
+如果使用的是nano，可以按Ctrl+X，然后按Y确认保存，最后按Enter退出。
+如果使用的是vim，可以按Esc键，然后输入:wq保存并退出。
+重启Redis服务
+为了使更改生效，需要重启Redis服务：
+
+Bash
+
+sudo systemctl restart redis.service
+验证设置
+可以通过Redis客户端连接到服务器来验证密码是否设置成功：
+
+Bash
+
+redis-cli
+在Redis命令行界面中，尝试执行一个命令，比如GET foo，会看到一个错误消息，提示需要认证。然后使用AUTH命令进行认证：
+
+Bash
+
+AUTH yourStrongPasswordHere
+如果密码正确，应该会收到一个表示成功的回复，之后就可以正常执行其他命令了。
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/redis/">redis</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/22/Jmeter-%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7/"
+                                   title="Jmeter 压测工具"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Jmeter 压测工具</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/21/nginx-keepalived/"
+                                   title="nginx keepalived"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">nginx keepalived</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

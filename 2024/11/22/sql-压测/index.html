@@ -9,7 +9,7 @@
     
     <title>
         
-            hexo githubio |
+            mysql 压测 |
         
         m study log
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        hexo githubio
+                        mysql 压测
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-05-28 03:38:21</span>
+                <span class="datetime">2024-11-22 22:55:35</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Nov 22 2024 00:59:40 GMT+0800">2024-11-22 00:59:40</span>
+                <span class="datetime" data-updated="Fri Nov 22 2024 23:04:57 GMT+0800">2024-11-22 23:04:57</span>
             </span>
         
 
@@ -210,10 +210,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/github/">github</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/hexo/">hexo</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/mysql/">mysql</a></li>
                         
                     
                 </ul>
@@ -237,88 +234,27 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <h1 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h1><p>npm install hexo-cli -g<br>hexo init blog<br>cd blog<br>npm install<br>hexo server</p>
-<h1 id="key配置"><a href="#key配置" class="headerlink" title="key配置"></a>key配置</h1><p>ssh-keygen -t ed25519 -C “<a class="link"   href="mailto:&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x65;&#x2e;&#x63;&#111;&#109;" >&#x65;&#x6d;&#x61;&#x69;&#x6c;&#64;&#x65;&#x2e;&#x63;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>“<br>添加key到github</p>
-<p>err<br><a class="link"   href="mailto:&#103;&#x69;&#116;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;" >&#103;&#x69;&#116;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>: Permission denied (publickey).<br>fatal: Could not read from remote repository.</p>
-<h1 id="配置GitHub仓库"><a href="#配置GitHub仓库" class="headerlink" title="配置GitHub仓库"></a>配置GitHub仓库</h1><p>在GitHub上创建一个新的仓库，其名称应该是 用户名.github.io，其中用户名是你的GitHub用户名。<br> git config –global user.email “<a class="link"   href="mailto:&#120;&#x78;&#64;&#113;&#x71;&#46;&#99;&#x6f;&#x6d;" >&#120;&#x78;&#64;&#113;&#x71;&#46;&#99;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>“<br> git config –global user.name “user”</p>
-<h1 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h1><p>deploy:<br>  type: git<br>  repo: <repository url> # 替换为你的GitHub仓库url<br>  branch: master</p>
-<h1 id="安装hexo-deployer-git插件："><a href="#安装hexo-deployer-git插件：" class="headerlink" title="安装hexo-deployer-git插件："></a>安装hexo-deployer-git插件：</h1><p>npm install hexo-deployer-git –save</p>
-<h1 id="部署到GitHub："><a href="#部署到GitHub：" class="headerlink" title="部署到GitHub："></a>部署到GitHub：</h1><p>hexo clean<br>hexo g #hexo generate<br>hexo d #hexo deploy</p>
-<!-- ​<img    onerror="notfound(this);"    src="https://cdn.jsdelivr.net/gh/qfsysw/resources/v2/20240528.jpg"  >
- -->
+                    <h1 id="mysqlslap"><a href="#mysqlslap" class="headerlink" title="mysqlslap"></a>mysqlslap</h1><p>是 MySQL 自带的一个用于模拟负载和测试数据库性能的命令行工具。它可以帮助开发者或数据库管理员了解在不同操作模式下数据库的表现情况，从而优化数据库配置或查询语句。<br>使用方法</p>
+<h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlslap [options]</span><br></pre></td></tr></table></figure>
 
+<p>常用选项<br>–auto-generate-sql: 自动生成 SQL 测试数据，默认为开启状态。<br>–concurrency&#x3D;thread_count: 指定并发线程数，例如 –concurrency&#x3D;50 表示创建 50 个并发连接。<br>–iterations&#x3D;count: 指定测试迭代次数，即执行多少轮测试。<br>–create-schema&#x3D;schema_name: 创建并使用指定的 schema 进行测试。<br>–query&#x3D;query_file: 使用文件中的 SQL 语句进行测试。<br>–auto-generate-sql-add-auto-increment: 对自动生成的表添加自动增长字段。<br>–auto-generate-sql-load-type&#x3D;type: 指定测试的数据加载类型，可以是 insert, update, delete, select 或 mixed。<br>–number-of-queries&#x3D;value: 当使用 –auto-generate-sql 参数时，设置每个线程执行的查询数量。<br>–engine&#x3D;engine_name: 指定存储引擎，如 InnoDB、MyISAM 等。<br>示例</p>
+<h1 id="基本压力测试："><a href="#基本压力测试：" class="headerlink" title="基本压力测试："></a>基本压力测试：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlslap --concurrency=10 --iterations=3 --auto-generate-sql --engine=InnoDB</span><br></pre></td></tr></table></figure>
+<p>这条命令将启动一个使用 InnoDB 存储引擎的压力测试，使用 10 个并发连接，执行 3 轮测试，并自动生成 SQL 语句。<br>自定义查询的压力测试：<br>如果你有一个包含多个 SQL 语句的文件 test_queries.sql，可以这样使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlslap --concurrency=5 --iterations=2 --query=test_queries.sql</span><br></pre></td></tr></table></figure>
+<p>此命令将使用 5 个并发连接，执行 2 轮测试，使用 test_queries.sql 文件中定义的 SQL 语句。</p>
+<h1 id="混合操作的压力测试："><a href="#混合操作的压力测试：" class="headerlink" title="混合操作的压力测试："></a>混合操作的压力测试：</h1><p>若要测试插入、更新、删除和选择操作的混合负载，可以这样做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlslap --concurrency=20 --iterations=1 --auto-generate-sql --auto-generate-sql-load-type=mixed --number-of-queries=1000</span><br></pre></td></tr></table></figure>
+<p>这将启动一个混合操作的测试，使用 20 个并发连接，执行一次迭代，总共执行 1000 条随机生成的 SQL 语句。</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>在进行压力测试前，请确保备份重要数据，避免测试过程中对生产环境造成影响。<br>测试结果会受到服务器硬件性能、MySQL 配置参数等多种因素的影响，因此测试环境应尽量接近生产环境。<br>分析测试结果时，注意查看错误信息，以便及时发现潜在的问题。</p>
+<p>插入数据<br>执行如下命令实现数据插入，为提高效率这里开启 10 个客户端线程同时插入，总共执行 1 百万次操作：</p>
+<p>mysqlslap -uroot -p 123123.zxcvb –concurrency&#x3D;10 –number-of-queries&#x3D;1000000 –create-schema&#x3D;IMDB–query&#x3D;”INSERT INTO people(name,age) VALUES (uuid(), RAND() * 100)”</p>
+<h1 id="对user表进行-100000-插入测试"><a href="#对user表进行-100000-插入测试" class="headerlink" title="对user表进行 100000 插入测试"></a>对user表进行 100000 插入测试</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_username</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(random.choice(string.ascii_lowercase) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_email</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;<span class="subst">&#123;generate_username()&#125;</span>@example.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;insert_data.sql&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100000</span>):</span><br><span class="line">        username = generate_username()</span><br><span class="line">        email = generate_email()</span><br><span class="line">        f.write(<span class="string">f&quot;INSERT INTO User (username, email) VALUES (&#x27;<span class="subst">&#123;username&#125;</span>&#x27;, &#x27;<span class="subst">&#123;email&#125;</span>&#x27;);\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>python 生成insert_data sql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlslap --concurrency=50 --iterations=1 --create-schema=test_db --query=insert_data.sql</span><br></pre></td></tr></table></figure>
+<p>–concurrency&#x3D;50：使用 50 个并发连接。<br>–iterations&#x3D;1：执行一次迭代。<br>–create-schema&#x3D;test_db：创建并使用 test_db 数据库。<br>–query&#x3D;insert_data.sql：使用 insert_data.sql 文件中的 SQL 语句。</p>
+<!-- https://blog.csdn.net/naisiing/article/details/135677935
+mysql 压测 -->
 
-<h1 id="建立仓库-testhtml"><a href="#建立仓库-testhtml" class="headerlink" title="建立仓库 testhtml"></a>建立仓库 testhtml</h1><p>Settings -&gt; pages</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://xxx.github.io/testhtml/index.html" >https://xxx.github.io/testhtml/index.html<i class="fas fa-external-link-alt"></i></a></p>
-   <!-- 
-err 提交问题 
-
-
-fatal: unable to access 'https://github.XX.github.io.git/': OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 0
-
- git config --global http.sslVerify "false"
-
-
-
-err提交问题 
-
-  (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
-remote:        https://github.com/qfsysw/qfsysw.github.io/security/secret-scanning/unblock-secret/2hHiwZUqlhqb19DH43f0VUKQbY0
-remote:
-remote:
-remote:
-To https://github.com/qfsysw/qfsysw.github.io.git
- ! [remote rejected] HEAD -> master (push declined due to repository rule violations)
-error: failed to push some refs to 'https://github.com/qfsysw/qfsysw.github.io.git'
-remote =>>>> url
-or 
-settings ==> security_analysis ==> Secret scanning =>DIS
-
-
-
-安装 hexo-generator-search
-$ npm install hexo-generator-search --save
-
-配置
-在_config.yml中添加
-
-search:
-  path: search.xml
-  field: post
-
-   秃了也弱了
-   -
-    name: github
-    icon: github
-    path: https://github.com/leedom92/hexo-theme-leedom
-    target: _blank
-  -
-    name: email
-    icon: envelope
-    path: 
-  -
-    name: facebook
-    icon: facebooksquare
-    path:
-  -
-    name: twitter
-    icon: twitter
-    path:
-  -
-    name: wechat
-    icon: wechat
-    path:
-  -
-    name: weibo
-    icon: weibo
-    path:
-  -
-    # rss需安装 hexo-generator-feed 插件
-    # 具体参照https://github.com/hexojs/hexo-generator-feed
-    name: rss
-    icon: rss
-    path: /atom.xml
-    target: _blank -->
                 </div>
                 
 
@@ -328,11 +264,7 @@ search:
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/github/">github</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/hexo/">hexo</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/mysql/">mysql</a>
                                     </li>
                                 
                             </ul>
@@ -348,31 +280,15 @@ search:
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/05/29/NET-RocketMQ/"
-                                   title=".NET RocketMQ"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">.NET RocketMQ</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/05/26/HarmonyOS-Socket/"
-                                   title="HarmonyOS socket websocket"
+                                   href="/2024/11/22/Jmeter-%E5%8E%8B%E6%B5%8B%E5%B7%A5%E5%85%B7/"
+                                   title="Jmeter 压测工具"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">HarmonyOS socket websocket</span>
+                                        <span class="post-nav-title-item text-ellipsis">Jmeter 压测工具</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

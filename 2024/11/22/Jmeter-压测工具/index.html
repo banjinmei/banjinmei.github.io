@@ -9,6 +9,8 @@
     
     <title>
         
+            Jmeter 压测工具 |
+        
         m study log
     </title>
     
@@ -56,7 +58,7 @@
     
 
     <!-- page content -->
-    <div class="page-main-content border-box is-home">
+    <div class="page-main-content border-box">
         <div class="page-main-content-top">
             
 <header class="header-wrapper">
@@ -147,48 +149,75 @@
             <div class="main-content border-box">
                 
 
-                    <div class="home-content-container fade-in-down-animation">
-    
-    <ul class="home-post-list border-box">
-        
-            <li class="home-post-item">
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
 
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Jmeter 压测工具
+                    </div>
                 
 
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/12/debian-docker-reids/">
-                            Debian Docker Redis 
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
+                
+                    <div class="post-header border-box">
                         
-                            Debian安装docker
-1.使用官方脚本自动安装docker安装命令如下：
-12curl -fsSL https://get.docker.com -o get-docker.shsudo sh get-docker.sh
-如果安装提示
--ba...
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
                         
-                    </div>
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
 
-                    
-
-<div class="post-meta-info-container border-box home">
+<div class="post-meta-info-container border-box post">
     <div class="post-meta-info border-box">
         
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Nov 14 2024 00:34:44 GMT+0800"
-                >2024-11-14 00:34:44</span>
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-22 22:53:27</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Fri Nov 22 2024 22:54:54 GMT+0800">2024-11-22 22:54:54</span>
             </span>
         
 
         
-
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/jmeter/">jmeter</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/jvav/">jvav</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -198,369 +227,131 @@
     </div>
 
     
-        <a class="home-read-more" href="/2024/04/12/debian-docker-reids/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="JMeter"><a href="#JMeter" class="headerlink" title="JMeter"></a>JMeter</h1><p>下载地址： Apache JMeter<br><a class="link"   target="_blank" rel="noopener" href="https://jmeter.apache.org/download_jmeter.cgi" >https://jmeter.apache.org/download_jmeter.cgi<i class="fas fa-external-link-alt"></i></a></p>
+<p>选择二进制包下载后解压，双击&#x2F;bin&#x2F;jmeter.bat<br>（依赖java环境）</p>
+<h1 id="语言设置"><a href="#语言设置" class="headerlink" title="语言设置"></a>语言设置</h1><p>可以在Options&#x2F;Choose Language将语言设置为中文</p>
+<h1 id="创建线程组"><a href="#创建线程组" class="headerlink" title="创建线程组"></a>创建线程组</h1><p>右键Test Plan<br>Test Plan-&gt;添加-&gt;线程（用户）-&gt;线程组</p>
+<p>名称：线程组名称<br>注释（可选设置）<br>线程数：可以用作是用户数，即多少个同时并发向API发送请求<br>Ramp-Up时间：在设定的时间内启动上面设置的线程数<br>循环次数：即一个线程发送设定的请求，可以勾选永远，这样线程就会一直发送API请求</p>
+<h1 id="添加HTTP请求"><a href="#添加HTTP请求" class="headerlink" title="添加HTTP请求"></a>添加HTTP请求</h1><p>右键线程组<br>线程组-&gt;添加-&gt;取样器-&gt;HTTP请求</p>
+<h1 id="设置HTTP请求"><a href="#设置HTTP请求" class="headerlink" title="设置HTTP请求"></a>设置HTTP请求</h1><p>名称：接口名称<br>注释（可选）<br>协议：http&#x2F;https<br>服务器名称或IP：服务器域名或IP地址<br>端口号：web程序监听的端口号<br>请求方法：GET&#x2F;POST&#x2F;…<br>路径：API接口路径</p>
+<h1 id="添加HTTP请求头"><a href="#添加HTTP请求头" class="headerlink" title="添加HTTP请求头"></a>添加HTTP请求头</h1><p>右键线程组<br>线程组-&gt;添加-&gt;配置元件-&gt;HTTP信息头</p>
+<p>设置接口的HTTP请求头</p>
+<h1 id="添加监听器"><a href="#添加监听器" class="headerlink" title="添加监听器"></a>添加监听器</h1><p>查看结果树：可以查看请求响应是否成功，也可以看到响应内存</p>
+<p>线程组-&gt;添加-&gt;监听器-&gt;查看结构树</p>
+<h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><h1 id="线程组-添加-取样器-TCP取样器"><a href="#线程组-添加-取样器-TCP取样器" class="headerlink" title="线程组-&gt;添加-&gt;取样器-&gt; TCP取样器"></a>线程组-&gt;添加-&gt;取样器-&gt; TCP取样器</h1><p>SERVER IP  端口  发送文本</p>
+<h1 id="java环境"><a href="#java环境" class="headerlink" title="java环境"></a>java环境</h1><p>在Windows上安装Java环境通常涉及到两个主要步骤：安装Java运行环境（JRE）或开发工具包（JDK），以及设置环境变量。以下是详细的步骤说明：</p>
+<h2 id="1-下载JDK"><a href="#1-下载JDK" class="headerlink" title="1. 下载JDK"></a>1. 下载JDK</h2><p>首先，需要从Oracle官网或其他可信的来源下载最新的JDK版本。访问Oracle JDK下载页面，<br><a class="link"   target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/#java17" >https://www.oracle.com/java/technologies/downloads/#java17<i class="fas fa-external-link-alt"></i></a></p>
+<p>选择适合的操作系统的版本进行下载。注意，页面上的链接可能会随着新版本的发布而变化。</p>
+<h2 id="2-安装JDK"><a href="#2-安装JDK" class="headerlink" title="2. 安装JDK"></a>2. 安装JDK</h2><p>双击下载好的安装文件开始安装过程。<br>在安装过程中，可以选择自定义安装路径。建议选择一个容易记住的位置，比如 C:\Program Files\Java\jdk-xx（其中 xx 是安装的JDK版本号）。<br>按照提示完成安装。</p>
+<h2 id="3-设置环境变量"><a href="#3-设置环境变量" class="headerlink" title="3. 设置环境变量"></a>3. 设置环境变量</h2><p>为了能够在命令行中任意位置使用 java 和 javac 命令，需要配置系统环境变量。</p>
+<p>打开系统属性：<br>右键点击“此电脑”或“我的电脑”，选择“属性”。<br>点击“高级系统设置”。<br>在“高级”选项卡下，点击“环境变量”。<br>设置JAVA_HOME：<br>在“系统变量”部分，点击“新建”，然后添加变量名为 JAVA_HOME。<br>将变量值设为JDK的安装目录，例如 C:\Program Files\Java\jdk-xx。<br>修改Path变量：<br>找到并选中“系统变量”中的 Path 变量，然后点击“编辑”。<br>添加一个新的条目，其值为 %JAVA_HOME%\bin。这使得系统可以在任何地方识别 java 和 javac 命令。</p>
+<h2 id="4-验证安装"><a href="#4-验证安装" class="headerlink" title="4. 验证安装"></a>4. 验证安装</h2><p>打开命令提示符（CMD），输入以下命令来验证安装是否成功：</p>
+<p>输入 java -version 查看Java版本信息。<br>输入 javac -version 查看Java编译器版本信息。<br>如果能够正确显示版本信息，则表示Java环境已经成功安装并且配置正确。</p>
+<!-- 
+https://blog.csdn.net/weixin_73622063/article/details/143834672
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
-            </li>
-        
-            <li class="home-post-item">
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/jmeter/">jmeter</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/jvav/">jvav</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
 
                 
 
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/12/NET-SignalR-Redis/">
-                            .NET SignalR Redis 
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
+                
+                    <div class="post-nav border-box">
                         
-                            环境 Win10 VS2022 .NET8 Docker  Redis
-前言
-什么是 SignalR？ASP.NET Core SignalR 是一个开放源代码库，可用于简化向应用添加实时 Web 功能。 实时 Web 功能使服务器端代码能够将内容推...
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/22/sql-%E5%8E%8B%E6%B5%8B/"
+                                   title="mysql 压测"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">mysql 压测</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/22/redis-sentinel-cluster/"
+                                   title="redis sentinel cluster"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">redis sentinel cluster</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
                         
                     </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/12/NET-SignalR-Redis/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
                 
 
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/11/NET-Swagger/">
-                            .NET Swagger 
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            开发环境 Win10 VS2022 .NET8.0
-1.从NuGet添加Swagger​
-在解决方案资源管理器中右键单击项目&gt;管理 NuGet 包将包源设置为“nuget.org”确保启用“包括预发行”选项在搜索框中输入“Swashbuckle...
-                        
-                    </div>
-
+                
                     
 
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
 
-        
 
-        
 
-        
 
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/11/NET-Swagger/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
 
                 
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/11/Docker-MySQL/">
-                            Docker MySQL 
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            1.下载docker desktophttps://www.docker.com/products/docker-desktop/
-
-创建容器1docker run 
-创建并启动mysql容器
-
-–name 容器名字 
--d 后台运行容器
--p 映射...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/11/Docker-MySQL/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/03/20/hello-world/">
-                            Hello World Hexo
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            
-
-
-Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo,...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:28 GMT+0800"
-                >2024-08-29 22:30:28</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/03/20/hello-world/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2023/08/03/Cloud/">
-                            cloud act
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            https://cloud.tencent.com/
-https://www.aliyun.com/
-https://activity.huaweicloud.com/ecs.html
-https://www.jdcloud.com/cn/activ...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sat Jun 01 2024 10:36:48 GMT+0800"
-                >2024-06-01 10:36:48</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2023/08/03/Cloud/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2023/02/20/T100/">
-                            100件小事
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            
-
-
-
-    
-        
-                        手牵手逛街
-                        一起看海
-                        一起看雪
-                   ...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Sat Jul 27 2024 23:56:28 GMT+0800"
-                >2024-07-27 23:56:28</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2023/02/20/T100/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-    </ul>
-    
-    <div class="paginator border-box flex-center">
-        <div class="btn-wrap allowed">
-            <a class="jump-btn"
-               href="/page/15/"
-            ><i class="fa-solid fa-chevron-left"></i></a>
+            </div>
         </div>
 
-
-        <div class="page-number-box border-box flex-center">
-            <input class="page-number-input border-box base-color-size"
-                   type="number"
-                   value="16"
-                   min="1"
-                   max="16"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">16</span>
-        </div>
-
-
-        <div class="btn-wrap">
-            <a class="jump-btn"
-               href="/"
-            ><i class="fa-solid fa-chevron-right"></i></a>
-        </div>
+        
     </div>
-
-
-
-
 </div>
 
 
@@ -621,10 +412,28 @@ https://www.jdcloud.com/cn/activ...
 
     <!-- post tools -->
     
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
 
     <!-- side tools -->
     <div class="side-tools">
-        <div class="side-tools-container border-box side-tools-show-handle">
+        <div class="side-tools-container border-box ">
     <ul class="side-tools-list side-tools-show-handle border-box">
         <li class="tools-item tool-font-adjust-plus flex-center">
             <i class="fas fa-search-plus"></i>
@@ -708,7 +517,6 @@ https://www.jdcloud.com/cn/activ...
 
 
 
-
 <!-- common -->
 
 <script src="/js/utils.js"></script>
@@ -737,6 +545,20 @@ https://www.jdcloud.com/cn/activ...
 
 
 <div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
     
 
     <!-- categories page -->
