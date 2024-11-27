@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            packet splicing |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        packet splicing
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-27 22:46:43</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Nov 27 2024 22:51:01 GMT+0800">2024-11-27 22:51:01</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p>：</p>
+<h1 id="模拟粘包的场景"><a href="#模拟粘包的场景" class="headerlink" title="模拟粘包的场景"></a>模拟粘包的场景</h1><p>粘包通常在发送端因数据频繁写入缓冲区并一起发送，或者在接收端没有明确的分包逻辑导致读取不完整的数据包时发生。</p>
+<h1 id="使用固定分隔符或包头-包体"><a href="#使用固定分隔符或包头-包体" class="headerlink" title="使用固定分隔符或包头+包体"></a>使用固定分隔符或包头+包体</h1><p>常见的解决粘包方案是使用分隔符（如 \n 或特殊字符），或采用固定的包头标识数据长度。</p>
+<p>服务端代码</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Net;</span><br><span class="line"><span class="keyword">using</span> System.Net.Sockets;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">TcpServer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        TcpListener listener = <span class="keyword">new</span> TcpListener(IPAddress.Any, <span class="number">5000</span>);</span><br><span class="line">        listener.Start();</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Server started, waiting for connection...&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Socket clientSocket = listener.AcceptSocket();</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Client connected!&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">byte</span>[] buffer = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="built_in">int</span> bytesRead;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ((bytesRead = clientSocket.Receive(buffer)) &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> receivedData = Encoding.UTF8.GetString(buffer, <span class="number">0</span>, bytesRead);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Received: <span class="subst">&#123;receivedData&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 模拟数据未分包的场景</span></span><br><span class="line">            Console.WriteLine(<span class="string">&quot;Processing received data...&quot;</span>);</span><br><span class="line">            <span class="built_in">string</span>[] messages = receivedData.Split(<span class="string">&#x27;|&#x27;</span>);</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">var</span> message <span class="keyword">in</span> messages)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(message))</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;Processed: <span class="subst">&#123;message&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        clientSocket.Close();</span><br><span class="line">        listener.Stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端代码</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Net.Sockets;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">TcpClientDemo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        TcpClient client = <span class="keyword">new</span> TcpClient(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">5000</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Connected to server.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        NetworkStream stream = client.GetStream();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 模拟粘包场景：连续发送多个小数据包</span></span><br><span class="line">        <span class="built_in">string</span>[] messages = &#123; <span class="string">&quot;Message1&quot;</span>, <span class="string">&quot;Message2&quot;</span>, <span class="string">&quot;Message3&quot;</span> &#125;;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> message <span class="keyword">in</span> messages)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> data = message + <span class="string">&quot;|&quot;</span>;</span><br><span class="line">            <span class="built_in">byte</span>[] buffer = Encoding.UTF8.GetBytes(data);</span><br><span class="line">            stream.Write(buffer, <span class="number">0</span>, buffer.Length);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Sent: <span class="subst">&#123;message&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stream.Close();</span><br><span class="line">        client.Close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析代码中的粘包场景<br><strong>客户端</strong><br>模拟粘包通过连续发送数据包（Message1|Message2|Message3|），未等待服务端处理后再发送下一个包。</p>
+<p><strong>服务端</strong><br>接收数据时，数据可能一次性接收到多个数据包，也可能接收到不完整的数据包。通过使用分隔符 | 拆分数据，可以解决粘包问题。</p>
+<p>扩展：更高效的分包方式（包头+包体）<br>数据格式<br>包头：4 字节，表示包体长度。<br>包体：实际数据内容。</p>
+<h1 id="处理粘包问题"><a href="#处理粘包问题" class="headerlink" title="处理粘包问题"></a>处理粘包问题</h1><p>服务端</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> headerSize = <span class="number">4</span>;</span><br><span class="line">    <span class="built_in">byte</span>[] headerBuffer = <span class="keyword">new</span> <span class="built_in">byte</span>[headerSize];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读取包头</span></span><br><span class="line">    <span class="built_in">int</span> headerBytes = clientSocket.Receive(headerBuffer);</span><br><span class="line">    <span class="keyword">if</span> (headerBytes &lt; headerSize) <span class="keyword">break</span>; <span class="comment">// 连接断开</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">int</span> bodyLength = BitConverter.ToInt32(headerBuffer, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">byte</span>[] bodyBuffer = <span class="keyword">new</span> <span class="built_in">byte</span>[bodyLength];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读取包体</span></span><br><span class="line">    <span class="built_in">int</span> bodyBytes = clientSocket.Receive(bodyBuffer);</span><br><span class="line">    <span class="built_in">string</span> message = Encoding.UTF8.GetString(bodyBuffer, <span class="number">0</span>, bodyBytes);</span><br><span class="line"></span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;Received Message: <span class="subst">&#123;message&#125;</span>&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>客户端代码（包头 + 包体）</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Net.Sockets;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">TcpClientDemo</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        TcpClient client = <span class="keyword">new</span> TcpClient(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">5000</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Connected to server.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        NetworkStream stream = client.GetStream();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 模拟发送多条消息</span></span><br><span class="line">        <span class="built_in">string</span>[] messages = &#123; <span class="string">&quot;Hello, Server!&quot;</span>, <span class="string">&quot;This is a test.&quot;</span>, <span class="string">&quot;Goodbye!&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> message <span class="keyword">in</span> messages)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 将消息转为字节数组</span></span><br><span class="line">            <span class="built_in">byte</span>[] bodyBuffer = Encoding.UTF8.GetBytes(message);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 包头：消息长度（4 字节整数）</span></span><br><span class="line">            <span class="built_in">byte</span>[] headerBuffer = BitConverter.GetBytes(bodyBuffer.Length);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 组合包头和包体</span></span><br><span class="line">            <span class="built_in">byte</span>[] packet = <span class="keyword">new</span> <span class="built_in">byte</span>[headerBuffer.Length + bodyBuffer.Length];</span><br><span class="line">            Buffer.BlockCopy(headerBuffer, <span class="number">0</span>, packet, <span class="number">0</span>, headerBuffer.Length);</span><br><span class="line">            Buffer.BlockCopy(bodyBuffer, <span class="number">0</span>, packet, headerBuffer.Length, bodyBuffer.Length);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 发送数据包</span></span><br><span class="line">            stream.Write(packet, <span class="number">0</span>, packet.Length);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Sent: <span class="subst">&#123;message&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stream.Close();</span><br><span class="line">        client.Close();</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Disconnected from server.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>包头</strong><br>使用 BitConverter.GetBytes(int) 将包体长度转换为 4 字节的字节数组。<br>这样，服务端可以根据包头解析出包体的长度，确保不会漏读或多读数据。</p>
+<p><strong>包体</strong><br>实际的消息内容（字符串）被编码为字节数组 bodyBuffer。</p>
+<p>组合包头和包体<br>使用 Buffer.BlockCopy 将包头和包体拼接成一个完整的数据包，按照以下格式发送：</p>
+<p>[包头 (4字节)][包体 (N字节)]<br><strong>发送逻辑</strong><br>调用 stream.Write 将整个数据包发送到服务端。即使多次发送，服务端依然能够正确解析每个数据包的内容。</p>
+<p><strong>运行结果</strong><br>假设服务端按照之前的代码实现分包逻辑（先读包头，再根据长度读包体），运行客户端和服务端后，输出类似以下结果：</p>
+<p>服务端输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Server started, waiting <span class="keyword">for</span> connection...</span><br><span class="line">Client connected!</span><br><span class="line">Received Message: Hello, Server!</span><br><span class="line">Received Message: This is a <span class="built_in">test</span>.</span><br><span class="line">Received Message: Goodbye!</span><br></pre></td></tr></table></figure>
+<p>客户端输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Connected to server.</span><br><span class="line">Sent: Hello, Server!</span><br><span class="line">Sent: This is a <span class="built_in">test</span>.</span><br><span class="line">Sent: Goodbye!</span><br><span class="line">Disconnected from server.</span><br></pre></td></tr></table></figure>
+<p>这种方式可以避免使用分隔符（如 |）时可能产生的冲突问题，常用于传输二进制数据和更复杂的协议通信。</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/11/24/csharp-reflection-delegate/"
+                                   title="csharp reflection delegate"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">csharp reflection delegate</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
