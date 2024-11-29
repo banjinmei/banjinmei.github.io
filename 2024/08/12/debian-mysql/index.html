@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Nov 27 2024 00:27:37 GMT+0800">2024-11-27 00:27:37</span>
+                <span class="datetime" data-updated="Sat Nov 30 2024 03:02:29 GMT+0800">2024-11-30 03:02:29</span>
             </span>
         
 
@@ -317,14 +317,34 @@
 <p>使用 mysqldump 命令备份数据库中的特定表后，可以通过 mysql 命令来恢复这些表的数据。以下是还原命令的基本格式：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p mydatabase &lt; backup.sql</span><br></pre></td></tr></table></figure>
 <p>在这个命令中：</p>
-<p>-u root 指定MySQL的用户名为root。-p 表示接下来会提示你输入该用户的密码。mydatabase 是你要还原数据的目标数据库名。&lt; backup.sql 表示将备份文件 backup.sql 中的内容导入到指定的数据库中。</p>
+<p>-u root 指定MySQL的用户名为root。-p 表示接下来会提示输入该用户的密码。mydatabase 是要还原数据的目标数据库名。&lt; backup.sql 表示将备份文件 backup.sql 中的内容导入到指定的数据库中。</p>
 <p>在执行上述命令前，请确保：</p>
-<p>目标数据库 mydatabase 已经存在。如果不存在，你需要先创建它：</p>
+<p>目标数据库 mydatabase 已经存在。如果不存在，需要先创建它：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE mydatabase;</span><br></pre></td></tr></table></figure>
-<p>你有足够的权限去操作这个数据库。如果你不确定是否有足够的权限，可以联系数据库管理员或者使用具有足够权限的账户。备份文件 backup.sql 的路径是正确的，并且文件是可访问的。</p>
-<p>另外，如果在恢复过程中遇到错误，例如因为表已经存在而无法导入数据，你可以选择先删除这些表再进行恢复，或者在导入之前修改SQL文件，以避免这些冲突。如果你希望覆盖已存在的表，可以在导入前删除它们，或者使用 –force 参数来忽略错误：</p>
+<p>有足够的权限去操作这个数据库。如果不确定是否有足够的权限，可以联系数据库管理员或者使用具有足够权限的账户。备份文件 backup.sql 的路径是正确的，并且文件是可访问的。</p>
+<p>另外，如果在恢复过程中遇到错误，例如因为表已经存在而无法导入数据，可以选择先删除这些表再进行恢复，或者在导入之前修改SQL文件，以避免这些冲突。如果希望覆盖已存在的表，可以在导入前删除它们，或者使用 –force 参数来忽略错误：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p --force mydatabase &lt; backup.sql</span><br></pre></td></tr></table></figure>
 <p>请注意，使用 –force 参数可能会导致数据丢失或损坏，因此请谨慎使用。在进行任何数据操作之前，建议再次确认备份文件的正确性和完整性。</p>
+<h1 id="修改MySQL端口的步骤："><a href="#修改MySQL端口的步骤：" class="headerlink" title="修改MySQL端口的步骤："></a>修改MySQL端口的步骤：</h1><h2 id="停止MySQL服务："><a href="#停止MySQL服务：" class="headerlink" title="停止MySQL服务："></a>停止MySQL服务：</h2><p>首先，需要停止MySQL服务以确保在修改配置文件时不会有冲突。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop mysql</span><br></pre></td></tr></table></figure>
+<h2 id="备份配置文件："><a href="#备份配置文件：" class="headerlink" title="备份配置文件："></a>备份配置文件：</h2><p>在修改配置文件之前，建议备份原始的配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/mysql/my.cnf /etc/mysql/my.cnf.bak</span><br></pre></td></tr></table></figure>
+<h2 id="编辑配置文件："><a href="#编辑配置文件：" class="headerlink" title="编辑配置文件："></a>编辑配置文件：</h2><p>使用文本编辑器打开MySQL的主配置文件my.cnf。这个文件通常位于&#x2F;etc&#x2F;mysql&#x2F;目录下。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
+<p>或者使用其他喜欢的编辑器。</p>
+<h2 id="修改端口："><a href="#修改端口：" class="headerlink" title="修改端口："></a>修改端口：</h2><p>在my.cnf文件中找到[mysqld]部分，并添加或修改port指令，将其设置为想要使用的端口号。例如，如果想将端口修改为3307，可以这样设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">port = 3307</span><br></pre></td></tr></table></figure>
+<p>确保这个端口号没有被其他服务占用。</p>
+<h2 id="保存并退出编辑器："><a href="#保存并退出编辑器：" class="headerlink" title="保存并退出编辑器："></a>保存并退出编辑器：</h2><p>如果使用的是nano，可以按Ctrl + X，然后按Y保存更改，最后按Enter退出。</p>
+<h2 id="重启MySQL服务："><a href="#重启MySQL服务：" class="headerlink" title="重启MySQL服务："></a>重启MySQL服务：</h2><p>修改配置文件后，需要重启MySQL服务以使更改生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mysql</span><br></pre></td></tr></table></figure>
+
+<h2 id="检查端口："><a href="#检查端口：" class="headerlink" title="检查端口："></a>检查端口：</h2><p>使用netstat命令检查MySQL服务是否正在监听新的端口。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netstat -tulnp | grep mysql</span><br></pre></td></tr></table></figure>
+<p>应该能看到MySQL正在监听指定的新端口。</p>
+<h2 id="更新防火墙规则-ufw-："><a href="#更新防火墙规则-ufw-：" class="headerlink" title="更新防火墙规则 ufw ："></a>更新防火墙规则 ufw ：</h2><p>如果的Debian系统使用了防火墙，确保更新防火墙规则以允许流量通过新的MySQL端口。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 3307/tcp</span><br></pre></td></tr></table></figure>
+
 <!--
 
 wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
