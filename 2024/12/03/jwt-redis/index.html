@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="lm">
+    
+    <title>
+        
+            jwt redis |
+        
+        m study log
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"m study log","author":"lm","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               m study log
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        jwt redis
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-12-03 01:20:03</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Dec 03 2024 01:27:14 GMT+0800">2024-12-03 01:27:14</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/jwt/">jwt</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/token/">token</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/redis/">redis</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="Redis-JWT"><a href="#Redis-JWT" class="headerlink" title="Redis JWT"></a>Redis JWT</h1><p>在 .NET 中使用 Redis 来存储 JWT（JSON Web Token）可以通过多种方式实现，<br>例如在用户登录时将生成的 JWT 存储在 Redis 中以便于后续验证和管理。</p>
+<p>实现步骤</p>
+<h1 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h1><p>确保你的项目引入了以下必要的 NuGet 包：</p>
+<p>Microsoft.AspNetCore.Authentication.JwtBearer：用于 JWT 身份验证。<br>StackExchange.Redis：用于与 Redis 通信。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer</span><br><span class="line">dotnet add package StackExchange.Redis</span><br></pre></td></tr></table></figure>
+<h1 id="配置-Redis-客户端"><a href="#配置-Redis-客户端" class="headerlink" title="配置 Redis 客户端"></a>配置 Redis 客户端</h1><p>设置 Redis 的连接和操作。</p>
+<h1 id="生成-JWT"><a href="#生成-JWT" class="headerlink" title="生成 JWT"></a>生成 JWT</h1><p>根据用户信息生成 JWT 并将其存储到 Redis。</p>
+<h1 id="验证-JWT"><a href="#验证-JWT" class="headerlink" title="验证 JWT"></a>验证 JWT</h1><p>在验证阶段从 Redis 检查 token 是否有效。</p>
+<h1 id="实现-Token-的失效机制"><a href="#实现-Token-的失效机制" class="headerlink" title="实现 Token 的失效机制"></a>实现 Token 的失效机制</h1><p>利用 Redis 的 TTL（过期时间）特性来管理 token 的生命周期。</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><h2 id="1-配置-Redis-客户端"><a href="#1-配置-Redis-客户端" class="headerlink" title="1. 配置 Redis 客户端"></a>1. 配置 Redis 客户端</h2><p>在 Program.cs 或 Startup.cs 中配置 Redis 和 JWT 身份验证：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.AspNetCore.Authentication.JwtBearer;</span><br><span class="line"><span class="keyword">using</span> Microsoft.Extensions.DependencyInjection;</span><br><span class="line"><span class="keyword">using</span> Microsoft.IdentityModel.Tokens;</span><br><span class="line"><span class="keyword">using</span> StackExchange.Redis;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> builder = WebApplication.CreateBuilder(args);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Redis 配置</span></span><br><span class="line">builder.Services.AddSingleton&lt;IConnectionMultiplexer&gt;(sp =&gt;</span><br><span class="line">    ConnectionMultiplexer.Connect(<span class="string">&quot;localhost:6379&quot;</span>)); <span class="comment">// 替换为你的 Redis 地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// JWT 配置</span></span><br><span class="line"><span class="keyword">var</span> key = <span class="string">&quot;YourSecretKeyForJwt&quot;</span>; <span class="comment">// 替换为你的密钥</span></span><br><span class="line">builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)</span><br><span class="line">    .AddJwtBearer(options =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        options.TokenValidationParameters = <span class="keyword">new</span> TokenValidationParameters</span><br><span class="line">        &#123;</span><br><span class="line">            ValidateIssuerSigningKey = <span class="literal">true</span>,</span><br><span class="line">            IssuerSigningKey = <span class="keyword">new</span> SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),</span><br><span class="line">            ValidateIssuer = <span class="literal">false</span>,</span><br><span class="line">            ValidateAudience = <span class="literal">false</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">builder.Services.AddAuthorization();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = builder.Build();</span><br><span class="line">app.UseAuthentication();</span><br><span class="line">app.UseAuthorization();</span><br><span class="line"></span><br><span class="line">app.MapControllers();</span><br><span class="line"></span><br><span class="line">app.Run();</span><br></pre></td></tr></table></figure>
+<h2 id="2-生成和存储-JWT"><a href="#2-生成和存储-JWT" class="headerlink" title="2. 生成和存储 JWT"></a>2. 生成和存储 JWT</h2><p>在 Controller 中生成 JWT 并将其存储到 Redis。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.AspNetCore.Mvc;</span><br><span class="line"><span class="keyword">using</span> Microsoft.IdentityModel.Tokens;</span><br><span class="line"><span class="keyword">using</span> StackExchange.Redis;</span><br><span class="line"><span class="keyword">using</span> System.IdentityModel.Tokens.Jwt;</span><br><span class="line"><span class="keyword">using</span> System.Security.Claims;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line">[<span class="meta">ApiController</span>]</span><br><span class="line">[<span class="meta">Route(<span class="string">&quot;api/[controller]&quot;</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">AuthController</span> : <span class="title">ControllerBase</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> IConnectionMultiplexer _redis;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> <span class="built_in">string</span> _jwtKey = <span class="string">&quot;YourSecretKeyForJwt&quot;</span>; <span class="comment">// 替换为你的密钥</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AuthController</span>(<span class="params">IConnectionMultiplexer redis</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _redis = redis;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">HttpPost(<span class="string">&quot;login&quot;</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IActionResult <span class="title">Login</span>(<span class="params"><span class="built_in">string</span> username</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 创建 JWT token</span></span><br><span class="line">        <span class="keyword">var</span> claims = <span class="keyword">new</span>[]</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">new</span> Claim(ClaimTypes.Name, username)</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> key = <span class="keyword">new</span> SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtKey));</span><br><span class="line">        <span class="keyword">var</span> creds = <span class="keyword">new</span> SigningCredentials(key, SecurityAlgorithms.HmacSha256);</span><br><span class="line">        <span class="keyword">var</span> token = <span class="keyword">new</span> JwtSecurityToken(</span><br><span class="line">            claims: claims,</span><br><span class="line">            expires: DateTime.UtcNow.AddHours(<span class="number">1</span>),</span><br><span class="line">            signingCredentials: creds);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> jwt = <span class="keyword">new</span> JwtSecurityTokenHandler().WriteToken(token);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将 token 存储到 Redis</span></span><br><span class="line">        <span class="keyword">var</span> db = _redis.GetDatabase();</span><br><span class="line">        db.StringSet(<span class="string">$&quot;jwt:<span class="subst">&#123;username&#125;</span>&quot;</span>, jwt, TimeSpan.FromHours(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Ok(<span class="keyword">new</span> &#123; token = jwt &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-验证-JWT"><a href="#3-验证-JWT" class="headerlink" title="3. 验证 JWT"></a>3. 验证 JWT</h2><p>在中间件或验证逻辑中从 Redis 检查 JWT 是否有效。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">HttpGet(<span class="string">&quot;validate&quot;</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> IActionResult <span class="title">ValidateToken</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> authHeader = Request.Headers[<span class="string">&quot;Authorization&quot;</span>].ToString();</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrEmpty(authHeader) || !authHeader.StartsWith(<span class="string">&quot;Bearer &quot;</span>))</span><br><span class="line">        <span class="keyword">return</span> Unauthorized();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> token = authHeader.Replace(<span class="string">&quot;Bearer &quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> username = User.Identity?.Name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> db = _redis.GetDatabase();</span><br><span class="line">    <span class="keyword">var</span> storedToken = db.StringGet(<span class="string">$&quot;jwt:<span class="subst">&#123;username&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (storedToken.IsNullOrEmpty || storedToken != token)</span><br><span class="line">        <span class="keyword">return</span> Unauthorized();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Ok(<span class="string">&quot;Token is valid&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-Token-失效机制"><a href="#4-Token-失效机制" class="headerlink" title="4. Token 失效机制"></a>4. Token 失效机制</h2><p>利用 Redis 的 TTL 设置 token 的自动过期：</p>
+<p>在存储 token 时设置过期时间。<br>用户注销时可以手动删除 Redis 中的 token。<br>注销示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">HttpPost(<span class="string">&quot;logout&quot;</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> IActionResult <span class="title">Logout</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> username = User.Identity?.Name;</span><br><span class="line">    <span class="keyword">var</span> db = _redis.GetDatabase();</span><br><span class="line">    db.KeyDelete(<span class="string">$&quot;jwt:<span class="subst">&#123;username&#125;</span>&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> Ok(<span class="string">&quot;Logged out&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过 Redis 存储 JWT，可以实现以下功能：</p>
+<p>集中管理 JWT：便于实时撤销或查询。<br>自动过期：Redis 自带 TTL，可以简化 token 的管理。<br>扩展性好：适用于分布式系统。<br>根据实际需求，还可以扩展功能，例如黑名单机制或支持多设备登录等。</p>
+<h1 id="debian-redis-setup"><a href="#debian-redis-setup" class="headerlink" title="debian redis setup"></a>debian redis setup</h1><h1 id="1-更新软件包列表"><a href="#1-更新软件包列表" class="headerlink" title="1: 更新软件包列表"></a>1: 更新软件包列表</h1><p>首先，确保的软件包列表是最新的。打开终端并执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<h1 id="2-安装Redis"><a href="#2-安装Redis" class="headerlink" title="2: 安装Redis"></a>2: 安装Redis</h1><p>更新完软件包列表后，可以通过apt包管理器来安装Redis服务器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install redis-server</span><br></pre></td></tr></table></figure>
+
+<p>这将安装Redis及其依赖项，并自动启动Redis服务。</p>
+<h1 id="3-检查Redis状态"><a href="#3-检查Redis状态" class="headerlink" title="3: 检查Redis状态"></a>3: 检查Redis状态</h1><p>安装完成后，可以检查Redis服务是否正在运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status redis-server</span><br></pre></td></tr></table></figure>
+<p>如果服务正在运行，会看到类似“active (running)”的状态信息。</p>
+<h1 id="4-配置Redis"><a href="#4-配置Redis" class="headerlink" title="4: 配置Redis"></a>4: 配置Redis</h1><p>Redis的配置文件位于&#x2F;etc&#x2F;redis&#x2F;redis.conf。可能想要编辑这个文件来更改默认设置，例如绑定地址、端口号、要求密码等。使用文本编辑器打开它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+<p>做出必要的更改后保存文件并退出编辑器。</p>
+<h1 id="5-重启Redis服务"><a href="#5-重启Redis服务" class="headerlink" title="5: 重启Redis服务"></a>5: 重启Redis服务</h1><p>如果对配置文件做了任何修改，记得重启Redis服务以使更改生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart redis-server</span><br></pre></td></tr></table></figure>
+<h1 id="6-设置Redis开机自启"><a href="#6-设置Redis开机自启" class="headerlink" title="6: 设置Redis开机自启"></a>6: 设置Redis开机自启</h1><p>为了确保Redis在系统启动时自动启动，可以使用以下命令启用开机自启：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> redis-server</span><br></pre></td></tr></table></figure>
+<h1 id="7-测试Redis安装"><a href="#7-测试Redis安装" class="headerlink" title="7: 测试Redis安装"></a>7: 测试Redis安装</h1><p>可以通过连接到本地Redis服务器来测试安装是否成功。使用redis-cli命令行工具连接到Redis：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br></pre></td></tr></table></figure>
+<p>一旦进入Redis CLI，可以尝试运行ping命令，如果Redis服务器响应PONG，则说明安装和配置都正常工作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; ping</span><br><span class="line">PONG</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Redis-配置文件"><a href="#Redis-配置文件" class="headerlink" title="Redis 配置文件"></a>Redis 配置文件</h2><p>编辑 Redis 的配置文件（通常是 &#x2F;etc&#x2F;redis&#x2F;redis.conf）。</p>
+<p>确保允许远程连接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>（默认仅允许本地连接，127.0.0.1）。<br>确保未设置 protected-mode 为 yes，或者明确配置授权规则：</p>
+<p>protected-mode no<br>重启 Redis 服务以应用更改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart redis</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="err"><a href="#err" class="headerlink" title="err"></a>err</h1><h2 id="500-Undocumented"><a href="#500-Undocumented" class="headerlink" title="500 Undocumented"></a>500 Undocumented</h2><p>Error: Internal Server Error<br>Response body<br>System.InvalidOperationException: Multiple constructors accepting all given argument types have been found in type ‘userApiController’. There should only be one applicable constructor.<br>   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.TryFindMatchingConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfo&amp; matchingConstructor, Nullable<code>1[]&amp; parameterMap)    at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.FindApplicableConstructor(Type instanceType, Type[] argumentTypes, ConstructorInfo&amp; matchingConstructor, Nullable</code>1[]&amp; matchingParameterMap)<br>   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.CreateFactoryInternal(Type instanceType, Type[] argumentTypes, ParameterExpression&amp; provider, ParameterExpression&amp; argumentArray, Expression&amp; factoryExpressionBody)</p>
+<p>问题是由于依赖注入系统在实例化 userApiController 时发现有多个构造函数可以匹配传递的参数，因此无法确定使用哪个构造函数。这种情况会导致 System.InvalidOperationException 异常。多个改成一个。 </p>
+<h2 id="System-InvalidOperationException-、"><a href="#System-InvalidOperationException-、" class="headerlink" title="System.InvalidOperationException: 、"></a>System.InvalidOperationException: 、</h2><p>Unable to resolve service for type ‘JwtHelper’ while attempting to activate ‘userApiController’.<br>   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)<br>   at lambda_method69(Closure, IServiceProvider, Object[])</p>
+<p>这个错误表明 wtHelper 类型未在依赖注入 (DI) 容器中注册，而 IM.Controllers.userApiController 需要它作为依赖。DI 系统在尝试解析 JwtHelper 时失败，导致 Internal Server Error。</p>
+<p><strong>检查依赖注册</strong><br>确保在 Program.cs 或 Startup.cs 文件中注册了 JwtHelper 服务。如果 JwtHelper 是一个自定义工具类或服务，你需要将它添加到 DI 容器中。</p>
+<p>builder.Services.AddScoped<JwtHelper>();<br>如果 JwtHelper 需要构造函数注入的依赖项，也要确保这些依赖已注册。<br>如果 JwtHelper 是无状态的，考虑使用 AddSingleton。</p>
+<h2 id="StackExchange-Redis-RedisConnectionException"><a href="#StackExchange-Redis-RedisConnectionException" class="headerlink" title="StackExchange.Redis.RedisConnectionException:"></a>StackExchange.Redis.RedisConnectionException:</h2><p>“It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it’s able to connect, use abortConnect&#x3D;false in your connection string or AbortOnConnectFail&#x3D;false; in your code.”</p>
+<p>检查 Redis 的配置文件（通常是 &#x2F;etc&#x2F;redis&#x2F;redis.conf）。<br><strong>确保允许远程连接</strong>：<br>bind 0.0.0.0<br> .Connect(“XXXX:6379,abortConnect&#x3D;false”));</p>
+<p>重启redis</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/jwt/">jwt</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/token/">token</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/redis/">redis</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/12/03/cashrp-opencv/"
+                                   title="cashrp opencv"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">cashrp opencv</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

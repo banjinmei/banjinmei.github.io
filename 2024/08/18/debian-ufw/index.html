@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sun Aug 18 2024 12:47:22 GMT+0800">2024-08-18 12:47:22</span>
+                <span class="datetime" data-updated="Tue Dec 03 2024 01:19:38 GMT+0800">2024-12-03 01:19:38</span>
             </span>
         
 
@@ -254,6 +254,42 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ufw deny http</span><br><span class="line">ufw deny from 221.123.1.1</span><br></pre></td></tr></table></figure>
 <p>删除规则</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按编号删除</span></span><br><span class="line">ufw delete [num]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按实际规则删除</span></span><br><span class="line">ufw delete allow http </span><br><span class="line"><span class="comment"># or </span></span><br><span class="line">ufw delete allow 80</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h1 id="fail2ban"><a href="#fail2ban" class="headerlink" title="fail2ban"></a>fail2ban</h1><p>在 Debian 系统上，可以通过配置 fail2ban 来实现监控 SSH 登录（默认端口为 22），<br>并在密码输错5次时封禁对应的 IP。以下是详细步骤：</p>
+<h2 id="1-安装-fail2ban"><a href="#1-安装-fail2ban" class="headerlink" title="1. 安装 fail2ban"></a>1. 安装 fail2ban</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install fail2ban -y</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置-fail2ban"><a href="#2-配置-fail2ban" class="headerlink" title="2. 配置 fail2ban"></a>2. 配置 fail2ban</h2><p>创建自定义配置文件<br>默认配置文件位于 &#x2F;etc&#x2F;fail2ban&#x2F;jail.conf，但我们不直接修改它，而是创建一个覆盖配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> /etc/fail2ban/jail.conf /etc/fail2ban/jail.local</span><br></pre></td></tr></table></figure>
+<p>编辑 jail.local<br>使用喜欢的文本编辑器打开文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/fail2ban/jail.local</span><br></pre></td></tr></table></figure>
+<p>找到 [sshd] 部分（如果没有，添加），并修改如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[sshd]</span><br><span class="line">enabled = <span class="literal">true</span>          <span class="comment"># 启用此规则</span></span><br><span class="line">port = 22               <span class="comment"># 监控端口</span></span><br><span class="line">filter = sshd           <span class="comment"># 使用默认 sshd 过滤规则</span></span><br><span class="line">logpath = /var/log/auth.log <span class="comment"># SSH 登录的日志文件路径（Debian 默认）</span></span><br><span class="line">bantime = 3600          <span class="comment"># 封禁时间，单位为秒（此处为 1 小时）</span></span><br><span class="line">findtime = 600          <span class="comment"># 计数时间窗口，单位为秒（此处为 10 分钟）</span></span><br><span class="line">maxretry = 5            <span class="comment"># 最大重试次数</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-检查-fail2ban-配置"><a href="#3-检查-fail2ban-配置" class="headerlink" title="3. 检查 fail2ban 配置"></a>3. 检查 fail2ban 配置</h2><p>确保 fail2ban 配置语法正确：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fail2ban-client -t</span><br></pre></td></tr></table></figure>
+<p>如果一切正常，会显示类似 OK 的输出。</p>
+<h2 id="4-启动并启用-fail2ban"><a href="#4-启动并启用-fail2ban" class="headerlink" title="4. 启动并启用 fail2ban"></a>4. 启动并启用 fail2ban</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start fail2ban</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> fail2ban</span><br></pre></td></tr></table></figure>
+<h2 id="5-验证设置是否生效"><a href="#5-验证设置是否生效" class="headerlink" title="5. 验证设置是否生效"></a>5. 验证设置是否生效</h2><p>检查运行状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fail2ban-client status</span><br></pre></td></tr></table></figure>
+<p>输出中应包括 sshd 监控规则。</p>
+<p>查看被封禁的 IP<br>如果触发了规则，可以通过以下命令查看当前被封禁的 IP：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fail2ban-client status sshd</span><br></pre></td></tr></table></figure>
+<p>手动测试<br>从另一个设备或终端尝试多次输入错误的 SSH 密码。<br>观察 IP 是否被封禁。<br>可以通过以下命令解封被封禁的 IP：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fail2ban-client unban IP_ADDRESS</span><br></pre></td></tr></table></figure>
+<h2 id="6-可选优化"><a href="#6-可选优化" class="headerlink" title="6. 可选优化"></a>6. 可选优化</h2><p>修改默认封禁动作<br>fail2ban 默认封禁 IP 是通过修改 iptables 规则实现的。如果需要使用其他封禁机制，可以修改 [sshd] 部分的 action 参数。例如，发送邮件通知等。</p>
+<p>通过以上步骤，的 Debian 系统会监控 22 端口登录尝试，并在密码错误超过 5 次时自动封禁 IP。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bantime = -1         <span class="comment"># 设置永久封禁 </span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
 <!-- 
  -->
 <!--https://blog.51cto.com/u_14249042/10235443-->
