@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Oct 26 2024 22:42:42 GMT+0800">2024-10-26 22:42:42</span>
+                <span class="datetime" data-updated="Wed Dec 04 2024 02:10:44 GMT+0800">2024-12-04 02:10:44</span>
             </span>
         
 
@@ -253,8 +253,8 @@
 
 
 
-
-
+<h1 id="linux-命令"><a href="#linux-命令" class="headerlink" title="linux 命令"></a>linux 命令</h1><p>1：文件管理 mv命令 – 移动或改名文件 ls命令 – 显示目录中文件及其属性信息 cp命令 – 复制文件或目录 mkdir命令 – 创建目录文件 pwd命令 – 显示当前工作目录的路径 tar命令 – 压缩和解压缩文件 cd命令 – 切换目录 chmod命令 – 改变文件或目录权限<br>2：文档编辑 cat命令 – 在终端设备上显示文件内容 grep命令 – 强大的文本搜索工具 rm命令 – 删除文件或目录 echo命令 – 输出字符串或提取后的变量值 tail命令 – 查看文件尾部内容 rmdir命令 – 删除空目录文件 sed命令 – 批量编辑文本文件 vi命令 – 文本编辑器<br>3：系统管理 find命令 – 根据路径和条件搜索指定文件 rpm命令 – RPM软件包管理器 ps命令 – 显示进程状态 startx命令 – 初始化X-window系统 uname命令 – 显示系统内核信息 kill命令 – 杀死进程 resize2fs命令 – 同步文件系统容量到内核 useradd命令 – 创建并设置用户信息<br>4：磁盘管理 df命令 – 显示磁盘空间使用量情况 fdisk命令 – 管理磁盘分区 lsblk命令 – 查看系统的磁盘使用情况 mkfs.ext4 命令 – 对磁盘设备进行EXT4格式化 vgextend命令 – 扩展卷组设备 hdparm命令 – 显示与设定硬盘参数 pvcreate命令 – 创建物理卷设备 lvcreate命令 – 创建逻辑卷设备<br>5：文件传输 tftp命令 – 上传及下载文件 curl命令 – 文件传输工具 fsck命令 – 检查与修复文件系统 rsync命令 – 远程数据同步工具 lprm命令 – 移除打印队列中的任务 ftpwho命令 – 显示FTP会话信息 ftp命令 – 文件传输协议客户端 lftp命令 – 优秀的命令行FTP客户端<br>6：网络通讯 ssh命令 – 安全的远程连接服务 netstat命令 – 显示网络状态 dhclient命令 – 动态获取或释放IP地址 ifconfig命令 – 显示或设置网络设备参数信息 ping命令 – 测试主机间网络连通性 sshd命令 – openssh服务器守护进程 smbpasswd命令 – 修改用户的SMB密码 iptables命令 – 防火墙策略管理工具<br>7：设备管理 mount命令 – 将文件系统挂载到目录 lspci命令 – 显示当前设备PCI总线设备信息 sensors命令 – 检测服务器硬件信息 rfkill命令 – 管理蓝牙和Wi-Fi设备 setleds命令 – 设置键盘的LED灯光状态 setpci命令 – 配置PCI硬件设备参数 hciconfig命令 – 配置蓝牙设备 lsusb命令 – 显示USB设备列表<br>8：备份压缩 zip命令 – 压缩文件 gzip命令 – 压缩和解压文件 unzip命令 – 解压缩zip格式文件 zipinfo命令 – 查看压缩文件信息 gunzip命令 – 解压提取文件内容 unarj命令 – 解压.arj文件 zipsplit命令 – 分割压缩包 dump命令 – 备份文件系统<br>9：其他命令 wget命令 – 下载网络文件 history命令 – 显示与管理历史命令记录 hash命令 – 管理命令运行时查询的哈希表 wait命令 – 等待指令执行完毕 bc命令 – 数字计算器 rmmod命令 – 移除内核模块 pigz命令 – 多线程的解压缩文件 xargs命令 – 给其他命令传参数的过滤器</p>
+<p>linux命令 linux常用命令</p>
 
                 </div>
                 
@@ -341,7 +341,17 @@
         <div class="page-main-content-bottom border-box">
             
 <footer class="footer border-box">
+    <div class="wtime">
+        <div class="wtime2">北京<span id="beijingTime"></span></div>
+        <div class="wtime2" style="display: none;"> 东京<span id="tokyoTime"></span></div>
+        <div class="wtime2">欧洲-巴黎<span id="parisTime"></span></div>
+        <div class="wtime2">英国-伦敦 <span id="londonTime"></span></div>
+        <div class="wtime2">美东-纽约 <span id="newYorkTime"></span></div>
+        <div class="wtime2">美西-洛杉矶<span id="losAngelesTime"></span></div>
+        <div  class="wtime2" style="display: none;">UTC<span id="utcTime"></span></div>
+    </div>
     <div class="copyright-info info-item">
+    
         &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
         
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">lm</a>
@@ -363,6 +373,65 @@
 
 <script type="text/javascript">
 
+    // 定义各个时区相对UTC的偏移量（单位：小时），考虑夏令时情况设置不同偏移量范围
+    const timeZoneOffsets = {
+            'beijing': 8,  // 北京不实行夏令时，固定偏移8小时
+            'tokyo': 9,  // 东京不实行夏令时，固定偏移9小时
+            'paris': [1, 2],  // 巴黎实行夏令时，冬令时偏移1小时，夏令时偏移2小时（示例简化处理，实际更复杂）
+            'london': [0, 1],  // 伦敦实行夏令时，冬令时偏移0小时，夏令时偏移1小时
+            'newYork': [-5, -4],  // 纽约实行夏令时，冬令时偏移-5小时，夏令时偏移-4小时
+            'losAngeles': [-8, -7]  // 洛杉矶实行夏令时，冬令时偏移-8小时，夏令时偏移-7小时
+        };
+
+        function padZero(num) {
+            return num < 10? '0' + num : num;
+        }
+
+        function formatTime(date) {
+            const year = date.getFullYear();
+            const month = padZero(date.getMonth() + 1);
+            const day = padZero(date.getDate());
+            const hours = padZero(date.getHours());
+            const minutes = padZero(date.getMinutes());
+            const seconds = padZero(date.getSeconds());
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function isDaylightSavingTime(date, zone) {
+            const month = date.getMonth();
+            const dstStart = new Date(date.getFullYear(), 3, 8, 2, 0, 0);  // 假设每年4月8日凌晨2点开始夏令时（简化示例，实际不同地区规则差异大）
+            const dstEnd = new Date(date.getFullYear(), 10, 1, 2, 0, 0);  // 假设每年10月1日凌晨2点结束夏令时
+            if (zone === 'paris' || zone === 'london' || zone === 'newYork' || zone === 'losAngeles') {
+                return date >= dstStart && date < dstEnd;
+            }
+            return false;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+                now.getUTCMinutes(), now.getUTCSeconds());
+            const utcTime = formatTime(utcDate);
+            document.getElementById('utcTime').innerHTML = utcTime;
+
+            for (const zone in timeZoneOffsets) {
+                const offsets = timeZoneOffsets[zone];
+                let offset;
+                if (Array.isArray(offsets)) {
+                    offset = isDaylightSavingTime(utcDate, zone)? offsets[1] : offsets[0];
+                } else {
+                    offset = offsets;
+                }
+                const zoneDate = new Date(utcDate.getTime() + offset * 60 * 60 * 1000);
+                document.getElementById(zone + 'Time').innerHTML = formatTime(zoneDate);
+            }
+
+            setTimeout(updateTime, 1000);
+        }
+
+        window.onload = function () {
+            updateTime();
+        };
     function notfound(imgElement) {  
             var src = imgElement.src;  
             var parts = src.split('/'); // 使用'/'分割URL  

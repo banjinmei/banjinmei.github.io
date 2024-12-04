@@ -2746,6 +2746,13 @@ figure.highlight .shrink-line:hover::before {
 .footer a.no-pointer {
   pointer-events: none;
 }
+.footer .wtime {
+  display: flex;
+  padding-left: 2px;
+}
+.footer .wtime .wtime2 {
+  margin-left: 8px;
+}
 .footer .info-item {
   position: relative;
   display: flex;
