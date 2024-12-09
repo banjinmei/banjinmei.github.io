@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sun Jul 28 2024 00:00:06 GMT+0800">2024-07-28 00:00:06</span>
+                <span class="datetime" data-updated="Sun Dec 08 2024 02:19:00 GMT+0800">2024-12-08 02:19:00</span>
             </span>
         
 
@@ -266,6 +266,11 @@
 
 <p>http_upload.go</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Server)</span></span> Upload(w http.ResponseWriter, r *http.Request) &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> !server.isIPAllowed(r) &#123;</span><br><span class="line">        http.Error(w, <span class="string">&quot;Access denied&quot;</span>, http.StatusForbidden)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>要点</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Server)</span></span> Upload(w http.ResponseWriter, r *http.Request) &#123; <span class="comment">//权限IP</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="限制文件类型"><a href="#限制文件类型" class="headerlink" title="限制文件类型"></a>限制文件类型</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Server)</span></span> SaveUploadFile(file multipart.File, header *multipart.FileHeader, fileInfo *FileInfo, r *http.Request) (*FileInfo, <span class="type">error</span>) &#123;</span><br><span class="line">	_, fileInfo.Name = filepath.Split(header.Filename)</span><br><span class="line">	<span class="comment">//如果不是 jpg png data 则不让上传 </span></span><br><span class="line">	fileInfo.Name = c.TrimFileNameSpecialChar(fileInfo.Name)</span><br><span class="line">	fmt.Println(<span class="string">&quot;fname- &quot;</span> +fileInfo.Name)</span><br><span class="line">	extension := strings.Split(fileInfo.Name, <span class="string">&quot;.&quot;</span>)[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> extension != <span class="string">&quot;jpg&quot;</span> &amp;&amp; extension != <span class="string">&quot;png&quot;</span> &amp;&amp; extension != <span class="string">&quot;data&quot;</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;fnameext- &quot;</span> +extension)</span><br><span class="line">		<span class="keyword">return</span> fileInfo, err </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
                 </div>
                 
 

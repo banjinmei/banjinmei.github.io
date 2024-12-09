@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Aug 26 2024 01:03:50 GMT+0800">2024-08-26 01:03:50</span>
+                <span class="datetime" data-updated="Sun Dec 08 2024 02:17:32 GMT+0800">2024-12-08 02:17:32</span>
             </span>
         
 
@@ -272,9 +272,33 @@
 
 
 
-
-
-
+<h1 id="切换win-linux打包"><a href="#切换win-linux打包" class="headerlink" title="切换win&#x2F;linux打包"></a>切换win&#x2F;linux打包</h1><p>window下如何打包成exe文件，并运行。</p>
+<p>打开goland，点击Terminal 终端</p>
+<p>输入指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="built_in">env</span></span><br></pre></td></tr></table></figure>
+<p>查看 GOOS是否windows</p>
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p>执行指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="built_in">env</span> -w GOOS=windows</span><br></pre></td></tr></table></figure>
+<p>接下来运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build main.go</span><br></pre></td></tr></table></figure>
+<p>发现项目目录多了一个 main.exe的文件，这个就是根据项目生成的 exe文件。</p>
+<p>window下如何执行 main.exe 呢？<br>打开 cmd 命令行</p>
+<p>进入到 main.exe 所在的目录，输入 main.exe 即可</p>
+<p> 看到已经输出了 hello ! </p>
+<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>执行指令修改为linux：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="built_in">env</span> -w GOOS=linux</span><br></pre></td></tr></table></figure>
+<p>接下来运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build main.go</span><br></pre></td></tr></table></figure>
+<p>发现项目目录多了一个 main的文件，这个就是根据项目生成的 linux下的可执行文件</p>
+<p>那么如何在linux下执行 main 呢？ </p>
+<p>将main上传到 linux系统的 &#x2F;home目录。</p>
+<p>确保已经安装上go环境，使用 go version 看一下</p>
+<p> 能够输出，说明已经安装好了go</p>
+<p>为main添加可执行权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x main</span><br></pre></td></tr></table></figure>
+<p>执行main程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./main</span><br></pre></td></tr></table></figure>
+<p>可以看到输出 hello !</p>
 
                 </div>
                 

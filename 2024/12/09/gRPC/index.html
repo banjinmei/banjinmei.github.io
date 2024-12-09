@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="LM">
+    
+    <title>
+        
+            gRPC |
+        
+        MLOG
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"MLOG","author":"LM","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2012,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               MLOG
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        gRPC
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-12-09 23:18:09</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Dec 09 2024 23:37:12 GMT+0800">2024-12-09 23:37:12</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net/">.net</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/node/">node</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/gRPC/">gRPC</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="gRPC（Google-Remote-Procedure-Call）"><a href="#gRPC（Google-Remote-Procedure-Call）" class="headerlink" title="gRPC（Google Remote Procedure Call）"></a>gRPC（Google Remote Procedure Call）</h1><p>是一个高性能、开源和通用的RPC框架，最初由Google开发。它使用HTTP&#x2F;2作为传输协议，并默认采用Protocol Buffers作为接口定义语言（IDL）和消息格式。gRPC支持多种编程语言，包括但不限于C++、Java、Python、Go、Ruby、C#、Node.js、PHP等。</p>
+<h1 id="gRPC-特点："><a href="#gRPC-特点：" class="headerlink" title="gRPC 特点："></a>gRPC 特点：</h1><p><strong>高效的数据交换</strong>：通过使用Protocol Buffers（Protobuf），gRPC能够以二进制形式序列化和反序列化数据，这比JSON或XML等文本格式更紧凑、更快。<br><strong>双向流式通信</strong>：gRPC支持四种不同的调用类型：简单RPC、服务器端流式RPC、客户端流式RPC以及双向流式RPC。这使得开发者可以灵活选择最适合其应用场景的通信模式。<br><strong>HTTP&#x2F;2</strong>：gRPC基于HTTP&#x2F;2构建，这意味着它可以利用HTTP&#x2F;2提供的特性，如多路复用、头部压缩、流量控制等，来提高性能和可靠性。<br><strong>跨平台支持</strong>：gRPC可以在多种环境中运行，包括云服务、本地部署、移动端等，并且对各种编程语言都有良好的支持，便于构建跨平台的应用程序。<br><strong>插件系统</strong>：gRPC提供了一个插件系统，允许用户自定义代码生成逻辑，或者添加额外的功能，如认证、日志记录、监控等。<br><strong>强大的社区和生态系统</strong>：由于它是Google的产品并且被广泛采用，因此拥有一个活跃的社区和丰富的第三方库与工具生态系统。</p>
+<h1 id="gRPC-场景："><a href="#gRPC-场景：" class="headerlink" title="gRPC 场景："></a>gRPC 场景：</h1><p>gRPC的使用场景非常广泛，尤其适用于需要高效、可靠和高性能通信的应用程序。以下是gRPC的一些典型使用场景：</p>
+<h2 id="1-微服务架构"><a href="#1-微服务架构" class="headerlink" title="1. 微服务架构"></a>1. 微服务架构</h2><p>服务间通信：在微服务架构中，不同的服务可能使用不同的编程语言实现，并且需要高效地相互交流。gRPC以其跨语言支持和高效的二进制协议（Protocol Buffers），成为构建微服务之间通信层的理想选择。<br>负载均衡：gRPC原生支持客户端负载均衡，可以帮助分散请求到多个服务实例上，提高系统的可用性和性能。</p>
+<h2 id="2-实时应用程序"><a href="#2-实时应用程序" class="headerlink" title="2. 实时应用程序"></a>2. 实时应用程序</h2><p>双向流式通信：gRPC的双向流特性非常适合用于实时应用程序，如聊天应用、在线游戏、视频会议等，其中客户端和服务端需要持续地交换数据。<br>实时数据推送：对于需要从服务器向客户端推送实时更新的应用，例如股票行情、社交媒体通知、物联网设备状态更新等，gRPC的服务端流式RPC可以有效地实现这一需求。</p>
+<h2 id="3-移动应用与后端通信"><a href="#3-移动应用与后端通信" class="headerlink" title="3. 移动应用与后端通信"></a>3. 移动应用与后端通信</h2><p>轻量级性能：由于其高效的序列化机制和较低的网络开销，gRPC特别适合移动应用与后端服务器之间的通信，特别是在网络条件不佳的情况下，能够减少电量消耗并提高响应速度。<br>快速开发：gRPC自动生成客户端和服务端代码的能力，大大简化了开发流程，尤其是在多平台开发环境中，减少了重复劳动。</p>
+<h2 id="4-跨语言通信"><a href="#4-跨语言通信" class="headerlink" title="4. 跨语言通信"></a>4. 跨语言通信</h2><p>多语言环境：gRPC支持多种编程语言，使得它非常适合用于跨语言通信的场景。不同团队或项目可以使用各自熟悉的技术栈，同时通过gRPC进行无缝集成。<br>异构系统集成：当需要将遗留系统与现代应用集成时，gRPC的跨语言能力可以帮助桥接这些系统，促进信息的流动和交互。</p>
+<h2 id="5-分布式系统"><a href="#5-分布式系统" class="headerlink" title="5. 分布式系统"></a>5. 分布式系统</h2><p>节点间通信：在分布式系统中，各节点之间的通信是至关重要的。gRPC提供的高效率和可靠性使其成为分布式计算、任务分发、集群管理等场景下的首选通信框架。<br>数据同步：gRPC可以用来实现实时的数据同步，确保分布式系统中的所有节点都拥有最新的数据副本。</p>
+<h2 id="6-容器化环境"><a href="#6-容器化环境" class="headerlink" title="6. 容器化环境"></a>6. 容器化环境</h2><p>服务发现：在Kubernetes等容器编排平台上，gRPC可以通过服务发现机制自动找到其他服务，简化了容器间的通信配置。<br>轻量级部署：gRPC的轻量级特性和对多语言的支持，使其非常适合容器化部署，有助于提升资源利用率和服务扩展性。</p>
+<h2 id="7-API后端服务"><a href="#7-API后端服务" class="headerlink" title="7. API后端服务"></a>7. API后端服务</h2><p>高性能API：许多大型互联网公司使用gRPC来构建其API后端服务，因为它提供了高性能、可扩展性和易于维护的方式来处理客户端请求。<br>类型安全：gRPC的IDL（接口定义语言）定义了严格的服务契约，保证了服务端和客户端之间的调用是类型安全的，减少了运行时错误的发生。</p>
+<h2 id="8-物联网（IoT）"><a href="#8-物联网（IoT）" class="headerlink" title="8. 物联网（IoT）"></a>8. 物联网（IoT）</h2><p>低资源消耗：gRPC的高效性能和紧凑的消息格式，使得它成为连接IoT设备和传感器的理想通信协议，能够在有限的计算和网络资源下提供可靠的通信。<br>实时监控与控制：gRPC的流式API非常适合用于实时监控和控制IoT设备，如智能家居系统、工业自动化等场景。</p>
+<h2 id="9-大数据和机器学习"><a href="#9-大数据和机器学习" class="headerlink" title="9. 大数据和机器学习"></a>9. 大数据和机器学习</h2><p>数据传输：在大数据处理和机器学习训练过程中，gRPC可以用来高效地传输大量数据，特别是当数据需要在不同的计算节点之间传递时。<br>模型服务：gRPC常被用于构建机器学习模型的服务化接口，允许客户端以高效的方式查询模型预测结果。<br>综上所述，gRPC是一个灵活且强大的通信框架，适用于各种需要高效、可靠通信的场景。无论是构建复杂的微服务架构，还是简单的客户端-服务器应用，gRPC都能提供显著的优势。</p>
+<h1 id="Node-js-gRPC"><a href="#Node-js-gRPC" class="headerlink" title="Node.js gRPC"></a>Node.js gRPC</h1><p> 创建和调用 gRPC 服务。包括服务器和客户端实现。</p>
+<h2 id="1-安装必要的包"><a href="#1-安装必要的包" class="headerlink" title="1. 安装必要的包"></a>1. 安装必要的包</h2><p>在项目目录下执行以下命令安装 gRPC 相关依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @grpc/grpc-js @grpc/proto-loader</span><br></pre></td></tr></table></figure>
+<h2 id="2-创建-proto-文件"><a href="#2-创建-proto-文件" class="headerlink" title="2. 创建 proto 文件"></a>2. 创建 proto 文件</h2><p>创建一个文件 example.proto 定义 gRPC 服务和消息结构：</p>
+<p>proto</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">&quot;proto3&quot;</span>;</span><br><span class="line"></span><br><span class="line">service <span class="title class_">ExampleService</span> &#123;</span><br><span class="line">  rpc <span class="title class_">SayHello</span> (<span class="title class_">HelloRequest</span>) returns (<span class="title class_">HelloReply</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message <span class="title class_">HelloRequest</span> &#123;</span><br><span class="line">  string name = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message <span class="title class_">HelloReply</span> &#123;</span><br><span class="line">  string message = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-实现-gRPC-服务器"><a href="#3-实现-gRPC-服务器" class="headerlink" title="3. 实现 gRPC 服务器"></a>3. 实现 gRPC 服务器</h2><p>创建一个文件 server.js，实现 gRPC 服务：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> grpc = <span class="built_in">require</span>(<span class="string">&#x27;@grpc/grpc-js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> protoLoader = <span class="built_in">require</span>(<span class="string">&#x27;@grpc/proto-loader&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载 proto 文件</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PROTO_PATH</span> = path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;example.proto&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> packageDefinition = protoLoader.<span class="title function_">loadSync</span>(<span class="variable constant_">PROTO_PATH</span>, &#123;</span><br><span class="line">  <span class="attr">keepCase</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">longs</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">enums</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">defaults</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">oneofs</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> exampleProto = grpc.<span class="title function_">loadPackageDefinition</span>(packageDefinition);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实现 SayHello 方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sayHello</span>(<span class="params">call, callback</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> name = call.<span class="property">request</span>.<span class="property">name</span>;</span><br><span class="line">  <span class="title function_">callback</span>(<span class="literal">null</span>, &#123; <span class="attr">message</span>: <span class="string">`Hello, <span class="subst">$&#123;name&#125;</span>!`</span> &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建和启动 gRPC 服务器</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> server = <span class="keyword">new</span> grpc.<span class="title class_">Server</span>();</span><br><span class="line">  server.<span class="title function_">addService</span>(exampleProto.<span class="property">ExampleService</span>.<span class="property">service</span>, &#123; <span class="title class_">SayHello</span>: sayHello &#125;);</span><br><span class="line">  <span class="keyword">const</span> port = <span class="string">&#x27;127.0.0.1:50051&#x27;</span>;</span><br><span class="line">  server.<span class="title function_">bindAsync</span>(port, grpc.<span class="property">ServerCredentials</span>.<span class="title function_">createInsecure</span>(), <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Server running at <span class="subst">$&#123;port&#125;</span>`</span>);</span><br><span class="line">    <span class="comment">// 不再需要调用 server.start()</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">main</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="4-实现-gRPC-客户端"><a href="#4-实现-gRPC-客户端" class="headerlink" title="4. 实现 gRPC 客户端"></a>4. 实现 gRPC 客户端</h2><p>创建一个文件 client.js，调用 gRPC 服务：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> grpc = <span class="built_in">require</span>(<span class="string">&#x27;@grpc/grpc-js&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> protoLoader = <span class="built_in">require</span>(<span class="string">&#x27;@grpc/proto-loader&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载 proto 文件</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PROTO_PATH</span> = path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;example.proto&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> packageDefinition = protoLoader.<span class="title function_">loadSync</span>(<span class="variable constant_">PROTO_PATH</span>, &#123;</span><br><span class="line">  <span class="attr">keepCase</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">longs</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">enums</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">defaults</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">oneofs</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> exampleProto = grpc.<span class="title function_">loadPackageDefinition</span>(packageDefinition);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建客户端并调用服务</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> client = <span class="keyword">new</span> exampleProto.<span class="title class_">ExampleService</span>(<span class="string">&#x27;127.0.0.1:50051&#x27;</span>, grpc.<span class="property">credentials</span>.<span class="title function_">createInsecure</span>());</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> name = <span class="string">&#x27;World&#x27;</span>;</span><br><span class="line">  client.<span class="title class_">SayHello</span>(&#123; name &#125;, <span class="function">(<span class="params">error, response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (error) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error:&#x27;</span>, error);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server Response:&#x27;</span>, response.<span class="property">message</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">main</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="5-运行示例"><a href="#5-运行示例" class="headerlink" title="5. 运行示例"></a>5. 运行示例</h2><p>启动服务器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node server.js</span><br></pre></td></tr></table></figure>
+<p>在另一个终端窗口运行客户端：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node client.js</span><br></pre></td></tr></table></figure>
+<p>在客户端终端看到以下输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server Response: Hello, World!</span><br></pre></td></tr></table></figure>
+<p>proto 文件：用于定义服务和消息结构。<br>服务器：通过 grpc.Server 创建并实现服务方法。<br>客户端：通过 grpc.Client 调用服务并处理响应。<br>可以基于此示例扩展自己的 gRPC 服务功能。</p>
+<h1 id="C-编写的-gRPC-客户端"><a href="#C-编写的-gRPC-客户端" class="headerlink" title="C#编写的 gRPC 客户端"></a>C#编写的 gRPC 客户端</h1><h2 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1. 添加依赖"></a>1. 添加依赖</h2><p>在的 C# 项目中，添加以下 NuGet 包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dotnet add package Grpc.Net.Client</span><br><span class="line">dotnet add package Grpc.Tools</span><br><span class="line">dotnet add package google.protobuf</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置-example-proto"><a href="#2-配置-example-proto" class="headerlink" title="2. 配置 example.proto"></a>2. 配置 example.proto</h2><p>将 example.proto 文件添加到的 C# 项目中，并编辑 .csproj 文件以生成客户端代码。添加以下内容到 <Project> 节点中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">ItemGroup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Protobuf</span> <span class="attr">Include</span>=<span class="string">&quot;example.proto&quot;</span> <span class="attr">GrpcServices</span>=<span class="string">&quot;Client&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ItemGroup</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这将告诉编译器根据 example.proto 文件生成 C# 客户端代码。</p>
+<h2 id="3-编写客户端代码"><a href="#3-编写客户端代码" class="headerlink" title="3. 编写客户端代码"></a>3. 编写客户端代码</h2><p>创建一个文件 Program.cs，内容如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> Grpc.Net.Client;</span><br><span class="line"><span class="keyword">using</span> Example;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 确保命名空间与 example.proto 中的 package 定义一致</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 创建 gRPC 通道</span></span><br><span class="line">        <span class="keyword">using</span> <span class="keyword">var</span> channel = GrpcChannel.ForAddress(<span class="string">&quot;http://127.0.0.1:50051&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建客户端</span></span><br><span class="line">        <span class="keyword">var</span> client = <span class="keyword">new</span> ExampleService.ExampleServiceClient(channel);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用服务方法</span></span><br><span class="line">        <span class="keyword">var</span> request = <span class="keyword">new</span> HelloRequest &#123; Name = <span class="string">&quot;World&quot;</span> &#125;;</span><br><span class="line">        <span class="keyword">var</span> reply = <span class="keyword">await</span> client.SayHelloAsync(request);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出服务响应</span></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Server Response: &quot;</span> + reply.Message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>运行客户端<br>确保 Node.js gRPC 服务器正在运行。</li>
+</ol>
+<p>在的 C# 项目目录中运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet run</span><br></pre></td></tr></table></figure>
+<p>如果一切正常，看到以下输出：</p>
+<p>Server Response: Hello, World!</p>
+<p>Proto 文件的路径配置： 确保 example.proto 中的 package 定义为 Example，并与 C# 命名空间一致。</p>
+<p>生成的客户端代码： 根据 example.proto，工具会生成 ExampleServiceClient 和 HelloRequest&#x2F;HelloReply 类。只需调用这些类与服务通信。</p>
+<p>gRPC 通道： 使用 GrpcChannel.ForAddress 创建一个到服务器的连接。</p>
+<p>异步调用： gRPC 方法通常是异步的，使用 await 来调用它们。</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net/">.net</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/node/">node</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/gRPC/">gRPC</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/12/06/Clash-V2RayClashVerge-%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91-%E5%AF%8C%E5%BC%BA/"
+                                   title="Clash V2Ray ClashVerge 科学上网 富强"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Clash V2Ray ClashVerge 科学上网 富强</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="wtime">
+        <div class="wtime2">北京<span id="beijingTime"></span></div>
+        <div class="wtime2" style="display: none;"> 东京<span id="tokyoTime"></span></div>
+        <div class="wtime2">欧洲-巴黎<span id="parisTime"></span></div>
+        <div class="wtime2">英国-伦敦 <span id="londonTime"></span></div>
+        <div class="wtime2">美东-纽约 <span id="newYorkTime"></span></div>
+        <div class="wtime2">美西-洛杉矶<span id="losAngelesTime"></span></div>
+        <div  class="wtime2" style="display: none;">UTC<span id="utcTime"></span></div>
+    </div>
+    <div class="copyright-info info-item">
+    
+    
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+    
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    // 定义各个时区相对UTC的偏移量（单位：小时），考虑夏令时情况设置不同偏移量范围
+    const timeZoneOffsets = {
+            'beijing': 8,  // 北京不实行夏令时，固定偏移8小时
+            'tokyo': 9,  // 东京不实行夏令时，固定偏移9小时
+            'paris': [1, 2],  // 巴黎实行夏令时，冬令时偏移1小时，夏令时偏移2小时（示例简化处理，实际更复杂）
+            'london': [0, 1],  // 伦敦实行夏令时，冬令时偏移0小时，夏令时偏移1小时
+            'newYork': [-5, -4],  // 纽约实行夏令时，冬令时偏移-5小时，夏令时偏移-4小时
+            'losAngeles': [-8, -7]  // 洛杉矶实行夏令时，冬令时偏移-8小时，夏令时偏移-7小时
+        };
+
+        function padZero(num) {
+            return num < 10? '0' + num : num;
+        }
+
+        function formatTime(date) {
+            const year = date.getFullYear();
+            const month = padZero(date.getMonth() + 1);
+            const day = padZero(date.getDate());
+            const hours = padZero(date.getHours());
+            const minutes = padZero(date.getMinutes());
+            const seconds = padZero(date.getSeconds());
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function isDaylightSavingTime(date, zone) {
+            const month = date.getMonth();
+            const dstStart = new Date(date.getFullYear(), 3, 8, 2, 0, 0);  // 假设每年4月8日凌晨2点开始夏令时（简化示例，实际不同地区规则差异大）
+            const dstEnd = new Date(date.getFullYear(), 10, 1, 2, 0, 0);  // 假设每年10月1日凌晨2点结束夏令时
+            if (zone === 'paris' || zone === 'london' || zone === 'newYork' || zone === 'losAngeles') {
+                return date >= dstStart && date < dstEnd;
+            }
+            return false;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+                now.getUTCMinutes(), now.getUTCSeconds());
+            const utcTime = formatTime(utcDate);
+            document.getElementById('utcTime').innerHTML = utcTime;
+
+            for (const zone in timeZoneOffsets) {
+                const offsets = timeZoneOffsets[zone];
+                let offset;
+                if (Array.isArray(offsets)) {
+                    offset = isDaylightSavingTime(utcDate, zone)? offsets[1] : offsets[0];
+                } else {
+                    offset = offsets;
+                }
+                const zoneDate = new Date(utcDate.getTime() + offset * 60 * 60 * 1000);
+                document.getElementById(zone + 'Time').innerHTML = formatTime(zoneDate);
+            }
+
+            setTimeout(updateTime, 1000);
+        }
+
+        window.onload = function () {
+            updateTime();
+        };
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
