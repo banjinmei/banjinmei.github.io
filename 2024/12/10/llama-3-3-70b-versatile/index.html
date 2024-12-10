@@ -9,7 +9,7 @@
     
     <title>
         
-            Go-fastdfs |
+            llama-3.3-70b-versatile |
         
         MLOG
     </title>
@@ -158,7 +158,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Go-fastdfs
+                        llama-3.3-70b-versatile
                     </div>
                 
 
@@ -186,12 +186,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-06-19 23:58:46</span>
+                <span class="datetime">2024-12-10 22:32:02</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Dec 10 2024 22:31:47 GMT+0800">2024-12-10 22:31:47</span>
+                <span class="datetime" data-updated="Tue Dec 10 2024 22:33:06 GMT+0800">2024-12-10 22:33:06</span>
             </span>
         
 
@@ -206,6 +206,18 @@
             </span>
         
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/llama/">llama</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/AI/">AI</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -225,50 +237,50 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <h1 id="go-fastdfs"><a href="#go-fastdfs" class="headerlink" title="go-fastdfs"></a>go-fastdfs</h1><p>Go-fastdfs 是简单、可靠、高效的分布式文件系统。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a class="link"   target="_blank" rel="noopener" href="https://sjqzhang.github.io/go-fastdfs/#character" >https://sjqzhang.github.io/go-fastdfs/#character<i class="fas fa-external-link-alt"></i></a></p>
-<p>or<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/sjqzhang/go-fastdfs/releases" >https://github.com/sjqzhang/go-fastdfs/releases<i class="fas fa-external-link-alt"></i></a></p>
-<!---
-releases下载
- fileserver
-fileserver.exe
--->
-
-<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fileserver server </span><br></pre></td></tr></table></figure>
-
-
-<h1 id="docker部署"><a href="#docker部署" class="headerlink" title="docker部署"></a>docker部署</h1><!---  curl -fsSL https://get.docker.com -o get-docker.sh
- sudo sh get-docker.sh
- --->
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --network=host --name fastdfs -v /data/fastdfs_data:/data -p 8080:8080 -e GO_FASTDFS_DIR=/data sjqzhang/go-fastdfs</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="NET"><a href="#NET" class="headerlink" title=".NET"></a>.NET</h1><p>参考java实现<br><a class="link"   target="_blank" rel="noopener" href="https://sjqzhang.github.io/go-fastdfs/usage.html#java" >https://sjqzhang.github.io/go-fastdfs/usage.html#java<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">string</span> UPLOAD_PATH2 = <span class="string">&quot;go-fastdfs地址XXX:XX&quot;</span>;</span><br><span class="line">  [<span class="meta">HttpPost(<span class="string">&quot;FormFile&quot;</span>)</span>]</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;<span class="built_in">string</span>&gt; <span class="title">UploadGo</span>(<span class="params">IFormFile file</span>)</span></span><br><span class="line">  &#123;</span><br><span class="line">      <span class="keyword">if</span> (file == <span class="literal">null</span> || file.Length == <span class="number">0</span>)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&quot;File is empty&quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">string</span> result = <span class="built_in">string</span>.Empty;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">try</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">using</span> (<span class="keyword">var</span> httpClient = <span class="keyword">new</span> HttpClient())</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="keyword">using</span> (<span class="keyword">var</span> form = <span class="keyword">new</span> MultipartFormDataContent())</span><br><span class="line">              &#123;</span><br><span class="line">                  <span class="keyword">var</span> streamContent = <span class="keyword">new</span> StreamContent(file.OpenReadStream());</span><br><span class="line">                  streamContent.Headers.Add(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">$&quot;form-data; name=\&quot;file\&quot;; filename=\&quot;<span class="subst">&#123;file.FileName&#125;</span>\&quot;&quot;</span>);</span><br><span class="line">                  form.Add(streamContent, <span class="string">&quot;file&quot;</span>, file.FileName);</span><br><span class="line">                  </span><br><span class="line">                  form.Add(<span class="keyword">new</span> StringContent(<span class="string">&quot;default&quot;</span>), <span class="string">&quot;scene&quot;</span>);</span><br><span class="line">                  form.Add(<span class="keyword">new</span> StringContent(<span class="string">&quot;20240619&quot;</span>), <span class="string">&quot;path&quot;</span>);</span><br><span class="line">                  form.Add(<span class="keyword">new</span> StringContent(<span class="string">&quot;json2&quot;</span>), <span class="string">&quot;output&quot;</span>);</span><br><span class="line">                  form.Add(<span class="keyword">new</span> StringContent(<span class="string">&quot;upload&quot;</span>), <span class="string">&quot;submit&quot;</span>);</span><br><span class="line">                  <span class="keyword">var</span> response = <span class="keyword">await</span> httpClient.PostAsync(UPLOAD_PATH2, form);<span class="comment">//await</span></span><br><span class="line">                  result = <span class="keyword">await</span> response.Content.ReadAsStringAsync();<span class="comment">//await</span></span><br><span class="line">        </span><br><span class="line">                  Console.WriteLine(<span class="string">$&quot;resp: <span class="subst">&#123;response&#125;</span>&quot;</span>);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span> (Exception e)</span><br><span class="line">      &#123;</span><br><span class="line">          Console.WriteLine(e.ToString());</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>“url”: “<a class="link"   target="_blank" rel="noopener" href="http://xxx/group1/20240619/test1619.png?name=test1619.png&download=1" >http://xxx/group1/20240619/test1619.png?name=test1619.png&amp;download=1<i class="fas fa-external-link-alt"></i></a>“</p>
-<h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">url = <span class="string">&#x27;http://xxx:xx/group1/upload&#x27;</span></span><br><span class="line">files = &#123;<span class="string">&#x27;file&#x27;</span>: open(<span class="string">&#x27;resized240525.jpg&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)&#125;</span><br><span class="line">options=&#123;<span class="string">&#x27;output&#x27;</span>:<span class="string">&#x27;json&#x27;</span>,<span class="string">&#x27;path&#x27;</span>:<span class="string">&#x27;20240619&#x27;</span>,<span class="string">&#x27;scene&#x27;</span>:<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;filename&#x27;</span>:<span class="string">&#x27;test123.jpg&#x27;</span>&#125; </span><br><span class="line">r = requests.post(url,data=options, files=files)</span><br><span class="line">print(r.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">&quot;peers&quot;</span>: [<span class="string">&quot;http://192.168.44.128:8080&quot;</span>,<span class="string">&quot;http://192.168.31.36:8080&quot;</span>],</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="web-manage"><a href="#web-manage" class="headerlink" title="web manage"></a>web manage</h1><h2 id="go-fastdfs-web-java"><a href="#go-fastdfs-web-java" class="headerlink" title="go-fastdfs web  - java"></a>go-fastdfs web  - java</h2><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>下载地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/perfree/go-fastdfs-web/releases/download/v1.3.4/go-fastdfs-web-1.3.4.tar.gz" >https://github.com/perfree/go-fastdfs-web/releases/download/v1.3.4/go-fastdfs-web-1.3.4.tar.gz<i class="fas fa-external-link-alt"></i></a><br>到 官方下载页面 下载所需的版本(带jre或者不带jre)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/perfree/go-fastdfs-web/releases/download/v1.3.4/go-fastdfs-web-1.3.4.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>项目地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/perfree/go-fastdfs-web" >https://github.com/perfree/go-fastdfs-web<i class="fas fa-external-link-alt"></i></a><br>各打包版本下载地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/perfree/go-fastdfs-web/releases" >https://github.com/perfree/go-fastdfs-web/releases<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="2、解压运行："><a href="#2、解压运行：" class="headerlink" title="2、解压运行："></a>2、解压运行：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf go-fastdfs-web-1.3.4.tar.gz</span><br><span class="line"><span class="built_in">cd</span> /opt/go-fastdfs-web/</span><br><span class="line">./goFastDfsWeb.sh start</span><br></pre></td></tr></table></figure>
-<p>也可以 (java环境)： </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar go-fastdfs-web.jar</span><br></pre></td></tr></table></figure>
-<h2 id="3、访问监控页面："><a href="#3、访问监控页面：" class="headerlink" title="3、访问监控页面："></a>3、访问监控页面：</h2><p>ip:8088  GoFastDfs-Web管理平台安装页面<br>安装完即可使用 </p>
-<p>go_web_版本<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/perfree/go-fastdfs-web-go" >https://github.com/perfree/go-fastdfs-web-go<i class="fas fa-external-link-alt"></i></a> </p>
-
+                    <h1 id="llama-3-3-70b-versatile"><a href="#llama-3-3-70b-versatile" class="headerlink" title="llama-3.3-70b-versatile"></a>llama-3.3-70b-versatile</h1><h1 id="Groq-API-免费使用教程"><a href="#Groq-API-免费使用教程" class="headerlink" title="Groq API 免费使用教程"></a>Groq API 免费使用教程</h1><h2 id="第一步：获取-API"><a href="#第一步：获取-API" class="headerlink" title="第一步：获取 API"></a>第一步：获取 API</h2><ol>
+<li>访问 <a class="link"   target="_blank" rel="noopener" href="https://console.groq.com/" >https://console.groq.com/<i class="fas fa-external-link-alt"></i></a></li>
+<li>完成注册并申请 API  -&gt; googlemail</li>
+<li>保存获得的 API 密钥</li>
+</ol>
+<h2 id="第二步：配置-NextChat"><a href="#第二步：配置-NextChat" class="headerlink" title="第二步：配置 NextChat"></a>第二步：配置 NextChat</h2><ol>
+<li>打开 <a class="link"   target="_blank" rel="noopener" href="https://app.nextchat.dev/" >https://app.nextchat.dev/<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web" >https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web<i class="fas fa-external-link-alt"></i></a></li>
+<li>在左侧设置中填入：<br>设置-&gt;模型服务商-&gt;Google<br>设置-&gt;自定义接口<br>模型(model)  llama-3.3-70b-versatile<ul>
+<li>接口地址：<code>https://api.groq.com/openai/</code>       </li>
+<li>API Key：填入之前获取的密钥</li>
+<li>自定义模型：<code>llama-3.3-70b-versatile</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="主要优势"><a href="#主要优势" class="headerlink" title="主要优势"></a>主要优势</h2><ul>
+<li>响应速度：200 Token&#x2F;秒</li>
+<li>性能表现：接近 GPT-4.0 水平</li>
+<li>完全免费使用</li>
+</ul>
+<h2 id="使用限制"><a href="#使用限制" class="headerlink" title="使用限制"></a>使用限制</h2><ul>
+<li>每分钟限额：6000 Token</li>
+<li>每日 API 调用：14000 次</li>
+<li>足够普通用户日常使用</li>
+</ul>
+<p>gsk_U2MI0vooKS4JyCtmNMLHWGdyxxxfqo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">提问：你是什么大模型</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">回答：</span><br><span class="line">我是人工智能模型，特别是一种大型语言模型。我的主要功能是理解和生成类似人类的文本。我的训练数据包括了大量的文本信息，这使我能够学习语言的模式和结构，并根据这个学习生成类似人类的回答。</span><br><span class="line"></span><br><span class="line">我的能力包括但不限于：</span><br><span class="line"></span><br><span class="line">回答问题：我可以根据我的训练数据回答广泛的题目，从科学和历史到娱乐和文化。</span><br><span class="line">生成文本：我可以根据给定的提示或主题生成文本，包括文章、故事、诗歌等。</span><br><span class="line">翻译：我可以进行语言之间的翻译，例如从英语翻译到西班牙语、法语、德语等。</span><br><span class="line">摘要：我可以将长篇文本摘要为简短的摘要，帮助用户快速理解主要内容。</span><br><span class="line">对话：我可以与用户进行对话，回答问题，提供信息，甚至参与辩论。</span><br><span class="line">我的优势在于能够快速处理和生成大量信息，但是我的能力也受到训练数据的限制。因此，我可能无法总是提供完全准确或最新的信息。然而，我会尽力提供最好的答案和帮助。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
                 </div>
                 
 
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/llama/">llama</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/AI/">AI</a>
+                                    </li>
+                                
+                            </ul>
                         
                     </div>
                     <div>
@@ -284,14 +296,14 @@ fileserver.exe
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/06/24/VM-Linux-win/"
-                                   title="VM Linux win"
+                                   href="/2024/12/10/%E5%90%AC%E6%AD%8C%E8%AF%86%E6%9B%B2/"
+                                   title="听歌识曲"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">VM Linux win</span>
+                                        <span class="post-nav-title-item text-ellipsis">听歌识曲</span>
                                         <span class="post-nav-item">Prev posts</span>
                                     </span>
                                 </a>
@@ -301,11 +313,11 @@ fileserver.exe
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/06/18/2FA-Enable-two-factor-authentication-2FA/"
-                                   title="2FA-Enable two-factor authentication (2FA)"
+                                   href="/2024/12/09/gRPC/"
+                                   title="gRPC"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2FA-Enable two-factor authentication (2FA)</span>
+                                        <span class="post-nav-title-item text-ellipsis">gRPC</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
