@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="LM">
+    
+    <title>
+        
+            iRedMail smtp |
+        
+        MLOG
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"MLOG","author":"LM","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2012,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               MLOG
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        iRedMail smtp
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-12-19 20:50:57</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Dec 19 2024 20:54:24 GMT+0800">2024-12-19 20:54:24</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/iRedMail/">iRedMail</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/smtp/">smtp</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="iRedMail"><a href="#iRedMail" class="headerlink" title="iRedMail"></a>iRedMail</h1><p>iRedMail 是一个 shell 脚本，可以在 Linux&#x2F;BSD 服务器上自动安装和配置所有必需的邮件服务器组件，从而消除手动安装和配置。借助 iRedMail，可以在基于 Web 的管理面板中轻松创建无限的邮箱和无限的邮件域。邮箱可以存储在 MariaDB&#x2F;MySQL、PostreSQL 数据库或 OpenLDAP 中。以下是 iRedMail 将自动安装和配置的开源软件的列表。</p>
+<p>Postfix<strong>SMTP</strong> 服务器<br>Dovecot IMAP 服务器<br>Nginx 网络服务器，为管理面板和网络邮件提供服务<br>OpenLDAP、<strong>MySQL&#x2F;MariaDB</strong> 或 PostgreSQL 用于存储用户信息<br>Amavided-用于 DKIM 签名和验证的新功能<br>SpamAssassin 用于反垃圾邮件<br>ClamAV 用于防病毒<br>Roundcube 网络邮件<br>SOGo组件，提供网络邮件、日历(CalDAV)、联系人(CardDAV)、任务和ActiveSync服务。<br>用于保护 SSH 的 Fail2ban<br>mlmmj 邮件列表管理器<br>网络数据服务器监控<br>用于灰名单的 iRedAPD Postfix 策略服务器</p>
+<h1 id="1-创建-DNS-MX-记录"><a href="#1-创建-DNS-MX-记录" class="headerlink" title="1.创建 DNS MX 记录"></a>1.创建 DNS MX 记录</h1><p>MX 记录指定哪个或哪些主机处理特定域名的电子邮件。例如，处理 linux-terminal.com 电子邮件的主机是 mail.linux-terminal.com。如果拥有 Gmail 帐户的人向 [email  发送电子邮件，则 Gmail 服务器将查询 linux-terminal.com 的 MX 记录。当发现mail.linux-terminal.com负责接收邮件时，它会查询mail.linux-terminal.com的A记录来获取IP地址，从而可以发送电子邮件。</p>
+<p>可以登录域名注册商的网站（例如 NameCheap）来创建 DNS 记录。</p>
+<p>在 DNS 管理器中，为域名创建 MX 记录。在“名称”字段中输入 @ 以表示主域名，然后在“值”字段中输入 mail.your-domain.com。</p>
+<p>注意：MX记录的主机名不能是其他名称的别名。另外，强烈建议使用主机名而不是裸 IP 地址作为 MX 记录。</p>
+<p> DNS 管理器可能会要求输入首选项值（也称为优先级值）。它可以是 0 到 65,356 之间的任意数字。小数字比大数字具有更高的优先级。建议将该值设置为0，这样该邮件服务器将具有最高的优先级来接收电子邮件。创建 MX 记录后，还需要为 mail.your-domain.com 创建 A 记录，以便将其解析为 IP 地址。如果服务器使用 IPv6 地址，请务必添加 AAAA 记录。</p>
+<p>提示：如果使用 Cloudflare DNS 服务，则在为 mail.your-domain.com 创建 A 记录时不应启用 CDN 功能。 Cloudflare 不支持 SMTP 代理。</p>
+<h1 id="2-配置主机名"><a href="#2-配置主机名" class="headerlink" title="2.配置主机名"></a>2.配置主机名</h1><p>通过 SSH 登录服务器，然后运行以下命令来更新现有软件包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update;</span><br><span class="line">sudo apt upgrade;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>建议创建一个 sudo 用户来管理服务器，而不是使用默认的 root 用户。运行以下命令创建用户。将 username 替换为首选的用户名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser username</span><br></pre></td></tr></table></figure>
+<p>然后将用户添加到 sudo 组。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser username sudo</span><br></pre></td></tr></table></figure>
+<p>然后切换到新用户。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - username</span><br></pre></td></tr></table></figure>
+<p>接下来，使用以下命令为服务器设置完全限定域名 (FQDN)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hostnamectl set-hostname mail.your-domain.com</span><br></pre></td></tr></table></figure>
+<p>们还需要使用 Nano 等命令行文本编辑器更新 &#x2F;etc&#x2F;hosts 文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>像下面这样编辑它。 （使用箭头键在文件中移动光标。）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1       mail.your-domain.com localhost</span><br></pre></td></tr></table></figure>
+<p>保存并关闭文件。 （要在 Nano 文本编辑器中保存文件，请按 Ctrl+O，然后按 Enter 确认。要关闭文件，请按 Ctrl+X &gt;.)</p>
+<p>要查看更改，请注销并重新登录，然后运行以下命令以查看主机名。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname -f</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-使用-iRedMail-在-Debian-12-上设置邮件服务器"><a href="#3-使用-iRedMail-在-Debian-12-上设置邮件服务器" class="headerlink" title="3.使用 iRedMail 在 Debian 12 上设置邮件服务器"></a>3.使用 iRedMail 在 Debian 12 上设置邮件服务器</h1><p>运行以下命令从其 Github 存储库下载最新版本的 iRedMail 脚本安装程序。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/iredmail/iRedMail/archive/1.6.4.tar.gz</span><br></pre></td></tr></table></figure>
+<p>提取存档文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf 1.6.4.tar.gz</span><br></pre></td></tr></table></figure>
+<p>然后 cd 进入新创建的目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> iRedMail-1.6.4/</span><br></pre></td></tr></table></figure>
+<p>为iRedMail.sh脚本添加可执行权限。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x iRedMail.sh</span><br></pre></td></tr></table></figure>
+<p>接下来，使用 sudo 权限运行 Bash 脚本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash iRedMail.sh</span><br></pre></td></tr></table></figure>
+
+<p>将出现邮件服务器<strong>设置向导</strong>。使用 Tab 键选择 <strong>YES</strong>，然后按 Enter。<br>Welcome and thanks for your use</p>
+<p>下一个屏幕将要求选择邮件存储路径。可以使用默认的 &#x2F;var&#x2F;vmail，只需按 Enter 键即可。<br>sub-directory:&#x2F;var&#x2F;vmail&#x2F;backup </p>
+<p>然后选择是否要运行 Web 服务器。强烈建议选择运行 Web 服务器，因为需要基于 Web 的管理面板来添加电子邮件帐户。<br>它还允许访问 Roundcube 网络邮件。默认情况下，选择 <strong>Nginx</strong> Web 服务器，因此只需按 Enter 键即可。 （星号表示该项目已被选中。）<br>Nginx The fastest web server</p>
+<p>然后选择电子邮件帐户的存储后端。选择熟悉的一个。选择<strong>MariaDB</strong>。按上下方向键并按空格键进行选择。<br>select item.</p>
+<p>如果选择了 MariaDB 或 MySQL，那么将需要设置 MySQL root 密码。 123123.z<br>root on server</p>
+<p>接下来，输入第一个邮件域。可以稍后在基于 Web 的管理面板中添加其他邮件域。本教程假设需要一个电子邮件帐户，例如[受保护的电子邮件]。在这种情况下，需要在此处输入 your-domain.com，不带子域。不要在域名后面按空格键。认为 iRedMail 会将空格字符与域名一起复制，这可能会导致安装失败。<br>Postfix won’t accept anyemail sent to this mail domain.</p>
+<p>接下来，设置邮件域管理员的密码。<br>iRedAdmin with this account.</p>
+<p>选择可选组件。默认情况下，选择 4 个项目。如果喜欢 SOGo 组件，请选择它并按 Enter。</p>
+<p>Review your settings<br>现在可以检查配置。输入 Y 开始安装所有邮件服务器组件。</p>
+<p>安装结束时，选择Y 使用iRedMail提供的防火墙规则并重新启动防火墙。 Y</p>
+<p>至此iRedMail安装完成。将收到网络邮件、SOGo 组件和网络管理面板的 URL 以及登录凭据的通知。 iRedMail.tips 文件包含有关 iRedMail 服务器的重要信息。<br>URLs of installed web applications:</p>
+<h1 id="reboot-重启"><a href="#reboot-重启" class="headerlink" title="reboot 重启"></a>reboot 重启</h1><p><a class="link"   target="_blank" rel="noopener" href="https://mail.your-domain.com/iredadmin/" >https://mail.your-domain.com/iredadmin/<i class="fas fa-external-link-alt"></i></a> 访问管理面板<br>登录后 最后边添加-&gt;用户 输入信息即可添加用户</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://mail.your-domain.com/" >https://mail.your-domain.com/<i class="fas fa-external-link-alt"></i></a>  用户登录面板</p>
+<h1 id="代码调用smtp发送示例"><a href="#代码调用smtp发送示例" class="headerlink" title="代码调用smtp发送示例"></a>代码调用smtp发送示例</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Net.Mail;</span><br><span class="line"><span class="keyword">using</span> System.Net;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography.X509Certificates;</span><br><span class="line"><span class="keyword">using</span> System.Net.Security;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">ConsoleApp1Mail</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">internal</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> smtpServer = <span class="string">&quot;mail.myimmail.workxx&quot;</span>;</span><br><span class="line">            <span class="built_in">int</span> smtpPort = <span class="number">587</span>;</span><br><span class="line">            <span class="built_in">string</span> smtpUser = <span class="string">&quot;postmaster@myimmail.workxx&quot;</span>;</span><br><span class="line">            <span class="built_in">string</span> smtpPassword = <span class="string">&quot;xxx&quot;</span>;</span><br><span class="line">            <span class="built_in">string</span> recipientEmail = <span class="string">&quot;reemail&quot;</span>;</span><br><span class="line">            <span class="comment">// 忽略证书验证</span></span><br><span class="line">            ServicePointManager.ServerCertificateValidationCallback = <span class="built_in">delegate</span> (</span><br><span class="line">                <span class="built_in">object</span> sender,</span><br><span class="line">                X509Certificate certificate,</span><br><span class="line">                X509Chain chain,</span><br><span class="line">                SslPolicyErrors sslPolicyErrors)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 忽略所有证书错误</span></span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            SendVerificationEmail(smtpServer, smtpPort, smtpUser, smtpPassword, recipientEmail);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SendVerificationEmail</span>(<span class="params"><span class="built_in">string</span> smtpServer, <span class="built_in">int</span> smtpPort, <span class="built_in">string</span> smtpUser, <span class="built_in">string</span> smtpPassword, <span class="built_in">string</span> recipientEmail</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> subject = <span class="string">&quot;Email Verification&quot;</span>;</span><br><span class="line">            <span class="built_in">string</span> body = <span class="string">&quot;This is your verification code: 123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">using</span> (SmtpClient client = <span class="keyword">new</span> SmtpClient(smtpServer, smtpPort))</span><br><span class="line">                &#123;</span><br><span class="line">                    client.Credentials = <span class="keyword">new</span> NetworkCredential(smtpUser, smtpPassword);</span><br><span class="line">                    client.EnableSsl = <span class="literal">true</span>; <span class="comment">// 启用 SSL</span></span><br><span class="line"></span><br><span class="line">                    MailMessage message = <span class="keyword">new</span> MailMessage</span><br><span class="line">                    &#123;</span><br><span class="line">                        From = <span class="keyword">new</span> MailAddress(smtpUser),</span><br><span class="line">                        Subject = subject,</span><br><span class="line">                        Body = body</span><br><span class="line">                    &#125;;</span><br><span class="line">                    message.To.Add(recipientEmail);</span><br><span class="line"></span><br><span class="line">                    client.Send(message);</span><br><span class="line">                    Console.WriteLine(<span class="string">&quot;Email sent successfully!&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(<span class="string">$&quot;Error: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<!--
+
+mail.imsmail.work.gd
+sudo hostnamectl set-hostname  mail.myimmail.work.gd
+
+sudo hostnamectl set-hostname mail.imsmail.work.gd
+echo "127.0.0.1 mail.imsmail.work.gd mail localhost" | sudo tee -a /etc/hosts
+
+25,80,443,587,993  iRedMail
+
+
+
+https://www.iredmail.org/download.html
+wget https://codeload.github.com/iredmail/iRedMail/tar.gz/refs/tags/1.7.1
+
+过程中 
+123123.zxc
+myimmail.work.gd
+123123.zxc
+MariaDB
+
+https://cn.linux-terminal.com/?p=3276 -->
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/iRedMail/">iRedMail</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/smtp/">smtp</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/12/15/HarmonryOS-Next-waste-sorting/"
+                                   title="HarmonryOS Next Waste Sorting"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">HarmonryOS Next Waste Sorting</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="wtime">
+        <div class="wtime2">北京<span id="beijingTime"></span></div>
+        <div class="wtime2" style="display: none;"> 东京<span id="tokyoTime"></span></div>
+        <div class="wtime2">欧洲-巴黎<span id="parisTime"></span></div>
+        <div class="wtime2">英国-伦敦 <span id="londonTime"></span></div>
+        <div class="wtime2">美东-纽约 <span id="newYorkTime"></span></div>
+        <div class="wtime2">美西-洛杉矶<span id="losAngelesTime"></span></div>
+        <div  class="wtime2" style="display: none;">UTC<span id="utcTime"></span></div>
+    </div>
+    <div class="copyright-info info-item">
+    
+    
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+    
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    // 定义各个时区相对UTC的偏移量（单位：小时），考虑夏令时情况设置不同偏移量范围
+    const timeZoneOffsets = {
+            'beijing': 8,  // 北京不实行夏令时，固定偏移8小时
+            'tokyo': 9,  // 东京不实行夏令时，固定偏移9小时
+            'paris': [1, 2],  // 巴黎实行夏令时，冬令时偏移1小时，夏令时偏移2小时（示例简化处理，实际更复杂）
+            'london': [0, 1],  // 伦敦实行夏令时，冬令时偏移0小时，夏令时偏移1小时
+            'newYork': [-5, -4],  // 纽约实行夏令时，冬令时偏移-5小时，夏令时偏移-4小时
+            'losAngeles': [-8, -7]  // 洛杉矶实行夏令时，冬令时偏移-8小时，夏令时偏移-7小时
+        };
+
+        function padZero(num) {
+            return num < 10? '0' + num : num;
+        }
+
+        function formatTime(date) {
+            const year = date.getFullYear();
+            const month = padZero(date.getMonth() + 1);
+            const day = padZero(date.getDate());
+            const hours = padZero(date.getHours());
+            const minutes = padZero(date.getMinutes());
+            const seconds = padZero(date.getSeconds());
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function isDaylightSavingTime(date, zone) {
+            const month = date.getMonth();
+            const dstStart = new Date(date.getFullYear(), 3, 8, 2, 0, 0);  // 假设每年4月8日凌晨2点开始夏令时（简化示例，实际不同地区规则差异大）
+            const dstEnd = new Date(date.getFullYear(), 10, 1, 2, 0, 0);  // 假设每年10月1日凌晨2点结束夏令时
+            if (zone === 'paris' || zone === 'london' || zone === 'newYork' || zone === 'losAngeles') {
+                return date >= dstStart && date < dstEnd;
+            }
+            return false;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+                now.getUTCMinutes(), now.getUTCSeconds());
+            const utcTime = formatTime(utcDate);
+            document.getElementById('utcTime').innerHTML = utcTime;
+
+            for (const zone in timeZoneOffsets) {
+                const offsets = timeZoneOffsets[zone];
+                let offset;
+                if (Array.isArray(offsets)) {
+                    offset = isDaylightSavingTime(utcDate, zone)? offsets[1] : offsets[0];
+                } else {
+                    offset = offsets;
+                }
+                const zoneDate = new Date(utcDate.getTime() + offset * 60 * 60 * 1000);
+                document.getElementById(zone + 'Time').innerHTML = formatTime(zoneDate);
+            }
+
+            setTimeout(updateTime, 1000);
+        }
+
+        window.onload = function () {
+            updateTime();
+        };
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
