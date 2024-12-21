@@ -9,6 +9,8 @@
     
     <title>
         
+            update domain 4 iRedMail |
+        
         MLOG
     </title>
     
@@ -56,7 +58,7 @@
     
 
     <!-- page content -->
-    <div class="page-main-content border-box is-home">
+    <div class="page-main-content border-box">
         <div class="page-main-content-top">
             
 <header class="header-wrapper">
@@ -147,49 +149,75 @@
             <div class="main-content border-box">
                 
 
-                    <div class="home-content-container fade-in-down-animation">
-    
-    <ul class="home-post-list border-box">
-        
-            <li class="home-post-item">
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
 
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        update domain 4 iRedMail
+                    </div>
                 
 
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/21/HarmonyOS-Base/">
-                            HarmonyOS开发环境搭建 移动开发 鸿蒙开发 ArkTS
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
+                
+                    <div class="post-header border-box">
                         
-                            💡 环境搭建HarmonyOS开发环境搭建
- DevEco Studio安装https://developer.huawei.com/consumer/cn/deveco-studio/
-​
-🚀安装nodejs​
-🤵安装ohpm​
-🍔安装SD...
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
                         
-                    </div>
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
 
-                    
-
-<div class="post-meta-info-container border-box home">
+<div class="post-meta-info-container border-box post">
     <div class="post-meta-info border-box">
         
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-12-21 23:20:53</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sat Dec 21 2024 23:26:34 GMT+0800">2024-12-21 23:26:34</span>
             </span>
         
 
         
-
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/debian/">debian</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/iRedMail/">iRedMail</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -199,407 +227,128 @@
     </div>
 
     
-        <a class="home-read-more" href="/2024/04/21/HarmonyOS-Base/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="更换-iRedMail-的域名"><a href="#更换-iRedMail-的域名" class="headerlink" title="更换 iRedMail 的域名"></a>更换 iRedMail 的域名</h1><p>（如从 mail.example.com 更换为 mail.mydomain.com），<br>需要修改多个配置文件和数据库记录，并确保新的域名配置正确。<br>以下是操作步骤：</p>
+<h1 id="步骤-1：更新-DNS-记录"><a href="#步骤-1：更新-DNS-记录" class="headerlink" title="步骤 1：更新 DNS 记录"></a>步骤 1：更新 DNS 记录</h1><p>在域名托管平台更新 mail.mydomain.com 的 DNS 记录：<br>A记录：指向邮件服务器的 IP 地址。<br>MX记录：指向 mail.mydomain.com。<br>SPF 记录：确保包括新的域名。<br>DKIM 和 DMARC 记录：重新生成并更新。<br>确保 DNS 更改后可以通过 dig 或 nslookup 验证生效。</p>
+<h1 id="步骤-2：更新主机名"><a href="#步骤-2：更新主机名" class="headerlink" title="步骤 2：更新主机名"></a>步骤 2：更新主机名</h1><p>修改主机名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">hostnamectl set-hostname mail.mydomain.com</span><br></pre></td></tr></table></figure>
+<p>更新 &#x2F;etc&#x2F;hosts 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1   localhost</span><br><span class="line">127.0.1.1   mail.mydomain.com mail</span><br></pre></td></tr></table></figure>
+
+<p>更新 &#x2F;etc&#x2F;mailname 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mail.mydomain.com</span><br></pre></td></tr></table></figure>
+<h1 id="步骤-3：更新-iRedMail-配置文件"><a href="#步骤-3：更新-iRedMail-配置文件" class="headerlink" title="步骤 3：更新 iRedMail 配置文件"></a>步骤 3：更新 iRedMail 配置文件</h1><p>修改 Postfix 配置： 编辑 &#x2F;etc&#x2F;postfix&#x2F;main.cf：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">myhostname = mail.mydomain.com</span><br><span class="line">mydomain = mydomain.com</span><br><span class="line">myorigin = <span class="variable">$mydomain</span></span><br></pre></td></tr></table></figure>
+<p>重启 Postfix：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart postfix</span><br></pre></td></tr></table></figure>
+<p>修改 Dovecot 配置： 编辑 &#x2F;etc&#x2F;dovecot&#x2F;dovecot.conf 和 &#x2F;etc&#x2F;dovecot&#x2F;conf.d&#x2F;10-mail.conf，确保更新主机名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssl_cert = &lt;/etc/ssl/certs/mail.igrmail.pics.crt</span><br><span class="line">ssl_key = &lt;/etc/ssl/private/mail.igrmail.pics.key</span><br></pre></td></tr></table></figure>
+<p>重启 Dovecot：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart dovecot</span><br></pre></td></tr></table></figure>
+<p>修改 Amavisd 配置： 编辑 &#x2F;etc&#x2F;amavis&#x2F;conf.d&#x2F;50-user：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$myhostname</span> = <span class="string">&#x27;mail.mydomain.com&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>重启 Amavisd：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">systemctl restart amavis</span><br></pre></td></tr></table></figure>
+<p>修改 iRedAdmin 配置： 编辑 &#x2F;opt&#x2F;www&#x2F;iredadmin&#x2F;settings.py：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web_hostname = <span class="string">&#x27;mail.igrmail.pics&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>重启 iRedAdmin：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart iredadmin</span><br></pre></td></tr></table></figure>
+<h1 id="步骤-4：更新数据库记录"><a href="#步骤-4：更新数据库记录" class="headerlink" title="步骤 4：更新数据库记录"></a>步骤 4：更新数据库记录</h1><p>使用以下命令登录数据库（通常是 MySQL&#x2F;MariaDB）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>更新 vmail 数据库中的域名：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">USE vmail;</span><br><span class="line"><span class="keyword">UPDATE</span> domain <span class="keyword">SET</span> domain<span class="operator">=</span><span class="string">&#x27;new&#x27;</span> <span class="keyword">WHERE</span> domain<span class="operator">=</span><span class="string">&#x27;old&#x27;</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> alias <span class="keyword">SET</span> address<span class="operator">=</span>REPLACE(address, <span class="string">&#x27;old&#x27;</span>, <span class="string">&#x27;@new&#x27;</span>);</span><br><span class="line"><span class="keyword">UPDATE</span> mailbox <span class="keyword">SET</span> username<span class="operator">=</span>REPLACE(username, <span class="string">&#x27;@old&#x27;</span>, <span class="string">&#x27;@new&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="步骤-5：重新生成-SSL-证书"><a href="#步骤-5：重新生成-SSL-证书" class="headerlink" title="步骤 5：重新生成 SSL 证书"></a>步骤 5：重新生成 SSL 证书</h1><p>如果你使用 Let’s Encrypt：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">certbot --apache -d mail.xxx</span><br></pre></td></tr></table></figure>
+<p>将新生成的证书路径更新到相关服务的配置文件中（如 Postfix、Dovecot）。</p>
+<h1 id="步骤-6：重启所有相关服务"><a href="#步骤-6：重启所有相关服务" class="headerlink" title="步骤 6：重启所有相关服务"></a>步骤 6：重启所有相关服务</h1><p>确保所有服务都重启以加载新的配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">systemctl restart postfix dovecot amavis clamav spamassassin iredapd iredadmin</span><br></pre></td></tr></table></figure>
+<h1 id="步骤-7：验证配置"><a href="#步骤-7：验证配置" class="headerlink" title="步骤 7：验证配置"></a>步骤 7：验证配置</h1><p>检查服务状态：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status postfix dovecot amavis</span><br></pre></td></tr></table></figure>
+
+<p>发送和接收测试邮件，确保新域名能正常工作。<br>验证 MX、SPF、DKIM 和 DMARC 记录是否正确。<br>完成这些步骤后，你的邮件服务器将会切换到新的域名。</p>
+<h1 id="debian-安装-MariaDB"><a href="#debian-安装-MariaDB" class="headerlink" title="debian 安装 MariaDB"></a>debian 安装 MariaDB</h1><p>在Debian系统上安装MariaDB，你可以按照以下步骤操作：</p>
+<p>更新系统包列表：</p>
+<p>sudo apt update<br>安装MariaDB服务器：</p>
+<p>sudo apt install mariadb-server<br>安全设置MariaDB，包括设置root密码和删除匿名用户：</p>
+<p>sudo mysql_secure_installation<br>启动MariaDB服务：</p>
+<p>sudo systemctl start mariadb<br>使MariaDB服务在系统启动时自动运行：</p>
+<p>sudo systemctl enable mariadb<br>登录MariaDB以确保一切正常：</p>
+<p>sudo mysql -u root -p<br>当系统提示输入密码时，输入你在安全设置步骤中设置的密码。</p>
+<p>以上步骤将在Debian系统上安装MariaDB，并确保其安全和自动启动。</p>
+<p>连接MariaDB (like mysql)<br>SHOW DATABASES;<br>SHOW TABLES;</p>
+
                 </div>
-            </li>
-        
-            <li class="home-post-item">
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/debian/">debian</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/iRedMail/">iRedMail</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
 
                 
 
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/21/NET-Reflector/">
-                            .NET 反编译
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
+                
+                    <div class="post-nav border-box">
                         
-                            反编译是对程序进行逆向分析、研究，以推导出软件产品所使用的思路、原理、结构、算法、处理过程、运行方法等设计要素。
-反编译.NET程序需要使用专门的反编译工具
-🧿使用dotPeek进行反编译1.下载dotPeekdotPeek：JetBrains 出...
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/12/19/iRedMail-smtp/"
+                                   title="iRedMail smtp"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">iRedMail smtp</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
                         
                     </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/21/NET-Reflector/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
                 
 
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/20/NET-Smtp/">
-                            .NET SMTP
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            SMTP（Simple Mail Transfer Protocol）是用于电子邮件传输的规则集，可以从邮件客户端向接收电子邮件服务器发送、中继或转发邮件。发件人可使用SMTP 服务器来执行发送电子邮件的过程。SMTP服务器则是按照这些规则中转电子邮...
-                        
-                    </div>
-
+                
                     
 
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
 
-        
 
-        
 
-        
 
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/20/NET-Smtp/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
 
                 
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/20/NET-Socket/">
-                            Socket to WebSocket
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            前言针对IOS App Proxy Server无法直连WebSocket，建立 Socket中转端。
-​
-WebSocket 端：
-WebSocket 端用于实现实时通信功能。
-WebSocket 端通过 WebSocket 协议与中转端通信，中转...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/20/NET-Socket/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/19/NET-JWT/">
-                            .NET JWT 
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            前言
-JWT (JSON Web Token) 是一种安全传输信息的开放标准，由Header、Payload和Signature三部分组成。它主要用于身份验证、信息交换和授权。JWT可验证用户身份，确保访问权限，实现单点登录，并在客户端和服务器之间安...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/19/NET-JWT/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/18/NET-Spider/">
-                            .NET spider
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            前言爬虫可以用于外汇，期货，基金，货币，比分，电商，文章等信息的采集。通过数据分析，竞品分析，为商业决策提供数据支持。
-​金价暴涨，抓取下今日的金价。
-💡使用HttpClient爬取数据1234567891011121314151617181920...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/18/NET-Spider/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/17/Vue-Base/">
-                            vue study
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            前言Vue.js，这个轻量级且灵活的JavaScript框架，就像一位魔术师，用它的魔法棒将数据和视图巧妙地连接在一起。当数据发生变化时，Vue.js就像变魔术一样，让视图自动更新，为开发者带来了极大的便利。
-Vue.js的诞生，源于一位名叫尤雨溪的...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/17/Vue-Base/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/16/NET-i18n/">
-                            .NET i18n 
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            环境 WIN10 VS2022 .NET8  
-👋创建项目​
-👀创建Resources ControllersHomeController.en.resx
-​HomeController.fr.resx
-​HomeController.zh.re...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Thu Aug 29 2024 22:30:26 GMT+0800"
-                >2024-08-29 22:30:26</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/16/NET-i18n/">Read more&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-    </ul>
-    
-    <div class="paginator border-box flex-center">
-        <div class="btn-wrap allowed">
-            <a class="jump-btn"
-               href="/page/16/"
-            ><i class="fa-solid fa-chevron-left"></i></a>
+            </div>
         </div>
 
-
-        <div class="page-number-box border-box flex-center">
-            <input class="page-number-input border-box base-color-size"
-                   type="number"
-                   value="17"
-                   min="1"
-                   max="18"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">18</span>
-        </div>
-
-
-        <div class="btn-wrap allowed">
-            <a class="jump-btn"
-               href="/page/18/"
-            ><i class="fa-solid fa-chevron-right"></i></a>
-        </div>
+        
     </div>
-
-
-
-
 </div>
 
 
@@ -731,10 +480,28 @@ Vue.js的诞生，源于一位名叫尤雨溪的...
 
     <!-- post tools -->
     
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
 
     <!-- side tools -->
     <div class="side-tools">
-        <div class="side-tools-container border-box side-tools-show-handle">
+        <div class="side-tools-container border-box ">
     <ul class="side-tools-list side-tools-show-handle border-box">
         <li class="tools-item tool-font-adjust-plus flex-center">
             <i class="fas fa-search-plus"></i>
@@ -818,7 +585,6 @@ Vue.js的诞生，源于一位名叫尤雨溪的...
 
 
 
-
 <!-- common -->
 
 <script src="/js/utils.js"></script>
@@ -847,6 +613,20 @@ Vue.js的诞生，源于一位名叫尤雨溪的...
 
 
 <div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
     
 
     <!-- categories page -->
