@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Dec 07 2024 00:25:25 GMT+0800">2024-12-07 00:25:25</span>
+                <span class="datetime" data-updated="Wed Jan 01 2025 23:59:46 GMT+0800">2025-01-01 23:59:46</span>
             </span>
         
 
@@ -247,8 +247,8 @@
 
 <h1 id="old-NET8"><a href="#old-NET8" class="headerlink" title="old .NET8"></a>old .NET8</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update </span><br><span class="line">sudo apt upgrade -y</span><br><span class="line">wget -O 下载并以不同的文件名保存</span><br></pre></td></tr></table></figure>
 <h2 id="添加-Microsoft-包仓库"><a href="#添加-Microsoft-包仓库" class="headerlink" title="添加 Microsoft 包仓库"></a>添加 Microsoft 包仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb</span><br><span class="line">sudo dpkg -i packages-microsoft-prod.deb</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-<h2 id="安装SDK"><a href="#安装SDK" class="headerlink" title="安装SDK"></a>安装SDK</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y dotnet-sdk-8.0</span><br></pre></td></tr></table></figure>
-
+<h2 id="2-net8"><a href="#2-net8" class="headerlink" title="2 .net8"></a>2 .net8</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y dotnet-sdk-8.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb</span><br><span class="line">sudo dpkg -i packages-microsoft-prod.deb</span><br><span class="line"><span class="comment"># 8 </span></span><br><span class="line"></span><br><span class="line">sudo apt-get update; \</span><br><span class="line">  sudo apt-get install -y apt-transport-https &amp;&amp; \</span><br><span class="line">  sudo apt-get update &amp;&amp; \</span><br><span class="line">  sudo apt-get install -y dotnet-sdk-8.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
                 </div>
                 
@@ -348,7 +348,7 @@
     
     
         Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
-        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2024
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2025
         
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
         

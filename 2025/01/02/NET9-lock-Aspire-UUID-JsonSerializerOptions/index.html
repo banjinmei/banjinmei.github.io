@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="LM">
+    
+    <title>
+        
+            .NET9 lock Aspire UUID JsonSerializerOptions |
+        
+        MLOG
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"MLOG","author":"LM","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2012,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               MLOG
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        .NET9 lock Aspire UUID JsonSerializerOptions
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-01-02 00:05:49</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jan 02 2025 00:12:10 GMT+0800">2025-01-02 00:12:10</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/net9/">.net9</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="NET9"><a href="#NET9" class="headerlink" title=".NET9"></a>.NET9</h1><p>迄今为止最高效、最现代、最安全、最智能、性能最高的.NET版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dotnet --list-sdks</span><br><span class="line"><span class="comment"># 指令查看是否以安装.NET9。</span></span><br></pre></td></tr></table></figure>
+<p> 下载.NET9 SDK安装 or<br> IDE Visual Studio 更新</p>
+<h1 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h1><p>引入 System.Threading.Lock 是 .NET 提供的一个更优雅的锁定机制，可以替代传统的基于 Monitor 的锁定方式。以下是新锁定机制的特点及示例代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> Lock _lock = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 使用新锁定机制</span></span><br><span class="line">        <span class="keyword">using</span> (_lock.EnterScope())</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;这是线程安全的代码块&quot;</span>);</span><br><span class="line">            <span class="comment">// 在这里执行线程安全的操作</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 演示多线程场景</span></span><br><span class="line">        Thread thread1 = <span class="keyword">new</span>(() =&gt; AccessResource(<span class="string">&quot;线程1&quot;</span>));</span><br><span class="line">        Thread thread2 = <span class="keyword">new</span>(() =&gt; AccessResource(<span class="string">&quot;线程2&quot;</span>));</span><br><span class="line"></span><br><span class="line">        thread1.Start();</span><br><span class="line">        thread2.Start();</span><br><span class="line"></span><br><span class="line">        thread1.Join();</span><br><span class="line">        thread2.Join();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">AccessResource</span>(<span class="params"><span class="built_in">string</span> threadName</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> (_lock.EnterScope())</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;threadName&#125;</span> 正在访问共享资源...&quot;</span>);</span><br><span class="line">            Thread.Sleep(<span class="number">1000</span>); <span class="comment">// 模拟一些操作</span></span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;<span class="subst">&#123;threadName&#125;</span> 完成访问&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义锁对象：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> Lock _lock = <span class="keyword">new</span>();</span><br></pre></td></tr></table></figure>
+<p>Lock 类型专门用于实现锁定，比 object 更清晰和安全。<br>进入锁定范围：<br>using (_lock.EnterScope())<br>EnterScope 返回一个 ref struct，它在离开作用域时自动释放锁。<br>多线程场景：<br>多个线程尝试访问共享资源，通过 using 确保代码块是线程安全的。<br>优势<br>避免传统 Monitor.Enter 和 Monitor.Exit 的繁琐代码及潜在的错误。<br>自动释放锁，减少资源泄漏的风险。<br>类型安全的设计避免了在异步场景中的误用。<br>注意事项<br>Lock.EnterScope 返回 ref struct，因此它不能被捕获或在异步方法中使用。<br>Lock 是不可复制的，确保锁的独占性和安全性。<br>这是一个更现代化的线程同步方式，非常适合在新项目中使用。</p>
+<p>更安全、更高效。 可以和using一起使用</p>
+<!-- https://www.cnblogs.com/hugogoos/p/18563166
+ -->
+
+<h1 id="NET-Aspire-Blazor-Web-Web-API"><a href="#NET-Aspire-Blazor-Web-Web-API" class="headerlink" title=".NET Aspire  - Blazor Web Web API"></a>.NET Aspire  - Blazor Web Web API</h1><p>可以选择使用 Redis 进行缓存 测试项目</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/aspire/" >https://learn.microsoft.com/zh-cn/dotnet/aspire/<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/communitytoolkit/aspire" >https://github.com/communitytoolkit/aspire<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/aspire/whats-new/dotnet-aspire-9?tabs=windows" >https://learn.microsoft.com/zh-cn/dotnet/aspire/whats-new/dotnet-aspire-9?tabs=windows<i class="fas fa-external-link-alt"></i></a></p>
+<p>对比.NET8 ,.NET9  多了 vue recat angular  web项目 </p>
+<h1 id="UUID-v7"><a href="#UUID-v7" class="headerlink" title="UUID v7"></a>UUID v7</h1><p>我们经常在实体中使用Guid作为主键，并且通过Guid.NewGuid()可以很方便的生成一个新的Guid，而此方法生成的Guid是依据UUID第四个版本规范生成的。</p>
+<p>当前已经可以通过Guid.CreateVersion7()方法创建UUID第七个版本，这个版本UUID主要功能就是包含了时间戳，数据结构如下：</p>
+<p><strong>| 48位时间戳 | 12位随机 | 62位随机 |</strong></p>
+<p>这也意味着v7版本的UUID可以按时间排序了，在数据库中使用起来更方便，同时Guid.CreateVersion7()方法还有一个重载方法接收DateTimeOffset类型时间戳，用来通过指定时间创建UUID。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// v4 UUID</span></span><br><span class="line"><span class="keyword">var</span> guid_v4 = Guid.NewGuid();</span><br><span class="line"><span class="comment">// v7 UUID</span></span><br><span class="line"><span class="keyword">var</span> guid_v7 = Guid.CreateVersion7();</span><br><span class="line"><span class="comment">// v7 UUID with timestamp</span></span><br><span class="line"><span class="keyword">var</span> guid_v7_time = Guid.CreateVersion7(TimeProvider.System.GetLocalNow());</span><br><span class="line"></span><br><span class="line">Console.WriteLine(guid_v4);</span><br><span class="line">Console.WriteLine(guid_v7);</span><br><span class="line">Console.WriteLine(guid_v7_time);</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="e"><a href="#e" class="headerlink" title="\e"></a>\e</h1><p>在 C# 中，随着新的转义序列 \e 的引入，开发者可以更方便地表示 Unicode 字符 U+001B (ESCAPE 字符)。以下是一些代码示例，展示如何使用新的转义序列 \e 和传统方式的区别。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 使用新的转义序列 \e</span></span><br><span class="line">        <span class="built_in">string</span> newEscapeSequence = <span class="string">&quot;\e[31mHello, World!\e[0m&quot;</span>; <span class="comment">// ANSI 转义代码：红色文本</span></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Using \\e:&quot;</span>);</span><br><span class="line">        Console.WriteLine(newEscapeSequence);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用旧的方式 \u001b</span></span><br><span class="line">        <span class="built_in">string</span> oldUnicodeEscape = <span class="string">&quot;\u001b[31mHello, World!\u001b[0m&quot;</span>; <span class="comment">// ANSI 转义代码：红色文本</span></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Using \\u001b:&quot;</span>);</span><br><span class="line">        Console.WriteLine(oldUnicodeEscape);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用旧的方式 \x1b</span></span><br><span class="line">        <span class="built_in">string</span> oldHexEscape = <span class="string">&quot;\x1b[31mHello, World!\x1b[0m&quot;</span>; <span class="comment">// ANSI 转义代码：红色文本</span></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Using \\x1b:&quot;</span>);</span><br><span class="line">        Console.WriteLine(oldHexEscape);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 注意：\x1b 后可能意外包含后续的有效十六进制字符</span></span><br><span class="line">        <span class="built_in">string</span> potentialIssue = <span class="string">&quot;\x1b7Hello&quot;</span>; <span class="comment">// 可能被解析为 \x1b7 而不是单独的 \x1b</span></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Potential issue with \\x1b:&quot;</span>);</span><br><span class="line">        Console.WriteLine(potentialIssue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>推荐使用 \e：它更简洁并且没有可能的歧义。<br>避免使用 \x1b：如果后续字符是十六进制数字，可能导致意外结果。例如，\x1b7 会被解析为一个字符，而不是 ESC 字符后跟 7。<br>向后兼容：C# 仍然支持 \u001b 和 \x1b，但建议逐步迁移到 \e。<br>新的转义序列 \e 提高了代码可读性和安全性，特别是在处理 ANSI 转义序列时。</p>
+<p>以下是一些更丰富的示例，展示如何使用新的 \e 转义序列，以及如何在各种场景中替代旧的方式。</p>
+<h2 id="示例-1-控制台中的颜色切换"><a href="#示例-1-控制台中的颜色切换" class="headerlink" title="示例 1: 控制台中的颜色切换"></a>示例 1: 控制台中的颜色切换</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 使用 \e 转义序列来改变文字颜色</span></span><br><span class="line">        <span class="built_in">string</span> redText = <span class="string">&quot;\e[31mThis is red text\e[0m&quot;</span>;  <span class="comment">// 红色文本</span></span><br><span class="line">        <span class="built_in">string</span> greenText = <span class="string">&quot;\e[32mThis is green text\e[0m&quot;</span>;  <span class="comment">// 绿色文本</span></span><br><span class="line">        <span class="built_in">string</span> yellowText = <span class="string">&quot;\e[33mThis is yellow text\e[0m&quot;</span>;  <span class="comment">// 黄色文本</span></span><br><span class="line"></span><br><span class="line">        Console.WriteLine(redText);</span><br><span class="line">        Console.WriteLine(greenText);</span><br><span class="line">        Console.WriteLine(yellowText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="示例-2-带有光标移动的控制台输出"><a href="#示例-2-带有光标移动的控制台输出" class="headerlink" title="示例 2: 带有光标移动的控制台输出"></a>示例 2: 带有光标移动的控制台输出</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 使用 \e 来控制光标位置</span></span><br><span class="line">        <span class="built_in">string</span> moveCursorUp = <span class="string">&quot;\e[1A&quot;</span>; <span class="comment">// 光标上移 1 行</span></span><br><span class="line">        <span class="built_in">string</span> moveCursorDown = <span class="string">&quot;\e[1B&quot;</span>; <span class="comment">// 光标下移 1 行</span></span><br><span class="line">        <span class="built_in">string</span> moveCursorRight = <span class="string">&quot;\e[10C&quot;</span>; <span class="comment">// 光标右移 10 列</span></span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Line 1&quot;</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Line 2&quot;</span>);</span><br><span class="line">        Console.WriteLine(moveCursorUp + <span class="string">&quot;Moved Up&quot;</span>);</span><br><span class="line">        Console.WriteLine(moveCursorRight + <span class="string">&quot;Moved Right&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="示例-3-格式化多种样式"><a href="#示例-3-格式化多种样式" class="headerlink" title="示例 3: 格式化多种样式"></a>示例 3: 格式化多种样式</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 使用 ANSI 转义序列来混合样式</span></span><br><span class="line">        <span class="built_in">string</span> boldAndRed = <span class="string">&quot;\e[1;31mBold and Red Text\e[0m&quot;</span>; <span class="comment">// 粗体 + 红色</span></span><br><span class="line">        <span class="built_in">string</span> underlineAndGreen = <span class="string">&quot;\e[4;32mUnderline and Green Text\e[0m&quot;</span>; <span class="comment">// 下划线 + 绿色</span></span><br><span class="line">        <span class="built_in">string</span> inverted = <span class="string">&quot;\e[7mInverted Colors\e[0m&quot;</span>; <span class="comment">// 反转颜色</span></span><br><span class="line"></span><br><span class="line">        Console.WriteLine(boldAndRed);</span><br><span class="line">        Console.WriteLine(underlineAndGreen);</span><br><span class="line">        Console.WriteLine(inverted);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="示例-4-清屏和隐藏光标"><a href="#示例-4-清屏和隐藏光标" class="headerlink" title="示例 4: 清屏和隐藏光标"></a>示例 4: 清屏和隐藏光标</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 使用 \e 控制控制台清屏和隐藏光标</span></span><br><span class="line">        <span class="built_in">string</span> clearScreen = <span class="string">&quot;\e[2J&quot;</span>; <span class="comment">// 清屏</span></span><br><span class="line">        <span class="built_in">string</span> hideCursor = <span class="string">&quot;\e[?25l&quot;</span>; <span class="comment">// 隐藏光标</span></span><br><span class="line">        <span class="built_in">string</span> showCursor = <span class="string">&quot;\e[?25h&quot;</span>; <span class="comment">// 显示光标</span></span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;This will be cleared...&quot;</span>);</span><br><span class="line">        Console.WriteLine(clearScreen + <span class="string">&quot;Screen Cleared!&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(hideCursor + <span class="string">&quot;Cursor Hidden!&quot;</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;Press Enter to show cursor again...&quot;</span>);</span><br><span class="line">        Console.ReadLine();</span><br><span class="line">        Console.WriteLine(showCursor + <span class="string">&quot;Cursor Visible!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="示例-5-动态加载进度条"><a href="#示例-5-动态加载进度条" class="headerlink" title="示例 5: 动态加载进度条"></a>示例 5: 动态加载进度条</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Threading;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> progressBarTemplate = <span class="string">&quot;\e[32m[####################]\e[0m&quot;</span>;</span><br><span class="line">        <span class="built_in">string</span> clearLine = <span class="string">&quot;\e[2K\r&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">20</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> progress = <span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&#x27;#&#x27;</span>, i) + <span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&#x27; &#x27;</span>, <span class="number">20</span> - i);</span><br><span class="line">            Console.Write(clearLine + <span class="string">$&quot;\e[32m[<span class="subst">&#123;progress&#125;</span>]\e[0m <span class="subst">&#123;i * <span class="number">5</span>&#125;</span>%&quot;</span>);</span><br><span class="line">            Thread.Sleep(<span class="number">200</span>); <span class="comment">// 模拟任务处理时间</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(<span class="string">&quot;\nDone!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>示例总结<br>颜色：用 \e 定义颜色文本非常方便。<br>光标控制：\e 可用来实现光标的移动、隐藏和显示。<br>混合样式：支持多种样式组合，比如粗体、下划线和颜色。<br>屏幕操作：清屏、隐藏光标等功能大幅提高了终端交互的灵活性。<br>动态效果：用 \e 创建进度条、动态输出等非常直观。</p>
+<h1 id="索引运算符"><a href="#索引运算符" class="headerlink" title="索引运算符"></a>索引运算符</h1><p> 隐式“从末尾开始”索引运算符 ^，需要按照以下步骤操作。以下是完整的用法指南：</p>
+<p>前置条件<br>环境要求：<br>C# 8.0 或更高版本。<br>.NET Core 3.0 或更高版本，或 .NET Framework 支持的版本。<br>buffer 属性要求：<br>buffer 必须是支持索引器的类型，例如数组 (T[])、列表 (List<T>) 或其他实现了 IList<T> 的集合类型。</p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><h3 id="1-使用数组"><a href="#1-使用数组" class="headerlink" title="1. 使用数组"></a>1. 使用数组</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">S</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span>[] buffer = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">10</span>]; <span class="comment">// 定义一个大小为10的数组</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> v = <span class="keyword">new</span> S()</span><br><span class="line">        &#123;</span><br><span class="line">            buffer =</span><br><span class="line">            &#123;</span><br><span class="line">                [^<span class="number">1</span>] = <span class="number">0</span>,  <span class="comment">// 倒数第1个元素设置为 0</span></span><br><span class="line">                [^<span class="number">2</span>] = <span class="number">1</span>,  <span class="comment">// 倒数第2个元素设置为 1</span></span><br><span class="line">                [^<span class="number">3</span>] = <span class="number">2</span>,  <span class="comment">// 倒数第3个元素设置为 2</span></span><br><span class="line">                [^<span class="number">4</span>] = <span class="number">3</span>,  <span class="comment">// 倒数第4个元素设置为 3</span></span><br><span class="line">                [^<span class="number">5</span>] = <span class="number">4</span>   <span class="comment">// 倒数第5个元素设置为 4</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出结果</span></span><br><span class="line">        Console.WriteLine(<span class="built_in">string</span>.Join(<span class="string">&quot;, &quot;</span>, v.buffer));</span><br><span class="line">        <span class="comment">// 输出: 0, 0, 0, 0, 4, 3, 2, 1, 0, 0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-使用-List"><a href="#2-使用-List" class="headerlink" title="2. 使用 List"></a>2. 使用 List<T></h3><p>如果 buffer 是一个 List<int>，可以这样初始化：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">S</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;<span class="built_in">int</span>&gt; buffer = <span class="keyword">new</span> List&lt;<span class="built_in">int</span>&gt;(<span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">10</span>]); <span class="comment">// 初始化为10个元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> v = <span class="keyword">new</span> S()</span><br><span class="line">        &#123;</span><br><span class="line">            buffer =</span><br><span class="line">            &#123;</span><br><span class="line">                [^<span class="number">1</span>] = <span class="number">0</span>,</span><br><span class="line">                [^<span class="number">2</span>] = <span class="number">1</span>,</span><br><span class="line">                [^<span class="number">3</span>] = <span class="number">2</span>,</span><br><span class="line">                [^<span class="number">4</span>] = <span class="number">3</span>,</span><br><span class="line">                [^<span class="number">5</span>] = <span class="number">4</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出结果</span></span><br><span class="line">        Console.WriteLine(<span class="built_in">string</span>.Join(<span class="string">&quot;, &quot;</span>, v.buffer));</span><br><span class="line">        <span class="comment">// 输出: 0, 0, 0, 0, 4, 3, 2, 1, 0, 0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><p>JsonSerializerOptions  缩进选项 ，可支持自定义写入 JSON 的缩进字符和缩进大小。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">var options = new JsonSerializerOptions</span><br><span class="line">&#123;</span><br><span class="line">    WriteIndented = <span class="literal">true</span>,</span><br><span class="line">    IndentCharacter = <span class="string">&#x27;\t&#x27;</span>,</span><br><span class="line">    IndentSize = 2,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">string json = JsonSerializer.Serialize(</span><br><span class="line">    new &#123; Value = 1 &#125;,</span><br><span class="line">    options</span><br><span class="line">    );</span><br><span class="line">Console.WriteLine(json);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var data = new</span><br><span class="line">&#123;</span><br><span class="line">    Name = <span class="string">&quot;Alice&quot;</span>,</span><br><span class="line">    Age = 30,</span><br><span class="line">    Skills = new[] &#123; <span class="string">&quot;C#&quot;</span>, <span class="string">&quot;ASP.NET Core&quot;</span>, <span class="string">&quot;Blazor&quot;</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 默认缩进格式</span><br><span class="line">var defaultOptions = new JsonSerializerOptions</span><br><span class="line">&#123;</span><br><span class="line">    WriteIndented = <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;默认格式:&quot;</span>);</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(data, defaultOptions));</span><br><span class="line"></span><br><span class="line">// 使用自定义缩进字符（制表符）和大小</span><br><span class="line">var customOptions = new JsonSerializerOptions</span><br><span class="line">&#123;</span><br><span class="line">    WriteIndented = <span class="literal">true</span>,</span><br><span class="line">    IndentCharacter = <span class="string">&#x27;\t&#x27;</span>, // 使用制表符</span><br><span class="line">    IndentSize = 1      // 每层缩进 1 个制表符</span><br><span class="line">&#125;;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;\n自定义制表符缩进:&quot;</span>);</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(data, customOptions));</span><br><span class="line"></span><br><span class="line">// 使用自定义空格缩进</span><br><span class="line">var customSpaceOptions = new JsonSerializerOptions</span><br><span class="line">&#123;</span><br><span class="line">    WriteIndented = <span class="literal">true</span>,</span><br><span class="line">    IndentCharacter = <span class="string">&#x27; &#x27;</span>,  // 使用空格</span><br><span class="line">    IndentSize = 4      // 每层缩进 4 个空格</span><br><span class="line">&#125;;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;\n自定义空格缩进:&quot;</span>);</span><br><span class="line">Console.WriteLine(JsonSerializer.Serialize(data, customSpaceOptions));</span><br></pre></td></tr></table></figure>
+<p>结果<br>{<br>                “Value”: 1<br>}<br>默认格式:<br>{<br>  “Name”: “Alice”,<br>  “Age”: 30,<br>  “Skills”: [<br>    “C#”,<br>    “ASP.NET Core”,<br>    “Blazor”<br>  ]<br>}</p>
+<p>自定义制表符缩进:<br>{<br>        “Name”: “Alice”,<br>        “Age”: 30,<br>        “Skills”: [<br>                “C#”,<br>                “ASP.NET Core”,<br>                “Blazor”<br>        ]<br>}</p>
+<p>自定义空格缩进:<br>{<br>    “Name”: “Alice”,<br>    “Age”: 30,<br>    “Skills”: [<br>        “C#”,<br>        “ASP.NET Core”,<br>        “Blazor”<br>    ]<br>}</p>
+<h3 id="JsonSerializerOptions"><a href="#JsonSerializerOptions" class="headerlink" title="JsonSerializerOptions"></a>JsonSerializerOptions</h3><p>新增了对自定义 JSON 缩进字符和缩进大小的支持。这项特性主要通过两个新属性实现：</p>
+<p>IndentChars: 指定用于缩进的字符（默认为空格 “ “）。<br>IndentSize: 指定缩进的大小（默认为 2）。<br>这些属性让开发者灵活控制 JSON 格式，适配不同需求：</p>
+<p>日志优化: 提高可读性，便于结构定位。<br>前端适配: 符合框架缩进要求。<br>空间节约: 减少 JSON 体积。<br>工具兼容: 满足外部格式要求。</p>
+<h3 id="JsonSerializerOptions-Web"><a href="#JsonSerializerOptions-Web" class="headerlink" title="JsonSerializerOptions.Web"></a>JsonSerializerOptions.Web</h3><p>是一个新的单例实例，专为 Web 应用程序设计，提供了默认的 JSON 序列化选项。它的主要特点包括：</p>
+<p>属性命名策略：将属性名称从 PascalCase 转换为 camelCase，以符合 JavaScript 的命名惯例。</p>
+<p>忽略默认值：在序列化过程中，忽略属性的默认值（如 null、0、false），以减少传输的数据量。</p>
+<p>数字处理：允许从字符串读取数字，以提高灵活性。</p>
+<p>这些默认设置使得在 Web 环境中进行 JSON 序列化时，无需手动配置即可获得符合 Web 标准的输出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Product</span><br><span class="line">&#123;</span><br><span class="line">    public int Id &#123; get; <span class="built_in">set</span>; &#125;</span><br><span class="line">    public string Name &#123; get; <span class="built_in">set</span>; &#125; = <span class="string">&quot;P1-DWD1&quot;</span>;</span><br><span class="line">    public decimal Price &#123; get; <span class="built_in">set</span>; &#125; = 0.0m; // 默认值</span><br><span class="line">    public string? Description &#123; get; <span class="built_in">set</span>; &#125; = null; // 可空类型</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        var product = new Product();</span><br><span class="line"></span><br><span class="line">        // 使用 JsonSerializerOptions.Web 进行序列化</span><br><span class="line">        string json = JsonSerializer.Serialize(product, JsonSerializerOptions.Web);</span><br><span class="line"></span><br><span class="line">        Console.WriteLine(json);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>{“id”:0,”name”:”P1-DWD1”,”price”:0.0,”description”:null}</p>
+<h1 id="Debian-NET9"><a href="#Debian-NET9" class="headerlink" title="Debian .NET9"></a>Debian .NET9</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">wget https://download.visualstudio.microsoft.com/download/pr/xxx/dotnet-sdk-9.0.0.deb</span><br><span class="line">sudo dpkg -i dotnet-sdk-9.0.0.deb</span><br><span class="line">sudo apt-get install -f  <span class="comment"># 如果有依赖问题</span></span><br><span class="line">dotnet --version</span><br></pre></td></tr></table></figure>
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/net9/">.net9</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/01/02/vps-cloud-mobile/"
+                                   title="vps cloud mobile"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">vps cloud mobile</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="wtime">
+        <div class="wtime2">北京<span id="beijingTime"></span></div>
+        <div class="wtime2" style="display: none;"> 东京<span id="tokyoTime"></span></div>
+        <div class="wtime2">欧洲-巴黎<span id="parisTime"></span></div>
+        <div class="wtime2">英国-伦敦 <span id="londonTime"></span></div>
+        <div class="wtime2">美东-纽约 <span id="newYorkTime"></span></div>
+        <div class="wtime2">美西-洛杉矶<span id="losAngelesTime"></span></div>
+        <div  class="wtime2" style="display: none;">UTC<span id="utcTime"></span></div>
+    </div>
+    <div class="copyright-info info-item">
+    
+    
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+    
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    // 定义各个时区相对UTC的偏移量（单位：小时），考虑夏令时情况设置不同偏移量范围
+    const timeZoneOffsets = {
+            'beijing': 8,  // 北京不实行夏令时，固定偏移8小时
+            'tokyo': 9,  // 东京不实行夏令时，固定偏移9小时
+            'paris': [1, 2],  // 巴黎实行夏令时，冬令时偏移1小时，夏令时偏移2小时（示例简化处理，实际更复杂）
+            'london': [0, 1],  // 伦敦实行夏令时，冬令时偏移0小时，夏令时偏移1小时
+            'newYork': [-5, -4],  // 纽约实行夏令时，冬令时偏移-5小时，夏令时偏移-4小时
+            'losAngeles': [-8, -7]  // 洛杉矶实行夏令时，冬令时偏移-8小时，夏令时偏移-7小时
+        };
+
+        function padZero(num) {
+            return num < 10? '0' + num : num;
+        }
+
+        function formatTime(date) {
+            const year = date.getFullYear();
+            const month = padZero(date.getMonth() + 1);
+            const day = padZero(date.getDate());
+            const hours = padZero(date.getHours());
+            const minutes = padZero(date.getMinutes());
+            const seconds = padZero(date.getSeconds());
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function isDaylightSavingTime(date, zone) {
+            const month = date.getMonth();
+            const dstStart = new Date(date.getFullYear(), 3, 8, 2, 0, 0);  // 假设每年4月8日凌晨2点开始夏令时（简化示例，实际不同地区规则差异大）
+            const dstEnd = new Date(date.getFullYear(), 10, 1, 2, 0, 0);  // 假设每年10月1日凌晨2点结束夏令时
+            if (zone === 'paris' || zone === 'london' || zone === 'newYork' || zone === 'losAngeles') {
+                return date >= dstStart && date < dstEnd;
+            }
+            return false;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+                now.getUTCMinutes(), now.getUTCSeconds());
+            const utcTime = formatTime(utcDate);
+            document.getElementById('utcTime').innerHTML = utcTime;
+
+            for (const zone in timeZoneOffsets) {
+                const offsets = timeZoneOffsets[zone];
+                let offset;
+                if (Array.isArray(offsets)) {
+                    offset = isDaylightSavingTime(utcDate, zone)? offsets[1] : offsets[0];
+                } else {
+                    offset = offsets;
+                }
+                const zoneDate = new Date(utcDate.getTime() + offset * 60 * 60 * 1000);
+                document.getElementById(zone + 'Time').innerHTML = formatTime(zoneDate);
+            }
+
+            setTimeout(updateTime, 1000);
+        }
+
+        window.onload = function () {
+            updateTime();
+        };
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

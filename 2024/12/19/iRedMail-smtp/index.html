@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Dec 21 2024 23:22:21 GMT+0800">2024-12-21 23:22:21</span>
+                <span class="datetime" data-updated="Mon Dec 23 2024 01:28:16 GMT+0800">2024-12-23 01:28:16</span>
             </span>
         
 
@@ -245,6 +245,7 @@
 <p>注意：MX记录的主机名不能是其他名称的别名。另外，强烈建议使用主机名而不是裸 IP 地址作为 MX 记录。</p>
 <p> DNS 管理器可能会要求输入首选项值（也称为优先级值）。它可以是 0 到 65,356 之间的任意数字。小数字比大数字具有更高的优先级。建议将该值设置为0，这样该邮件服务器将具有最高的优先级来接收电子邮件。创建 MX 记录后，还需要为 mail.your-domain.com 创建 A 记录，以便将其解析为 IP 地址。如果服务器使用 IPv6 地址，请务必添加 AAAA 记录。</p>
 <p>提示：如果使用 Cloudflare DNS 服务，则在为 mail.your-domain.com 创建 A 记录时不应启用 CDN 功能。 Cloudflare 不支持 SMTP 代理。</p>
+<p>@ . mail A 记录 到 IP     mail MX 记录到 mail.your-domain.com</p>
 <h1 id="2-配置主机名"><a href="#2-配置主机名" class="headerlink" title="2.配置主机名"></a>2.配置主机名</h1><p>通过 SSH 登录服务器，然后运行以下命令来更新现有软件包。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update;</span><br><span class="line">sudo apt upgrade;</span><br></pre></td></tr></table></figure>
 
@@ -314,7 +315,7 @@ sudo hostnamectl set-hostname mail.imsmail.work.gd
 echo "127.0.0.1 mail.imsmail.work.gd mail localhost" | sudo tee -a /etc/hosts
 
 25,80,443,587,993  iRedMail
-@ . mail A 记录 到 IP     mail MX 记录到 mail.mydn
+
 
 https://www.iredmail.org/download.html
 wget https://codeload.github.com/iredmail/iRedMail/tar.gz/refs/tags/1.7.1
@@ -428,7 +429,7 @@ https://cn.linux-terminal.com/?p=3276 -->
     
     
         Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
-        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2024
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2025
         
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
         
