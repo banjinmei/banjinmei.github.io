@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Aug 26 2024 01:28:10 GMT+0800">2024-08-26 01:28:10</span>
+                <span class="datetime" data-updated="Tue Jan 21 2025 11:36:03 GMT+0800">2025-01-21 11:36:03</span>
             </span>
         
 
@@ -245,6 +245,18 @@
 
 
 <p>git config –global http.sslVerify false</p>
+<p>网络与internet -&gt; 代理</p>
+<p>手动设置代理<br>IP 端口<br>10809</p>
+<p>一、HTTP代理设置<br>要设置Git的HTTP代理，需要在终端中运行以下命令：</p>
+<p>git config –global http.proxy 代理地址:端口号<br>1<br>例如，如果您正在使用127.0.0.1的代理服务器和8888的端口，那么您需要输入以下命令：</p>
+<p>git config –global http.proxy 127.0.0.1:8888<br>1<br>如果您想在Git上使用的代理需要身份验证，请使用以下命令来配置HTTP代理：</p>
+<p>git config –global http.proxy 用户名:密码@代理地址:端口号<br>1<br>二、HTTPS代理设置<br>如果您想设置HTTPS代理，需要在终端输入以下命令：</p>
+<p>git config –global https.proxy 代理地址:端口号<br>1<br>例如，如果您正在使用127.0.0.1代理服务器和8888端口，那么您需要输入以下命令：</p>
+<p>git config –global https.proxy 127.0.0.1:8888<br>1<br>如果您的代理需要身份验证，可以使用以下命令进行HTTPS代理设置：</p>
+<p>git config –global https.proxy 用户名:密码@代理地址:端口号<br>1<br>三、取消代理设置<br>如果您想取消现有的代理设置，可以使用以下命令取消HTTP代理的配置：</p>
+<p>git config –global –unset http.proxy<br>1<br>取消HTTPS代理的配置：</p>
+<p>git config –global –unset https.proxy<br>1<br>四、检查当前代理设置<br>如果您想检查当前代理配置，可以使用以下命令来查看：</p>
+<p>git config –global –get http.proxy<br>git config –global –get https.proxy</p>
 
                 </div>
                 
