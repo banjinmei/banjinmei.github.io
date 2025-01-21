@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="LM">
+    
+    <title>
+        
+            RAS加密 |
+        
+        MLOG
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"MLOG","author":"LM","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2012,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               MLOG
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        RAS加密
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-01-21 10:07:25</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Jan 21 2025 10:12:26 GMT+0800">2025-01-21 10:12:26</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/c/">c#</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ras/">ras</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p>c# RAS</p>
+<p>C#非对称加密  例子</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> originalText = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">        <span class="comment">// 创建 RSA 算法实例</span></span><br><span class="line">        <span class="keyword">using</span> (RSA rsa = RSA.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 导出公钥</span></span><br><span class="line">            <span class="built_in">string</span> publicKey = Convert.ToBase64String(rsa.ExportRSAPublicKey());</span><br><span class="line">            <span class="comment">// 导出私钥</span></span><br><span class="line">            <span class="built_in">string</span> privateKey = Convert.ToBase64String(rsa.ExportRSAPrivateKey());</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 加密</span></span><br><span class="line">            <span class="built_in">byte</span>[] encryptedBytes = Encrypt(originalText, publicKey);</span><br><span class="line">            <span class="built_in">string</span> encryptedText = Convert.ToBase64String(encryptedBytes);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Encrypted Text: <span class="subst">&#123;encryptedText&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 解密</span></span><br><span class="line">            <span class="built_in">string</span> decryptedText = Decrypt(encryptedBytes, privateKey);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Decrypted Text: <span class="subst">&#123;decryptedText&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">byte</span>[] <span class="title">Encrypt</span>(<span class="params"><span class="built_in">string</span> data, <span class="built_in">string</span> publicKeyString</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 将公钥从 Base64 字符串转换为字节数组</span></span><br><span class="line">        <span class="built_in">byte</span>[] publicKeyBytes = Convert.FromBase64String(publicKeyString);</span><br><span class="line">        <span class="keyword">using</span> (RSA rsa = RSA.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 导入公钥</span></span><br><span class="line">            rsa.ImportRSAPublicKey(publicKeyBytes, <span class="keyword">out</span> _);</span><br><span class="line">            <span class="comment">// 将数据转换为字节数组</span></span><br><span class="line">            <span class="built_in">byte</span>[] dataBytes = Encoding.UTF8.GetBytes(data);</span><br><span class="line">            <span class="comment">// 加密数据</span></span><br><span class="line">            <span class="keyword">return</span> rsa.Encrypt(dataBytes, RSAEncryptionPadding.OaepSHA256);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Decrypt</span>(<span class="params"><span class="built_in">byte</span>[] encryptedData, <span class="built_in">string</span> privateKeyString</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 将私钥从 Base64 字符串转换为字节数组</span></span><br><span class="line">        <span class="built_in">byte</span>[] privateKeyBytes = Convert.FromBase64String(privateKeyString);</span><br><span class="line">        <span class="keyword">using</span> (RSA rsa = RSA.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 导入私钥</span></span><br><span class="line">            rsa.ImportRSAPrivateKey(privateKeyBytes, <span class="keyword">out</span> _);</span><br><span class="line">            <span class="comment">// 解密数据</span></span><br><span class="line">            <span class="built_in">byte</span>[] decryptedBytes = rsa.Decrypt(encryptedData, RSAEncryptionPadding.OaepSHA256);</span><br><span class="line">            <span class="comment">// 将解密后的字节数组转换为字符串</span></span><br><span class="line">            <span class="keyword">return</span> Encoding.UTF8.GetString(decryptedBytes);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>字符串解密：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">StringDecryption</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> encryptedText = <span class="string">&quot;your_encrypted_text_here&quot;</span>;</span><br><span class="line">        <span class="built_in">string</span> privateKey = <span class="string">&quot;your_private_key_here&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> decryptedText = Decrypt(encryptedText, privateKey);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Decrypted Text: <span class="subst">&#123;decryptedText&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Error during decryption: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Decrypt</span>(<span class="params"><span class="built_in">string</span> encryptedText, <span class="built_in">string</span> privateKey</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">byte</span>[] encryptedBytes = Convert.FromBase64String(encryptedText);</span><br><span class="line">        <span class="built_in">byte</span>[] privateKeyBytes = Convert.FromBase64String(privateKey);</span><br><span class="line">        <span class="keyword">using</span> (RSA rsa = RSA.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            rsa.ImportRSAPrivateKey(privateKeyBytes, <span class="keyword">out</span> _);</span><br><span class="line">            <span class="built_in">byte</span>[] decryptedBytes = rsa.Decrypt(encryptedBytes, RSAEncryptionPadding.OaepSHA256);</span><br><span class="line">            <span class="keyword">return</span> Encoding.UTF8.GetString(decryptedBytes);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输入的密文和私钥都应该是合法的 Base64 编码字符串，否则 Convert.FromBase64String 会抛出异常。</p>
+<h1 id="私钥签名"><a href="#私钥签名" class="headerlink" title="私钥签名"></a>私钥签名</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">SignatureExample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> data = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">        <span class="built_in">string</span> privateKey = <span class="string">&quot;your_private_key_here&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">byte</span>[] signature = SignData(data, privateKey);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Signature: <span class="subst">&#123;Convert.ToBase64String(signature)&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Error during signing: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">byte</span>[] <span class="title">SignData</span>(<span class="params"><span class="built_in">string</span> data, <span class="built_in">string</span> privateKey</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">byte</span>[] dataBytes = Encoding.UTF8.GetBytes(data);</span><br><span class="line">        <span class="built_in">byte</span>[] privateKeyBytes = Convert.FromBase64String(privateKey);</span><br><span class="line">        <span class="keyword">using</span> (RSA rsa = RSA.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            rsa.ImportRSAPrivateKey(privateKeyBytes, <span class="keyword">out</span> _);</span><br><span class="line">            <span class="comment">// 使用 RSASignaturePadding.Pkcs1 签名</span></span><br><span class="line">            <span class="keyword">return</span> rsa.SignData(dataBytes, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>data：需要签名的数据，这里是一个简单的字符串 “Hello, World!”。<br>privateKey：用于签名的私钥，以 Base64 编码的字符串形式提供。需要将 “your_private_key_here” 替换为实际的私钥。<br>SignData 函数：<br>byte[] dataBytes &#x3D; Encoding.UTF8.GetBytes(data);：将需要签名的数据转换为字节数组，因为签名操作通常是在字节级别进行的。<br>byte[] privateKeyBytes &#x3D; Convert.FromBase64String(privateKey);：将 Base64 编码的私钥转换为字节数组，以便 RSA 算法可以使用。<br>using (RSA rsa &#x3D; RSA.Create())：创建一个 RSA 算法的实例。<br>rsa.ImportRSAPrivateKey(privateKeyBytes, out _);：将私钥导入 RSA 算法实例。<br>return rsa.SignData(dataBytes, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);：使用导入的私钥对数据进行签名。<br>dataBytes：要签名的数据的字节表示。<br>HashAlgorithmName.SHA256：使用 SHA256 算法对数据进行哈希处理。<br>RSASignaturePadding.Pkcs1：使用 PKCS #1 签名填充方案。</p>
+<h2 id="使用说明："><a href="#使用说明：" class="headerlink" title="使用说明："></a>使用说明：</h2><p>将 your_private_key_here 替换为自己的 RSA 私钥。<br>程序将对 “Hello, World!” 这个数据进行签名。<br>签名结果将以 Base64 编码的字符串形式输出。<br>运行程序，如果一切正常，将看到生成的签名；如果出现异常，将输出错误消息。<br>请确保私钥的安全性，因为私钥用于生成签名，一旦泄露，签名的安全性将受到威胁。同时，根据需要可以使用不同的哈希算法和签名填充方案，但要确保通信双方使用相同的设置，以保证签名验证的有效性。<br>此外，在实际应用中，可能需要考虑对签名结果进行存储或传输，以及对签名的验证过程，以确保数据的完整性和来源的真实性。以下是一个简单的签名验证示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">SignatureVerification</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> data = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">        <span class="built_in">string</span> publicKey = <span class="string">&quot;your_public_key_here&quot;</span>;</span><br><span class="line">        <span class="built_in">string</span> signatureBase64 = <span class="string">&quot;your_signature_here&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">bool</span> isValid = VerifySignature(data, signatureBase64, publicKey);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Signature is valid: <span class="subst">&#123;isValid&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Error during verification: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">VerifySignature</span>(<span class="params"><span class="built_in">string</span> data, <span class="built_in">string</span> signatureBase64, <span class="built_in">string</span> publicKey</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">byte</span>[] dataBytes = Encoding.UTF8.GetBytes(data);</span><br><span class="line">        <span class="built_in">byte</span>[] signatureBytes = Convert.FromBase64String(signatureBase64);</span><br><span class="line">        <span class="built_in">byte</span>[] publicKeyBytes = Convert.FromBase64String(publicKey);</span><br><span class="line">        <span class="keyword">using</span> (RSA rsa = RSA.Create())</span><br><span class="line">        &#123;</span><br><span class="line">            rsa.ImportRSAPublicKey(publicKeyBytes, <span class="keyword">out</span> _);</span><br><span class="line">            <span class="keyword">return</span> rsa.VerifyData(dataBytes, signatureBytes, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>data：原始数据，用于验证签名是否是对该数据的签名。<br>signatureBase64：需要验证的签名，以 Base64 编码的字符串形式提供。<br>publicKey：用于验证签名的公钥，以 Base64 编码的字符串形式提供。<br>VerifySignature 函数：<br>byte[] dataBytes &#x3D; Encoding.UTF8.GetBytes(data);：将原始数据转换为字节数组。<br>byte[] signatureBytes &#x3D; Convert.FromBase64String(signatureBase64);：将 Base64 编码的签名转换为字节数组。<br>byte[] publicKeyBytes &#x3D; Convert.FromBase64String(publicKey);：将 Base64 编码的公钥转换为字节数组。<br>using (RSA rsa &#x3D; RSA.Create())：创建一个 RSA 算法的实例。<br>rsa.ImportRSAPublicKey(publicKeyBytes, out _);：将公钥导入 RSA 算法实例。<br>return rsa.VerifyData(dataBytes, signatureBytes, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);：使用公钥验证签名。<br>dataBytes：原始数据的字节表示。<br>signatureBytes：要验证的签名的字节表示。<br>HashAlgorithmName.SHA256：使用 SHA256 哈希算法，与签名时使用的哈希算法保持一致。<br>RSASignaturePadding.Pkcs1：使用 PKCS #1 签名填充方案，与签名时使用的填充方案保持一致。</p>
+<h2 id="使用说明：-1"><a href="#使用说明：-1" class="headerlink" title="使用说明："></a>使用说明：</h2><p>将 your_public_key_here 替换为自己的 RSA 公钥。<br>将 your_signature_here 替换为要验证的签名。<br>程序将对签名进行验证，并输出验证结果。<br>运行程序，如果签名有效，将输出 Signature is valid: true；否则，将输出 Signature is valid: false 或错误消息。<br>确保公钥和签名的完整性，以及使用与签名时相同的哈希算法和填充方案，这样才能正确验证签名的有效性。</p>
+<p>公钥加密 私钥解密<br>私钥签名 公钥验证 </p>
+<h1 id="TEST"><a href="#TEST" class="headerlink" title="TEST"></a>TEST</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> originalText = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line"><span class="comment">// 创建 RSA 算法实例</span></span><br><span class="line"><span class="keyword">using</span> (RSA rsa = RSA.Create())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 导出公钥</span></span><br><span class="line">    <span class="built_in">string</span> publicKey = Convert.ToBase64String(rsa.ExportRSAPublicKey());</span><br><span class="line">    <span class="comment">// 导出私钥</span></span><br><span class="line">    <span class="built_in">string</span> privateKey = Convert.ToBase64String(rsa.ExportRSAPrivateKey());</span><br><span class="line"></span><br><span class="line">    Console.WriteLine(<span class="string">&quot;publicKey \n&quot;</span> + publicKey + <span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;priKey &quot;</span> + privateKey + <span class="string">&quot;\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> key1 = <span class="string">&quot;MxBase64&quot;</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">string</span> sclientstr = <span class="string">&quot;aIQ==&quot;</span>;</span><br><span class="line">    <span class="built_in">string</span> key2 = <span class="string">&quot;MIB64Cv+&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加密</span></span><br><span class="line">    <span class="built_in">byte</span>[] encryptedBytes = RSAHelper.RSAEncrypt(originalText, publicKey);</span><br><span class="line">    <span class="built_in">string</span> encryptedText = Convert.ToBase64String(encryptedBytes);</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;Encrypted Text: <span class="subst">&#123;encryptedText&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解密</span></span><br><span class="line">    <span class="built_in">string</span> decryptedText = RSAHelper.RSADecrypt(encryptedBytes, privateKey);</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;Decrypted Text: <span class="subst">&#123;decryptedText&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解密2</span></span><br><span class="line">    <span class="built_in">string</span> decryptedText2 = RSAHelper.RSADecryptS(sclientstr, key2);</span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;Decrypted Text2: <span class="subst">&#123;decryptedText2&#125;</span>&quot;</span>);</span><br><span class="line">    <span class="comment">//  //key</span></span><br><span class="line">    <span class="built_in">string</span> keyim = ConfigManager.Temp1;</span><br><span class="line">    <span class="comment">//aes 加密</span></span><br><span class="line">    <span class="built_in">string</span> encrypted = Aesv1.Encrypt(<span class="string">&quot;1234567890A2&quot;</span>, keyim);<span class="comment">// decryptedText2);//keyim</span></span><br><span class="line">    Console.WriteLine(<span class="string">$&quot;encrypted <span class="subst">&#123;encrypted&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//byte[] encrypted2  = RSAHelper.RSAEncrypt(&quot;1234567890A2&quot;, decryptedText2); </span></span><br><span class="line">    <span class="comment">//string encryptedText2 = Convert.ToBase64String(encrypted2);//</span></span><br><span class="line">    <span class="comment">//Console.WriteLine($&quot;encrypted2 &#123;encryptedText2&#125;&quot;);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//签名 </span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">string</span> signStr = RSAHelper.RSASignDataS(encrypted, key2);</span><br><span class="line">    Console.WriteLine(<span class="string">&quot;encrypted 1111111111111 &quot;</span>+ signStr);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/c/">c#</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ras/">ras</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/01/02/NET9-lock-Aspire-UUID-JsonSerializerOptions/"
+                                   title=".NET9 lock Aspire UUID JsonSerializerOptions"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">.NET9 lock Aspire UUID JsonSerializerOptions</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="wtime">
+        <div class="wtime2">北京<span id="beijingTime"></span></div>
+        <div class="wtime2" style="display: none;"> 东京<span id="tokyoTime"></span></div>
+        <div class="wtime2">欧洲-巴黎<span id="parisTime"></span></div>
+        <div class="wtime2">英国-伦敦 <span id="londonTime"></span></div>
+        <div class="wtime2">美东-纽约 <span id="newYorkTime"></span></div>
+        <div class="wtime2">美西-洛杉矶<span id="losAngelesTime"></span></div>
+        <div  class="wtime2" style="display: none;">UTC<span id="utcTime"></span></div>
+    </div>
+    <div class="copyright-info info-item">
+    
+    
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+    
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    // 定义各个时区相对UTC的偏移量（单位：小时），考虑夏令时情况设置不同偏移量范围
+    const timeZoneOffsets = {
+            'beijing': 8,  // 北京不实行夏令时，固定偏移8小时
+            'tokyo': 9,  // 东京不实行夏令时，固定偏移9小时
+            'paris': [1, 2],  // 巴黎实行夏令时，冬令时偏移1小时，夏令时偏移2小时（示例简化处理，实际更复杂）
+            'london': [0, 1],  // 伦敦实行夏令时，冬令时偏移0小时，夏令时偏移1小时
+            'newYork': [-5, -4],  // 纽约实行夏令时，冬令时偏移-5小时，夏令时偏移-4小时
+            'losAngeles': [-8, -7]  // 洛杉矶实行夏令时，冬令时偏移-8小时，夏令时偏移-7小时
+        };
+
+        function padZero(num) {
+            return num < 10? '0' + num : num;
+        }
+
+        function formatTime(date) {
+            const year = date.getFullYear();
+            const month = padZero(date.getMonth() + 1);
+            const day = padZero(date.getDate());
+            const hours = padZero(date.getHours());
+            const minutes = padZero(date.getMinutes());
+            const seconds = padZero(date.getSeconds());
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function isDaylightSavingTime(date, zone) {
+            const month = date.getMonth();
+            const dstStart = new Date(date.getFullYear(), 3, 8, 2, 0, 0);  // 假设每年4月8日凌晨2点开始夏令时（简化示例，实际不同地区规则差异大）
+            const dstEnd = new Date(date.getFullYear(), 10, 1, 2, 0, 0);  // 假设每年10月1日凌晨2点结束夏令时
+            if (zone === 'paris' || zone === 'london' || zone === 'newYork' || zone === 'losAngeles') {
+                return date >= dstStart && date < dstEnd;
+            }
+            return false;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+                now.getUTCMinutes(), now.getUTCSeconds());
+            const utcTime = formatTime(utcDate);
+            document.getElementById('utcTime').innerHTML = utcTime;
+
+            for (const zone in timeZoneOffsets) {
+                const offsets = timeZoneOffsets[zone];
+                let offset;
+                if (Array.isArray(offsets)) {
+                    offset = isDaylightSavingTime(utcDate, zone)? offsets[1] : offsets[0];
+                } else {
+                    offset = offsets;
+                }
+                const zoneDate = new Date(utcDate.getTime() + offset * 60 * 60 * 1000);
+                document.getElementById(zone + 'Time').innerHTML = formatTime(zoneDate);
+            }
+
+            setTimeout(updateTime, 1000);
+        }
+
+        window.onload = function () {
+            updateTime();
+        };
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
