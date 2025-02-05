@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="LM">
+    
+    <title>
+        
+            deepseek local deploy |
+        
+        MLOG
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"MLOG","author":"LM","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2012,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               MLOG
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        deepseek local deploy
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-02-06 04:21:55</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Feb 06 2025 04:29:57 GMT+0800">2025-02-06 04:29:57</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="DeepSeek"><a href="#DeepSeek" class="headerlink" title="DeepSeek"></a>DeepSeek</h1><p><strong>DeepSeek</strong>是杭州深度求索人工智能技术有限公司推出的人工智能项目，涵盖公司品牌、人工智能模型及相关 AI 工具等多层含义，以下是具体介绍：<br><strong>公司层面</strong>DeepSeek 是一家 2023 年 5 月成立的中国人工智能公司，由对冲基金公司 High-Flyer 出资成立。其创始人梁文峰带领团队专注于人工智能基础技术研究与开发，在人工智能领域尤其是大语言模型方向投入了大量研究资源并取得成果。<br><strong>模型层面</strong><br>DeepSeek Coder：2023 年 11 月 2 日发布，是完全开源且可免费用于商业用途的模型，为开发者提供了基础的代码生成等能力支持。<br>DeepSeek LLM：2023 年 11 月 29 日推出，具有 670 亿参数，性能与当时的 GPT-4 接近，同时推出了聊天版本 DeepSeek Chat。<br>DeepSeek V2：2024 年 5 月发布，以性价比高而闻名，每百万输出 tokens 仅需 2 元人民币，在 LLM 排名中位列第七。<br>DeepSeek R1-lite-preview：2024 年 11 月发布，擅长逻辑推理、数学推理和实时问题解决，在一些基准测试中声称超越了 OpenAI O1，但也有测试显示存在速度等方面的挑战。<br>DeepSeek V3：2024 年 12 月发布，拥有 6710 亿参数，训练仅花费 558 万美元，约 55 天时间，在基准测试中性能优于 Llama 3.1 和 Qwen 2.5，与 GPT-4 O 和 Claude 3.5 Sonnet 相当。<br>DeepSeek R1 和 DeepSeek R1-zero：2025 年 1 月发布，R1 模型是开源的，可让任何开发者使用，在一些关键的数学和编程测试中表现出色，能与 OpenAI 的先进模型相媲美或超越。<br><strong>工具层面</strong>DeepSeek 作为 AI 工具，具有强大的自然语言处理能力，可进行知识问答、文本生成、数据分析、代码编写等多种任务，还支持多模态输入和联网搜索，能实时获取最新信息。广泛应用于教育、编程、内容创作、智能客服等领域，为用户提供高效、智能的解决方案。</p>
+<p>DeepSeek的官方网站地址 <a class="link"   target="_blank" rel="noopener" href="https://www.deepseek.com/" >https://www.deepseek.com/<i class="fas fa-external-link-alt"></i></a><br>APP <a class="link"   target="_blank" rel="noopener" href="https://download.deepseek.com/app/" >https://download.deepseek.com/app/<i class="fas fa-external-link-alt"></i></a><br>WebUI <a class="link"   target="_blank" rel="noopener" href="https://chat.deepseek.com/" >https://chat.deepseek.com/<i class="fas fa-external-link-alt"></i></a><br>API文档 <a class="link"   target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/" >https://api-docs.deepseek.com/zh-cn/<i class="fas fa-external-link-alt"></i></a></p>
+<p>服务状态 <a class="link"   target="_blank" rel="noopener" href="https://status.deepseek.com/" >https://status.deepseek.com/<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run deepseek-r1</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run deepseek-r1:1.5b</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:11434/api/generate -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">  &quot;model&quot;: &quot;deepseek-r1:1.5b&quot;,</span></span><br><span class="line"><span class="string">  &quot;prompt&quot;: &quot;Why is the sky blue?&quot;</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/ollama/ollama/blob/main/docs/api.md" >https://github.com/ollama/ollama/blob/main/docs/api.md<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">python</span><br><span class="line"><span class="comment"># Please install OpenAI SDK first: `pip3 install openai`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> openai <span class="keyword">import</span> OpenAI</span><br><span class="line"></span><br><span class="line">client = OpenAI(api_key=<span class="string">&quot;&lt;DeepSeek API Key&gt;&quot;</span>, base_url=<span class="string">&quot;https://api.deepseek.com&quot;</span>)</span><br><span class="line"></span><br><span class="line">response = client.chat.completions.create(</span><br><span class="line">    model=<span class="string">&quot;deepseek-chat&quot;</span>,</span><br><span class="line">    messages=[</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;system&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;You are a helpful assistant&quot;</span>&#125;,</span><br><span class="line">        &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Hello&quot;</span>&#125;,</span><br><span class="line">    ],</span><br><span class="line">    stream=<span class="literal">False</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(response.choices[<span class="number">0</span>].message.content)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意model&#x3D;’deepseek-chat’调用的是DeepSeek-V3模型，model&#x3D;’deepseek-reasoner’才是DeepSeek-R1大模型。</p>
+<h1 id="csharp"><a href="#csharp" class="headerlink" title="csharp"></a>csharp</h1><p>要使用C#开发一个与Ollama API进行对话的程序，首先需要确保已经安装了Ollama并且它正在运行。Ollama通常会在本地提供一个REST API，可以通过HTTP请求与它进行交互。</p>
+<p>以下是一个简单的C#示例，展示如何使用HttpClient与Ollama API进行交互，并获取模型标签（如&#x2F;api&#x2F;tags）。</p>
+<h2 id="1-创建C-控制台应用程序"><a href="#1-创建C-控制台应用程序" class="headerlink" title="1. 创建C#控制台应用程序"></a>1. 创建C#控制台应用程序</h2><p>首先，创建一个新的C#控制台应用程序项目。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dotnet new console -n OllamaChat</span><br><span class="line"><span class="built_in">cd</span> OllamaChat</span><br></pre></td></tr></table></figure>
+<h2 id="2-添加必要的NuGet包"><a href="#2-添加必要的NuGet包" class="headerlink" title="2. 添加必要的NuGet包"></a>2. 添加必要的NuGet包</h2><p>需要添加System.Net.Http包来处理HTTP请求。如果使用的是.NET Core 3.1或更高版本，System.Net.Http已经包含在SDK中，无需额外安装。</p>
+<h2 id="3-编写代码"><a href="#3-编写代码" class="headerlink" title="3. 编写代码"></a>3. 编写代码</h2><p>在Program.cs中编写以下代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Net.Http;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Ollama API的URL</span></span><br><span class="line">        <span class="built_in">string</span> ollamaApiUrl = <span class="string">&quot;http://localhost:11434/api/tags&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建HttpClient实例</span></span><br><span class="line">        <span class="keyword">using</span> (HttpClient client = <span class="keyword">new</span> HttpClient())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">try</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 发送GET请求获取模型标签</span></span><br><span class="line">                HttpResponseMessage response = <span class="keyword">await</span> client.GetAsync(ollamaApiUrl);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 确保请求成功</span></span><br><span class="line">                response.EnsureSuccessStatusCode();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 读取响应内容</span></span><br><span class="line">                <span class="built_in">string</span> responseBody = <span class="keyword">await</span> response.Content.ReadAsStringAsync();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 输出响应内容</span></span><br><span class="line">                Console.WriteLine(<span class="string">&quot;Response from Ollama API:&quot;</span>);</span><br><span class="line">                Console.WriteLine(responseBody);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (HttpRequestException e)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 处理请求异常</span></span><br><span class="line">                Console.WriteLine(<span class="string">&quot;\nException Caught!&quot;</span>);</span><br><span class="line">                Console.WriteLine(<span class="string">&quot;Message :&#123;0&#125; &quot;</span>, e.Message);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-运行程序"><a href="#4-运行程序" class="headerlink" title="4. 运行程序"></a>4. 运行程序</h2><p>确保Ollama正在运行，并且API端点<a class="link"   target="_blank" rel="noopener" href="http://localhost:11434/api/tags%E6%98%AF%E5%8F%AF%E8%AE%BF%E9%97%AE%E7%9A%84%E3%80%82%E7%84%B6%E5%90%8E%E8%BF%90%E8%A1%8C%E7%9A%84C#%E7%A8%8B%E5%BA%8F%EF%BC%9A" >http://localhost:11434/api/tags是可访问的。然后运行的C#程序：<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dotnet run</span><br></pre></td></tr></table></figure>
+<h2 id="5-解释代码"><a href="#5-解释代码" class="headerlink" title="5. 解释代码"></a>5. 解释代码</h2><p>HttpClient: 用于发送HTTP请求和接收HTTP响应。</p>
+<p>GetAsync: 发送一个GET请求到指定的URL。</p>
+<p>EnsureSuccessStatusCode: 确保HTTP响应是成功的（状态码200-299）。</p>
+<p>ReadAsStringAsync: 读取响应内容为字符串。</p>
+<p>Response from Ollama API:<br>{“models”:[{“name”:”deepseek-r1:7b”,”model”:”deepseek-r1:7b”,”modified_at”:”2025-02-04T62xxxxxxxx}}]}</p>
+<h2 id="C-调用-Ollama-API-进行对话"><a href="#C-调用-Ollama-API-进行对话" class="headerlink" title="C# 调用 Ollama API 进行对话"></a>C# 调用 Ollama API 进行对话</h2><p>包括获取模型列表和进行对话。<br>使用 HttpClient 发送 HTTP 请求，并解析返回的 JSON 数据。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Net.Http;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Text.Json;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">string</span> BaseUrl = <span class="string">&quot;http://1.1.1.1:11434&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">&quot;获取可用模型列表...&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> models = <span class="keyword">await</span> GetModelList();</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;模型列表: <span class="subst">&#123;<span class="built_in">string</span>.Join(<span class="string">&quot;, &quot;</span>, models)&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (models.Length == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;没有可用的模型！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">string</span> model = models[<span class="number">0</span>];  <span class="comment">// 选择第一个模型</span></span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;使用模型: <span class="subst">&#123;model&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.Write(<span class="string">&quot;: &quot;</span>);</span><br><span class="line">            <span class="built_in">string</span> userInput = Console.ReadLine();</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrWhiteSpace(userInput)) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">string</span> response = <span class="keyword">await</span> ChatWithOllama(model, userInput);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;Ollama: <span class="subst">&#123;response&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取可用模型列表</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="built_in">string</span>[]&gt; GetModelList()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> HttpClient client = <span class="keyword">new</span>();</span><br><span class="line">        HttpResponseMessage response = <span class="keyword">await</span> client.GetAsync(<span class="string">$&quot;<span class="subst">&#123;BaseUrl&#125;</span>/api/tags&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!response.IsSuccessStatusCode)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">&quot;获取模型列表失败&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> Array.Empty&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">string</span> json = <span class="keyword">await</span> response.Content.ReadAsStringAsync();</span><br><span class="line">        <span class="keyword">using</span> JsonDocument doc = JsonDocument.Parse(json);</span><br><span class="line">        <span class="keyword">var</span> models = doc.RootElement.GetProperty(<span class="string">&quot;models&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">string</span>[] modelNames = <span class="keyword">new</span> <span class="built_in">string</span>[models.GetArrayLength()];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; models.GetArrayLength(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            modelNames[i] = models[i].GetProperty(<span class="string">&quot;name&quot;</span>).GetString();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> modelNames;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发送对话请求</span></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="built_in">string</span>&gt; <span class="title">ChatWithOllama</span>(<span class="params"><span class="built_in">string</span> model, <span class="built_in">string</span> prompt</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">using</span> HttpClient client = <span class="keyword">new</span>();</span><br><span class="line">        <span class="keyword">var</span> requestBody = <span class="keyword">new</span></span><br><span class="line">        &#123;</span><br><span class="line">            model = model,</span><br><span class="line">            prompt = prompt,</span><br><span class="line">            stream = <span class="literal">false</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">string</span> jsonRequest = JsonSerializer.Serialize(requestBody);</span><br><span class="line">        <span class="keyword">var</span> content = <span class="keyword">new</span> StringContent(jsonRequest, Encoding.UTF8, <span class="string">&quot;application/json&quot;</span>);</span><br><span class="line"></span><br><span class="line">        HttpResponseMessage response = <span class="keyword">await</span> client.PostAsync(<span class="string">$&quot;<span class="subst">&#123;BaseUrl&#125;</span>/api/generate&quot;</span>, content);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!response.IsSuccessStatusCode)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;对话请求失败&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">string</span> jsonResponse = <span class="keyword">await</span> response.Content.ReadAsStringAsync();</span><br><span class="line">        <span class="keyword">using</span> JsonDocument doc = JsonDocument.Parse(jsonResponse);</span><br><span class="line">        <span class="keyword">return</span> doc.RootElement.GetProperty(<span class="string">&quot;response&quot;</span>).GetString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取模型列表 (GetModelList):</p>
+<p>发送 GET 请求到 <a class="link"   target="_blank" rel="noopener" href="http://1.1.1.1:11434/api/tags" >http://1.1.1.1:11434/api/tags<i class="fas fa-external-link-alt"></i></a> 获取模型列表。<br>解析 JSON 响应，提取模型名称。<br>进行对话 (ChatWithOllama):</p>
+<p>发送 POST 请求到 <a class="link"   target="_blank" rel="noopener" href="http://1.1.1.1:11434/api/generate%E3%80%82" >http://1.1.1.1:11434/api/generate。<i class="fas fa-external-link-alt"></i></a><br>请求体包含：<br>model: 选择的模型名称。<br>prompt: 用户输入的问题。<br>stream: false: 禁用流式响应，直接返回完整的结果。<br><strong>交互方式:</strong></p>
+<p>先获取模型列表，默认选择第一个模型。<br>进入对话循环，用户输入文本后，程序调用 API 获取 AI 回复并打印。</p>
+<h2 id="运行示例："><a href="#运行示例：" class="headerlink" title="运行示例："></a>运行示例：</h2><dl><dt>获取可用模型列表…<br>模型列表: llama3, gemma, mistral<br>使用模型: llama3<br>: 好！<br>Ollama: 好！很高兴见到。</dt><dd>是谁？<br>Ollama: 我是一个 AI 语言模型，可以帮助回答问题。</dd></dl><h1 id="nodejs-vue3"><a href="#nodejs-vue3" class="headerlink" title="nodejs  vue3"></a>nodejs  vue3</h1><p> Node.js（Express + Vue 3）实现的对话网页，支持选择模型并与 Ollama 进行对话。</p>
+<p>后端（Node.js + Express）：提供 API 获取模型列表，并与 Ollama 进行对话。<br>前端（Vue 3 + Element Plus）：创建界面，允许用户选择模型并进行对话。</p>
+<h2 id="后端（Node-js-Express）"><a href="#后端（Node-js-Express）" class="headerlink" title="后端（Node.js + Express）"></a>后端（Node.js + Express）</h2><p>安装依赖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br><span class="line">npm install express axios cors</span><br></pre></td></tr></table></figure>
+<p>创建 server.js：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">&quot;axios&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">&quot;cors&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PORT</span> = <span class="number">3000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">OLLAMA_URL</span> = <span class="string">&quot;http://1.1.1.1:11434&quot;</span>;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">json</span>());</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cors</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取可用模型列表</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/api/models&quot;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="title function_">get</span>(<span class="string">`<span class="subst">$&#123;OLLAMA_URL&#125;</span>/api/tags`</span>);</span><br><span class="line">        res.<span class="title function_">json</span>(response.<span class="property">data</span>.<span class="property">models</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">500</span>).<span class="title function_">json</span>(&#123; <span class="attr">error</span>: <span class="string">&quot;获取模型列表失败&quot;</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送对话请求</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/api/chat&quot;</span>, <span class="keyword">async</span> (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; model, message &#125; = req.<span class="property">body</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!model || !message) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">400</span>).<span class="title function_">json</span>(&#123; <span class="attr">error</span>: <span class="string">&quot;缺少模型或消息参数&quot;</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="title function_">post</span>(<span class="string">`<span class="subst">$&#123;OLLAMA_URL&#125;</span>/api/generate`</span>, &#123;</span><br><span class="line">            model,</span><br><span class="line">            <span class="attr">prompt</span>: message</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        res.<span class="title function_">json</span>(response.<span class="property">data</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        res.<span class="title function_">status</span>(<span class="number">500</span>).<span class="title function_">json</span>(&#123; <span class="attr">error</span>: <span class="string">&quot;对话请求失败&quot;</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="variable constant_">PORT</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Server running at http://localhost:<span class="subst">$&#123;PORT&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="前端（Vue-3-Element-Plus）"><a href="#前端（Vue-3-Element-Plus）" class="headerlink" title="前端（Vue 3 + Element Plus）"></a>前端（Vue 3 + Element Plus）</h2><p>安装 Vue 3 项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">npm create vue@latest ollama-chat</span><br><span class="line"><span class="built_in">cd</span> ollama-chat</span><br><span class="line">npm install axios element-plus</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>修改 src&#x2F;App.vue：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> &#123; ref, onMounted &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&quot;axios&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> &#123; <span class="title class_">ElMessage</span> &#125; <span class="keyword">from</span> <span class="string">&quot;element-plus&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> models = <span class="title function_">ref</span>([]);</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> selectedModel = <span class="title function_">ref</span>(<span class="string">&quot;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> userInput = <span class="title function_">ref</span>(<span class="string">&quot;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> chatHistory = <span class="title function_">ref</span>([]);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">fetchModels</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="title function_">get</span>(<span class="string">&quot;http://localhost:3000/api/models&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        models.<span class="property">value</span> = response.<span class="property">data</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (models.<span class="property">value</span>.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            selectedModel.<span class="property">value</span> = models.<span class="property">value</span>[<span class="number">0</span>].<span class="property">name</span>; <span class="comment">// 默认选第一个</span></span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title class_">ElMessage</span>.<span class="title function_">error</span>(<span class="string">&quot;无法获取模型列表&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">const</span> <span class="title function_">sendMessage</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (!userInput.<span class="property">value</span>.<span class="title function_">trim</span>()) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title class_">ElMessage</span>.<span class="title function_">warning</span>(<span class="string">&quot;请输入内容&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (!selectedModel.<span class="property">value</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title class_">ElMessage</span>.<span class="title function_">warning</span>(<span class="string">&quot;请选择模型&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> userMessage = &#123; <span class="attr">role</span>: <span class="string">&quot;user&quot;</span>, <span class="attr">content</span>: userInput.<span class="property">value</span> &#125;;</span></span><br><span class="line"><span class="language-javascript">    chatHistory.<span class="property">value</span>.<span class="title function_">push</span>(userMessage);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="title function_">post</span>(<span class="string">&quot;http://localhost:3000/api/chat&quot;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">model</span>: selectedModel.<span class="property">value</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">message</span>: userInput.<span class="property">value</span>,</span></span><br><span class="line"><span class="language-javascript">        &#125;);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        chatHistory.<span class="property">value</span>.<span class="title function_">push</span>(&#123; <span class="attr">role</span>: <span class="string">&quot;assistant&quot;</span>, <span class="attr">content</span>: response.<span class="property">data</span>.<span class="property">response</span> &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title class_">ElMessage</span>.<span class="title function_">error</span>(<span class="string">&quot;请求失败&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    userInput.<span class="property">value</span> = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">&#125;;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="title function_">onMounted</span>(fetchModels);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;max-width: 600px; margin: auto; padding: 20px&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-select</span> <span class="attr">v-model</span>=<span class="string">&quot;selectedModel&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;选择模型&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%; margin-bottom: 10px&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-option</span> <span class="attr">v-for</span>=<span class="string">&quot;model in models&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;model.name&quot;</span> <span class="attr">:label</span>=<span class="string">&quot;model.name&quot;</span> <span class="attr">:value</span>=<span class="string">&quot;model.name&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">&quot;(msg, index) in chatHistory&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;index&quot;</span> <span class="attr">:style</span>=<span class="string">&quot;&#123; textAlign: msg.role === &#x27;user&#x27; ? &#x27;right&#x27; : &#x27;left&#x27; &#125;&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-card</span> <span class="attr">shadow</span>=<span class="string">&quot;never&quot;</span> <span class="attr">style</span>=<span class="string">&quot;margin: 5px 0&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">strong</span>&gt;</span>&#123;&#123; msg.role === &quot;user&quot; ? &quot;：&quot; : &quot;Ollama：&quot; &#125;&#125;<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> &#123;&#123; msg.content &#125;&#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-card</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">&quot;userInput&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;输入消息...&quot;</span> @<span class="attr">keyup.enter</span>=<span class="string">&quot;sendMessage&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;sendMessage&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 100%; margin-top: 10px&quot;</span>&gt;</span>发送<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.el-card</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border-radius</span>: <span class="number">8px</span>;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h2><p>运行后端：<br>node server.js<br>运行前端：<br>npm run dev</p>
+<p>打开浏览器访问 Vue 开发服务器（一般是 <a href="http://localhost:5173）。">http://localhost:5173）。</a><br><strong>功能说明</strong><br>✅ 模型选择：前端请求 <a class="link"   target="_blank" rel="noopener" href="http://1.1.1.1:11434/api/tags" >http://1.1.1.1:11434/api/tags<i class="fas fa-external-link-alt"></i></a> 获取可用的 Ollama 模型列表。<br>✅ 对话功能：输入消息后，前端发送到后端，后端请求 Ollama 进行生成，并返回回复。<br>✅ 历史记录：显示用户和 AI 的对话内容。<br>✅ 简单 UI：使用 Vue 3 和 Element Plus 构建界面，支持快捷键 Enter 发送消息。</p>
+<p>这个示例可以直接用于和 Ollama 交互，并支持不同的 LLM 模型选择 🚀</p>
+<h1 id="解析-Ollama-流式响应，显示对话内容。"><a href="#解析-Ollama-流式响应，显示对话内容。" class="headerlink" title="解析 Ollama 流式响应，显示对话内容。"></a>解析 Ollama 流式响应，显示对话内容。</h1><p>前端调整</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Ollama Chat<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;model-select&quot;</span>&gt;</span>选择模型:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;model-select&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;selectedModel&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">option</span> <span class="attr">v-for</span>=<span class="string">&quot;model in models&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;model.name&quot;</span> <span class="attr">:value</span>=<span class="string">&quot;model.name&quot;</span>&gt;</span></span><br><span class="line">            &#123;&#123; model.name &#125;&#125;</span><br><span class="line">          <span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">v-model</span>=<span class="string">&quot;userInput&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;输入的消息...&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;sendMessage&quot;</span>&gt;</span>发送<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>对话内容:<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pre</span>&gt;</span>&#123;&#123; conversation &#125;&#125;<span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">models</span>: [], <span class="comment">// 模型列表</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">selectedModel</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 当前选中的模型</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">userInput</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 用户输入的消息</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">conversation</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 对话内容</span></span></span><br><span class="line"><span class="language-javascript">      &#125;;</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">async</span> <span class="title function_">created</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 页面加载时获取模型列表</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">await</span> <span class="variable language_">this</span>.<span class="title function_">fetchModels</span>();</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 获取模型列表</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">async</span> <span class="title function_">fetchModels</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="title function_">get</span>(<span class="string">&#x27;https://eog9l2jl-cig0n4bq-ferbg20o9l88.vcc4.mcprev.cn/api/models&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">this</span>.<span class="property">models</span> = response.<span class="property">data</span>;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">models</span>.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">this</span>.<span class="property">selectedModel</span> = <span class="variable language_">this</span>.<span class="property">models</span>[<span class="number">0</span>].<span class="property">name</span>; <span class="comment">// 默认选择第一个模型</span></span></span><br><span class="line"><span class="language-javascript">          &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;获取模型列表失败:&#x27;</span>, error);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;,</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 发送消息</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">async</span> <span class="title function_">sendMessage</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">userInput</span>.<span class="title function_">trim</span>()) <span class="keyword">return</span>; <span class="comment">// 如果输入为空，直接返回</span></span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> message = <span class="variable language_">this</span>.<span class="property">userInput</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">conversation</span> += <span class="string">`用户: <span class="subst">$&#123;message&#125;</span>\n`</span>; <span class="comment">// 将用户输入添加到对话内容</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">userInput</span> = <span class="string">&#x27;&#x27;</span>; <span class="comment">// 清空输入框</span></span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="title function_">post</span>(<span class="string">&#x27;https://eog9l2jl-cig0n4bq-ferbg20o9l88.vcc4.mcprev.cn/api/chat&#x27;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">model</span>: <span class="variable language_">this</span>.<span class="property">selectedModel</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">message</span>: message,</span></span><br><span class="line"><span class="language-javascript">          &#125;);</span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">          <span class="comment">// 解析流式返回的数据</span></span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">const</span> rawData = response.<span class="property">data</span>.<span class="title function_">split</span>(<span class="string">&#x27;\n&#x27;</span>); <span class="comment">// 按行拆分 JSON</span></span></span><br><span class="line"><span class="language-javascript">          <span class="keyword">let</span> aiResponse = <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">          rawData.<span class="title function_">forEach</span>(<span class="function"><span class="params">line</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">if</span> (line.<span class="title function_">trim</span>()) &#123;</span></span><br><span class="line"><span class="language-javascript">              <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">const</span> parsed = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(line);</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">if</span> (parsed.<span class="property">response</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                  aiResponse += parsed.<span class="property">response</span>; <span class="comment">// 拼接 AI 回复</span></span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">              &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;JSON 解析失败:&#x27;</span>, error);</span></span><br><span class="line"><span class="language-javascript">              &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">          &#125;);</span></span><br><span class="line"><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">          <span class="comment">// 更新对话内容</span></span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">this</span>.<span class="property">conversation</span> += <span class="string">`AI: <span class="subst">$&#123;aiResponse&#125;</span>\n`</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;发送消息失败:&#x27;</span>, error);</span></span><br><span class="line"><span class="language-javascript">          <span class="variable language_">this</span>.<span class="property">conversation</span> += <span class="string">`AI: 请求失败，请稍后重试。\n`</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;,</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">  &#125;;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="comment">/* 可以在这里添加一些样式 */</span></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">textarea</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  </span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">button</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  </span></span><br><span class="line"><span class="language-css">  pre &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">white-space</span>: pre-wrap; <span class="comment">/* 保留换行符 */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">background</span>: <span class="number">#f4f4f4</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="智商测试"><a href="#智商测试" class="headerlink" title="智商测试"></a>智商测试</h1><p>strawberry有多少个r？<br>10.11和10.2谁大？<br>24点游戏解题:3 4 7 13<br>树上10只鸟，开枪打死1只，请问还有多少只鸟？</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/01/21/RAS%E5%8A%A0%E5%AF%86/"
+                                   title="RAS加密"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">RAS加密</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="wtime">
+        <div class="wtime2">北京<span id="beijingTime"></span></div>
+        <div class="wtime2" style="display: none;"> 东京<span id="tokyoTime"></span></div>
+        <div class="wtime2">欧洲-巴黎<span id="parisTime"></span></div>
+        <div class="wtime2">英国-伦敦 <span id="londonTime"></span></div>
+        <div class="wtime2">美东-纽约 <span id="newYorkTime"></span></div>
+        <div class="wtime2">美西-洛杉矶<span id="losAngelesTime"></span></div>
+        <div  class="wtime2" style="display: none;">UTC<span id="utcTime"></span></div>
+    </div>
+    <div class="copyright-info info-item">
+    
+    
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+    
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    // 定义各个时区相对UTC的偏移量（单位：小时），考虑夏令时情况设置不同偏移量范围
+    const timeZoneOffsets = {
+            'beijing': 8,  // 北京不实行夏令时，固定偏移8小时
+            'tokyo': 9,  // 东京不实行夏令时，固定偏移9小时
+            'paris': [1, 2],  // 巴黎实行夏令时，冬令时偏移1小时，夏令时偏移2小时（示例简化处理，实际更复杂）
+            'london': [0, 1],  // 伦敦实行夏令时，冬令时偏移0小时，夏令时偏移1小时
+            'newYork': [-5, -4],  // 纽约实行夏令时，冬令时偏移-5小时，夏令时偏移-4小时
+            'losAngeles': [-8, -7]  // 洛杉矶实行夏令时，冬令时偏移-8小时，夏令时偏移-7小时
+        };
+
+        function padZero(num) {
+            return num < 10? '0' + num : num;
+        }
+
+        function formatTime(date) {
+            const year = date.getFullYear();
+            const month = padZero(date.getMonth() + 1);
+            const day = padZero(date.getDate());
+            const hours = padZero(date.getHours());
+            const minutes = padZero(date.getMinutes());
+            const seconds = padZero(date.getSeconds());
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function isDaylightSavingTime(date, zone) {
+            const month = date.getMonth();
+            const dstStart = new Date(date.getFullYear(), 3, 8, 2, 0, 0);  // 假设每年4月8日凌晨2点开始夏令时（简化示例，实际不同地区规则差异大）
+            const dstEnd = new Date(date.getFullYear(), 10, 1, 2, 0, 0);  // 假设每年10月1日凌晨2点结束夏令时
+            if (zone === 'paris' || zone === 'london' || zone === 'newYork' || zone === 'losAngeles') {
+                return date >= dstStart && date < dstEnd;
+            }
+            return false;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+                now.getUTCMinutes(), now.getUTCSeconds());
+            const utcTime = formatTime(utcDate);
+            document.getElementById('utcTime').innerHTML = utcTime;
+
+            for (const zone in timeZoneOffsets) {
+                const offsets = timeZoneOffsets[zone];
+                let offset;
+                if (Array.isArray(offsets)) {
+                    offset = isDaylightSavingTime(utcDate, zone)? offsets[1] : offsets[0];
+                } else {
+                    offset = offsets;
+                }
+                const zoneDate = new Date(utcDate.getTime() + offset * 60 * 60 * 1000);
+                document.getElementById(zone + 'Time').innerHTML = formatTime(zoneDate);
+            }
+
+            setTimeout(updateTime, 1000);
+        }
+
+        window.onload = function () {
+            updateTime();
+        };
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
