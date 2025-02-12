@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="LM">
+    
+    <title>
+        
+            socket ssl tls |
+        
+        MLOG
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"MLOG","author":"LM","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2012,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               MLOG
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        socket ssl tls
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-02-13 01:12:50</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Feb 13 2025 01:21:06 GMT+0800">2025-02-13 01:21:06</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/c/">c#</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/socket/">socket</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/ssl/">ssl</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="C-生成证书"><a href="#C-生成证书" class="headerlink" title="C#生成证书"></a>C#生成证书</h1><p>在 C# 中生成 .pfx 证书文件，通常可以借助 System.Security.Cryptography 命名空间下的类来实现。以下为详细步骤和示例代码：</p>
+<h2 id="创建自签名证书"><a href="#创建自签名证书" class="headerlink" title="创建自签名证书"></a>创建自签名证书</h2><p>利用 RSA 算法生成密钥对，再使用 CertificateRequest 类创建自签名证书请求，最后生成自签名证书。<br>将证书保存为 .pfx 文件：使用 X509Certificate2 类把生成的证书和私钥保存为 .pfx 文件。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">pusing System;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography.X509Certificates;</span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 生成RSA密钥对</span></span><br><span class="line">        <span class="keyword">using</span> (RSA rsa = RSA.Create(<span class="number">2048</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 创建证书请求</span></span><br><span class="line">            <span class="keyword">var</span> certificateRequest = <span class="keyword">new</span> CertificateRequest(</span><br><span class="line">                <span class="string">&quot;CN=MySelfSignedCertificate&quot;</span>,</span><br><span class="line">                rsa,</span><br><span class="line">                HashAlgorithmName.SHA256,</span><br><span class="line">                RSASignaturePadding.Pkcs1);</span><br><span class="line">            <span class="comment">// 设置证书扩展</span></span><br><span class="line">            certificateRequest.CertificateExtensions.Add(</span><br><span class="line">                <span class="keyword">new</span> X509BasicConstraintsExtension(<span class="literal">true</span>, <span class="literal">false</span>, <span class="number">0</span>, <span class="literal">true</span>));</span><br><span class="line">            certificateRequest.CertificateExtensions.Add(</span><br><span class="line">                <span class="keyword">new</span> X509KeyUsageExtension(</span><br><span class="line">                    X509KeyUsageFlags.DigitalSignature | X509KeyUsageFlags.KeyEncipherment,</span><br><span class="line">                    <span class="literal">false</span>));</span><br><span class="line">            <span class="comment">// 生成自签名证书</span></span><br><span class="line">            <span class="keyword">var</span> certificate = certificateRequest.CreateSelfSigned(</span><br><span class="line">                DateTimeOffset.UtcNow.AddDays(<span class="number">-1</span>),</span><br><span class="line">                DateTimeOffset.UtcNow.AddDays(<span class="number">365</span>));</span><br><span class="line">            <span class="comment">// 保存为PFX文件</span></span><br><span class="line">            <span class="built_in">string</span> pfxFilePath = <span class="string">&quot;MyCertificate.pfx&quot;</span>;</span><br><span class="line">            <span class="built_in">string</span> pfxPassword = <span class="string">&quot;MyPassword123&quot;</span>;</span><br><span class="line">            <span class="built_in">byte</span>[] pfxBytes = certificate.Export(X509ContentType.Pfx, pfxPassword);</span><br><span class="line">            File.WriteAllBytes(pfxFilePath, pfxBytes);</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;PFX文件已生成: <span class="subst">&#123;pfxFilePath&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="生成-RSA-密钥对："><a href="#生成-RSA-密钥对：" class="headerlink" title="生成 RSA 密钥对："></a>生成 RSA 密钥对：</h2><p>csharpusing (RSA rsa &#x3D; RSA.Create(2048))<br>{<br>    &#x2F;&#x2F; …<br>}<br>运用 RSA.Create(2048) 方法生成一个 2048 位的 RSA 密钥对。</p>
+<h2 id="创建证书请求："><a href="#创建证书请求：" class="headerlink" title="创建证书请求："></a>创建证书请求：</h2><p>csharpvar certificateRequest &#x3D; new CertificateRequest(<br>    “CN&#x3D;MySelfSignedCertificate”,<br>    rsa,<br>    HashAlgorithmName.SHA256,<br>    RSASignaturePadding.Pkcs1);<br>借助 CertificateRequest 类创建一个证书请求，指定证书的主题名称、密钥对、哈希算法和签名填充方式。</p>
+<h2 id="设置证书扩展："><a href="#设置证书扩展：" class="headerlink" title="设置证书扩展："></a>设置证书扩展：</h2><p>csharpcertificateRequest.CertificateExtensions.Add(<br>    new X509BasicConstraintsExtension(true, false, 0, true));<br>certificateRequest.CertificateExtensions.Add(<br>    new X509KeyUsageExtension(<br>        X509KeyUsageFlags.DigitalSignature | X509KeyUsageFlags.KeyEncipherment,<br>        false));<br>为证书请求添加基本约束和密钥使用扩展。</p>
+<h2 id="生成自签名证书："><a href="#生成自签名证书：" class="headerlink" title="生成自签名证书："></a>生成自签名证书：</h2><p>csharpvar certificate &#x3D; certificateRequest.CreateSelfSigned(<br>    DateTimeOffset.UtcNow.AddDays(-1),<br>    DateTimeOffset.UtcNow.AddDays(365));<br>调用 CreateSelfSigned 方法生成自签名证书，指定证书的有效期。</p>
+<h2 id="保存为-pfx-文件："><a href="#保存为-pfx-文件：" class="headerlink" title="保存为 .pfx 文件："></a>保存为 .pfx 文件：</h2><p>csharpstring pfxFilePath &#x3D; “MyCertificate.pfx”;<br>string pfxPassword &#x3D; “MyPassword123”;<br>byte[] pfxBytes &#x3D; certificate.Export(X509ContentType.Pfx, pfxPassword);<br>File.WriteAllBytes(pfxFilePath, pfxBytes);<br>使用 Export 方法将证书和私钥导出为 .pfx 格式的字节数组，再使用 File.WriteAllBytes 方法将字节数组保存为文件。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>要保证运行代码的用户对保存 .pfx 文件的目录具有写入权限。<br>妥善保管 .pfx 文件和密码，因为 .pfx 文件包含私钥，泄露私钥会带来安全风险。</p>
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography.X509Certificates;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// .pfx 证书文件的路径</span></span><br><span class="line">            <span class="built_in">string</span> pfxFilePath = <span class="string">&quot;MyCertificate.pfx&quot;</span>;</span><br><span class="line">            <span class="comment">// .pfx 证书文件的密码</span></span><br><span class="line">            <span class="built_in">string</span> pfxPassword = <span class="string">&quot;MyPassword123&quot;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 读取 .pfx 证书文件</span></span><br><span class="line">            <span class="keyword">using</span> (X509Certificate2 certificate = <span class="keyword">new</span> X509Certificate2(pfxFilePath, pfxPassword))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 输出证书的基本信息</span></span><br><span class="line">                Console.WriteLine(<span class="string">&quot;证书信息：&quot;</span>);</span><br><span class="line">                Console.WriteLine(<span class="string">$&quot;主题: <span class="subst">&#123;certificate.Subject&#125;</span>&quot;</span>);</span><br><span class="line">                Console.WriteLine(<span class="string">$&quot;颁发者: <span class="subst">&#123;certificate.Issuer&#125;</span>&quot;</span>);</span><br><span class="line">                Console.WriteLine(<span class="string">$&quot;有效期开始时间: <span class="subst">&#123;certificate.NotBefore&#125;</span>&quot;</span>);</span><br><span class="line">                Console.WriteLine(<span class="string">$&quot;有效期结束时间: <span class="subst">&#123;certificate.NotAfter&#125;</span>&quot;</span>);</span><br><span class="line">                Console.WriteLine(<span class="string">$&quot;指纹: <span class="subst">&#123;certificate.Thumbprint&#125;</span>&quot;</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 检查证书是否包含私钥</span></span><br><span class="line">                <span class="keyword">if</span> (certificate.HasPrivateKey)</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">&quot;证书包含私钥。&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">&quot;证书不包含私钥。&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$&quot;读取证书时出错: <span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="socket-ssl"><a href="#socket-ssl" class="headerlink" title="socket ssl"></a>socket ssl</h1><p>DotNettySocket 服务端代码的基础上添加 SSL&#x2F;TLS 加密支持。DotNetty 支持 SSL&#x2F;TLS，可以使用 TlsHandler 来实现。需要做以下修改：</p>
+<p>准备 SSL 证书（.pfx 文件）。<br>在 TcpSocketServerBuilder 里添加 SSL 处理器。<br>确保客户端也支持 SSL 连接，否则连接会失败。<br>修改 TcpSocketServerBuilder 代码<br>在 ChildHandler 的 ActionChannelInitializer<IChannel> 里添加 TlsHandler，示例如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography.X509Certificates;</span><br><span class="line"><span class="keyword">using</span> DotNetty.Handlers.Tls;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> ITcpSocketServerBuilder <span class="title">UseSsl</span>(<span class="params"><span class="built_in">string</span> certPath, <span class="built_in">string</span> certPassword</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    _setEncoder += x =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> certificate = <span class="keyword">new</span> X509Certificate2(certPath, certPassword);</span><br><span class="line">        x.AddFirst(<span class="string">&quot;tls&quot;</span>, <span class="keyword">new</span> TlsHandler(</span><br><span class="line">            stream =&gt; <span class="keyword">new</span> SslStream(stream, <span class="literal">true</span>),</span><br><span class="line">            <span class="keyword">new</span> ServerTlsSettings(certificate)</span><br><span class="line">        ));</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改 Main 里的 SocketBuilderFactory<br>在 BuildAsync() 之前调用 UseSsl：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> theServer = <span class="keyword">await</span> SocketBuilderFactory.GetTcpSocketServerBuilder(<span class="number">6001</span>)</span><br><span class="line">    .UseSsl(<span class="string">&quot;server.pfx&quot;</span>, <span class="string">&quot;yourpassword&quot;</span>) <span class="comment">// 添加 SSL 支持</span></span><br><span class="line">    .SetLengthFieldEncoder(<span class="number">2</span>)</span><br><span class="line">    .SetLengthFieldDecoder(<span class="built_in">ushort</span>.MaxValue, <span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">    .OnConnectionClose((server, connection) =&gt;</span><br><span class="line">    &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    &#125;).BuildAsync();</span><br></pre></td></tr></table></figure>
+<p>说明：<br>UseSsl(“server.pfx”, “yourpassword”) 需要的证书文件 server.pfx 和密码。<br>TlsHandler 处理 SSL&#x2F;TLS 连接。<br>客户端也需要对应的 SSL 处理，否则无法连接。<br>这样，服务端就支持 SSL 加密了，客户端需要使用 SslStream 进行加密连接。如果的客户端也是基于 DotNetty，需要在 TcpSocketClientBuilder 里添加 TlsHandler，方式类似。</p>
+<h1 id="node-socket-client"><a href="#node-socket-client" class="headerlink" title="node socket client"></a>node socket client</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> tls = <span class="built_in">require</span>(<span class="string">&#x27;tls&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">CERT_PATH</span> = <span class="string">&#x27;C:/path/to/MyCertificate.pfx&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">CERT_PASS</span> = <span class="string">&#x27;your_password&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">    <span class="attr">pfx</span>: fs.<span class="title function_">readFileSync</span>(<span class="variable constant_">CERT_PATH</span>),</span><br><span class="line">    <span class="attr">passphrase</span>: <span class="variable constant_">CERT_PASS</span>,</span><br><span class="line">    <span class="attr">rejectUnauthorized</span>: <span class="literal">false</span>, <span class="comment">// 允许自签名证书</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = tls.<span class="title function_">connect</span>(<span class="number">6001</span>, <span class="string">&#x27;127.0.0.1&#x27;</span>, options, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;✅ 已连接到服务器&#x27;</span>);</span><br><span class="line">    <span class="title function_">sendData</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听服务器数据</span></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;📩 收到服务器数据:&#x27;</span>, data.<span class="title function_">toString</span>());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听错误</span></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;❌ 连接错误:&#x27;</span>, err.<span class="property">message</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听关闭</span></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;🔴 连接已断开&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// **封装函数，确保数据格式正确**</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendData</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (client.<span class="property">writable</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> message = <span class="string">`➡️ 发送数据: <span class="subst">$&#123;<span class="keyword">new</span> <span class="built_in">Date</span>().toISOString()&#125;</span>`</span>;</span><br><span class="line">            <span class="keyword">const</span> msgBuffer = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(message, <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// **前两个字节存储消息长度**</span></span><br><span class="line">            <span class="keyword">const</span> lengthBuffer = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">2</span>);</span><br><span class="line">            lengthBuffer.<span class="title function_">writeUInt16BE</span>(msgBuffer.<span class="property">length</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// **拼接长度字段 + 数据**</span></span><br><span class="line">            <span class="keyword">const</span> finalBuffer = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>([lengthBuffer, msgBuffer]);</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;📤 发送数据:&#x27;</span>, message);</span><br><span class="line">            client.<span class="title function_">write</span>(finalBuffer);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;⚠️ 连接已关闭，无法发送数据&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="socket-server"><a href="#socket-server" class="headerlink" title="socket server"></a>socket server</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Coldairarrow.DotNettySocket;</span><br><span class="line"><span class="keyword">using</span> DotNetty.Handlers.Tls;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Net;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography.X509Certificates;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">TcpSocket.Server</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 加载证书</span></span><br><span class="line">            <span class="keyword">var</span> serverCertificate = <span class="keyword">new</span> X509Certificate2(Path.Combine(AppContext.BaseDirectory, <span class="string">&quot;your_certificate.pfx&quot;</span>), <span class="string">&quot;your_password&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> theServer = <span class="keyword">await</span> SocketBuilderFactory.GetTcpSocketServerBuilder(<span class="number">6001</span>)</span><br><span class="line">               .SetLengthFieldEncoder(<span class="number">2</span>)</span><br><span class="line">               .SetLengthFieldDecoder(<span class="built_in">ushort</span>.MaxValue, <span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">               .SetSslHandler(serverCertificate) <span class="comment">// 添加 SSL 处理器</span></span><br><span class="line">               .OnConnectionClose((server, connection) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;连接关闭,连接名[<span class="subst">&#123;connection.ConnectionName&#125;</span>],当前连接数:<span class="subst">&#123;server.GetConnectionCount()&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnException(ex =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;服务端异常:<span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnNewConnection((server, connection) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    connection.ConnectionName = <span class="string">$&quot;名字<span class="subst">&#123;connection.ConnectionId&#125;</span>&quot;</span>;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;新的连接[<span class="subst">&#123;connection.ClientAddress.Address.MapToIPv4().ToString()&#125;</span>]:<span class="subst">&#123;connection.ConnectionName&#125;</span>,当前连接数:<span class="subst">&#123;server.GetConnectionCount()&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnRecieve((server, connection, bytes) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;服务端:数据<span class="subst">&#123;Encoding.UTF8.GetString(bytes)&#125;</span>&quot;</span>);</span><br><span class="line">                    connection.Send(bytes);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnSend((server, connection, bytes) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;向连接名[<span class="subst">&#123;connection.ConnectionName&#125;</span>]发送数据:<span class="subst">&#123;Encoding.UTF8.GetString(bytes)&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnServerStarted(server =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;服务启动&quot;</span>);</span><br><span class="line">                &#125;).BuildAsync();</span><br><span class="line"></span><br><span class="line">            Console.ReadLine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">TcpSocketServerBuilderExtensions</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ITcpSocketServerBuilder <span class="title">SetSslHandler</span>(<span class="params"><span class="keyword">this</span> ITcpSocketServerBuilder builder, X509Certificate2 serverCertificate</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> tcpBuilder = builder <span class="keyword">as</span> TcpSocketServerBuilder;</span><br><span class="line">            tcpBuilder._setEncoder += x =&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                x.AddLast(<span class="string">&quot;tls&quot;</span>, <span class="keyword">new</span> TlsHandler(stream =&gt; <span class="keyword">new</span> System.Net.Security.SslStream(stream, <span class="literal">true</span>, (sender, receivedCertificate, chain, errors) =&gt; <span class="literal">true</span>), <span class="keyword">new</span> DotNetty.Handlers.Tls.ServerTlsSettings(serverCertificate)));</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="keyword">return</span> builder;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="socket-client"><a href="#socket-client" class="headerlink" title="socket client"></a>socket client</h1><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Coldairarrow.DotNettySocket;</span><br><span class="line"><span class="keyword">using</span> DotNetty.Handlers.Tls;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Net.Security;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography.X509Certificates;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Threading.Tasks;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">TcpSocket.Client</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 加载客户端证书</span></span><br><span class="line">            <span class="keyword">var</span> clientCertificate = <span class="keyword">new</span> X509Certificate2(Path.Combine(AppContext.BaseDirectory, <span class="string">&quot;your_certificate.pfx&quot;</span>), <span class="string">&quot;your_password&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> theClient = <span class="keyword">await</span> SocketBuilderFactory.GetTcpSocketClientBuilder(<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">6001</span>)</span><br><span class="line">               .SetLengthFieldEncoder(<span class="number">2</span>)</span><br><span class="line">               .SetLengthFieldDecoder(<span class="built_in">ushort</span>.MaxValue, <span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">               .SetSslHandler(clientCertificate) <span class="comment">// 添加 SSL 处理器并传入客户端证书</span></span><br><span class="line">               .OnClientStarted(client =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;客户端启动&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnClientClose(client =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;客户端关闭&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnException(ex =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;异常:<span class="subst">&#123;ex.Message&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnRecieve((client, bytes) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;客户端:收到数据:<span class="subst">&#123;Encoding.UTF8.GetString(bytes)&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .OnSend((client, bytes) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    Console.WriteLine(<span class="string">$&quot;客户端:发送数据:<span class="subst">&#123;Encoding.UTF8.GetString(bytes)&#125;</span>&quot;</span>);</span><br><span class="line">                &#125;)</span><br><span class="line">               .BuildAsync();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">await</span> theClient.Send(Guid.NewGuid().ToString());</span><br><span class="line"></span><br><span class="line">                <span class="keyword">await</span> Task.Delay(<span class="number">1000</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">TcpSocketClientBuilderExtensions</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ITcpSocketClientBuilder <span class="title">SetSslHandler</span>(<span class="params"><span class="keyword">this</span> ITcpSocketClientBuilder builder, X509Certificate2 clientCertificate</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> tcpBuilder = builder <span class="keyword">as</span> TcpSocketClientBuilder;</span><br><span class="line">            tcpBuilder._setEncoder += x =&gt;</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">var</span> clientTlsSettings = <span class="keyword">new</span> DotNetty.Handlers.Tls.ClientTlsSettings(<span class="string">&quot;localhost&quot;</span>, <span class="keyword">new</span>[] &#123; clientCertificate &#125;);</span><br><span class="line">                x.AddLast(<span class="string">&quot;tls&quot;</span>, <span class="keyword">new</span> TlsHandler(stream =&gt; <span class="keyword">new</span> System.Net.Security.SslStream(stream, <span class="literal">true</span>, (sender, receivedCertificate, chain, errors) =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">// 这里可以添加更严格的证书验证逻辑</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;), clientTlsSettings));</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="keyword">return</span> builder;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意-AddLast-or-x-AddFirst-“tls”"><a href="#注意-AddLast-or-x-AddFirst-“tls”" class="headerlink" title="注意 AddLast or  x.AddFirst(“tls”"></a>注意 AddLast or  x.AddFirst(“tls”</h2><h1 id="nodejs-clint"><a href="#nodejs-clint" class="headerlink" title="nodejs clint"></a>nodejs clint</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tls = <span class="built_in">require</span>(<span class="string">&#x27;tls&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务器地址和端口</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">SERVER_HOST</span> = <span class="string">&#x27;127.0.0.1&#x27;</span>; <span class="comment">// 服务器 IP 地址</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">SERVER_PORT</span> = <span class="number">6001</span>; <span class="comment">// 服务器端口</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取 .pfx 证书</span></span><br><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">    <span class="attr">pfx</span>: fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;MyCertificate.pfx&#x27;</span>), <span class="comment">// 的 PFX 证书文件</span></span><br><span class="line">    <span class="attr">passphrase</span>: <span class="string">&#x27;MyPassword123&#x27;</span>, <span class="comment">// 证书密码，和服务端一致</span></span><br><span class="line">    <span class="attr">rejectUnauthorized</span>: <span class="literal">false</span> <span class="comment">// 允许自签名证书（生产环境建议提供 CA 证书）</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建 TLS 连接</span></span><br><span class="line"><span class="keyword">const</span> client = tls.<span class="title function_">connect</span>(<span class="variable constant_">SERVER_PORT</span>, <span class="variable constant_">SERVER_HOST</span>, options, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;✅ 成功连接到服务器&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 发送测试消息</span></span><br><span class="line">    <span class="title function_">sendMessage</span>(<span class="string">&#x27;Hello from Node.js TLS Client&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听数据接收</span></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`📩 收到服务器消息: <span class="subst">$&#123;data.toString()&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听错误</span></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">`❌ 连接错误: <span class="subst">$&#123;err.message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;🔴 连接已关闭&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听连接关闭</span></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;🔴 服务器已断开连接&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送消息时，加上 2 字节的长度前缀</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendMessage</span>(<span class="params">message</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> msgBuffer = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(message, <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> lengthBuffer = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">2</span>); <span class="comment">// 2 字节长度</span></span><br><span class="line">    lengthBuffer.<span class="title function_">writeUInt16BE</span>(msgBuffer.<span class="property">length</span>, <span class="number">0</span>); <span class="comment">// 大端序写入长度</span></span><br><span class="line">    <span class="keyword">const</span> finalBuffer = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>([lengthBuffer, msgBuffer]); <span class="comment">// 拼接长度和消息</span></span><br><span class="line"></span><br><span class="line">    client.<span class="title function_">write</span>(finalBuffer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// client.setTimeout(5000); // 设置超时 5 秒</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// client.on(&#x27;timeout&#x27;, () =&gt; &#123;</span></span><br><span class="line"><span class="comment">//     console.error(&#x27;⏳ 连接超时，服务器可能未启动或端口不对&#x27;);</span></span><br><span class="line"><span class="comment">//     client.destroy();</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>END</p>
+<!--
+server端长度
+        public ITcpSocketServerBuilder SetLengthFieldDecoder(int maxFrameLength 
+
+--->
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/c/">c#</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/socket/">socket</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/ssl/">ssl</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/02/13/free-https-ssl/"
+                                   title="free https ssl"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">free https ssl</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="wtime">
+        <div class="wtime2">北京<span id="beijingTime"></span></div>
+        <div class="wtime2" style="display: none;"> 东京<span id="tokyoTime"></span></div>
+        <div class="wtime2">欧洲-巴黎<span id="parisTime"></span></div>
+        <div class="wtime2">英国-伦敦 <span id="londonTime"></span></div>
+        <div class="wtime2">美东-纽约 <span id="newYorkTime"></span></div>
+        <div class="wtime2">美西-洛杉矶<span id="losAngelesTime"></span></div>
+        <div  class="wtime2" style="display: none;">UTC<span id="utcTime"></span></div>
+    </div>
+    <div class="copyright-info info-item">
+    
+    
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+    
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    // 定义各个时区相对UTC的偏移量（单位：小时），考虑夏令时情况设置不同偏移量范围
+    const timeZoneOffsets = {
+            'beijing': 8,  // 北京不实行夏令时，固定偏移8小时
+            'tokyo': 9,  // 东京不实行夏令时，固定偏移9小时
+            'paris': [1, 2],  // 巴黎实行夏令时，冬令时偏移1小时，夏令时偏移2小时（示例简化处理，实际更复杂）
+            'london': [0, 1],  // 伦敦实行夏令时，冬令时偏移0小时，夏令时偏移1小时
+            'newYork': [-5, -4],  // 纽约实行夏令时，冬令时偏移-5小时，夏令时偏移-4小时
+            'losAngeles': [-8, -7]  // 洛杉矶实行夏令时，冬令时偏移-8小时，夏令时偏移-7小时
+        };
+
+        function padZero(num) {
+            return num < 10? '0' + num : num;
+        }
+
+        function formatTime(date) {
+            const year = date.getFullYear();
+            const month = padZero(date.getMonth() + 1);
+            const day = padZero(date.getDate());
+            const hours = padZero(date.getHours());
+            const minutes = padZero(date.getMinutes());
+            const seconds = padZero(date.getSeconds());
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function isDaylightSavingTime(date, zone) {
+            const month = date.getMonth();
+            const dstStart = new Date(date.getFullYear(), 3, 8, 2, 0, 0);  // 假设每年4月8日凌晨2点开始夏令时（简化示例，实际不同地区规则差异大）
+            const dstEnd = new Date(date.getFullYear(), 10, 1, 2, 0, 0);  // 假设每年10月1日凌晨2点结束夏令时
+            if (zone === 'paris' || zone === 'london' || zone === 'newYork' || zone === 'losAngeles') {
+                return date >= dstStart && date < dstEnd;
+            }
+            return false;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+                now.getUTCMinutes(), now.getUTCSeconds());
+            const utcTime = formatTime(utcDate);
+            document.getElementById('utcTime').innerHTML = utcTime;
+
+            for (const zone in timeZoneOffsets) {
+                const offsets = timeZoneOffsets[zone];
+                let offset;
+                if (Array.isArray(offsets)) {
+                    offset = isDaylightSavingTime(utcDate, zone)? offsets[1] : offsets[0];
+                } else {
+                    offset = offsets;
+                }
+                const zoneDate = new Date(utcDate.getTime() + offset * 60 * 60 * 1000);
+                document.getElementById(zone + 'Time').innerHTML = formatTime(zoneDate);
+            }
+
+            setTimeout(updateTime, 1000);
+        }
+
+        window.onload = function () {
+            updateTime();
+        };
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
