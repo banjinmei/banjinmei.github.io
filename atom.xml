@@ -64,11 +64,11 @@
     <category term="技术" scheme="https://banjinmei.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="nginx" scheme="https://banjinmei.github.io/tags/nginx/"/>
-    
     <category term="https" scheme="https://banjinmei.github.io/tags/https/"/>
     
     <category term="ssl" scheme="https://banjinmei.github.io/tags/ssl/"/>
+    
+    <category term="nginx" scheme="https://banjinmei.github.io/tags/nginx/"/>
     
   </entry>
   
