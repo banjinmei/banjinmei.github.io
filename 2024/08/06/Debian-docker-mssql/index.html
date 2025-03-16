@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Aug 06 2024 20:22:22 GMT+0800">2024-08-06 20:22:22</span>
+                <span class="datetime" data-updated="Mon Mar 17 2025 01:29:25 GMT+0800">2025-03-17 01:29:25</span>
             </span>
         
 
@@ -260,6 +260,10 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">USE[master]  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY SIMPLE <span class="keyword">WITH</span> NO_WAIT  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY SIMPLE   <span class="comment">--简单模式  </span></span><br><span class="line">GO  </span><br><span class="line">RESTORE DATABASE mydb <span class="keyword">FROM</span> DISK <span class="operator">=</span> <span class="string">&#x27;mydblog.bak&#x27;</span> </span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY <span class="keyword">FULL</span> <span class="keyword">WITH</span> NO_WAIT  </span><br><span class="line">GO  </span><br><span class="line"><span class="keyword">ALTER</span> DATABASE mydb <span class="keyword">SET</span> RECOVERY <span class="keyword">FULL</span>  <span class="comment">--还原为完全模式  </span></span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line">use mydb </span><br><span class="line">go </span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users;</span><br><span class="line">go</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h1 id="bak-file"><a href="#bak-file" class="headerlink" title="bak file"></a>bak file</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var lib docker</span><br><span class="line"></span><br><span class="line">/var/lib/docker/overlay2/c3753774b8f233196f80cb43e0b38ff0e1d2600e6d6f48e10e9c472ff90b4d81/merged/var/opt/mssql/data/mydblog.bak</span><br><span class="line">/var/lib/docker/overlay2/c3753774b8f233196f80cb43e0b38ff0e1d2600e6d6f48e10e9c472ff90b4d81/diff/var/opt/mssql/data/mydblog.bak                              </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
                 </div>
                 
 

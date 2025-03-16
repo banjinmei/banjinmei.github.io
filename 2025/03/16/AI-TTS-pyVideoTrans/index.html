@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="LM">
+    
+    <title>
+        
+            AI TTS pyVideoTrans |
+        
+        MLOG
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"banjinmei.github.io","root":"/","language":"en","path":"search1.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"MLOG","author":"LM","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2012,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"><link rel="alternate" href="/atom.xml" title="M Study Log" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               MLOG
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                HOME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >HOME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        AI TTS pyVideoTrans
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/face.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">mu</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-03-16 21:53:40</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sun Mar 16 2025 22:27:36 GMT+0800">2025-03-16 22:27:36</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/AI/">AI</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/TTS/">TTS</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Video/">Video</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="pyVideoTrans开源视频翻译"><a href="#pyVideoTrans开源视频翻译" class="headerlink" title="pyVideoTrans开源视频翻译"></a>pyVideoTrans开源视频翻译</h1><p>Translate the video from one language to another and add dubbing. 将视频从一种语言翻译为另一种语言，同时支持语音识别转录、语音合成、字幕翻译。</p>
+<p>百度网盘下载地址: <a class="link"   target="_blank" rel="noopener" href="https://pan.baidu.com/s/1AFcVVL9n5TfpgiQPfOMPiw?pwd=817i" >https://pan.baidu.com/s/1AFcVVL9n5TfpgiQPfOMPiw?pwd=817i<i class="fas fa-external-link-alt"></i></a><br>GitHub地址: <a class="link"   target="_blank" rel="noopener" href="https://github.com/jianchang512/pyvideotrans/releases/download/v3.64/win-PatchUpdate-3.65.7z" >https://github.com/jianchang512/pyvideotrans/releases/download/v3.64/win-PatchUpdate-3.65.7z<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="1-选择需要转译的视频"><a href="#1-选择需要转译的视频" class="headerlink" title="1.选择需要转译的视频"></a>1.选择需要转译的视频</h1><h1 id="2-选择翻译渠道"><a href="#2-选择翻译渠道" class="headerlink" title="2.选择翻译渠道"></a>2.选择翻译渠道</h1><p>选择免费的翻译渠道即可</p>
+<p> 也可以选择部署好的模型<br> 如 ：本地qwen:7b模型 或 ds</p>
+<h1 id="3-选择配音渠道"><a href="#3-选择配音渠道" class="headerlink" title="3.选择配音渠道"></a>3.选择配音渠道</h1><p>如 印度语短视频转译  则选择印度语 </p>
+<p>这里选择 Elevenlabs.io的API<br>选择后要在顶部菜单输入API的key</p>
+<p>TTS设置 -&gt; ElevenLabs.io<br>输入 key<br>注册有送免费的额度<br><a class="link"   target="_blank" rel="noopener" href="https://elevenlabs.io/" >https://elevenlabs.io/<i class="fas fa-external-link-alt"></i></a><br>年付便宜2两个月</p>
+<p><strong>选择音色，可以试听</strong><br>选择嵌入字幕 软字幕（双语）<br>保留背景音</p>
+<h1 id="4-选择-语音识别"><a href="#4-选择-语音识别" class="headerlink" title="4.选择 语音识别"></a>4.选择 语音识别</h1><p><strong>语音识别模型</strong><br>从 tiny 到 base -&gt;small -&gt; medium -&gt; large-v3 模型，识别效果越来越好，但模型体积越来越大，识别速度越来越慢，需要更多CPU&#x2F;内存&#x2F;GPU资源。默认使用tiny模型，如果想要更好的效果，请使用更大模型<br>.en 后缀模型和 distil 开头的模型只用于识别英文发音视频</p>
+<p>根据需要选择</p>
+<h1 id="5-点击-开始-处理视频"><a href="#5-点击-开始-处理视频" class="headerlink" title="5.点击 开始 处理视频"></a>5.点击 开始 处理视频</h1><h1 id="6-调整-音色"><a href="#6-调整-音色" class="headerlink" title="6.调整 音色"></a>6.调整 音色</h1><p>根据原视频男女声调整音色 ，男声选择男的音色 音色</p>
+<h1 id="7-继续处理-等待处理完成"><a href="#7-继续处理-等待处理完成" class="headerlink" title="7.继续处理  等待处理完成"></a>7.继续处理  等待处理完成</h1><p>完成后即可得到 转换后的视频</p>
+<h1 id="开源TTS"><a href="#开源TTS" class="headerlink" title="开源TTS"></a>开源TTS</h1><h2 id="GPT-SoVITS"><a href="#GPT-SoVITS" class="headerlink" title="GPT-SoVITS"></a>GPT-SoVITS</h2><p>是一款出色的多语言文本到语音（TTS）开源项目，支持中、英、日、韩等多种语言，主要功能包括：<br>零样本文本到语音（TTS）： 仅需5秒的声音样本，即可快速生成语音。<br>少样本 TTS： 只需1分钟的训练数据即可对模型进行微调，从而提升音色相似度和自然度。<br>跨语言支持： 支持与训练数据集不同语言的合成，目前支持英语、日语、韩语、粤语和中文。</p>
+<h2 id="ChatTTS-ui"><a href="#ChatTTS-ui" class="headerlink" title="ChatTTS-ui"></a>ChatTTS-ui</h2><p>项目地址 <a class="link"   target="_blank" rel="noopener" href="https://github.com/jianchang512/chattts-ui" >https://github.com/jianchang512/chattts-ui<i class="fas fa-external-link-alt"></i></a><br>启动 ChatTTS-ui项目后，将http地址，默认<a class="link"   target="_blank" rel="noopener" href="http://127.0.0.1:9966/" >http://127.0.0.1:9966<i class="fas fa-external-link-alt"></i></a> 填写到视频翻译配音软件–菜单-设置-ChatTTS地址中</p>
+<h2 id="CosyVoice"><a href="#CosyVoice" class="headerlink" title="CosyVoice"></a>CosyVoice</h2><p>开源地址 <a class="link"   target="_blank" rel="noopener" href="https://github.com/FunAudioLLM/CosyVoice" >https://github.com/FunAudioLLM/CosyVoice<i class="fas fa-external-link-alt"></i></a></p>
+<p>CosyVoice-api开源地址 <a class="link"   target="_blank" rel="noopener" href="https://github.com/jianchang512/cosyvoice-api" >https://github.com/jianchang512/cosyvoice-api<i class="fas fa-external-link-alt"></i></a></p>
+<p>支持 中文、英文、日语、韩语、粤语，对应语言代码分别是 zh|en|jp|ko|yue</p>
+<h2 id="kokoro-TTS"><a href="#kokoro-TTS" class="headerlink" title="kokoro TTS"></a>kokoro TTS</h2><p>支持中文、英文、日语、法语、意大利语、葡萄牙、西班牙、印地语共8种语言配音<br>项目地址 <a class="link"   target="_blank" rel="noopener" href="https://github.com/jianchang512/kokoro-uiapi" >https://github.com/jianchang512/kokoro-uiapi<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="F5-TTS-api"><a href="#F5-TTS-api" class="headerlink" title="F5-TTS-api"></a>F5-TTS-api</h2><p>该项目源码地址 <a class="link"   target="_blank" rel="noopener" href="https://github.com/jianchang512/f5-tts-api" >https://github.com/jianchang512/f5-tts-api<i class="fas fa-external-link-alt"></i></a></p>
+<p>这是用于 F5-TTS 项目的api和webui<br>F5-TTS 是一款先进的文本转语音系统，它使用深度学习技术生成逼真、高质量的人声。只需短短10秒的音频样本，就能克隆出你的声音。F5-TTS 能够准确再现语音，并赋予其丰富的感情色彩。</p>
+<h2 id="ElevenLabs官网。"><a href="#ElevenLabs官网。" class="headerlink" title="ElevenLabs官网。"></a>ElevenLabs官网。</h2><p><a class="link"   target="_blank" rel="noopener" href="https://elevenlabs.io/" >https://elevenlabs.io/<i class="fas fa-external-link-alt"></i></a><br>有免费额度</p>
+<!--
+识别  
+翻译 
+文本->语音  TTS
+
+合成
+
+一键字幕生成+字幕翻译+创建配音+合成 = 带字幕和配音的新视频
+
+
+下载ChatTTS-ui              PYTHON  发音          
+https://github.com/jianchang512/ChatTTS-ui/releases
+
+
+下载ffmpeg设置环境变量 
+https://www.gyan.dev/ffmpeg/builds/
+
+
+
+chattts
+http://127.0.0.1:9966/
+
+
+点击开始会在目标文件夹生成
+
+为了方便有需要的用户, 进一步使用其他软件进行处理, 而不必再进行语音导出、音视频分离、字幕识别等重复工作
+
+        *.mp4 = 最终完成的目标视频文件
+        zh-cn.m4a|.wav = 原始视频中的音频文件(包含所有背景音和人声)
+        hi.m4a = 配音后的音频文件(若选择了保留背景音乐则已混入)
+        zh-cn.srt = 原始视频中根据声音识别出的字幕文件
+        hi.srt = 翻译为目标语言后字幕文件
+        shuang.srt = 双语字幕
+        vocal.wav = 原始视频中分离出的人声音频文件
+        instrument.wav = 原始视频中分离出的背景音乐音频文件
+
+
+
+OpenAITTS：	https://www.bilibili.com/opus/873035902025203735 接口使用
+
+
+
+目标机器是否有 N卡 ？ CUDA加速
+
+发音和翻译是两套逻辑
+
+参考
+声音克隆工具
+语音识别工具
+人声背景乐分离
+ChatTTS webUI
+GeminiAI转录音视频为字幕
+
+
+espeak not installed on your system
+https://espeak.sourceforge.net/download.html
+
+
+https://beecut.cn/trim-video-online
+视频切割 在线
+
+
+https://mbd.baidu.com/newspage/data/videolanding?nid=sv_4440155998869842916&sourceFrom=rec
+短剧测试下载
+
+
+
+现成的视频转译付费方案：
+RASK：https://app.rask.ai
+150刀/月
+100分钟 
+
+heyGen: https://app.heygen.com/home
+-->
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/AI/">AI</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/TTS/">TTS</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Video/">Video</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/03/17/NET-dump/"
+                                   title=".NET dump"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">.NET dump</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/03/16/NET-Runtime-Param/"
+                                   title=".NET Runtime Param"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">.NET Runtime Param</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="wtime">
+        <div class="wtime2">北京<span id="beijingTime"></span></div>
+        <div class="wtime2" style="display: none;"> 东京<span id="tokyoTime"></span></div>
+        <div class="wtime2">欧洲-巴黎<span id="parisTime"></span></div>
+        <div class="wtime2">英国-伦敦 <span id="londonTime"></span></div>
+        <div class="wtime2">美东-纽约 <span id="newYorkTime"></span></div>
+        <div class="wtime2">美西-洛杉矶<span id="losAngelesTime"></span></div>
+        <div  class="wtime2" style="display: none;">UTC<span id="utcTime"></span></div>
+    </div>
+    <div class="copyright-info info-item">
+    
+    
+        Powered by&nbsp;Hexo <a target="_blank" href="https://hexo.io"></a>&nbsp;&&nbsp;Theme&nbsp; Keep 
+        &copy;&nbsp;<span>2012</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">LM</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+    
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+
+
+<script type="text/javascript">
+
+    // 定义各个时区相对UTC的偏移量（单位：小时），考虑夏令时情况设置不同偏移量范围
+    const timeZoneOffsets = {
+            'beijing': 8,  // 北京不实行夏令时，固定偏移8小时
+            'tokyo': 9,  // 东京不实行夏令时，固定偏移9小时
+            'paris': [1, 2],  // 巴黎实行夏令时，冬令时偏移1小时，夏令时偏移2小时（示例简化处理，实际更复杂）
+            'london': [0, 1],  // 伦敦实行夏令时，冬令时偏移0小时，夏令时偏移1小时
+            'newYork': [-5, -4],  // 纽约实行夏令时，冬令时偏移-5小时，夏令时偏移-4小时
+            'losAngeles': [-8, -7]  // 洛杉矶实行夏令时，冬令时偏移-8小时，夏令时偏移-7小时
+        };
+
+        function padZero(num) {
+            return num < 10? '0' + num : num;
+        }
+
+        function formatTime(date) {
+            const year = date.getFullYear();
+            const month = padZero(date.getMonth() + 1);
+            const day = padZero(date.getDate());
+            const hours = padZero(date.getHours());
+            const minutes = padZero(date.getMinutes());
+            const seconds = padZero(date.getSeconds());
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function isDaylightSavingTime(date, zone) {
+            const month = date.getMonth();
+            const dstStart = new Date(date.getFullYear(), 3, 8, 2, 0, 0);  // 假设每年4月8日凌晨2点开始夏令时（简化示例，实际不同地区规则差异大）
+            const dstEnd = new Date(date.getFullYear(), 10, 1, 2, 0, 0);  // 假设每年10月1日凌晨2点结束夏令时
+            if (zone === 'paris' || zone === 'london' || zone === 'newYork' || zone === 'losAngeles') {
+                return date >= dstStart && date < dstEnd;
+            }
+            return false;
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const utcDate = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(),
+                now.getUTCMinutes(), now.getUTCSeconds());
+            const utcTime = formatTime(utcDate);
+            document.getElementById('utcTime').innerHTML = utcTime;
+
+            for (const zone in timeZoneOffsets) {
+                const offsets = timeZoneOffsets[zone];
+                let offset;
+                if (Array.isArray(offsets)) {
+                    offset = isDaylightSavingTime(utcDate, zone)? offsets[1] : offsets[0];
+                } else {
+                    offset = offsets;
+                }
+                const zoneDate = new Date(utcDate.getTime() + offset * 60 * 60 * 1000);
+                document.getElementById(zone + 'Time').innerHTML = formatTime(zoneDate);
+            }
+
+            setTimeout(updateTime, 1000);
+        }
+
+        window.onload = function () {
+            updateTime();
+        };
+    function notfound(imgElement) {  
+            var src = imgElement.src;  
+            var parts = src.split('/'); // 使用'/'分割URL  
+            var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+            //console.log(filename); // 输出: 20201124032511.png  
+      
+            imgElement.src = "https://47.115.223.75:8080/group1/v2/" + filename+"?timestamp=" + Date.now();
+    
+            imgElement.onerror = null; // 解绑onerror事件  
+        }  
+    //     function notfound() {
+    
+    //         var img2 = document.getElementById(this);  
+    // var src = img2.src;  
+    // var parts = src.split('/'); // 使用'/'分割URL  
+    // var filename = parts[parts.length - 1]; // 获取最后一部分（文件名）  
+    // console.log(filename); // 输出: image.jpg
+    
+    //         var img = event.srcElement;
+    //         img.src = "https://img-home.csdnimg.cn/images/"+filename;
+    //         img.onerror = null; //解绑onerror事件
+    //     }
+    </script>
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

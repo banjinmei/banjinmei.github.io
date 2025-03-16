@@ -191,7 +191,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sun Mar 16 2025 02:42:18 GMT+0800">2025-03-16 02:42:18</span>
+                <span class="datetime" data-updated="Sun Mar 16 2025 21:50:03 GMT+0800">2025-03-16 21:50:03</span>
             </span>
         
 
@@ -249,26 +249,11 @@
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Microsoft.Extensions.Configuration;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> builder = <span class="keyword">new</span> ConfigurationBuilder()</span><br><span class="line">            .SetBasePath(Directory.GetCurrentDirectory())</span><br><span class="line">            .AddJsonFile(<span class="string">&quot;appsettings.json&quot;</span>, optional: <span class="literal">true</span>, reloadOnChange: <span class="literal">true</span>);</span><br><span class="line">        IConfigurationRoot configuration = builder.Build();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">var</span> environment = configuration[<span class="string">&quot;Environment&quot;</span>];</span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Environment: <span class="subst">&#123;environment&#125;</span>&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="3-使用环境变量"><a href="#3-使用环境变量" class="headerlink" title="3. 使用环境变量"></a>3. 使用环境变量</h1><p>环境变量也可以用来区分不同的运行环境。你可以在发布应用时设置不同的环境变量。</p>
 <p>在C#中读取环境变量：</p>
-<pre><code class="csharp">using System;
- 
-class Program
-&#123;
-    static void Main(string[] args)
-    &#123;
-        string environment = Environment.GetEnvironmentVariable(&quot;MY_APP_ENV&quot;); // MY_APP_ENV是环境变量名，例如&quot;Test&quot;或&quot;Release&quot;
-        Console.WriteLine($&quot;Environment: &#123;environment&#125;&quot;);
-    &#125;
-&#125;
-···
-# 总结
-预编译指令适合于编译时确定环境。
-
-配置文件适合于运行时确定环境，并且可以更灵活地管理不同环境的配置。
-
-环境变量提供了一种灵活的方式来切换应用运行的环境，无需重新编译代码。
-
-选择哪种方法取决于你的具体需求和偏好。通常，对于生产环境的配置，使用配置文件或环境变量是比较常见的做法，因为它们提供了更好的灵活性和易于管理性。而对于开发和测试阶段，预编译指令可能更为直接和简单。
-</code></pre>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">string</span> environment = Environment.GetEnvironmentVariable(<span class="string">&quot;MY_APP_ENV&quot;</span>); <span class="comment">// MY_APP_ENV是环境变量名，例如&quot;Test&quot;或&quot;Release&quot;</span></span><br><span class="line">        Console.WriteLine(<span class="string">$&quot;Environment: <span class="subst">&#123;environment&#125;</span>&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>预编译指令适合于编译时确定环境。</p>
+<p>配置文件适合于运行时确定环境，并且可以更灵活地管理不同环境的配置。</p>
+<p>环境变量提供了一种灵活的方式来切换应用运行的环境，无需重新编译代码。</p>
+<p>选择哪种方法取决于你的具体需求和偏好。通常，对于生产环境的配置，使用配置文件或环境变量是比较常见的做法，因为它们提供了更好的灵活性和易于管理性。而对于开发和测试阶段，预编译指令可能更为直接和简单。</p>
 
                 </div>
                 
@@ -294,6 +279,22 @@ class Program
 
                 
                     <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/03/16/AI-TTS-pyVideoTrans/"
+                                   title="AI TTS pyVideoTrans"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">AI TTS pyVideoTrans</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
                         
                         
                             <div class="next-post">
